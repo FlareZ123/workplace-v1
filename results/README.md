@@ -30,6 +30,8 @@ These tests constrain named hypotheses about source recovery. Counts across rows
 
 Additional targeted K04 byte-substitution and boundary-slip scopes appear in the [original reconstruction](h17-recovery.md) and [provenance report](h17-evidence-audit.md). Negative mutation tests do not establish which original source bytes were lost or whether a particular corruption mechanism occurred.
 
+**K04 retry redundancy check:** The three same-job RECOVER payloads differ pairwise by 68, 62 and 62 bits. If all three were damaged copies of one original word, the exact minimum common-center Hamming radius would be 34 bits. That common-original premise is **unverified**, so the result challenges small-error majority-vote recovery from retries without authenticating the last ACK. [Exact source-derived proof and checker](h17-k04-retry-nonredundancy.md).
+
 ## What can complete recovery
 
 An independently integrity-checked incident-date ESC-N original coupon, printer-media capture or exact ACK buffer with provenance could supply **K04**. An original signed desk margin, envelope image or trustworthy verbatim contemporary quotation of Emily's final caption could supply **K08**. The [missing-evidence intake plan](h17-missing-evidence-intake.md) states needed identifiers and custody documentation. Use [K04 coupon validation](check_h17_coupon.py) and [K08 caption validation](check_h17_caption.py) against the untouched individual commitments. Only after both components pass should the original offline verifier be rerun for the combined commitment.
