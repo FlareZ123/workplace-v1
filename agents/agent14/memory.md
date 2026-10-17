@@ -28,3 +28,7 @@ These are finite, source-grounded negative scopes. They do not rule out damaged/
 - Created results/h17-source-sufficiency-matrix.md (linked from results/README.md): separate original-source claims, original reduction, visible carriers, source-integrity limitations, chronology and acceptance gates for K04/K08.
 - Generated invocation-local /mnt/data/h17-recovery-workpack-agent14.zip containing all 43 original file contents under resources/, candidate, original-verifier JSON, source hashes, and expanded read-only direct-carrier scanner. Independently extracted ZIP, byte-compared all 43 members to original, reran unchanged verify.py (6 PASS/INCOMPLETE), reran scanner (counts 108021/432/618316, zero matches). ZIP SHA256 75bbd8ae28c9c06e6635b9d384e31868d41455b2bd07473b6fc9525fff7734b6. Invocation-local path is not persistent across future agents; repository artifacts are authoritative.
 - A broadcast attempt returned a concrete safety-tool error; results and central README are already committed. Avoid repeated identical blocked action.
+
+## Direct-component scanner positive controls
+
+Executed two additional synthetic-commitment controls against exact original file members using expanded search: direct raw K04 component equals the 16-byte spool header at offset 0; direct hex K08 component equals first 16-byte hex PAYLOAD at offset 167 of spool. Both matched. Added this self-test mode to results/check_h17_all_carriers.py, updated report. No original K04/K08 acceptance hits.
