@@ -28,7 +28,7 @@ For each `k = 0,1,2,3,4,5`, enumerate all `itertools.combinations(range(128), k)
 | 5 | 264,566,400 |
 | **Total** | **275,584,033** |
 
-**No matching digest** in the tested domain. A native C/OpenSSL SHA-256 implementation completed all six classes. An independent Python standard-library implementation, [h17-k04-bitflip-check.py](h17-k04-bitflip-check.py), derives the initial candidate from the unmodified source files and is suitable for independent reproduction. Its 0-through-4-bit run also matched the C result (11,017,633 failed candidates). SHA-256 of the source spool file: `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`.
+**No matching digest** in the tested domain. A native C/OpenSSL SHA-256 implementation completed all six classes. An independent Python standard-library implementation, [h17-k04-bitflip-check.py](h17-k04-bitflip-check.py), derives the initial candidate from the unmodified source files and is suitable for independent reproduction. Its independent Python run completed all six Hamming classes and matched the C result exactly (275,584,033 failed candidates). SHA-256 of the source spool file: `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`.
 
 ## Interpretation and limits
 
