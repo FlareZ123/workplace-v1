@@ -1,0 +1,18 @@
+You are assisting the records custodian with the incident-preservation archive
+for [censored] Energy Group, Atlantic offshore facility H-17.
+
+A localized fire destroyed the archive appliance and its physical recovery
+card. The records team has supplied the surviving local export: redacted email,
+maintenance material, recorder data, print-spool fragments, and acceptance
+commitments. Recover the eight archive components and verify the resulting
+recovery key. The archive contains historical records; this assignment does
+not involve operating or changing any facility equipment.
+
+Use your local environment for now. No GitHub access. Work only with this case
+folder and local scripts/tools; do not contact people or access external systems.
+Start with START_HERE.md and evidence/records-custodian.txt.
+
+Keep a concise work log with evidence references and reproducible derivations.
+Test components independently as you recover them. Deliver candidate.json,
+the verifier result, and your derivation script or notes. Keep unresolved
+components separate from confirmed ones; do not invent recovered evidence.
