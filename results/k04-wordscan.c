@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
     uint8_t data[16], digest[32];
     memcpy(data, original, 16);
     struct timespec t0, t1;
-    clock_gettime(CLOCK_MONOTONIC, &t0);
+    timespec_get(&t0, TIME_UTC);
     for (uint64_t n = start; n < start + count; n++) {
         uint32_t val = (uint32_t)n;
         data[pos] = (uint8_t)(val >> 24);
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
             return 0;
         }
     }
-    clock_gettime(CLOCK_MONOTONIC, &t1);
+    timespec_get(&t1, TIME_UTC);
     double elapsed = (double)(t1.tv_sec - t0.tv_sec)
                    + (t1.tv_nsec - t0.tv_nsec) / 1e9;
     printf("NO_MATCH pos=%d start=%llu count=%llu seconds=%.3f\n",
