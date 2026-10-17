@@ -26,7 +26,7 @@ I compared all 43 ZIP-relative paths and object IDs with the `resources/` blobs 
 
 I wrote the six published passing component values into a new local `candidate.json` and ran the unchanged ZIP `verify.py --candidate candidate.json --json`. Output was six `PASS` states (K01, K02, K03, K05, K06, K07), K04/K08 `MISSING`, combined `INCOMPLETE`, `accepted: false`. This independently checks the stored candidate against the supplied copy of acceptance commitments; the more detailed original-record derivation is in `results/replay_h17.py`.
 
-I separately searched every contiguous 16-byte window formed from hexadecimal runs in the supplied `evidence/` text files, testing raw bytes and the ESC-N XOR mask (including a reversed-payload diagnostic). None matched the K04 commitment. This diagnostic is limited to its explicitly enumerated windows and operations; it cannot rule out an unrecovered original coupon or arbitrary corruption.
+I separately searched every contiguous 16-byte window formed from hexadecimal runs in the supplied `evidence/` text files, testing raw bytes and the ESC-N XOR mask (including a reversed-payload diagnostic): 405 candidate hashes, no K04 match. A second diagnostic tested **every contiguous 16-byte raw-byte window** of the surviving `evidence/` files as-is and XORed with the ESC-N mask: 201,830 SHA-256 checks (100,915 byte windows × 2), no K04 match. These bounded diagnostics cannot rule out an unrecovered original coupon, an unrecorded transformation, or arbitrary corruption.
 
 ## Implications
 
