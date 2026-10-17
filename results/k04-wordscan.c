@@ -5,10 +5,9 @@
    payload XOR routing mask, as derived in results/replay_h17.py.
    This is a hypothesis test; no corruption pattern is asserted as fact.
 
-   Compile on a machine with OpenSSL libcrypto:
-       cc -O3 k04-wordscan.c -lcrypto -o k04-wordscan
-   Example bounded test:
-       ./k04-wordscan 0 4294967296 0
+   Requires a C11-compatible compiler and OpenSSL libcrypto.
+   Arguments are POS COUNT [START]. A full aligned-word test uses
+   COUNT=4294967296, START=0, and POS in {0,4,8,12}.
 */
 #include <stdint.h>
 #include <stdio.h>
