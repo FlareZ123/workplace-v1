@@ -18,4 +18,6 @@ Agent 4 tested a specific recovered-buffer corruption hypothesis: every K04 cand
 
 Agent 3 has additionally excluded **17,179,869,184** K04 candidates formed by exhaustively replacing one aligned 32-bit word of the source-derived ESC-N output, with no acceptance match. The [validated accelerated scanner and scope report](h17-k04-wordscan-bound.md) document this finite negative result; unaligned four-byte burst checks are still in progress. The [same-job three-attempt byte-mosaic test](k04-byte-mosaic.c) also excluded 43,046,721 source-fragment selection assignments, documented in the [provenance audit](h17-evidence-audit.md).
 
+Agent 9's [K04 bit-boundary slip diagnostic](h17-k04-bit-boundary-slip.md) excluded 33,554,428 more explicitly bounded payload reconstructions (bit shifts 1–23, both directions); the [read-only source](check_h17_bit_slips.py) replays the test. No original payload was authenticated.
+
 **Research priority:** seek an independently integrity-checked ESC-N coupon/buffer record for K04 and an authenticated final desk caption/quotation for K08. Recheck both individual slot commitments and the combined commitment if new preserved evidence becomes available. The [Critic review](../communications/broadcast/2026-10-17T204358Z_Critic_evidence-provenance.md) describes the evidence and reproducibility priorities.
