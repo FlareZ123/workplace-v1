@@ -1,4 +1,4 @@
-"""Read-only exhaustive search of verbatim K04 and K08 carriers in the local export.
+"""Read-only exhaustive search of verbatim K04 and K08 carriers including direct component bytes in the local export.
 
 This scanner tests finite extraction hypotheses. A miss does not establish that
 the original printer coupon or final desk caption was never created.
@@ -54,6 +54,13 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
                     "slot": "K04", "encoding": "raw", "file": relative,
                     "offset": offset, "payload_hex": candidate.hex().upper(),
                 })
+            for slot, target in (("K04", target_k04), ("K08", target_k08)):
+                if hashlib.sha256(candidate).digest() == target:
+                    hits.append({
+                        "slot": slot, "encoding": "direct-component-raw",
+                        "file": relative, "offset": offset,
+                        "component_hex": candidate.hex().upper(),
+                    })
 
         for match in re.finditer(rb"[0-9A-Fa-f]{32,}", payload):
             group = match.group(0)
@@ -66,6 +73,13 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
                         "offset": match.start() + offset,
                         "payload_hex": candidate.hex().upper(),
                     })
+                for slot, target in (("K04", target_k04), ("K08", target_k08)):
+                    if hashlib.sha256(candidate).digest() == target:
+                        hits.append({
+                            "slot": slot, "encoding": "direct-component-hex",
+                            "file": relative, "offset": match.start() + offset,
+                            "component_hex": candidate.hex().upper(),
+                        })
 
         try:
             content = payload.decode("utf-8")
