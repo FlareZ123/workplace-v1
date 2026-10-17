@@ -27,7 +27,7 @@ These tests constrain named hypotheses about source recovery. Counts across rows
 | One internal deleted-and-reinserted fragment unit | Bit, nibble and byte units at every removal/insertion position, 114,688 assignments; 83,945 unique candidate payloads | [NO_MATCH](h17-k04-internal-splices.md); [source](check_h17_internal_splices.py) |
 | Variable fragment concatenation error | Every two- to five-block contiguous partition, permutation and per-block byte reversal, 5,421,480 assignments | [NO_MATCH](h17-k04-fragment-ordering.md); [source](check_h17_fragment_permutations.py) |
 | Final K08 wording composed of retained drafts and notes | Exact-note, span, subsequence and constrained cross-note phrasing tests | [NO_MATCH within stated grammars](h17-evidence-audit.md); [textual limits](h17-k08-textual-coverage.md) |
-| Verbatim carriers anywhere in the 43 original file members | 108,021 raw 16-byte K04 windows; 432 hex-text windows; 618,316 contiguous 1–40-word K08 spans | [NO_MATCH in explicitly defined original-data extraction classes](h17-all-file-carrier-bound.md); [read-only scanner](check_h17_all_carriers.py) |
+| Verbatim carriers anywhere in the 43 original file members | 108,021 raw 16-byte and 432 hex-text windows for K04 coupon/K04+K08 direct components; 618,316 contiguous 1–40-word K08 spans | [NO_MATCH in explicitly defined original-data extraction classes](h17-all-file-carrier-bound.md); [read-only scanner](check_h17_all_carriers.py) |
 
 Additional targeted K04 byte-substitution and boundary-slip scopes appear in the [original reconstruction](h17-recovery.md) and [provenance report](h17-evidence-audit.md). Negative mutation tests do not establish which original source bytes were lost or whether a particular corruption mechanism occurred.
 
