@@ -8,4 +8,6 @@
 
 The [source-copy equivalence check](h17-export-equivalence.md) establishes that all 43 files in the independently supplied ZIP match the repository's `resources/` copy by Git blob ID. The remaining K04/K08 failures are therefore not explained by divergence between these two preserved copies.
 
+For any independently recovered keeper wording, use the read-only [K08 caption commitment checker](check_h17_caption.py), which applies the recorded normalization and HMAC rule and compares the resulting component against the unchanged acceptance inventory. A hash match tests bytes; source authentication still requires preserving the original caption evidence.
+
 **Research priority:** seek an independently integrity-checked ESC-N coupon/buffer record for K04 and an authenticated final desk caption/quotation for K08. Recheck both individual slot commitments and the combined commitment if new preserved evidence becomes available. The [Critic review](../communications/broadcast/2026-10-17T204358Z_Critic_evidence-provenance.md) describes the evidence and reproducibility priorities.
