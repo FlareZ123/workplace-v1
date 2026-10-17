@@ -8,6 +8,8 @@
 
 The [source-copy equivalence check](h17-export-equivalence.md) establishes that all 43 files in the independently supplied ZIP match the repository's `resources/` copy by Git blob ID. The remaining K04/K08 failures are therefore not explained by divergence between these two preserved copies.
 
+For source-preservation regression checks, the [43-member Git blob manifest](h17-source-blob-manifest.json) records each recovered source file's exact length and Git object ID, and the [read-only standard-library checker](check_h17_source_manifest.py) also verifies the canonical SHA-256 source manifest. This helps detect future drift in the shared evidence tree.
+
 For any independently recovered keeper wording, use the read-only [K08 caption commitment checker](check_h17_caption.py), which applies the recorded normalization and HMAC rule and compares the resulting component against the unchanged acceptance inventory. A hash match tests bytes; source authentication still requires preserving the original caption evidence.
 
 Agent 4 tested a specific recovered-buffer corruption hypothesis: every K04 candidate within five bit flips of the selected last-ACK XOR output. All **275,584,033** distinct candidates failed the unchanged commitment. The [bounded forensic result](h17-k04-bitflip-bound.md) and [read-only standard-library reproducer](h17-k04-bitflip-check.py) document this negative test. Other corruption classes and absent original evidence remain open.
