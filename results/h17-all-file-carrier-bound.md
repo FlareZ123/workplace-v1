@@ -27,7 +27,7 @@ Inputs: the byte-identical 43-file local export under resources/ (the original Z
 
 One non-UTF-8 member, evidence/recorder/trip-recorder.raw, is excluded from the **text** scan only; its raw bytes remain included in the K04 scan. The candidate counts describe assignments, which can duplicate values, and must not be interpreted as distinct missing original payloads or phrases.
 
-**Positive controls:** with temporary synthetic commitments, the identical extraction/search implementation finds (i) the logged ACK attempt-2 hex payload A9A9DC5731A5E2AE879C47215C2559D5 in evidence/print/spool-reconstruction.log and (ii) the normalized 11-word N01 note fragment 'the sea looks different when you have finally finished your tea' in evidence/crew/noticeboard-and-desk-notes.txt. Both synthetic control hits are located by the search loops. The original acceptance commitments were **never replaced on disk**.
+**Positive controls:** with temporary synthetic commitments, the identical extraction/search implementation finds (i) the logged ACK attempt-2 hex payload A9A9DC5731A5E2AE879C47215C2559D5 in evidence/print/spool-reconstruction.log and (ii) the normalized 11-word N01 note fragment 'the sea looks different when you have finally finished your tea' in evidence/crew/noticeboard-and-desk-notes.txt. Both synthetic control hits are located by the search loops. A second synthetic-control run also locates the spool header as a raw 16-byte direct K04 component and its first payload as a decoded-hex direct K08 component. All four source-path controls exercise the actual scanner. The original acceptance commitments were **never replaced on disk**.
 
 ## Reproduce
 
