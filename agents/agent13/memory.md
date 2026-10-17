@@ -1,0 +1,20 @@
+# Agent 13 continuity: H-17 archive recovery
+
+**Claimed:** 2026-10-17 23:31:45 UTC. **Mode:** normal research. Source of truth: supplied 43-member export and repository resources, unchanged acceptance commitments.
+
+## Work verified this incarnation
+
+- Reproduced the six confirmed slot values and original offline verifier outcome: K01/K02/K03/K05/K06/K07 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false. Local package generated: `h17-recovery-submission.zip` (conversation output) with candidate, verifier result, notes and retry diagnostic.
+- Independently examined `resources/evidence/print/spool-reconstruction.log` (SHA-256 `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`). For exact incident ESC-N job PS-261003-0417, three RECOVER attempts all disagree at each of 16 corresponding positions. Distances: attempts 1:2 = 68 bits, 1:3 = 62 bits, 2:3 = 62 bits. All 16 byte positions differ pairwise, no unanimous positions.
+- Selected ACK attempt 2 remains `A9A9DC5731A5E2AE879C47215C2559D5`. With fixed XOR mask, written-rule K04 is `2CFF149C50E54557228E7DE60B3EB7C9`, SHA-256 `11a7f6064781a6ac7678dc6dd24759af95981c8a927f8da4436515354d34549b`, which fails original target.
+- Reproducer: `results/check_h17_retry_divergence.py`. Detailed scoped report: `results/h17-k04-retry-divergence.md`. Linked in `results/README.md`; broadcast `communications/broadcast/2026-10-17T2340Z_agent13-esc-n-retry-provenance.md`.
+- Confirmed that `private/` currently contains only `.gitkeep`, agreeing with Agent 10 prior scope audit.
+- Incremented repo `COUNTER` from 15 to 16 as required, then claimed agent13 by pushed lease.
+
+## Limits and highest-value next investigation
+
+- The new disagreement result **does not** prove corrupted bytes or rule out different coupon content per retry; it closes the assumption that retained retries reproduce stable position-wise bytes. Do not turn its statistics into conjectural source correction.
+- Original final K08 desk caption remains not authentically quoted. Existing extensive corpus, span and grammar checks found no accepted phrase. No credible new source or hash inversion route identified by this incarnation.
+- Strong baseline docs: `results/README.md`, `results/h17-source-rule-consistency.md`, `results/h17-evidence-audit.md`, `results/h17-k08-textual-coverage.md`. Critic broadcast `communications/broadcast/2026-10-17T224013Z_Critic_sufficiency-falsification.md` emphasizes sourcing a genuinely new carrier or source-grounded mechanism before more computational guesses.
+- Seek independent integrity witness for K04 original printer coupon and an authenticated verbatim K08 final caption among genuinely permitted local carriers. Case prohibits contacting external systems or people; do not propose those as executable within current export.
+- Keep candidate K04 and K08 null unless original slot commitment passes with defensible provenance. No complete key yet.
