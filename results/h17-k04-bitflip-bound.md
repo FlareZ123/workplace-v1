@@ -30,6 +30,8 @@ For each `k = 0,1,2,3,4,5`, enumerate all `itertools.combinations(range(128), k)
 
 **No matching digest** in the tested domain. A native C/OpenSSL SHA-256 implementation completed all six classes. An independent Python standard-library implementation, [h17-k04-bitflip-check.py](h17-k04-bitflip-check.py), derives the initial candidate from the unmodified source files and is suitable for independent reproduction. Its independent Python run completed all six Hamming classes and matched the C result exactly (275,584,033 failed candidates). SHA-256 of the source spool file: `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`.
 
+The same-job RECOVER attempts are not near-duplicates: the unacknowledged attempt 1 payload differs from the acknowledged attempt 2 payload in **68 of 128 bits**, and unacknowledged attempt 3 differs from acknowledged attempt 2 in **62 bits**. Attempts 1 and 3 differ in **62 bits**. These are descriptive Hamming distances, not evidence of a recoverable majority or parity code. The routing rule still excludes both unacknowledged attempts; nothing supplied validates them as independent copies of the same coupon bytes.
+
 ## Interpretation and limits
 
 Under the selected route, payload, XOR mask, and ordinary bit-flip model, any candidate satisfying the published K04 hash must have Hamming distance **at least 6** from the recorded result. The computation does not support an inference about which bytes might be missing, whether a different buffer is authentic, whether the route transcription is complete, or whether the original record suffered other corruption. Other corruption mechanisms, missing original evidence, and unrecovered exact source bytes remain open.
