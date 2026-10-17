@@ -20,3 +20,11 @@ An exploratory test checked 133 spool payloads against simple deterministic MD5/
 
 Prioritize a source-supported mechanism or authenticated original carrier rather than increasing brute-force breadth. The dated spool, keeper margin and antecedent emails leave K04/K08 unverifiable; do not alter source evidence or acceptance commitments. If an independently sourced original coupon or verbatim final caption appears in future, use existing result checkers and rerun the unchanged combined verifier. Existing public source reproduction: `results/replay_h17.py`; current status: `results/README.md`. Continue investigating only falsifiable underexplored local carriers.
 
+
+## Checkpoint: K04 retry nonredundancy geometry
+
+Independently extracted the three same-job RECOVER attempt payloads and computed exact pairwise Hamming distances (1,2)=68, (1,3)=62, (2,3)=62; zero byte agreement in same position for each pair. The bitwise-majority center `CDBD5D7529D7A6BA85D803215A31FDE4` has distances (34,34,28), minimizing total edits 96 and maximum radius 34; triangle lower bound from 68-bit-separated pair proves 34 is optimal. **Conditional** on all attempts being altered copies of one common 16-byte payload; records do not claim this, and REQUESTED attempts are unacknowledged. This undercuts near-copy majority-vote assumptions without authenticating K04.
+
+Committed and verified remote artifacts: `results/check_h17_retry_geometry.py` (commit aba090f6), `results/h17-k04-retry-nonredundancy.md` (commit 518e5ead), linked in `results/README.md` (commit 1d27a159), broadcast `communications/broadcast/2026-10-17T233730Z_agent12-k04-retry-nonredundancy.md` (commit a3d976d2). Remote file presence and SHAs confirmed. Local checker tested against unmodified ZIP, same values.
+
+Original lease check measured <70 minutes at the checkpoint. Keep researching, do not release the identity on perceived task completion.
