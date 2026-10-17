@@ -14,6 +14,8 @@ A focused [K04 source-rule consistency certificate](h17-source-rule-consistency.
 
 For **K08**, the crew notes and email describe a final personal keeper caption but never quote its authenticated exact words. The first and second Emily drafts, as well as the distinct standby and commissioning labels, are not accepted. The [K08 textual audit](h17-k08-textual-coverage.md) finds no retained mail attachments or photographs that would supply the missing final wording. The public nonce and HMAC reduction can validate a proposed exact phrase; they cannot recover unknown original language by themselves.
 
+The [verifier-path test-only positive controls](h17-verifier-positive-controls.md) demonstrate that the unchanged checker accepts a deliberately artificial complete, internally consistent eight-slot inventory and rejects forged entries against the original commitments. They do not recover K04 or K08.
+
 Source coverage has been checked independently: the [43-member ZIP equivalence audit](h17-export-equivalence.md) finds that the supplied ZIP's extracted bytes match all corresponding repository resources by Git blob ID. The [preservation manifest](h17-source-blob-manifest.json) and [read-only checker](check_h17_source_manifest.py) establish a reproducible drift check. They do not certify whether the original export included all material.
 
 ## Bounded negative experiments
