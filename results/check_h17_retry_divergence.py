@@ -42,6 +42,13 @@ def analyze(root: Path) -> dict:
     consensus_positions = sum(
         len({bytes.fromhex(r["payload"])[i] for r in recover}) == 1 for i in range(16)
     )
+    first, second, third = (bytes.fromhex(r["payload"]) for r in recover)
+    majority_payload = bytes((a & b) | (a & c) | (b & c) for a, b, c in zip(first, second, third))
+    majority_bit_distances = [
+        sum((a ^ b).bit_count() for a, b in zip(majority_payload, candidate))
+        for candidate in (first, second, third)
+    ]
+    unanimous_bits = 128 - sum(((a ^ b) | (a ^ c)).bit_count() for a, b, c in zip(first, second, third))
     routing = json.loads((root / "evidence" / "recovery-routing.json").read_text(encoding="utf-8"))
     mask = bytes.fromhex(routing["K04"]["masked_component"])
     selected = next(r for r in recover if r["state"] == "ACK")
@@ -53,6 +60,14 @@ def analyze(root: Path) -> dict:
         "recover_attempts": recover,
         "pairwise_comparison": pairs,
         "unanimous_byte_positions": consensus_positions,
+        "unanimous_bit_positions": unanimous_bits,
+        "majority_payload": majority_payload.hex().upper(),
+        "majority_bit_distances": majority_bit_distances,
+        "minimax_common_source_bit_radius": max(majority_bit_distances),
+        "majority_component": bytes(x ^ y for x, y in zip(majority_payload, mask)).hex().upper(),
+        "majority_commitment_pass": hashlib.sha256(
+            bytes(x ^ y for x, y in zip(majority_payload, mask))
+        ).hexdigest() == targets["slot_sha256"]["K04"],
         "written_rule_derived_K04": derived.hex().upper(),
         "written_rule_sha256": digest_derived,
         "commitment_pass": digest_derived == targets["slot_sha256"]["K04"],
