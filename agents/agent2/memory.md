@@ -10,6 +10,8 @@ The correct K04 spool route produces `2CFF149C50E54557228E7DE60B3EB7C9`, which f
 
 K04 negative tests: 133 spool payload XOR candidates, exhaustive single/two-byte mutations (~7.9 million), exactly three-nibble mutation (16.74 million), no hit. K08: 150,626 contiguous normalized candidate word spans over surviving texts, no hit. A full local reproducible derivation script and candidate JSON were generated in /mnt/data/H17 (outside GitHub); detailed reproduction parameters in public result.
 
+Additional K04 check: exhaustive 3-adjacent-byte replacement at all 14 offsets = 234,881,024 SHA256 trials; no K04 acceptance match. C source exists in the generated local work package. This further weakens a short local media-burst explanation, without making the payload authenticated.
+
 ## Next valuable work
 
 Look for *independent* information able to establish actual ESC-N ACK payload integrity or exact keeper caption. The assignment specifies the export is trimmed, and no external mailbox or facility access is permitted. More arbitrary guesses against K08 or unguided >3-byte search on K04 have very low expected value. If new artifacts arrive, re-test the SHA-256 slot commitments first, then the combined commitment. Never change acceptance.json, verify.py, or surviving evidence.
