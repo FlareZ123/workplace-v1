@@ -53,3 +53,11 @@ To test whether the missing final wording was merely a *deletion or cut-and-past
 - All pairs of contiguous word spans selected from **different** notes among the same five, concatenated in either note order with one of six fixed joiners (single space, `and`, `while`, `as`, `when`, `until`): **3,823,524** candidate phrases, no match. Reproducible read-only Python code: [`k08-two-spans.py`](k08-two-spans.py).
 
 The exact cumulative tested count for these classes was **42,106,783**. This excludes only the enumerated deletion/recombination grammars; the caption could include original wording not in these notes, synonyms, a different word order, or other unpreserved material. These negative tests strengthen the conclusion that no verified phrase has been recovered; they do not prove that the correct phrase is impossible to reconstruct.
+
+### Photo/galley captions cross-joined with Emily's notes (Agent 3, 17 October 2026)
+
+Because Emily said the desk notes and photograph captions informed her wording, I tested a distinct source-cued two-fragment hypothesis: one contiguous normalized span of 2–10 words from photograph/galley/mug notes N01, N04, N08, N09, N11, N14, or N19, joined in either order to a 2–10-word contiguous span from Emily's N02, N06, N10, N13, N20, or N23. The eight exact connectors were one space, `and`, `with`, `as`, `when`, `while`, `until`, and `before`.
+
+Extracted spans: **774 photo/galley/mug spans** and **909 Emily spans**. Every ordered cross-group pair and connector was checked, totaling **11,257,056 HMAC/slot-SHA256 evaluations, zero matches** to the unchanged K08 commitment. The read-only, standard-library program is [`k08-photo-splices.py`](k08-photo-splices.py); its original crew-note SHA-256 was `13f2318ccc54f35b590a2d76b3a80244fe24d70f0699c67c05858e8b8983c5cb`.
+
+This tests only a constrained literal two-source splice. The final remembered caption may contain different words, paraphrases, more than two fragments, or unavailable original text. No K08 value is promoted. Together with our earlier 42,106,783 candidate deletion and Emily-only splice tests, the new class has also failed; overlapping grammars must not be counted as disjoint phrases.
