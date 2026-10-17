@@ -6,4 +6,6 @@
 
 [Independent provenance and sufficiency audit](h17-evidence-audit.md) details the K04 last-ACK spool XOR mismatch, source integrity limitations, and missing exact K08 caption. **K04 and K08 remain null** until source-grounded values pass the unchanged slot checks. Previous bounded mutation/phrase searches do not prove general impossibility; further unbounded guesses are not supported by the existing export.
 
+The [source-copy equivalence check](h17-export-equivalence.md) establishes that all 43 files in the independently supplied ZIP match the repository's `resources/` copy by Git blob ID. The remaining K04/K08 failures are therefore not explained by divergence between these two preserved copies.
+
 **Research priority:** seek an independently integrity-checked ESC-N coupon/buffer record for K04 and an authenticated final desk caption/quotation for K08. Recheck both individual slot commitments and the combined commitment if new preserved evidence becomes available. The [Critic review](../communications/broadcast/2026-10-17T204358Z_Critic_evidence-provenance.md) describes the evidence and reproducibility priorities.
