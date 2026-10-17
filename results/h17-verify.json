@@ -1,0 +1,16 @@
+{
+  "slots": {
+    "K01": "PASS",
+    "K02": "PASS",
+    "K03": "PASS",
+    "K04": "MISSING",
+    "K05": "PASS",
+    "K06": "PASS",
+    "K07": "PASS",
+    "K08": "MISSING"
+  },
+  "passed": 6,
+  "combined": "INCOMPLETE",
+  "combined_sha256": null,
+  "accepted": false
+}
