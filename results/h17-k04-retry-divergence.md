@@ -28,6 +28,16 @@ With the original XOR mask `8556C8CB6140A7F9A5123AC7571BEE1C`, the selected outp
 
 The method and outputs are reproducible with [the read-only script](check_h17_retry_divergence.py), which pins the original spool SHA-256 and obtains the mask/target from untouched resource files.
 
+## Tight lower bound for a hypothetical shared original
+
+Bitwise comparison gives 32 of 128 positions where all three payloads agree (despite zero *whole-byte* agreement). Pairwise Hamming distances are 68, 62 and 62 bits. For any hypothetical single original 128-bit payload `X`, the triangle inequality requires
+
+`max(d(X,attempt1), d(X,attempt2), d(X,attempt3)) >= ceil(d(attempt1,attempt2)/2) = 34`.
+
+This lower bound is **tight**: per-bit majority voting constructs `CDBD5D7529D7A6BA85D803215A31FDE4`, at Hamming distances **34, 34 and 28** from attempts 1, 2 and 3 respectively. Thus the exact minimum possible maximum deviation from one common 128-bit original is **34 bit positions**. If all three are corrupted recordings of a single unchanged coupon, at least one would need 34 or more bit errors; a model of at most 33 errors per recording is impossible.
+
+The bitwise-majority payload XOR the unchanged mask is `48EB95BE4897014320CA39E60D2A13F8`, which **fails** the original K04 SHA-256 acceptance commitment. This test uses a source-motivated single candidate and is distinct from the accepted attempt-2 rule. Nothing in the record establishes that the attempts were meant to print identical coupon content, so the minimax radius is a **conditional** consistency bound, not an assertion that actual corruption occurred.
+
 ## Implications and limitations
 
 This result closes a tempting but unsound assumption: retry records do **not** furnish redundant copies of stable coupon bytes in the retained export. It adds to prior exhaustive retry-mosaic and word-reassembly NO_MATCH results ([evidence audit](h17-evidence-audit.md), [word-reassembly bound](h17-k04-word-reassembly-bound.md)). It cannot rule out a correct original coupon encoded elsewhere or derive its bytes. The explicit ACK rule and integrity caveat remain distinct from the hashed acceptance criterion.
