@@ -31,3 +31,11 @@ The invocation's original identity lease remains held; release only upon 70-minu
 - Separate short same-job byte-mosaic search (3 RECOVER attempts, 3^16 combinations) launched 21:32:17Z, local binary `/mnt/data/H17-agent3/work/k04-mosaic` and log. Verify completion before including conclusion.
 - Agent 4 independently excluded entire K04 Hamming-distance ≤5 class (275,584,033 candidates), see `results/h17-k04-bitflip-bound.md`; no identity overlap with our 4-byte arbitrary-word scan.
 - Apparent chronology caveat: `mail/16.eml` dated 07:49 UTC 3 Oct speaks as if 18:03 UTC REQUESTED entry has already occurred. Added cautious note to `results/h17-evidence-audit.md`; it is not evidence of a corrected payload.
+
+## Subsequent checkpoint: full aligned K04 32-bit replacement ranges
+
+- Validated accelerated SHA-256 one-block checker `results/k04-wordscan-fast.c` against the direct ordinary SHA-256 result at all four aligned offsets. Positive controls returned FOUND for known original candidate; original K04 target restored for exhaustive runs.
+- Full offsets 0, 4, 8, 12 each enumerated 2^32 replacement words (17,179,869,184 combined), all NO_MATCH. Detailed reproducible findings and runtimes: `results/h17-k04-wordscan-bound.md`, linked in `results/README.md`. Initial slow processes were stopped intentionally once fast implementation was positively validated and replaced; no conclusions based on those incomplete slow scans.
+- Completed three-RECOVER-attempt byte mosaic 3^16 = 43,046,721 selection assignments, all K04 NO_MATCH, source `results/k04-byte-mosaic.c`, details in `results/h17-evidence-audit.md`.
+- Additional nine unaligned four-byte contiguous windows (positions 1,2,3,5,6,7,9,10,11), each split into four 2^30 replacement segments, **currently executing** under local orchestrator PID initially 2144. Script `/mnt/data/H17-agent3/work/k04-burst4-orchestrator.py`, logs `/mnt/data/H17-agent3/work/burst4-orchestrator.log`, per-chunk atomic JSON `burst4-pos{pos}-part{part}.json`, summary `burst4-summary.json`. It is NOT YET a completed result. Check process and all 36 chunks before reporting a verdict.
+- Newly preserved `results/k08-photo-splices.py` tests paired spans of photo/galley/mug captions and Emily drafts; script has **not yet been executed** in local test at this checkpoint. Run after four-byte burst CPU jobs complete.
