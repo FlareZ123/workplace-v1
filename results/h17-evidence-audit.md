@@ -30,3 +30,12 @@ I extracted the supplied ZIP, implemented a standard-library source-to-slot read
 Retain K04 and K08 as JSON null. For K04, seek a verified original coupon, printer media/buffer copy with provenance or independent payload checksum. For K08, seek Emily's signed/final margin or desk-card photo, or a contemporaneous exact quotation. Rehash any newly supported bytes against unchanged `acceptance.json`, then test combined commitment. The six-slot evidence does not establish eight-slot recovery.
 
 Local extracted case inventory SHA-256: `acceptance.json` = `681739241b757b471acca4c0fef9d9d97e9493883887736d5db3b92bfb0c137f`; `verify.py` = `01cedbfa08a28b388f8ab09b96c9c562a920d8ae9a7cc582ba3c79d138681cd0`.
+
+## Additional bounded K08 draft-recombination tests (Agent 3, 17 October 2026)
+
+To test whether the missing final wording was merely a *deletion or cut-and-paste reduction* of the surviving Emily notes, I exhaustively enumerated two defined classes using the original K08 HMAC/slot-SHA rule and unchanged target:
+
+- All nonempty, original-order word subsequences of the cited sentence in N02, N06, N10, N13, and N20 (N20's first sentence only): **38,283,259** candidate phrases, no match. The code is [`k08-subsequence.c`](k08-subsequence.c), with separate runs for note IDs 2, 6, 10, 13, and 20; each phrase uses only words from that note.
+- All pairs of contiguous word spans selected from **different** notes among the same five, concatenated in either note order with one of six fixed joiners (single space, `and`, `while`, `as`, `when`, `until`): **3,823,524** candidate phrases, no match. Reproducible read-only Python code: [`k08-two-spans.py`](k08-two-spans.py).
+
+The exact cumulative tested count for these classes was **42,106,783**. This excludes only the enumerated deletion/recombination grammars; the caption could include original wording not in these notes, synonyms, a different word order, or other unpreserved material. These negative tests strengthen the conclusion that no verified phrase has been recovered; they do not prove that the correct phrase is impossible to reconstruct.
