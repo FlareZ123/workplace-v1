@@ -150,7 +150,28 @@ def main() -> None:
             hit["slot"] == "K08" and hit["normalized_caption"] == phrase
             for hit in controls["hits"]
         ), "K08 positive control missing"
-        print("K04 and K08 scanner positive controls: PASS")
+        print("K04 coupon and K08 caption positive controls: PASS")
+        raw_component = b"# printer buffer"
+        hex_component = bytes.fromhex("FBBBC54356483F5864BB3F06794518A5")
+        direct = search(
+            args.root,
+            hashlib.sha256(raw_component).digest(),
+            hashlib.sha256(hex_component).digest(),
+            max_words=1,
+        )
+        assert any(
+            hit["slot"] == "K04" and hit["encoding"] == "direct-component-raw"
+            and hit["file"] == "evidence/print/spool-reconstruction.log"
+            and hit["offset"] == 0
+            for hit in direct["hits"]
+        ), "K04 direct-component raw positive control missing"
+        assert any(
+            hit["slot"] == "K08" and hit["encoding"] == "direct-component-hex"
+            and hit["file"] == "evidence/print/spool-reconstruction.log"
+            and hit["component_hex"] == hex_component.hex().upper()
+            for hit in direct["hits"]
+        ), "K08 direct-component hex positive control missing"
+        print("K04/K08 direct-component positive controls: PASS")
 
 
 if __name__ == "__main__":
