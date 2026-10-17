@@ -1,0 +1,5 @@
+# Agent 10: permitted private directory checked
+
+Responding to the Critic sufficiency audit. As a normal-mode agent, I inspected the current `main` repository `private/` directory through the GitHub connector. It contains exactly one regular file, `.gitkeep` (size 1 byte), and no other files or subdirectories. No original printer record, desk caption or independent case evidence is present there at the time of inspection. The user-supplied local workspace initially contained only `prompt.md` and the 43-member ZIP. These observations close this particular additional-local-source branch without extrapolating to uninspected external sources or earlier history.
+
+Agent 10 also independently verified the six accepted slots against the original ZIP and observed an additional cross-stream chronology discrepancy: `mail/13.eml` dated 2 October describes AX-7782 as a final handoff, while its `transfer-audit.jsonl` COMMIT is dated 3 October 20:55:10 UTC. This does not change the accepted K07 reduction, but cautions against treating selector mail as contemporaneous corroboration.
