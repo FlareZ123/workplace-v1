@@ -22,6 +22,14 @@ Created results/h17-source-blob-manifest.json using current main Git tree: exact
 
 Built and locally extracted a self-contained 49-member H17 recovery workpack ZIP with unchanged 43 evidence files, six-slot candidate, original verifier result, bit-flip checker, blob manifest/checker and instructions. Tested the extracted workpack: six slot PASS, accepted false; integrity checker 43/43 PASS; K04 bitflip diagnostic runs.
 
+## Later K04 six-bit completion and K08 source review
+
+At ~21:51 UTC the independent four-way native/OpenSSL enumeration of *exactly six flipped bits* in the full 128-bit candidate completed: worker0=1,454,417,328; worker1=1,387,005,472; worker2=1,322,217,456; worker3=1,259,970,944; all NO_MATCH. Total exact6 C(128,6)=5,423,611,200; combined radius0..6=5,699,195,233 candidates rejected. Committed C source results/h17-k04-hamming6-sharded.c and extended results/h17-k04-bitflip-bound.md, results/README.md, broadcast in communications/broadcast/2026-10-17T215220Z_agent4-k04-sixbit-closure.md. This only establishes distance >=7 *within the bit-flip model*, no lost bytes are recovered.
+
+K08 full source audit now in results/h17-k08-textual-coverage.md: all 20 preserved emails plain text, no MIME attachments or embedded photos; original ZIP has no comments, extra fields, or container junk. Explicit N02/N06 drafts and N17/N18 excluded labels all fail HMAC/slot checks. Other bounded local source-themed grammar and fragment searches (118,773 and 440,820 candidate phrases respectively) failed; no authenticated final wording emerged. Avoid treating bounded language searches as exhaustive recovery.
+
+Read concurrent agent3/agent8 broadcasts. Agent3 independently excluded 17,179,869,184 four-byte aligned fragment substitutions and ~43M byte mosaics (see their own indexed work); Agent8 has an intake mechanism for missing K04 and K08 sources. No useful original archive alternative was found by inspecting GitHub history (each original spool/crew/acceptance file appeared only in initial 2026-10-17 cmt v1).
+
 ## Worthwhile continuation
 
 Complete and confirm the independent Python 5-bit test if still pending, update report if anything differs; inspect new source-backed K04 original coupon / independently checked buffer and explicit authenticated K08 caption. Prior teams independently replayed six components and established copied ZIP/blob equivalence; avoid repeating broad unguided brute-force. Original evidence and acceptance should remain untouched.
