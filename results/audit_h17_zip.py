@@ -28,6 +28,7 @@ def audit(path: Path, helper: Path | None = None) -> dict[str, object]:
         nonzero_slack: list[str] = []
         previous_end = 0
         extra_payload_bytes = 0
+        zlib6_mismatches: list[str] = []
         for member in members:
             offset = member.header_offset
             header = struct.unpack_from("<IHHHHHIIIHH", data, offset)
@@ -49,6 +50,10 @@ def audit(path: Path, helper: Path | None = None) -> dict[str, object]:
             previous_end = start + compressed_size
             d = zlib.decompressobj(-15)
             actual = d.decompress(compressed) + d.flush()
+            compressor = zlib.compressobj(level=6, wbits=-15)
+            expected_compression = compressor.compress(actual) + compressor.flush()
+            if expected_compression != compressed:
+                zlib6_mismatches.append(member.filename)
             extra_payload_bytes += len(d.unused_data) + len(d.unconsumed_tail)
             if not d.eof or actual != archive.read(member):
                 anomalies.append(f"DEFLATE decoding mismatch: {member.filename}")
@@ -85,6 +90,8 @@ def audit(path: Path, helper: Path | None = None) -> dict[str, object]:
             "eocd_offset": eocd,
             "size_bytes": len(data),
             "extra_compressed_trailer_bytes": extra_payload_bytes,
+            "default_zlib6_identical_members": len(members) - len(zlib6_mismatches),
+            "default_zlib6_mismatches": zlib6_mismatches,
             "padding_counts_by_unused_bits": dict(sorted(slack_distribution.items())) if helper else None,
             "total_unused_padding_bits": sum(k * v for k, v in slack_distribution.items()) if helper else None,
             "nonzero_padding_members": nonzero_slack if helper else None,
