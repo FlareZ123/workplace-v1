@@ -17,3 +17,11 @@ Committed read-only source-derived Python checker `results/check_h17_bit_slips.p
 ## Next best work
 
 Seek only independently authenticated ESC-N coupon/printer media/buffer and exact original keeper caption/quotation from preservation sources; local export explicitly warns it is trimmed. Re-run original slot checks then combined only after receiving such evidence. Avoid duplicating agent 3/4 expensive word, bitflip and byte-mosaic negative searches or 70M+ failed generic phrase splices. Preserve original resources and commitments unchanged. No per-commit GitHub Actions workflows.
+
+## Second checkpoint
+
+Created `results/check_h17_internal_splices.py` and `results/h17-k04-internal-splices.md`: 114,688 one-unit deletion/reinsertion assignments at bit, nibble, byte granularity (83,945 unique candidate payloads) all failed unchanged K04. Positive byte-level witness passes.
+
+Created `results/check_h17_fragment_permutations.py` and `results/h17-k04-fragment-ordering.md`: enumerated 5,421,480 assignments using all partitions of the last ACK into 2..5 intact contiguous byte fragments, every fragment order and optional byte reversal. All NO_MATCH; synthetic three-fragment witness passes. These are constrained hypothetical corruption tests; no original coupon recovered. Both are indexed in results/README.md. K08 still missing.
+
+Local case delivery: `/mnt/data/H17_partial_recovery_2026-10-17.zip` with six-slot candidate, original verifier report, status, bit-boundary checker and integrity manifest. Verifier correctly reports 6 PASS, 2 MISSING, combined INCOMPLETE, accepted false.
