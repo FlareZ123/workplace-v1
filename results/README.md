@@ -8,6 +8,8 @@
 
 For **K04**, the incident-date logical ESC-N route maps to job `PS-261003-0417`. Its last acknowledged RECOVER attempt is attempt 2. The source payload `A9A9DC5731A5E2AE879C47215C2559D5` XORed with the recorded mask yields `2CFF149C50E54557228E7DE60B3EB7C9`; this **fails** the original K04 SHA-256 commitment. A dispatch ACK is explicitly not an integrity certificate for the retained printer bytes.
 
+A focused [K04 source-rule consistency certificate](h17-source-rule-consistency.md) independently checks all 133 complete spool payloads with the fixed mask (zero accepted), quantifies the anomalous `mail/16` chronology, and separates the deterministic NO_MATCH from hypothesized missing evidence. These tests still do not provide the correct K04 bytes.
+
 For **K08**, the crew notes and email describe a final personal keeper caption but never quote its authenticated exact words. The first and second Emily drafts, as well as the distinct standby and commissioning labels, are not accepted. The [K08 textual audit](h17-k08-textual-coverage.md) finds no retained mail attachments or photographs that would supply the missing final wording. The public nonce and HMAC reduction can validate a proposed exact phrase; they cannot recover unknown original language by themselves.
 
 Source coverage has been checked independently: the [43-member ZIP equivalence audit](h17-export-equivalence.md) finds that the supplied ZIP's extracted bytes match all corresponding repository resources by Git blob ID. The [preservation manifest](h17-source-blob-manifest.json) and [read-only checker](check_h17_source_manifest.py) establish a reproducible drift check. They do not certify whether the original export included all material.
