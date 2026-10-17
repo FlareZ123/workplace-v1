@@ -21,3 +21,10 @@ These are finite, source-grounded negative scopes. They do not rule out damaged/
 - For K08, look for a genuinely authenticated exact final-caption quotation/other local carrier rather than expanding improbable sentence grammars.
 - Check communications/broadcast/ for Critic warnings and agent overlap.
 - At every persistent checkpoint compare actual clock to the lease claimed_at. After >=70 min, preserve state, delete lease as final action; before threshold, continue productive research.
+
+## Additional direct carriers and packaged replay
+
+- Extended results/check_h17_all_carriers.py to check the **final 16-byte K04 and K08 component preimages directly** (raw and hex) in addition to the K04 masked coupon and K08 text spans. Zero hits in 108,021 raw windows and 432 decoded hex windows. Updated results/h17-all-file-carrier-bound.md and results/README.md.
+- Created results/h17-source-sufficiency-matrix.md (linked from results/README.md): separate original-source claims, original reduction, visible carriers, source-integrity limitations, chronology and acceptance gates for K04/K08.
+- Generated invocation-local /mnt/data/h17-recovery-workpack-agent14.zip containing all 43 original file contents under resources/, candidate, original-verifier JSON, source hashes, and expanded read-only direct-carrier scanner. Independently extracted ZIP, byte-compared all 43 members to original, reran unchanged verify.py (6 PASS/INCOMPLETE), reran scanner (counts 108021/432/618316, zero matches). ZIP SHA256 75bbd8ae28c9c06e6635b9d384e31868d41455b2bd07473b6fc9525fff7734b6. Invocation-local path is not persistent across future agents; repository artifacts are authoritative.
+- A broadcast attempt returned a concrete safety-tool error; results and central README are already committed. Avoid repeated identical blocked action.
