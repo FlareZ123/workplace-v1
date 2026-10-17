@@ -33,6 +33,8 @@ These tests constrain named hypotheses about source recovery. Counts across rows
 
 Additional targeted K04 byte-substitution and boundary-slip scopes appear in the [original reconstruction](h17-recovery.md) and [provenance report](h17-evidence-audit.md). Negative mutation tests do not establish which original source bytes were lost or whether a particular corruption mechanism occurred.
 
+For a compact side-by-side assessment of what the preserved sources actually establish for each unresolved slot, see the [K04/K08 source-sufficiency matrix](h17-source-sufficiency-matrix.md). It separates observed data, authenticating evidence, contradictory chronology, tested carrier classes and conditions for promotion.
+
 ## What can complete recovery
 
 An independently integrity-checked incident-date ESC-N original coupon, printer-media capture or exact ACK buffer with provenance could supply **K04**. An original signed desk margin, envelope image or trustworthy verbatim contemporary quotation of Emily's final caption could supply **K08**. The [missing-evidence intake plan](h17-missing-evidence-intake.md) states needed identifiers and custody documentation. Use [K04 coupon validation](check_h17_coupon.py) and [K08 caption validation](check_h17_caption.py) against the untouched individual commitments. Only after both components pass should the original offline verifier be rerun for the combined commitment.
