@@ -1,0 +1,224 @@
+{
+  "schema": "H17-preservation-source-blob-manifest/v1",
+  "case_id": "IR-261003-H17",
+  "source_zip_sha256": "a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec",
+  "canonical_sha256_manifest": "728d3dfa8c8e6bdcc3f5010cb0cc217a57cd430d705645659d2794bc4ab97343",
+  "file_count": 43,
+  "files": [
+    {
+      "path": "acceptance.json",
+      "bytes": 906,
+      "git_blob_sha1": "8e92ad69039cb4e24dcd6cc75dba49dfcc03e8cb"
+    },
+    {
+      "path": "AGENT_PROMPT.txt",
+      "bytes": 1108,
+      "git_blob_sha1": "273ab7cf90b622691d601c6cee865ffa96b723a1"
+    },
+    {
+      "path": "candidate.template.json",
+      "bytes": 123,
+      "git_blob_sha1": "1210a711bf6b7267246d72cf61796e1723c35dad"
+    },
+    {
+      "path": "evidence/archive-labels.ini",
+      "bytes": 434,
+      "git_blob_sha1": "4be8742524702589c0a6f0013a7618689ec435c1"
+    },
+    {
+      "path": "evidence/crew/galley-and-stores.log",
+      "bytes": 545,
+      "git_blob_sha1": "6484c5c49cca13cd03b0921995a7c0742bcbf9bd"
+    },
+    {
+      "path": "evidence/crew/noticeboard-and-desk-notes.txt",
+      "bytes": 2940,
+      "git_blob_sha1": "7a3f43906059186805b653a86c6f7f5756535359"
+    },
+    {
+      "path": "evidence/mail/01.eml",
+      "bytes": 1036,
+      "git_blob_sha1": "fa4403ac1880ad5d38fb17affe0546d59f95227f"
+    },
+    {
+      "path": "evidence/mail/02.eml",
+      "bytes": 900,
+      "git_blob_sha1": "1b1549513573ff776f02a21e4ed5231039ba1c6f"
+    },
+    {
+      "path": "evidence/mail/03.eml",
+      "bytes": 1164,
+      "git_blob_sha1": "fbba9251c722e16de3e6d377f183384decf8e946"
+    },
+    {
+      "path": "evidence/mail/04.eml",
+      "bytes": 1100,
+      "git_blob_sha1": "bf772b39e5e41b75e4cf08ebd9c1a7919b3bdd9b"
+    },
+    {
+      "path": "evidence/mail/05.eml",
+      "bytes": 921,
+      "git_blob_sha1": "d7edbad5dc3aefbbeddcfba10aa1ed204f10f7ac"
+    },
+    {
+      "path": "evidence/mail/06.eml",
+      "bytes": 954,
+      "git_blob_sha1": "87f6517476584a8588a8ff22adc333c2e4a66297"
+    },
+    {
+      "path": "evidence/mail/07.eml",
+      "bytes": 977,
+      "git_blob_sha1": "55d12ae009583be381f599edf676c7a2d9ba6604"
+    },
+    {
+      "path": "evidence/mail/08.eml",
+      "bytes": 1432,
+      "git_blob_sha1": "d0565611682641f71125edd4bf3c45c5aa82d049"
+    },
+    {
+      "path": "evidence/mail/09.eml",
+      "bytes": 906,
+      "git_blob_sha1": "4f7cc9b19be188fd8322b416e0b95f735eaaace4"
+    },
+    {
+      "path": "evidence/mail/10.eml",
+      "bytes": 1217,
+      "git_blob_sha1": "f88d9ec9fb4a3c3c1a75167ac7892c3373707c0f"
+    },
+    {
+      "path": "evidence/mail/11.eml",
+      "bytes": 1430,
+      "git_blob_sha1": "fa875dd81577b3fecce744c9a0a0004de0a9ac3a"
+    },
+    {
+      "path": "evidence/mail/12.eml",
+      "bytes": 1004,
+      "git_blob_sha1": "be626557cc484f4c5e4fb8693d274ced1a29ccbb"
+    },
+    {
+      "path": "evidence/mail/13.eml",
+      "bytes": 1156,
+      "git_blob_sha1": "4f411f840ba8ae34b770124183f2b4c96f9d40d0"
+    },
+    {
+      "path": "evidence/mail/14.eml",
+      "bytes": 1099,
+      "git_blob_sha1": "010b88bc865d9dd98fd9a71a7fbe653de8367563"
+    },
+    {
+      "path": "evidence/mail/15.eml",
+      "bytes": 1017,
+      "git_blob_sha1": "bc938ca9d9aec6c63b9b2a528f88e582800b6e2c"
+    },
+    {
+      "path": "evidence/mail/16.eml",
+      "bytes": 1353,
+      "git_blob_sha1": "c75b7c2ef9aaaabe63e5c3361a4bd85b16d5be79"
+    },
+    {
+      "path": "evidence/mail/17.eml",
+      "bytes": 1416,
+      "git_blob_sha1": "3f61fd662b0a0eba003ce0e744e254f59208fcef"
+    },
+    {
+      "path": "evidence/mail/18.eml",
+      "bytes": 1443,
+      "git_blob_sha1": "70e0b8a296b216b0293e162a351ff7ed8623d749"
+    },
+    {
+      "path": "evidence/mail/19.eml",
+      "bytes": 992,
+      "git_blob_sha1": "59a1289e208f52470aefcc7b308ff33687552f3e"
+    },
+    {
+      "path": "evidence/mail/20.eml",
+      "bytes": 1406,
+      "git_blob_sha1": "556e4aabfb50685611160d68f261e9094ac4c426"
+    },
+    {
+      "path": "evidence/mail/INDEX.md",
+      "bytes": 1874,
+      "git_blob_sha1": "1c2f0466f63bcd36804154e0abdf406f1c076d8c"
+    },
+    {
+      "path": "evidence/maintenance/inspection-rounds.log",
+      "bytes": 714,
+      "git_blob_sha1": "8e08ec67f11857830c0c94a1341cdb6c60a69347"
+    },
+    {
+      "path": "evidence/maintenance/seal-receipts.jsonl",
+      "bytes": 6444,
+      "git_blob_sha1": "2ba590c65a0aec3b14ae15c9d5fa83cf760b5491"
+    },
+    {
+      "path": "evidence/maintenance/work-order-417.html",
+      "bytes": 1050,
+      "git_blob_sha1": "ee7140e9014b6acab62998d1e5414aca90825836"
+    },
+    {
+      "path": "evidence/print/spool-reconstruction.log",
+      "bytes": 17308,
+      "git_blob_sha1": "39f90d3aef49249a92d237cc600102eea3447895"
+    },
+    {
+      "path": "evidence/procedures/document-register.log",
+      "bytes": 440,
+      "git_blob_sha1": "0a28aa19c0b94691bc88f81425ffb8eb4cfca836"
+    },
+    {
+      "path": "evidence/procedures/RC-17-scans.txt",
+      "bytes": 5191,
+      "git_blob_sha1": "3da8e46040f0467dcb7f6ae1047fdeadc1e4f6af"
+    },
+    {
+      "path": "evidence/recorder/format-note.txt",
+      "bytes": 892,
+      "git_blob_sha1": "747dfd29afa7e82a75340518cf67720d208339ab"
+    },
+    {
+      "path": "evidence/recorder/trip-recorder.raw",
+      "bytes": 2128,
+      "git_blob_sha1": "0f9658f808030cc49a14b28367b73706d2e888e6"
+    },
+    {
+      "path": "evidence/records-custodian.txt",
+      "bytes": 1581,
+      "git_blob_sha1": "f215379bffdee87f84cde4e46c8b209dde69d4c9"
+    },
+    {
+      "path": "evidence/recovery-routing.json",
+      "bytes": 3062,
+      "git_blob_sha1": "c7efc425768afb8e3ddbd3896535fba14633c334"
+    },
+    {
+      "path": "evidence/telemetry/export-readme.txt",
+      "bytes": 612,
+      "git_blob_sha1": "5f1694c0b464e27062db279fe4fdef2eada589fc"
+    },
+    {
+      "path": "evidence/telemetry/freeze-export.jsonl",
+      "bytes": 24043,
+      "git_blob_sha1": "dd1fc6f91311ff3f709e38f5ae6640c87972793c"
+    },
+    {
+      "path": "evidence/transfers/queue-note.txt",
+      "bytes": 302,
+      "git_blob_sha1": "086ac78c05caf47afd231d9ea2f6577dc6622894"
+    },
+    {
+      "path": "evidence/transfers/transfer-audit.jsonl",
+      "bytes": 9002,
+      "git_blob_sha1": "752e19ae6658c011a1e45e1631162e95646a067a"
+    },
+    {
+      "path": "START_HERE.md",
+      "bytes": 2097,
+      "git_blob_sha1": "5a617a2516965b537a675073fe41feb89220d7fd"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 2947,
+      "git_blob_sha1": "059e075c71acb5f7d68e03a2614daa76d3c54331"
+    }
+  ]
+}
