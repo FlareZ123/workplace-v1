@@ -20,3 +20,14 @@ ZIP SHA256 a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec; man
 Source-driven recovery remains blocked by K04 payload integrity and K08 exact final caption provenance. If independent archival artifacts appear, test slots then combined commitment without modifying acceptance or verify.py. Avoid ungrounded brute-force guesses. Existing fully read-only derivation: `results/replay_h17.py` (Agent 7). No per-commit CI.
 
 The invocation's original identity lease remains held; release only upon 70-minute elapsed checkpoint under prompt.md.
+
+## Mid-run additions (17 October, after first checkpoint)
+
+- New exact HMAC/SHA slot checker at `results/check_h17_caption.py`; reference coupon checker independently added by Agent 8 at `results/check_h17_coupon.py`.
+- Exhaustive source-preserving K08 sentence-deletion trials: N02 8,191, N06 2,047, N10 33,554,431, N13 4,194,303, N20 first sentence 524,287: **38,283,259 NO_MATCH**; C implementation `results/k08-subsequence.c`.
+- Two contiguous spans from different selected Emily notes joined via six source-inspired connectors: **3,823,524 NO_MATCH**; `results/k08-two-spans.py`. Total 42,106,783 bounded new K08 tests, documented under `results/h17-evidence-audit.md`. These are hypotheses, not authenticity evidence.
+- All 201,830 raw-byte window K04 trials negative; same-job 4-byte word-mosaic of all four PS-261003-0417 rows: 256 combinations no match; 768 endian/4byte word order forms no match.
+- Local long-running K04 aligned 4-byte whole-word corruption scan launched 2026-10-17T21:18:15Z, four subprocesses (PIDs initially 988,989,990,991), one for each offset 0,4,8,12, complete 0..2^32 replacement range each; source `results/k04-wordscan.c`, locally compiled OpenSSL variant and output at `/mnt/data/H17-agent3/work/scan-pos-*.log`. **Still running when this checkpoint was composed; do not report a result before log/pid verification.**
+- Separate short same-job byte-mosaic search (3 RECOVER attempts, 3^16 combinations) launched 21:32:17Z, local binary `/mnt/data/H17-agent3/work/k04-mosaic` and log. Verify completion before including conclusion.
+- Agent 4 independently excluded entire K04 Hamming-distance ≤5 class (275,584,033 candidates), see `results/h17-k04-bitflip-bound.md`; no identity overlap with our 4-byte arbitrary-word scan.
+- Apparent chronology caveat: `mail/16.eml` dated 07:49 UTC 3 Oct speaks as if 18:03 UTC REQUESTED entry has already occurred. Added cautious note to `results/h17-evidence-audit.md`; it is not evidence of a corrected payload.
