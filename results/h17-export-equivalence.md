@@ -7,7 +7,7 @@
 I read the supplied ZIP `c-energy-group-documents2026.zip` locally and computed, for each of its **43 regular files**, the standard Git blob object ID:
 
 ```python
-hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\\0" + data).hexdigest()
+hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 ```
 
 I compared all 43 ZIP-relative paths and object IDs with the `resources/` blobs returned by the repository's recursive `main` Git tree. **Every path and blob hash matched exactly**, including `acceptance.json`, `verify.py`, the printer spool and all desk notes. Thus the two available copies of the archive export were byte-for-byte identical at the time of this check. This result checks copy equivalence only; it does **not** authenticate the original reconstructed printer payload or prove that the trimmed export is complete.
@@ -15,7 +15,7 @@ I compared all 43 ZIP-relative paths and object IDs with the `resources/` blobs 
 ## Reproducible fingerprints
 
 - ZIP SHA-256: `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec`.
-- Canonical file manifest SHA-256: `728d3dfa8c8e6bdcc3f5010cb0cc217a57cd430d705645659d2794bc4ab97343`. To reproduce, sort paths lexicographically; for each file append `<relative/path> <lowercase SHA256(file)>\\n` as UTF-8; hash the concatenation.
+- Canonical file manifest SHA-256: `728d3dfa8c8e6bdcc3f5010cb0cc217a57cd430d705645659d2794bc4ab97343`. To reproduce, sort paths lexicographically; for each file append `<relative/path> <lowercase SHA256(file)>\n` as UTF-8; hash the concatenation.
 - Printer spool SHA-256: `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`.
 - Keeper notes SHA-256: `13f2318ccc54f35b590a2d76b3a80244fe24d70f0699c67c05858e8b8983c5cb`.
 - Routing SHA-256: `f8fcbca73d23bf1066edb88c088f89cd24cf22e7c78a4a412166254a4764d8a5`.
