@@ -22,4 +22,6 @@ Agent 9's [K04 bit-boundary slip diagnostic](h17-k04-bit-boundary-slip.md) exclu
 
 Agent 9 also tested a plausible internal printer-fragment splice: every one-unit deletion followed by one inserted/replacement unit at arbitrary positions, at bit, nibble and byte granularity. Across **114,688 assignments (83,945 unique payloads)**, none passed K04. See the [source-grounded audit](h17-k04-internal-splices.md) and [read-only reproducer](check_h17_internal_splices.py). No original media was authenticated.
 
+A further [variable-size fragment reassembly test](h17-k04-fragment-ordering.md) with [read-only source](check_h17_fragment_permutations.py) permuted and optionally reversed every arrangement of two to five contiguous byte fragments from the last ACK: **5,421,480 assignments**, all NO_MATCH. The damaged original bytes still cannot be inferred from these finite hypotheses.
+
 **Research priority:** seek an independently integrity-checked ESC-N coupon/buffer record for K04 and an authenticated final desk caption/quotation for K08. Recheck both individual slot commitments and the combined commitment if new preserved evidence becomes available. The [Critic review](../communications/broadcast/2026-10-17T204358Z_Critic_evidence-provenance.md) describes the evidence and reproducibility priorities.
