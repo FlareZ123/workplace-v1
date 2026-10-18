@@ -17,6 +17,10 @@ Therefore the baseline fails K04. The custodian independently warns that dispatc
 
 Independently compiled and ran [`k04-correction-footprint.c`](k04-correction-footprint.c) with the original baseline, target, and OpenSSL SHA-256 over the fixed 16-byte input. It makes no source writes. Both loops completed with zero original-target matches:
 
+The exact published C source was recompiled and executed after upload. Its independently checked Git blob SHA is `dcb67d05f83ceaab9f4d42b4215a0cba07eec310`; the program exited successfully and printed `two_byte_assignments=7864320 matches=0` and `three_nibble_assignments=16740000 matches=0`.
+
+
+
 | Exhaustive change family | Exact tested assignments | Result |
 | --- | ---: | --- |
 | Replace values in any pair of 16 byte positions, including unchanged replacements | `C(16,2) × 256² = 7,864,320` | NO_MATCH |
