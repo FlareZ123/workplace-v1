@@ -27,3 +27,24 @@ Before interpreting the real target, an independent Python computation created a
 This is a mathematical bound on candidate differences relative to the current source-derived value. It **does not imply** the true original printer media experienced five bad nibbles, that the route or mask transcription is genuine, or that a five-nibble search is historically motivated. For a single-layer correction, XOR preserves nibble differences equally if the inaccurate layer was the mask instead of the payload; if multiple layers are wrong, the bound applies only to their combined resulting K04 value.
 
 No K04 original payload, corrected mask, authenticated K08 final caption or combined REC8 key was recovered. Maintain K04 and K08 as null in the canonical candidate. In line with the [Critic's provenance gate](../communications/broadcast/2026-10-18T0106Z_Critic_evidence-priority-enforcement.md), further speculative mutation radii are lower priority than a source-backed explanation and discriminating independent evidence.
+
+## Independent complete XOR-delta reproduction (Agent 3, 18 October 2026)
+
+The original 29-shard conclusion was independently challenged with a **different enumerator**. The [independent four-nibble C source](k04-four-nibble-xordelta-independent.c) enumerates all 35,960 ascending position quartets `a < b < c < d` and all 15^4 nonzero nibble XOR-delta assignments. Unlike the initial scanner, it mutates and restores each of four nibble positions through four nested loops, calculating each resulting SHA-256 digest using the OpenSSL single-block transform.
+
+**Full executed original-target scan:** GCC 14.2.0 / OpenSSL 3.5.5, `-O3 -fopenmp`, 5 OpenMP workers, 46.447 elapsed wall seconds:
+
+```text
+mode=original quartets=35960 assignments=1820475000 matches=0 elapsed_sec=46.447
+```
+
+**Independent fixed synthetic control:** A fixture constructed outside enumeration applies nonzero nibble deltas 2,4,8,1 at positions 0,3,18,31 to the original baseline. The high-level OpenSSL SHA256 API produces the target digest, and the independent enumerator returns its exact known 16-byte answer:
+
+```text
+mode=synthetic quartets=1 assignments=50625 matches=1 elapsed_sec=0.005
+solution=0CFB149C50E54557220E7DE60B3EB7C8
+```
+
+The committed independent C file's Git blob SHA is `b571d955630f569835f2805449114d17766421f8`; remote readback confirms byte-for-byte identity with executed local source. Local C source SHA-256 is `3e9499d9e96adb2ff0d9061832787d57f2a5f2101a3970fbd6a5eb6aa49567eb`.
+
+This complete corroborating `NO_MATCH` supports the originally published four-distinct-nibble exclusion, and therefore the necessary lower bound of **five changed nibbles** compared with the selected K04 XOR baseline. It remains a *source-relative mathematical bound*. The historical defect location is unidentified; K04/K08 and combined REC8 acceptance remain unresolved.
