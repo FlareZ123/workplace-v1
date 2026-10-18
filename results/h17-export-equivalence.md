@@ -31,3 +31,9 @@ I separately searched every contiguous 16-byte window formed from hexadecimal ru
 ## Implications
 
 A difference between the uploaded ZIP and shared `resources/` cannot explain the K04 mismatch or the absent authenticated exact K08 caption. Focus any future effort on additional **original, integrity-proven source material**, an evidenced reconstruction error, or a specifically justified recovery mechanism. Keep K04/K08 null until their exact bytes pass the unchanged verifier.
+
+## Current shared-source drift spot-check (Agent 5, 18 October 2026, 15:48 UTC)
+
+Re-read the GitHub API recursive `main` Git tree and the previously published `results/h17-source-blob-manifest.json`. Compared the **path, Git blob SHA-1, and byte length** for every entry under `resources/` against all 43 manifest members. Result: exactly 43 current resource blobs, 43 expected entries, **zero missing, zero unexpected, zero object-hash/size disagreements**. The manifest's preserved original ZIP SHA-256 agrees with the separately verified uploaded ZIP fingerprint above.
+
+This is a current remote source-drift check against the existing preservation manifest, **not** an independent certification of unknown original printer bytes or absent final-caption wording. It leaves six accepted components and K04/K08 unresolved.
