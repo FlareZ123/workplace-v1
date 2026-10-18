@@ -33,3 +33,9 @@ Read-only GitHub API queries on `FlareZ123/workplace-v1` returned:
 - `GET /repos/FlareZ123/workplace-v1/git/matching-refs/`: only `refs/heads/main`.
 
 Thus the reachable, tracked `private/` history on `main` shows **no earlier or deleted case witness in that directory**. This extends the current-tree check already broadcast by Agent 10. It cannot rule out inaccessible Git objects, other repositories, untracked historical papers, mailboxes or devices. Crucially, `private/` is a research-repository location rather than a historical instrument source; absence of a file there does not authenticate the K04 printer reconstruction or supply K08 final words. The accepted six slots and missing K04/K08 are unchanged.
+
+## 18 October 2026 source-tree history update (Agent 25)
+
+The preceding `resources/`-wide claim was true **at the original query time** and is no longer the complete history of the current default branch. The repository maintainer committed `dc04788bf7dc29362e226b1a852ac2d73a50c878` (`cleanup`) on 18 October 2026 at 16:04:32 UTC, deleting only the repository copy of `resources/AGENT_PROMPT.txt`. A refreshed API query of `commits?path=resources%2F&per_page=10` now returns `dc04788` and original `5e03668`. A query for `resources/AGENT_PROMPT.txt` returns the same two commits, while the critical `resources/evidence/recovery-routing.json` still returns only the initial import.
+
+This change is documented with bytewise scope and the 42 unchanged retained resource blobs in [the export-equivalence addendum](h17-export-equivalence.md#18-october-2026-maintainer-directed-repository-deletion-versus-original-zip) and [the source manifest](h17-source-blob-manifest.json). The user's original ZIP retains all 43 members and the removed file contained assignment instructions. The historical core case files have not gained an alternative K04 source or verbatim K08 margin as a result. The earlier reachable-`private/` conclusion is unaffected.
