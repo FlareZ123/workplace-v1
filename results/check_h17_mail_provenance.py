@@ -18,8 +18,8 @@ import struct
 import zipfile
 
 
-INDEX_RECORD = re.compile(r"^\\|\\s*(\\d{2})\\s*\\|\\s*(\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\dZ)\\s*\\|", re.MULTILINE)
-MESSAGE_ID = re.compile(r"^<(\\d{2})\\.IR261003@\\[censored\\]>$")
+INDEX_RECORD = re.compile(r"^\|\s*(\d{2})\s*\|\s*(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ)\s*\|", re.MULTILINE)
+MESSAGE_ID = re.compile(r"^<(\d{2})\.IR261003@\[censored\]>$")
 ZIP_HEADER = struct.Struct("<IHHHHHIIIHH")
 
 
