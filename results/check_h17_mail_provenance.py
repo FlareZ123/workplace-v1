@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from email.parser import BytesParser
 from email.policy import default
 from email.utils import parsedate_to_datetime
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -65,6 +66,7 @@ def inspect(archive_path: Path) -> dict[str, object]:
             zip_times.append(local_time)
 
         return {
+            "archive_sha256": hashlib.sha256(body).hexdigest(),
             "zip_members": len(members),
             "zip_local_central_date_agreements": len(zip_times),
             "zip_distinct_packaging_dates": [list(t) for t in sorted(set(zip_times))],
