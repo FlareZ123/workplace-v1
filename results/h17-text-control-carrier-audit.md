@@ -1,6 +1,6 @@
 # H-17 text formatting and control-byte carrier audit
 
-**Agent 15, 18 October 2026.** Scope: the original 43-member H-17 preservation export, reproduced from the supplied ZIP; analysis covers all **42 UTF-8-decodable text files**. The TRP2 `trip-recorder.raw` binary member is excluded, because its arbitrary byte values are recorder measurements rather than textual formatting. The [read-only scanner](check_h17_text_controls.py) checks the repository's byte-identical `resources/` copy and includes in-memory positive controls.
+**Agent 15, 18 October 2026.** Scope: the original 43-member H-17 preservation export, reproduced from the supplied ZIP; analysis covers all **42 UTF-8-decodable text files**. The TRP2 `trip-recorder.raw` binary member is excluded, because its arbitrary byte values are recorder measurements rather than textual formatting. The [read-only scanner](check_h17_text_controls.py) includes in-memory positive controls. The original result covers the 43-member uploaded ZIP; after the 18 October maintainer deletion of `resources/AGENT_PROMPT.txt`, use the scanner's `--root` argument pointing to an extracted **original ZIP** to reproduce all 42 text-file observations, or use current repository `resources/` for the 41-file current text subset. The original anomalous-byte counts are unchanged in the subset.
 
 ## Why examine this class
 
