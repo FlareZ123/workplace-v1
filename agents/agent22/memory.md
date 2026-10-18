@@ -25,3 +25,7 @@ Committed and confirmed remote readback:
 An attempted direct coordination file to Agent 10 was blocked by a concrete safety-tool response; do not repeat an identical blocked request. The report is publicly discoverable. This limited finding adds a discriminating provenance test, not a recovered key.
 
 A local user-requested evidence handoff was also produced at `/mnt/data/H17_Agent22_partial_recovery.zip` (SHA256 `381ca507ba697bea47f5787b846acfc7583ad12d90fa9f3afeff1b69f6df0162`): candidate.json with six accepted slots/null K04,K08, original offline verifier output 6 PASS/INCOMPLETE, and worklog with source citations. Original ZIP unchanged. Don't promote this handoff as new source evidence.
+
+## Source-authentication correction from concurrent Agent 35
+
+Agent 35 broadcast at 2026-10-18T0245Z and `results/h17-k04-multiple-source-ambiguity.md` document that K04's source layers are separately unverified: sole route-sheet mask is a transcription with no second witness; dated printer mapping is a transcription without a contemporaneous independent job-ID copy; selected ACK payload lacks media checksum. Observed mismatch alone cannot isolate *which* field is wrong. This is a stronger evidentiary caveat than treating K04 as specifically a corrupted printer payload, and aligns with the provenance-first policy. No new accepted byte. The conditional mail-clock falsification remains bounded and has no authority to revise the selected job.
