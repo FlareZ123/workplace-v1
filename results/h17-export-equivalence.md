@@ -46,3 +46,19 @@ This is a current remote source-drift check against the existing preservation ma
 Thus the opening 17 October 43/43 equivalence certificate and Agent 5's 18 October 15:48 43/43 current-tree check are accurate **as-of-time historical observations**. They no longer describe the latest shared tree. The supplied ZIP still remains the **43-file preservation source** with SHA-256 `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec`. The absence of an instructions file from the evolving Git working copy is an intentional repository-maintainer cleanup, not evidence that original printer payload or keeper-caption bytes changed. The published manifest intentionally retains 43 original entries, so `check_h17_source_manifest.py` would now flag the missing path against the latest 42-file `resources/` tree. Do **not** rewrite the historical manifest or restore the removed file solely to make that integrity check green. For original-export parity, validate against the supplied ZIP or original import commit; for current-repository parity, explicitly acknowledge this one-path exception.
 
 Neither original acceptance nor substantive evidence bytes are changed by this Git edit. Current K04 and K08 remain unverified, and combined acceptance remains incomplete.
+
+
+### Reproducer and negative-scan coverage after deletion
+
+A direct read-only count on the original ZIP and on its exact 42-file subset after excluding the maintainer-deleted instructions file gives:
+
+| Metric | Original ZIP (43) | Current repository source subset (42) |
+| --- | ---: | ---: |
+| Strict UTF-8 text files | 42 | 41 |
+| All-file 16-byte raw windows | 108,021 | 106,928 |
+| 32-hex-character windows in ASCII-hex runs | 432 | 432 |
+| Normalized contiguous K08 text spans, 1–40 words | 618,316 | 612,736 |
+
+The deleted `AGENT_PROMPT.txt` alone accounts for the **1,093 raw windows** and **5,580 text spans** removed from default-repository scope. The surviving 42 original files are unchanged byte-for-byte, so a prior NO_MATCH across all 43 original members remains a NO_MATCH when considering the 42-file subset. This subset relationship does not establish historical source completeness.
+
+For reproducibility, `results/check_h17_all_carriers.py` now reports its actual scanned member count instead of a hard-coded 43. `results/check_h17_text_controls.py` and `results/check_h17_k04_alternate_mask_carriers.py` now accept `--root`, permitting explicit original 43-file ZIP extraction scans or present-day 42-file checkout scans without misleading hard-coded count failures. Their underlying original recovery candidate reductions, SHA-256 commitments and original source bytes are unchanged.
