@@ -5,6 +5,7 @@ evidence writes. In-memory controls verify that detection rules are active.
 """
 from collections import Counter
 from pathlib import Path
+import argparse
 import json
 
 ROOT = Path(__file__).resolve().parents[1] / "resources"
@@ -25,13 +26,16 @@ def inspect(payload):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT,
+                        help="Extracted original ZIP root, or current repository resources")
+    args = parser.parse_args()
     assert inspect(b"x\xe2\x80\x8by")["non_ascii"] == {"U+200B": 1}
     assert inspect(b"a\tb")["controls_except_lf"] == {"U+0009": 1}
     assert inspect(b"a \n")["trailing_whitespace_lines"] == 1
     assert inspect(b"\xef\xbb\xbf")["utf8_bom"] is True
 
-    sources = sorted(p for p in ROOT.rglob("*") if p.is_file())
-    assert len(sources) == 43
+    sources = sorted(p for p in args.root.rglob("*") if p.is_file())
     reports = {}
     for path in sources:
         if path.name == "trip-recorder.raw":
@@ -40,7 +44,7 @@ def main():
         if report["non_ascii"] or report["controls_except_lf"] or (
             report["utf8_bom"] or report["trailing_whitespace_lines"]
         ):
-            reports[path.relative_to(ROOT).as_posix()] = report
+            reports[path.relative_to(args.root).as_posix()] = report
     result = {
         "input_files": len(sources),
         "utf8_text_files": len(sources) - 1,
