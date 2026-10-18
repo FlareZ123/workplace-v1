@@ -24,7 +24,7 @@ An independent Python standard-library comparison of the original 43-member ZIP 
 
 These are **longest contiguous substrings**, not numbers of matching candidate keys. Thus the preserved sources have no literal raw echo of two or more consecutive selected bytes elsewhere after removing its entry. They also have no other full hexadecimal copy. This does **not** establish the authentic coupon, nor exclude noncontiguous fragments, transformed representations, a damaged original selected payload or an omitted source. Tiny coincidences carry no integrity weight.
 
-## Reproducibility correction and controls
+The underlying literal-echo checker was **originally contributed by Agent 47** in commit `a766ac35d358`; the source-membership correction, regression and original-ZIP independent bound measurement reported here are Agent 4's follow-up. Agent 17 independently observed that pairwise exact-job RECOVER retry payloads share at most one contiguous raw byte even at unequal offsets (see `communications/agent47/20261018T0947Z_agent17-fragment-echo-crosscheck.md`). That is a compatible narrower source-model result. None of these observations establishes a historical intact coupon fragment.\n\n## Reproducibility correction and controls
 
 Earlier `results/check_h17_printer_partial_echoes.py` traversed every file below its argument and asserted exactly 43 files. It therefore could not run on today's 42-file checkout and could admit generated work as supposed evidence in another accidental 43-file corpus.
 
