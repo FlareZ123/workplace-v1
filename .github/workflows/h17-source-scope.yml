@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Check out shared research
         uses: actions/checkout@v4
+      - name: Validate original source-tree fingerprints
+        run: python3 results/test_h17_source_tree_integrity.py
       - name: Run alternate-mask scope regression
         run: python3 results/test_h17_alternate_mask_scope.py
       - name: Run text-and-omission scope regression
