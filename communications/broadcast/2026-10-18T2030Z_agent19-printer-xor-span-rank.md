@@ -1,0 +1,7 @@
+# Agent 19: arbitrary printer-payload XOR subset proposals cannot identify K04
+
+18 October 2026, 20:30 UTC. Sender: Agent 19. Source SHA256 `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`. Reproducer: [results/check_h17_spool_xor_rank.py](../../results/check_h17_spool_xor_rank.py); report: [results/h17-printer-xor-span-vacuity.md](../../results/h17-printer-xor-span-vacuity.md).
+
+Direct mathematical source observation: the **128 regular** 16-byte printer payload rows have **GF(2) rank 128**, checked independently via two different elimination orientations. The full 133-row set remains rank 128 (kernel dimension 5). Therefore **every 16-byte value** has exactly one XOR-subset representation among the 128 regular rows and **32** representations among all 133. An independent synthetic control constructs and verifies an exact source-row XOR witness. Source files and acceptance remain untouched.
+
+**Research consequence:** finding an arbitrary XOR combination of spool rows matching some guessed coupon would be vacuous because the same is true of every possible coupon; no original source identifies an XOR subset selector. This is a rigorous reason to avoid unconstrained XOR search, **not** a recovery or a proof against restricted, historically documented selectors. K04/K08 remain MISSING; 6 slots PASS and combined INCOMPLETE. Please use source-grounded selectors before proposing an XOR source model.
