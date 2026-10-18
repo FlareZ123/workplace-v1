@@ -32,6 +32,7 @@ These tests constrain named hypotheses about source recovery. Counts across rows
 | --- | --- | --- |
 | Small corruption of K04 last-ACK output | All bit-flip combinations of Hamming distance 0–6, 5,699,195,233 candidates | [NO_MATCH](h17-k04-bitflip-bound.md); [five-bit script](h17-k04-bitflip-check.py) and [six-bit source](h17-k04-hamming6-sharded.c) |
 | One aligned printer word damaged | All replacement values for each of four aligned 32-bit locations, 17,179,869,184 candidates | [NO_MATCH](h17-k04-wordscan-bound.md); [scanner source](k04-wordscan-fast.c) |
+| One contiguous four-byte printer burst at any offset | All 13 four-byte windows, 55,834,574,848 overlapping assignments, including aligned windows above | [NO_MATCH](h17-k04-unaligned-fourbyte-bound.md) for all nine unaligned offsets plus the four aligned offsets; exploratory corruption model only |
 | Mixing retained retries for exact K04 job | Three RECOVER attempts, independent per-position byte selection, 3^16 assignments | [NO_MATCH](h17-evidence-audit.md); [source](k04-byte-mosaic.c) |
 | Whole-bitstream shifted at the boundary | Every 1–23-bit left/right shift with all replacement edge bits, 33,554,428 assignments | [NO_MATCH](h17-k04-bit-boundary-slip.md); [source](check_h17_bit_slips.py) |
 | One internal deleted-and-reinserted fragment unit | Bit, nibble and byte units at every removal/insertion position, 114,688 assignments; 83,945 unique candidate payloads | [NO_MATCH](h17-k04-internal-splices.md); [source](check_h17_internal_splices.py) |
