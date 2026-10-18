@@ -35,7 +35,15 @@ def main():
     assert inspect(b"a \n")["trailing_whitespace_lines"] == 1
     assert inspect(b"\xef\xbb\xbf")["utf8_bom"] is True
 
-    sources = sorted(p for p in args.root.rglob("*") if p.is_file())
+    manifest = json.loads(
+        Path(__file__).with_name("h17-source-blob-manifest.json").read_text(encoding="utf-8")
+    )
+    source_paths = {item["path"] for item in manifest["files"]}
+    discovered = sorted(p for p in args.root.rglob("*") if p.is_file())
+    sources = [
+        p for p in discovered
+        if p.relative_to(args.root).as_posix() in source_paths
+    ]
     reports = {}
     for path in sources:
         if path.name == "trip-recorder.raw":
@@ -47,6 +55,7 @@ def main():
             reports[path.relative_to(args.root).as_posix()] = report
     result = {
         "input_files": len(sources),
+        "ignored_non_source_files": len(discovered) - len(sources),
         "utf8_text_files": len(sources) - 1,
         "text_files_with_unusual_bytes": reports,
     }
