@@ -38,6 +38,15 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
         Path(__file__).with_name("h17-source-blob-manifest.json").read_text(encoding="utf-8")
     )
     source_paths = {item["path"] for item in manifest["files"]}
+    candidate_paths = sorted(path for path in root.rglob("*") if path.is_file())
+    present_sources = {
+        path.relative_to(root).as_posix()
+        for path in candidate_paths
+        if path.relative_to(root).as_posix() in source_paths
+    }
+    missing = source_paths - present_sources
+    if missing not in (set(), {"AGENT_PROMPT.txt"}):
+        raise ValueError(f"Missing original source paths: {sorted(missing)}")
     counts = {
         "files": 0,
         "ignored_non_source_files": 0,
@@ -48,9 +57,7 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
         "k08_skipped_non_utf8": 0,
     }
     hits: list[dict] = []
-    for path in sorted(root.rglob("*")):
-        if not path.is_file():
-            continue
+    for path in candidate_paths:
         relative = path.relative_to(root).as_posix()
         if relative not in source_paths:
             counts["ignored_non_source_files"] += 1
