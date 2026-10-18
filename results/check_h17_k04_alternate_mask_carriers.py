@@ -19,7 +19,12 @@ parser.add_argument("--root", type=Path,
                     default=Path(__file__).resolve().parents[1] / "resources",
                     help="Extracted original ZIP root, or current repository resources")
 BASE = parser.parse_args().root
-files = sorted(p for p in BASE.rglob("*") if p.is_file())
+# Keep the source population fixed even when an extracted case has generated
+# candidates or work products alongside its 43 preservation members.
+manifest = json.loads(Path(__file__).with_name("h17-source-blob-manifest.json").read_text(encoding="utf-8"))
+source_paths = {item["path"] for item in manifest["files"]}
+discovered = sorted(p for p in BASE.rglob("*") if p.is_file())
+files = [p for p in discovered if p.relative_to(BASE).as_posix() in source_paths]
 records = {p.relative_to(BASE).as_posix(): p.read_bytes() for p in files}
 
 route = json.loads(records["evidence/recovery-routing.json"])
@@ -72,6 +77,7 @@ assert any(hit[0] == "evidence/recovery-routing.json" and
            hit[2] == "ascii_hex" for hit in hits["hex_control"])
 print(json.dumps({
     "input_file_count": len(records),
+    "ignored_non_source_files": len(discovered) - len(files),
     **counts,
     "original_commitment_matches": hits["original"],
     "control_match_counts": {
