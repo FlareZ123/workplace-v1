@@ -22,6 +22,10 @@ import zipfile
 INDEX_RECORD = re.compile(r"^\|\s*(\d{2})\s*\|\s*(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ)\s*\|", re.MULTILINE)
 MESSAGE_ID = re.compile(r"^<(\d{2})\.IR261003@\[censored\]>$")
 ZIP_HEADER = struct.Struct("<IHHHHHIIIHH")
+TRANSPORT_HEADERS = (
+    "Received", "Return-Path", "Authentication-Results", "DKIM-Signature",
+    "ARC-Seal", "ARC-Message-Signature", "ARC-Authentication-Results",
+)
 
 
 def dos_datetime(date_word: int, time_word: int) -> tuple[int, int, int, int, int, int]:
@@ -42,9 +46,12 @@ def inspect(archive_path: Path) -> dict[str, object]:
         index = z.read("evidence/mail/INDEX.md").decode("utf-8")
         indexed = {key: value for key, value in INDEX_RECORD.findall(index)}
         mail_rows: list[dict[str, object]] = []
+        transport_counts = {header: 0 for header in TRANSPORT_HEADERS}
         for number in range(1, 21):
             key = f"{number:02}"
             message = BytesParser(policy=default).parsebytes(z.read(f"evidence/mail/{key}.eml"))
+            for header in TRANSPORT_HEADERS:
+                transport_counts[header] += len(message.get_all(header, []))
             utc = parsedate_to_datetime(str(message["Date"])).astimezone(timezone.utc)
             index_utc = datetime.fromisoformat(indexed[key].replace("Z", "+00:00"))
             message_id = str(message["Message-ID"])
@@ -71,6 +78,7 @@ def inspect(archive_path: Path) -> dict[str, object]:
             "zip_local_central_date_agreements": len(zip_times),
             "zip_distinct_packaging_dates": [list(t) for t in sorted(set(zip_times))],
             "mail_messages": len(mail_rows),
+            "mail_transport_authentication_header_counts": transport_counts,
             "mail_index_date_agreements": sum(row["date_equals_index"] for row in mail_rows),
             "mail_numbered_message_ids": sum(row["indexed_message_id"] for row in mail_rows),
             "mail_numbered_records_refs": sum(row["indexed_records_reference"] for row in mail_rows),
