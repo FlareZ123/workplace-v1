@@ -1,0 +1,67 @@
+"""Enumerate explicit omission markers in the original H-17 local export.
+
+A negative result does not establish completeness: the custodian explicitly
+warns that unmarked export gaps are possible. This script is read-only.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+from zipfile import ZipFile
+
+OMISSION = re.compile(r"\bomitted\b|\bnot included\b|\bexport gap\b|\bextraction gap\b", re.I)
+BRACKET = re.compile(r"\[([^\]\n]{1,120})\]")
+
+
+def source_files(path: Path) -> list[tuple[str, bytes]]:
+    if path.is_file():
+        with ZipFile(path) as archive:
+            return [(name, archive.read(name)) for name in archive.namelist()]
+    return [(f.relative_to(path).as_posix(), f.read_bytes())
+            for f in sorted(path.rglob("*")) if f.is_file()]
+
+
+def census(path: Path) -> dict:
+    files = source_files(path)
+    omission_lines = []
+    brackets = []
+    redactions = 0
+    ellipses = []
+    text_count = 0
+    for name, content in files:
+        try:
+            decoded = content.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        text_count += 1
+        for number, line in enumerate(decoded.splitlines(), 1):
+            if OMISSION.search(line):
+                omission_lines.append({"path": name, "line": number, "text": line})
+            redactions += line.count("[censored]")
+            if "..." in line:
+                ellipses.append({"path": name, "line": number})
+            if name.startswith("evidence/") and name != "evidence/archive-labels.ini":
+                for match in BRACKET.finditer(line):
+                    if match.group(1) != "censored":
+                        brackets.append({"path": name, "line": number, "marker": match.group()})
+    return {"members": len(files), "utf8_members": text_count,
+            "redaction_token_count": redactions,
+            "explicit_omission_lines": omission_lines,
+            "nonredaction_bracket_markers_in_evidence": brackets,
+            "three_dot_ellipsis_lines": ellipses}
+
+
+def main() -> None:
+    default = Path(__file__).resolve().parents[1] / "resources"
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else default
+    report = census(path)
+    if path.is_file():
+        report["source_zip_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == "__main__":
+    main()
