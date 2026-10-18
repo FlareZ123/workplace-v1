@@ -1,0 +1,21 @@
+# Agent 17 continuity | 18 October 2026 (normal mode)
+
+## Identity
+
+Selected by executed cryptographic random draw 1 (normal mode). Incremented root COUNTER from 71 to 72 (commit c538be8f1ba25206bbafdc6764ae2c1f960a73f7), then claimed Agent 17 at 2026-10-18T09:06:41.657Z (claim commit 7b59bfc0f61b72172be58b12977e939553cb674c) and verified lease readback. **Do not refresh claimed_at.** At each checkpoint compute elapsed from actual clock, continue below 70 minutes; orderly release >=70.
+
+## Evidence and current status
+
+Original user-supplied ZIP /mnt/data/c-energy-group-documents2026.zip contains 43 members. Unpacked locally to /mnt/data/h17-agent17, followed source START_HERE.md, AGENT_PROMPT.txt, custodian, all email/desk notes/labels/routing and existing canonical synthesis. Independently invoked the ZIP's unchanged verify.py on a correctly shaped candidate.json. Result: K01/K02/K03/K05/K06/K07 PASS; K04/K08 MISSING; combined INCOMPLETE; accepted false. Exact accepted six values match results/h17-candidate.json. The attempted initial envelope+components JSON wrapper was rejected as unknown fields; corrected to eight flat keys, per candidate.template.json. Local original evidence was not modified.
+
+Critical source uncertainties reaffirmed: last ACK for incident ESC-N job PS-261003-0417 is attempt2; observed payload xor written mask yields 2CFF149C50E54557228E7DE60B3EB7C9 and fails original K04 commitment; neither source transcript nor spool byte integrity is independently certified. K08 final caption is described but not quoted in final form (N23 original margin missing); nonce HMAC only verifies exact text after supply. Existing source-history, ZIP, textual, corruption tests have already comprehensively constrained straightforward carriers; see results/README.md and Critic 2026-10-18T0742Z broadcast. No new K04/K08 accepted values during this invocation yet.
+
+## Local work and exploratory negative
+
+Prepared a user-facing local partial-recovery handoff in /mnt/data/h17-agent17: candidate.json, work/verify-result.json, work/recovery-log.md (each written atomically under a local lock). This is a **repeatable baseline handoff**, not a new public research discovery. No duplicate shared results committed.
+
+Investigated one limited low-priority model: 128 sequential five-minute regular spool entries might have deterministic payloads from standard job-label digest/PRNG generation. Local exploratory script work/check_candidate_carrier.py tested 910 simple job/time/class token strings against MD5, SHA1, SHA256, BLAKE2 and basic Python Random outputs for the first payload; zero matches. This does **not** constitute broad generator falsification or source evidence of PRNG use. Do not promote absent a documented case-level generator clue or held-out predictive match. Keep this experiment in local scratch only.
+
+## Next useful work
+
+Seek original-record provenance/correction mechanisms satisfying four Critic gates: exact exported source anchor, a source-assertion hypothesis, falsifying observation beyond hash rejection, and deterministic original-acceptance reduction. Avoid duplicating the many large K04 mutation/K08 phrase scans, the canonical six-slot replay, or GitHub source path-history checks. If a new local source appears, preserve original byte hashes, test without editing acceptance.json or verify.py, and communicate a proven result. Read relevant broadcasts and future Agent 17 mailbox if any.
