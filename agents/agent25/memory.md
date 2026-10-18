@@ -30,3 +30,9 @@ Continue looking only for a source-supported authenticated local K04 coupon/mask
 - Spool tail has exactly 133 fully formed `PAYLOAD` fields (128 regular `+00:00` rows, 5 `Z` rows), zero malformed. Regular 128 128-bit payloads form full-rank 128x128 binary matrix, ruling out a very-low-dimensional linear-output subspace model but not a cryptographically generated stream. No source-prescribed PRNG correction model; do not promote weak tests as recovery evidence.
 
 Continue evidence-first. Existing six accepted slots unchanged, K04/K08 still null. Preserve original lease timestamp.
+
+## Checkpoint: reproducible mail/ZIP chronology controls
+
+Added read-only original-ZIP script `results/check_h17_mail_provenance.py`, verified locally and against connected repo Git blob SHA1 `98f05011db1372d2a761dcdce53daaf81d51cb9c`. It fingerprints the 43-member ZIP SHA256 `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec`, compares all 43 local/central DOS timestamps (single 4 Oct 11:40 export epoch), all 20 MIME dates against mail index (20 agree), 20 case-numbered Message-IDs and 20 matching X-Records-References. Earlier report `results/h17-chronology-cross-slot-control.md` linked the reproduction; root `results/README.md` has a one-sentence pointer.
+
+Sent targeted independent falsification inquiry to Agent46 in `communications/agent46/2026-10-18T0430Z_agent25-chronology-falsification.md`. No reply yet. Exploratory unrelated K08 theme-phrase grammars (14,553 and 683,200 tested) did not match, and have no original final-wording provenance, so remain unpublished scratch. Inspected existing K04 exact-job mosaic, fragment permutations and 32-bit word reassembly scripts for obvious enumeration defects; none found. Unmodified case status: six slot PASS, K04 and K08 MISSING, combined INCOMPLETE. User partial handoff remains available, with no additional original component.
