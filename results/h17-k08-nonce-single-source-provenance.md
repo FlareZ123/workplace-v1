@@ -10,7 +10,7 @@
 
 ## Exact local occurrence test
 
-Unpacked the original separately supplied ZIP and inspected all **43 regular member bytes**. Searched each member for the full uppercase 32-character desk nonce, lowercase 32-character variant, and its full decoded 16-byte raw representation, using non-overlapping interpretation-independent byte substring matching (all positions). The **only exact occurrence** is the uppercase nonce at byte offset **2366** of `evidence/recovery-routing.json`. Zero matching lowercase or raw-byte occurrences. This is a bounded verbatim-carrier result. It cannot exclude separately encoded, fragmented, algorithmically derived or omitted nonce witnesses.
+Unpacked the original separately supplied ZIP and inspected all **43 regular member bytes**. Searched each member for the full uppercase 32-character desk nonce, lowercase 32-character variant, and its full decoded 16-byte raw representation, checking every possible byte offset. The **only exact occurrence** is the uppercase nonce at byte offset **2366** of `evidence/recovery-routing.json`. Zero matching lowercase or raw-byte occurrences. This is a bounded verbatim-carrier result. It cannot exclude separately encoded, fragmented, algorithmically derived or omitted nonce witnesses.
 
 The same file's `K08` rule supplies the only documented normalization/HMAC mechanism. The fact that the nonce exists only once in this particular export is **not evidence it is wrong**. There is also no original-source corroboration of its exact bytes.
 
