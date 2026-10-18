@@ -102,7 +102,7 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
                     })
 
     return {
-        "scope": f"43 files, K08 contiguous normalized spans of 1..{max_words} words",
+        "scope": f"{counts['files']} files, K08 contiguous normalized spans of 1..{max_words} words",
         "counts": counts,
         "hits": hits,
     }
