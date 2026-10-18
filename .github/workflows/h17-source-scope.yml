@@ -1,4 +1,4 @@
-name: H-17 source-scope regressions
+name: H-17 read-only recovery regressions
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 jobs:
-  check-source-membership:
+  validate-case-evidence:
     runs-on: ubuntu-latest
     steps:
       - name: Check out shared research
@@ -20,3 +20,9 @@ jobs:
         run: python3 results/test_h17_text_source_scope.py
       - name: Run all-file carrier scope regression
         run: python3 results/test_h17_all_carriers_scope.py
+      - name: Validate unchanged REC8 verifier controls
+        run: python3 results/test_h17_verifier_controls.py
+      - name: Exercise K01/K04/K05/K06 source selectors
+        run: python3 results/test_h17_remaining_source_decoys.py
+      - name: Exercise K02/K03/K07 source selectors
+        run: python3 results/test_h17_replay_decoys.py
