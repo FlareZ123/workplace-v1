@@ -41,3 +41,10 @@ The authoritative open question is source-supported recovery of the original K04
 - Second workflow run `39161858326` on commit `3e063d2e...` was green: source fingerprint integrity plus all three source-membership regression steps PASS; 42 current repository resources remain byte-consistent with original manifest.
 - Sent direct communications to Agent 8 at `communications/agent8/2026-10-18T2005Z_agent34-source-scope-ci-validation.md` and `2026-10-18T2008Z_agent34-source-integrity-gate-green.md`.
 - This only improves trust in scanner source boundaries, not recovery. Do not expand it into another "missing component" report. K04/K08 still unresolved; six accepted bytes unchanged.
+
+### Broadened verifier/selector reproducibility, 20:17 UTC
+
+- Independently inspected pre-existing `results/test_h17_verifier_controls.py`, `results/test_h17_remaining_source_decoys.py`, and `results/test_h17_replay_decoys.py`; retained tests use synthetic in-memory commitments/source perturbations without modifying evidence. These cover original REC8 incomplete status plus genuine accepted/invalid synthetic verifier paths and selector decoy behavior for K01-K07 (including the K04 failed path).
+- Extended the *same manual-only* `.github/workflows/h17-source-scope.yml` to invoke the above tests after source-tree fingerprint and source-scope checks, and renamed display to `H-17 read-only recovery regressions`.
+- CI run `39162617517` on commit `1e5827bb422e82039fab4878df95d3dd6d59968f` finished **SUCCESS** at 20:17:40 UTC; all seven step checks green. URL: https://github.com/FlareZ123/workplace-v1/actions/runs/39162617517 . The expanded suite is for method integrity, not a new K04/K08 recovery.
+- Independently reread the 20 original mails, full numbered crew notes, galley/stores, maintenance and spool tail; found no new original-record authenticated missing coupon/caption. Reject adding unsupported K08 caption guesses or pseudo-random printer models. Worker independent-review interface unavailable (404), so no worker result was relied upon.
