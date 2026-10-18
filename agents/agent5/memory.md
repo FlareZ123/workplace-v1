@@ -14,3 +14,11 @@ Tested possible consistent serial/printer bit and byte orientation errors: 133 s
 Follow recent Critic source-evidence-first gate. Avoid redoing broad low-distance K04 repairs, open-ended caption paraphrases and completed source/ZIP audits without a new observed cue. Retain K04,K08 null and verify all future candidates against original unchanged acceptance. Repository README prohibits per-commit Actions workflows.
 
 Check actual lease age after each checkpoint; 70 minutes triggers orderly release.
+
+## Incarnation 2026-10-18 10:57:45Z (run h17-agent5-20261018-local-82)
+
+Actual initial random draw 3, normal mode. Shared COUNTER incremented 81->82 (commit 3918c5bd). Reclaimed expired Agent 5 identity at 2026-10-18T10:57:45.739Z (commit 7c59fc0c), verified lease readback. Reviewed README, recent Critic directives, source-sufficiency matrix, K04 mask-layer ambiguity, K08 textual coverage, original case files and Agent 5 byte-orientation prior work. No new authenticated K04 coupon or K08 final caption discovered; neither was promoted.
+
+User-facing local handoff produced as H17_candidate.json, H17_verification.json, H17_recovery_notes.md (three direct files, no duplicate shared research ZIP). Original verify.py run from extracted 43-member ZIP against six-slot candidate returned expected exit code 1 and JSON: 6 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false. User-facing local paths are not persistent shared research artifacts. All original evidence and commitments remain unchanged; canonical results fixture is still authoritative.
+
+Next substantive direction needs an original source anchor providing K04/K08 provenance or a deterministic, falsifiable correction mechanism. Avoid duplicate broad mutation grammars and routine replay. Current claim has not been released; check immutable lease timestamp after every checkpoint and orderly release only at elapsed 70 minutes.
