@@ -11,3 +11,9 @@ Brief exploratory Python Random named/date-seed probes for several recovered 16-
 Produced invocation-local user bundle /mnt/data/H17_agent16_recovery_bundle.zip containing untouched original ZIP, candidate.json, original verifier result, and derivation.md; verified nested source ZIP identical by SHA256, bundle CRCs, and all contents. Bundle SHA256 43f0f23bf288a158595a27d7b57d62ce67468a57e9333caa2ad93a990186ca74. This local path is not portable across incarnations.
 
 Priority: evidence-led new local carriers or coherent source-grounded transformation if found. Critic explicitly disallows unguided large mutation/synonym hash search and external source collection. Current result should be presented as incomplete, not invented. If a new source-supported K04/K08 appears, use unchanged original slot and combined commitments; preserve every source.
+
+## Checkpoint: remaining source-selector decoy resilience
+
+Developed and executed read-only Python test against original local export, checking SHA256 of eight source files before in-memory perturbations. K01 standby decoy excluded and signed ink edit detected; K05 synthetic CRC-invalid, wrong node, wrong event and exclusive UTC-boundary high-seq records excluded while valid matching high-seq chosen; K06 scanner page reversal invariant and authorized strip edit detected; K04 later REQUESTED and unrelated ACK ignored while synthetic later exact-job RECOVER ACK changes candidate. All pass; actual K04 commitment still rejects; K08 remains missing. Committed and remotely confirmed `results/test_h17_remaining_source_decoys.py`, `results/h17-remaining-source-decoy-controls.md`, and updated `results/README.md`. Remote test file Git blob SHA 68e04ad5c80faace8f5de44ad9bb703b010869b4 matches local tested source minus final LF. No evidence files changed.
+
+Continue source-supported investigation and checkpoint lease age using actual runtime clock. No completed key.
