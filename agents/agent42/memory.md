@@ -1,19 +1,5 @@
-# Agent 42: H-17 recovery continuity
+# Agent 42
 
-Claimed 2026-10-18 07:46:27Z, normal mode, RNG draw 3, no Work mode. Reviewed original 43-member ZIP, all mail, route, desk notes, spool and key source reports. Unmodified original verifier locally confirms K01/K02/K03/K05/K06/K07 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false.
+Claim: 2026-10-18T07:46:27Z, normal mode. Six original H-17 components pass; K04 and K08 missing; eight-slot acceptance false. Updated K04 mathematical lower bounds in `results/h17-k04-multiple-source-ambiguity.md` and `results/h17-k04-four-nibble-bound.md`. No original missing evidence found. Original source tree matched all 43 preservation hashes as of 08:20 UTC.
 
-K04 last ACK RECOVER job PS-261003-0417 attempt 2 payload A9A9DC5731A5E2AE879C47215C2559D5, mask 8556C8CB6140A7F9A5123AC7571BEE1C yields 2CFF149C50E54557228E7DE60B3EB7C9; original acceptance rejects. Source layer remains unauthenticated. K08 final words not quoted. No new component found.
-
-Fixed stale K04 lower-bound figures in results/h17-k04-multiple-source-ambiguity.md, commit 451ecea: four changed byte positions, five changed nibbles, seven changed bits, byte-span at least five positions. Algebraic bounds only, no printer diagnosis.
-
-User-side reproducible handoff: /mnt/data/H17_recovery_handoff.zip with unchanged original verifier, evidence, candidate, verification.json, derivation notes. ZIP and original checker validated.
-
-Next: Seek original source evidence or a documented local transformation proving the authentic K04 coupon/mask and K08 exact caption; follow evidence-first gate in README and relevant Critic broadcasts. Avoid unguided phrase and mutation enumeration or redundant six-slot replay.
-
-## Enhanced archival handoff
-
-Repacked the same user-visible `/mnt/data/H17_recovery_handoff.zip` atomically under a file lock with 51 members. The original 43 exported members are byte-identical; additionally bundled byte-for-byte `original_export.zip`, a complete per-member SHA-256 manifest, `work/verify_preservation.py` to cross-check original ZIP/member hashes and original `verify.evaluate` against recorded output, and `work/validate_missing.py` for original-target K04 coupon and K08 caption tests. SHA-256 of final handoff: `9315b6a1826c2c7f80d4399ef67e58e54539f899a4eb92c703185d18f3dbdead`. Fresh extraction passed ZIP CRC, complete 43-member preservation check, six-slot unchanged verifier reproduction, and known-negative K04/K08 examples. These are custodial support tools, not original data recovery.
-
-## Live source-drift control (08:20 UTC)
-
-Queried current main Git tree and compared all 43 `resources/` blob IDs to `results/h17-source-blob-manifest.json`; exactly 43/43 match, with no extra source files. Branch head at comparison `2281da32692cfdb0814e51c0693b556c989efb6d`. This repeats the manifest check against the live repo only; it does not authenticate pre-export originals. Sent original author Agent35 a direct mailbox note about the tightened XOR correction arithmetic (commit `2281da3`).
+Final tested user handoff: `/mnt/data/H17_recovery_handoff.zip`, 52 members, SHA256 `fff7999f243b1c19cf037b04a99c884e48ba494bbe51b973cf2fa5634b7efd8b`. Includes the original ZIP, evidence, candidate and original checker, per-file integrity manifest, read-only source replay and K04/K08 validators. Original verifier: 6 PASS, 2 MISSING, combined INCOMPLETE. See `results/README.md`. Next: source-supported original coupon or final caption, not arbitrary guesses.
