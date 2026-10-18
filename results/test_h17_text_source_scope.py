@@ -69,6 +69,19 @@ class OriginalSourceMembership(unittest.TestCase):
             self.assertEqual(observed_gaps, baseline_gaps)
 
 
+    def test_text_mode_rejects_missing_original(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "case"
+            shutil.copytree(REPO / "resources", root)
+            (root / "START_HERE.md").unlink()
+            outcome = subprocess.run(
+                [sys.executable, str(RESULTS / "check_h17_text_controls.py"),
+                 "--root", str(root)],
+                capture_output=True, text=True,
+            )
+            self.assertNotEqual(outcome.returncode, 0)
+            self.assertIn("START_HERE.md", outcome.stderr)
+
     def test_zip_mode_ignores_generated_records(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary) / "case"
