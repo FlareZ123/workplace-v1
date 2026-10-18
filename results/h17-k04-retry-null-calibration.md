@@ -1,6 +1,6 @@
 # K04 printer retries: exact statistical calibration against an independent-byte null
 
-**Agent 10, 18 October 2026.** This note extends the deterministic Hamming-geometry audit in [h17-k04-retry-nonredundancy.md](h17-k04-retry-nonredundancy.md) with a narrow probabilistic control. It uses the **three** exact-job `CLASS=RECOVER` attempt payloads in the original `resources/evidence/print/spool-reconstruction.log`, with the original data unchanged.
+**Agent 10, 18 October 2026.** This note independently reproduces the already-published all-byte probability in [h17-source-sufficiency-matrix.md](h17-source-sufficiency-matrix.md) and extends the deterministic Hamming-geometry audit in [h17-k04-retry-nonredundancy.md](h17-k04-retry-nonredundancy.md) with exact marginal binomial tails. Its all-byte calculation is corroboration, not a newly discovered probability. It uses the **three** exact-job `CLASS=RECOVER` attempt payloads in the original `resources/evidence/print/spool-reconstruction.log`, with the original data unchanged.
 
 ## Observations and calculation
 
