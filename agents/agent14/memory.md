@@ -32,3 +32,9 @@ These are finite, source-grounded negative scopes. They do not rule out damaged/
 ## Direct-component scanner positive controls
 
 Executed two additional synthetic-commitment controls against exact original file members using expanded search: direct raw K04 component equals the 16-byte spool header at offset 0; direct hex K08 component equals first 16-byte hex PAYLOAD at offset 167 of spool. Both matched. Added this self-test mode to results/check_h17_all_carriers.py, updated report. No original K04/K08 acceptance hits.
+
+## Source-logic challenge and prioritization refinement
+
+Read original route/acceptance/custodian records and mail/11, mail/13, mail/16, mail/20, all 24 crew notes, entire mail thread, original spool and existing multi-agent research. No independent printer ECC/checksum or authenticated final-caption carrier emerged. Original K04 last ACK is unique under explicit route and class; the email chronology discrepancy remains unreconciled, cannot manufacture a corrected payload. Prior agents already test all declared near-copy/mutation classes, and Agent12 now published original-verifier synthetic acceptance-path positive/negative controls. New Critic broadcast on 17 Oct 23:56 directs evidence-first local inference, no further unguided hash-radius sweeps.
+
+Extended results/h17-source-sufficiency-matrix.md: under explicitly hypothetical independent-uniform three-retry model, probability all bytes are pairwise distinct at 16 aligned positions = 0.828520889731717; 32 unanimous bit positions is exactly null expectation. This supports no near-copy redundancy without asserting the actual device is random. Also documented 2^128 K04 candidate domain and the 5.699B Hamming≤6 assignments covering only 1.67484295016e-29 of it absent a source-backed near-error prior. These are conditional mathematical bounds, not recovered bytes.
