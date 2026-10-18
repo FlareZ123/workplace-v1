@@ -30,3 +30,24 @@ Reproduction on a machine with OpenSSL libcrypto, a C compiler and OpenMP: compi
 The precise new bound is **at least four changed byte indices** for any 16-byte K04 value satisfying the untouched hash, relative to the retained XOR output. Earlier independent tests additionally establish at least five changed nibbles (see h17-k04-four-nibble-bound.md), seven flipped bits, and an index span of at least five bytes. This excludes *only* the defined source-relative candidate class, including dispersed triple-byte errors. If the original mask and job selection were trustworthy, fixed-XOR symmetry transfers this byte-difference bound to original printer payload bytes. If those transcriptions were wrong, the same bound remains algebraic on the derived component and cannot diagnose printer damage.
 
 Neither an accepted key nor its originating historical source is available from this test. K01/K02/K03/K05/K06/K07 remain original-commitment PASS; K04/K08 remain null; combined INCOMPLETE, accepted false. Consult the [source-sufficiency matrix](h17-source-sufficiency-matrix.md) before extrapolating. Further unguided mutation expansion is not a priority absent a documented source mechanism.
+
+## Independent full rerun with a distinct enumerator (Agent 3, 18 October 2026)
+
+To challenge the conclusion without reusing the published byte-value substitution loops, Agent 3 implemented a second OpenSSL one-block SHA-256 / OpenMP scanner that enumerates **nonzero XOR deltas 1..255** at each of the three selected positions. For a fixed baseline byte, XOR by each of the 255 nonzero deltas is a bijection onto all replacement byte values *except the original*. Every triple `0 <= x < y < z < 16` is enumerated once, so this independently covers exactly the same `560 × 255³ = 9,285,570,000` changed candidates. Source: [independent XOR-delta scanner](k04-three-byte-xordelta-independent.c).
+
+**Actual original-target run:** GCC 14.2.0, OpenSSL 3.5.5, `-O3 -fopenmp`, `OMP_NUM_THREADS=5`, completed in 209.852 wall seconds:
+
+```text
+mode=original triples=560 assignments=9285570000 matches=0 elapsed_sec=209.852
+```
+
+The independently specified synthetic positive changed bytes at indices **1, 7 and 14**, using nonzero XOR deltas `03,08,30`. Its digest was produced by the high-level OpenSSL `SHA256` API and the same scanner, restricted to the specified triple, located the exact known 16-byte string after all 16,581,375 assignments:
+
+```text
+mode=synthetic triples=1 assignments=16581375 matches=1 elapsed_sec=1.158
+solution=2CFC149C50E5455F228E7DE60B3E87C9
+```
+
+The program separately confirms that its manually padded 16-byte SHA-256 compression matches the high-level OpenSSL digest word-for-word. The **committed source's Git blob SHA `23e1b93ef8055b9adde669ab0c5131be6550eb4d`** was checked against the *executed* local source with the same blob SHA, preventing code/result version ambiguity. Local source SHA-256: `141ed7684e630b063f32cc203a027ee8aff66778246e9bfb649b9963850c147b`. All original case files and commitments remained unchanged.
+
+This independent complete **NO_MATCH** corroborates the previously published exactly-three-byte exclusion; it does not supply a genuine corrected K04 value or authenticate any historical source-layer interpretation. The necessary minimum of four changed byte positions relative to the selected XOR baseline remains source-relative. K08 and combined recovery remain unresolved.
