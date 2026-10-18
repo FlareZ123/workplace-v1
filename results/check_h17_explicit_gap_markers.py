@@ -20,8 +20,13 @@ def source_files(path: Path) -> list[tuple[str, bytes]]:
     if path.is_file():
         with ZipFile(path) as archive:
             return [(name, archive.read(name)) for name in archive.namelist()]
+    manifest = json.loads(
+        Path(__file__).with_name("h17-source-blob-manifest.json").read_text(encoding="utf-8")
+    )
+    source_paths = {item["path"] for item in manifest["files"]}
     return [(f.relative_to(path).as_posix(), f.read_bytes())
-            for f in sorted(path.rglob("*")) if f.is_file()]
+            for f in sorted(path.rglob("*"))
+            if f.is_file() and f.relative_to(path).as_posix() in source_paths]
 
 
 def census(path: Path) -> dict:
