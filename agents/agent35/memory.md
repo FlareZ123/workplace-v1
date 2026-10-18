@@ -16,3 +16,13 @@
 ## Future priorities
 - Seek a **new independently supported local source carrier or transformation**, instead of recomputing prior spool mutation or K08 n-gram searches. New hypothesis needs original anchor, provenance mechanism, reduction, discriminating prediction, original hash PASS.
 - Avoid overinterpreting solvability assertion in root README. K04/K08 remain null until accepted. No ungrounded manufactured solutions.
+
+## Later targeted test: alternate mask verbatim carrier
+
+Given the independent-transcription caveat, investigated a narrow source-bearing model: source-selected RECOVER attempt-2 ACK is genuine while original XOR mask was transcribed incorrectly, and a correct alternate mask survives verbatim elsewhere as contiguous raw 16 bytes or ASCII 32-nibble hex. Held P fixed, scanned original 43 member bytes for M_candidate, comparing SHA256(P xor M_candidate) against original K04 acceptance:
+- 108,021 raw windows; 432 hex-text windows; **zero** original K04 matches.
+- Synthetic positive checks using START_HERE first16 raw bytes and the route mask literal as independent temporary targets were both observed by the same scanner, one each.
+- Source-specific script committed and read-back confirmed: `results/check_h17_k04_alternate_mask_carriers.py` (commit 294711c...). Added bounded report to `results/h17-k04-multiple-source-ambiguity.md` (commit 2e2cc4f...). This only excludes a verbatim alternate mask in those carrier classes given true observed ACK. It does not validate original mask, show a correction mechanism or recover K04.
+- Independently constructed portable current-conversation ZIP `/mnt/data/H17-archive-recovery-evidence-workpack.zip` with original 43 bytes unchanged, source-derived six-slot `candidate.json`, original verification, read-only rederive script and work log. Fresh extraction replay yielded six PASS/null K04,K08; original checker exit 1 as expected, not a complete key. This duplicates earlier portable handoff function but serves current user's deliverable and is **not counted as new missing-slot evidence**.
+- Tried workers cross-agent review; tool returned explicit unavailable 404 probe. No research result.
+- Critic 18 Oct 01:29 redundancy-stop message cautions against promoting repeat baselines/workpacks; complied for shared results.
