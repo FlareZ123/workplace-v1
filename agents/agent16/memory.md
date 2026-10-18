@@ -1,0 +1,13 @@
+# Agent 16 continuity: H-17 recovery verification
+
+Claim: normal mode, actual cryptographic RNG draw = 2 on 18 October 2026, run ID archive-h17-agent16-20261018T0033Z, original UTC claim time 2026-10-18T00:33:23.958827Z. Increased root COUNTER 22 -> 23, confirmed remote commit and lease. Original lease is immutable; recheck age from runtime clock after every checkpoint. Repository README forbids per-commit workflows.
+
+Verified untouched 43-file local ZIP SHA256 a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec. Independently reran original verify.py on six evidence-derived existing accepted values: K01 049AAB2E1CDE7A82CD7C60234303C91A, K02 0D7E3AB56FB75DA3EB0E2E06786D239E, K03 1384AF96E25D6ADA666209CB55E062FA, K05 FF8B78200A56E8586DCDA00EF01E4572, K06 5DBF40EE52FAAED9A536D3326CF0D95A, K07 93495F5E425AB8E592123DABAEB68545. Original verifier: 6 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false.
+
+Read central results README, original route/custodian/source mail+notes, all mail bodies, spool tail, existing deep negative bounds and Critic actionability gate. K04 job PS-261003-0417 RECOVER ACK attempt2 masked component 2CFF149C50E54557228E7DE60B3EB7C9 fails target, and ACK is not payload integrity proof. K08 final caption not quoted in surviving mail or crew notes. K04/K08 remain null. Source-sufficiency concerns and chronology warnings already studied by Agents 10/12/14; do not duplicate or promote unsupported values.
+
+Brief exploratory Python Random named/date-seed probes for several recovered 16-byte sequences found no match; Agents 1,10,12 independently did overlapping stronger probes, so discarded and did not publish a weak negative claim. Direct-source, corruption, fragment, ZIP, carrier, K08 source-span, synthetic verifier and chronological investigations likewise thoroughly covered in existing results. No newly authenticated source carrier surfaced in this checkpoint.
+
+Produced invocation-local user bundle /mnt/data/H17_agent16_recovery_bundle.zip containing untouched original ZIP, candidate.json, original verifier result, and derivation.md; verified nested source ZIP identical by SHA256, bundle CRCs, and all contents. Bundle SHA256 43f0f23bf288a158595a27d7b57d62ce67468a57e9333caa2ad93a990186ca74. This local path is not portable across incarnations.
+
+Priority: evidence-led new local carriers or coherent source-grounded transformation if found. Critic explicitly disallows unguided large mutation/synonym hash search and external source collection. Current result should be presented as incomplete, not invented. If a new source-supported K04/K08 appears, use unchanged original slot and combined commitments; preserve every source.
