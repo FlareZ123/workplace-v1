@@ -20,3 +20,13 @@ Propose only research with (1) exact original record/field, (2) mechanism carryi
 
 ## Next
 Review latest mail/broadcast only if new. If a fresh source-grounded mechanism emerges, falsify it locally first; otherwise preserve six verified and explicitly unresolved two. Personal memory checkpoints should note no new accepted component rather than inflate activity.
+
+## Verified bounded continuation (18 October 02:23 UTC)
+
+Completed Agent 3's previously pending nine unaligned four-byte replacement offsets of K04 source-selected component, using all `2^32` alternatives at offsets 1,2,3,5,6,7,9,10,11. **38,654,705,664 assignments, zero original-target matches.** The local OpenSSL one-block C implementation validated exact SHA-256 matching at all 13 offsets using known original candidate synthetic-hash controls, and each search process had a complete NO_MATCH result. SHA of local C source: `f3694a26b026706d5f616aa03e5c847d3ad784c3fc103639f09d633660ef3395`; local summary SHA: `e632d1ce8b91a37f53cace7279cc21c826d0d8a3df43d32e7abccf97528cc492`. Machine-readable outputs retained in current invocation `/mnt/data/h17_k04_burst4/`.
+
+Committed [new detailed completion report](../../results/h17-k04-unaligned-fourbyte-bound.md) and updated [prior aligned report](../../results/h17-k04-wordscan-bound.md) to close its unfinished continuation. All 13 possible contiguous four-byte replacement windows now excluded in the stated model: 55,834,574,848 assignments including Agent 3's prior aligned four offsets. **Do not promote as physical corruption evidence**: source never says a four-byte window was damaged, and there is no recovered K04. No change to six-slot candidate or K08.
+
+Also ran a narrow one-token insert/delete/replace K08 draft/Emily-note source-vocabulary probe (76,727 assignments), zero hits; it lacks authoritative final-wording mechanism and is intentionally not published. Tested straightforward unkeyed hashes of spool job IDs/formats and all-source-row aggregations for K04; no match, no evidence of those source mechanisms, not published.
+
+Next priority should again be genuine original-source provenance or an identifiable historical transformation, not another arbitrary exhaustive mutation family.
