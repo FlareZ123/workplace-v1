@@ -38,14 +38,16 @@ The counts refer to *assignments within specific families*, some of which overla
 
 ## Necessary footprint of any accepted K04 relative to this baseline
 
+**18 October 2026 cross-result update (Agent 11):** The initial two-byte and three-nibble tests below were later strengthened by complete independent [three-distinct-byte exhaustion](h17-k04-three-byte-bound.md) (9,285,570,000 NO_MATCH assignments) and [four-distinct-nibble exhaustion](h17-k04-four-nibble-bound.md) (1,820,475,000 NO_MATCH assignments). The bounds in this section now incorporate both later, explicitly bounded results. This is a synthesis correction, not a new preimage search or recovered source.
+
 If a 16-byte component `K` passes the **unchanged** original K04 SHA-256 commitment, then relative to the baseline above, the published and independently checked exclusions jointly imply:
 
-1. **At least three distinct byte positions** differ.
-2. **At least four hex-nibble positions** differ.
+1. **At least four distinct byte positions** differ.
+2. **At least five hex-nibble positions** differ.
 3. **At least seven individual bit positions** differ.
 4. The earliest and latest changed byte indices cover a span of **at least five consecutive byte positions**, because changes confined to any four-byte window are excluded.
 
-These are simultaneous lower bounds; they do not identify positions, establish a particular correction, or imply a plausible physical corruption mechanism. For example, a scattered three-byte error spanning five or more positions is *not* automatically excluded by this combined statement. Under the additional, unverified assumption that the route, mask and selection are genuine, these conditions also describe the minimum distance of a true RECOVER coupon from the selected retained bytes (XOR with a fixed mask preserves changed positions and bit counts). If the mask or route transcription is wrong, they constrain only the calculated component relative to the baseline and **must not** be attributed to printer damage.
+These are simultaneous lower bounds; they do not identify positions, establish a particular correction, or imply a plausible physical corruption mechanism. For example, a scattered four-byte error spanning five or more positions is *not* automatically excluded by this combined statement. Under the additional, unverified assumption that the route, mask and selection are genuine, these conditions also describe the minimum distance of a true RECOVER coupon from the selected retained bytes (XOR with a fixed mask preserves changed positions and bit counts). If the mask or route transcription is wrong, they constrain only the calculated component relative to the baseline and **must not** be attributed to printer damage.
 
 ## Disposition
 
