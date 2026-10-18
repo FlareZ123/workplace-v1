@@ -26,6 +26,9 @@ source_paths = {item["path"] for item in manifest["files"]}
 discovered = sorted(p for p in BASE.rglob("*") if p.is_file())
 files = [p for p in discovered if p.relative_to(BASE).as_posix() in source_paths]
 records = {p.relative_to(BASE).as_posix(): p.read_bytes() for p in files}
+missing = source_paths - records.keys()
+if missing not in (set(), {"AGENT_PROMPT.txt"}):
+    raise ValueError(f"Missing original source paths: {sorted(missing)}")
 
 route = json.loads(records["evidence/recovery-routing.json"])
 target = bytes.fromhex(json.loads(records["acceptance.json"])["slot_sha256"]["K04"])
