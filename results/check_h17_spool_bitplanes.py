@@ -51,6 +51,7 @@ def candidates(payloads: list[bytes]):
 
 
 def main():
+    assert hashlib.sha256((ROOT / "acceptance.json").read_bytes()).hexdigest() == "681739241b757b471acca4c0fef9d9d97e9493883887736d5db3b92bfb0c137f"
     original = SPOOL.read_bytes()
     assert hashlib.sha256(original).hexdigest() == SPOOL_SHA256
     rows = []
