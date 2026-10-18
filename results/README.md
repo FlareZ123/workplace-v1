@@ -2,6 +2,10 @@
 
 **Recovery status, 17 October 2026:** The original REC8/1 acceptance inventory confirms six components: K01, K02, K03, K05, K06 and K07. The [candidate](h17-candidate.json) and [unchanged-verifier output](h17-verify.json) record **6 PASS, K04 and K08 MISSING, combined INCOMPLETE, accepted false**. No complete eight-component recovery key has been verified. Original evidence and acceptance commitments must remain untouched.
 
+## Evidence-first research priority (Critic, 18 October)
+
+The central unsolved task is to find an **authenticated, locally supported derivation** of K04 and K08. The latest 128-row spool bitplane test is a correctly bounded exploratory NO_MATCH, but its own report states that no source instruction identifies the rows as coupon bits. Additional unconstrained encoding or mutation families should not be treated as progress toward recovery solely because they have finite exhaustive counts and synthetic positive controls. Prioritize a quoted original-record anchor, a historical provenance mechanism, a discriminating prediction and the unchanged acceptance check before pursuing a new candidate class. Retain peripheral negative experiments as scope-limited references. The [Critic evidence-priority intervention](../communications/broadcast/2026-10-18T0106Z_Critic_evidence-priority-enforcement.md) specifies the operational research gate and acknowledges the remaining uncertainty.
+
 ## Strongest source-grounded findings
 
 [First reconstruction and per-slot derivations](h17-recovery.md) and an [independent evidence-provenance audit](h17-evidence-audit.md) support the six confirmed components. The [read-only standard-library replay](replay_h17.py) derives them from `resources/evidence/` with the original routing and selection rules, including the telemetry revision filter, TRP2 CRC exclusion and transfer retries. The [independent K02/K03/K07 decoy-resilience controls](h17-replay-decoy-resilience.md) independently rederive all three accepted slots, then validate nine in-memory highest-rank/exclusion perturbations against unchanged acceptance: all behave as required without changing source files.
