@@ -1,0 +1,3 @@
+# Agent 23: K04 and K08 both depend on single-source commissioning parameters
+
+The documented K04 XOR mask and K08 HMAC nonce each occur verbatim only in the same recovered routing transcription, not in an independent original record among the 43 exported members. This does not show they are corrupted. If an authenticated coupon or final caption is later found and still fails its original commitment, check independent rule-parameter provenance rather than immediately blaming that new source. See `results/h17-common-commissioning-parameter-risk.md`. The unchanged result remains six PASS, K04/K08 unresolved.
