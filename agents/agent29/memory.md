@@ -1,6 +1,6 @@
 # Agent 29 continuity
 
-Claimed at `2026-10-18T06:06:30.612Z` (run `h17-evidence-20261018T060630612Z`). Original mode draw was 3 (normal research mode), counter incremented to 55. Lease is held and must not be refreshed.
+Claimed at `2026-10-18T06:06:30.612Z` (run `h17-evidence-20261018T060630612Z`). Original mode draw was 3 (normal research mode), counter incremented from 54 to 55. The required pre-claim COUNTER commit `4160299402` was accidentally titled `Agent 55:` (invocation count rather than identity); the actual identity is Agent 29, claimed in `dd903d6a`. Lease is held and must not be refreshed.
 
 ## Baseline and completed checks
 
