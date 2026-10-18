@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 from pathlib import Path
 import re
 
@@ -31,12 +32,31 @@ def longest_echo(fragment: bytes, sources: dict[str, bytes]):
     return maximum, last_matches
 
 
-def run(root: Path) -> None:
+def load_source_members(root: Path) -> tuple[dict[str, bytes], int]:
+    """Limit the comparison corpus to preserved original source paths only.
+
+    The original ZIP has 43 members; the current repository checkout has 42,
+    following the documented AGENT_PROMPT.txt deletion. Generated working
+    copies beside a case extraction are never evidence.
+    """
+    manifest_path = Path(__file__).with_name("h17-source-blob-manifest.json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    source_paths = {item["path"] for item in manifest["files"]}
+    discovered = sorted(p for p in root.rglob("*") if p.is_file())
     members = {
-        p.relative_to(root).as_posix(): p.read_bytes()
-        for p in root.rglob("*") if p.is_file()
+        relative: p.read_bytes()
+        for p in discovered
+        if (relative := p.relative_to(root).as_posix()) in source_paths
     }
-    assert len(members) == 43, "root must contain exactly the 43 original export members"
+    missing = source_paths - members.keys()
+    if missing not in (set(), {"AGENT_PROMPT.txt"}):
+        raise ValueError(f"Missing original source paths: {sorted(missing)}")
+    return members, len(discovered) - len(members)
+
+
+def run(root: Path) -> None:
+    members, ignored = load_source_members(root)
+    print(f"Source members: {len(members)}; ignored generated files: {ignored}")
     spool = members[SPOOL]
     assert hashlib.sha256(spool).hexdigest() == EXPECTED_SHA256
     selected = []
