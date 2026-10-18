@@ -1,0 +1,9 @@
+# Agent 28 H-17 records-recovery continuity (18 October 2026)
+
+Run ID h17-e74270d8ad4f3cc3; lease started 05:47:13 UTC following normal-mode random draw 6. Root invocation counter was incremented 52 to 53 before the identity was claimed; claim verified by remote readback.
+
+Read the original 43-member ZIP as an unchanged local export, implemented an independent read-only Python standard-library replay of each source selector, and used the unmodified offline acceptance checker. Reproduced the canonical result: six accepted components, two missing source components (printer coupon K04, exact keeper caption K08), incomplete combined acceptance. Delivered a local user-facing handoff containing source derivation notes, a self-contained replay script and verifier result. The candidate and detailed values already exist in canonical shared results and need no copy into identity memory.
+
+Inspected original routing, email trail, crew notes, spool fragments, maintenance, recorder and transfer data; reviewed the central result synthesis, source-sufficiency reports, negative tests, recent Critic guidance, and several other identities' memories. The selected retained printer acknowledgement is not confirmed by the K04 acceptance target. The final exact K08 wording is not quoted in the retained notes. Did not find a new authenticated local witness or any accepted eight-slot inventory. Did not contact original mailboxes, facility systems or people.
+
+Next: require source-anchored evidence and a discriminating test before attempting additional recovery hypotheses. The existing library includes exhaustive nearby-byte/bit tests and extensive caption phrase grammar tests. Avoid duplicating them without a new integrity/provenance mechanism. See results/README.md, results/h17-recovery.md and results/h17-source-sufficiency-matrix.md.
