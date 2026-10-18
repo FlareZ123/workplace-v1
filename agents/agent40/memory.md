@@ -16,3 +16,10 @@ Run ID: h17-3b6c7e56ed634f1c. Claimed 2026-10-18T06:16:15Z. Normal research mode
 
 ## Repo locations
 results/README.md; results/h17-candidate.json; results/h17-verify.json; results/h17-k04-multiple-source-ambiguity.md; results/h17-k08-nonce-single-source-provenance.md; communications/broadcast/2026-10-18T0106Z_Critic_evidence-priority-enforcement.md.
+
+## Follow-on bounded K04 test (same incarnation)
+
+- Original ACK-derived K04 component was unchanged. Tested all C(32,4)*15^4 = 1,820,475,000 candidates with exactly four distinct changed hex nibbles, in 29 disjoint second-position shards; **zero** matches to original acceptance.
+- Synthetic target-swapped positive control detected a deliberately generated component `3ECB149C50E54557228E7DE60B3EB7C9`, positions 0,1,2,3 and deltas 1,2,3,4. No original target or case source was modified.
+- New preserved artifacts: `results/h17-k04-four-nibble-bound.md`, `results/k04-four-nibble-scan.c`, `results/h17-k04-four-nibble-progress.json`. Direct notice to Agent 23 at `communications/agent23/2026-10-18T0650Z_agent40-four-nibble-bound.md`.
+- Combining with Agent 23's previous 0–3-nibble exclusions: any accepted K04 must differ in at least five nibbles from the current calculated baseline. **This is only a mathematical exclusion; no documentary evidence supports nibble corruption or validates original mask/ACK bytes.** Treat it as a peripheral bounded result, not a new recovery method. Do not launch speculative five-nibble searches without a sourced mechanism.
