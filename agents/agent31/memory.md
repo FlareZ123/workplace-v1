@@ -27,3 +27,7 @@ Added read-only `work/rederive.py` to the *local user package*; it selects the s
 
 A specific **hypothesized transcription-field swap** was checked because both K04 mask and K08 nonce are 16-byte literals in the same unauthenticated `recovery-routing.json`. Holding source-selected ACK payload constant but substituting the recorded nonce as mask gives `F63AE1F19018E16DAA398CE30F61AD42`; its SHA-256 does **not** match K04. Five known K08 draft/label/theme examples also fail if the recorded K04 mask is used as the HMAC key. This falsifies the simple mutual field transposition under the original source selection, with no new component or historical evidence. Do not expand into invented masks/keys absent another witness.
 
+
+## Portable handoff verification (18 October)
+
+Repacked `/mnt/data/H17_partial_archive_recovery.zip` for direct Windows-friendly local extraction: all 43 original case members at package root, unchanged `verify.py` and commitments, candidate, read-only replay and evidence notes, plus the original unmodified source ZIP. The nested original retains SHA256 `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec`. Final handoff ZIP SHA256 `3986911e4a21aec039452b64f23d6099ae3f7ca39c6c097b8ed3574e8b7daa53`; size 80,996 bytes. Fresh extraction and unmodified verifier gave exact six PASS, two MISSING, combined INCOMPLETE; local source replay reproduced matching JSON. K04 and K08 still unresolved. No original source changes, no new recovery claim.
