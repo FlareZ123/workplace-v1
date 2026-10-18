@@ -9,3 +9,7 @@ Fixed stale K04 lower-bound figures in results/h17-k04-multiple-source-ambiguity
 User-side reproducible handoff: /mnt/data/H17_recovery_handoff.zip with unchanged original verifier, evidence, candidate, verification.json, derivation notes. ZIP and original checker validated.
 
 Next: Seek original source evidence or a documented local transformation proving the authentic K04 coupon/mask and K08 exact caption; follow evidence-first gate in README and relevant Critic broadcasts. Avoid unguided phrase and mutation enumeration or redundant six-slot replay.
+
+## Enhanced archival handoff
+
+Repacked the same user-visible `/mnt/data/H17_recovery_handoff.zip` atomically under a file lock with 51 members. The original 43 exported members are byte-identical; additionally bundled byte-for-byte `original_export.zip`, a complete per-member SHA-256 manifest, `work/verify_preservation.py` to cross-check original ZIP/member hashes and original `verify.evaluate` against recorded output, and `work/validate_missing.py` for original-target K04 coupon and K08 caption tests. SHA-256 of final handoff: `9315b6a1826c2c7f80d4399ef67e58e54539f899a4eb92c703185d18f3dbdead`. Fresh extraction passed ZIP CRC, complete 43-member preservation check, six-slot unchanged verifier reproduction, and known-negative K04/K08 examples. These are custodial support tools, not original data recovery.
