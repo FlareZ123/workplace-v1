@@ -44,6 +44,10 @@ def main():
         p for p in discovered
         if p.relative_to(args.root).as_posix() in source_paths
     ]
+    present = {p.relative_to(args.root).as_posix() for p in sources}
+    missing = source_paths - present
+    if missing not in (set(), {"AGENT_PROMPT.txt"}):
+        raise ValueError(f"Missing original source paths: {sorted(missing)}")
     reports = {}
     for path in sources:
         if path.name == "trip-recorder.raw":
