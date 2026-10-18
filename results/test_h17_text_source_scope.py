@@ -86,20 +86,34 @@ class OriginalSourceMembership(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary) / "case"
             shutil.copytree(REPO / "resources", root)
-            baseline = scan_gaps(root)
-            bundle = Path(temporary) / "with-work.zip"
-            with ZipFile(bundle, "w", compression=ZIP_DEFLATED) as archive:
-                for original in sorted(root.rglob("*")):
-                    if original.is_file():
-                        archive.write(original, original.relative_to(root).as_posix())
-                archive.writestr("candidate.json", '{"K04":null,"K08":null}')
-                archive.writestr(
-                    "work/synthetic-marker.txt",
-                    "export gap: [unrelated] synthetic ZIP-only omission\n",
-                )
-            observed = scan_gaps(bundle)
-            self.assertIn("source_zip_sha256", observed)
-            observed.pop("source_zip_sha256")
+            clean = Path(temporary) / "clean.zip"
+            dirty = Path(temporary) / "with-work.zip"
+
+            # A fixture-only instruction member tests 43-path coverage.
+            # It is synthetic and cannot authenticate historical file bytes.
+            for bundle, include_work in ((clean, False), (dirty, True)):
+                with ZipFile(bundle, "w", compression=ZIP_DEFLATED) as archive:
+                    for original in sorted(root.rglob("*")):
+                        if original.is_file():
+                            archive.write(
+                                original, original.relative_to(root).as_posix()
+                            )
+                    archive.writestr(
+                        "AGENT_PROMPT.txt",
+                        "Synthetic membership fixture; not original evidence.\n",
+                    )
+                    if include_work:
+                        archive.writestr("candidate.json", '{"K04":null,"K08":null}')
+                        archive.writestr(
+                            "work/synthetic-marker.txt",
+                            "export gap: [unrelated] synthetic ZIP-only omission\n",
+                        )
+
+            baseline = scan_gaps(clean)
+            observed = scan_gaps(dirty)
+            self.assertEqual(baseline.pop("source_zip_sha256", None) is not None, True)
+            self.assertEqual(observed.pop("source_zip_sha256", None) is not None, True)
+            self.assertEqual(baseline["members"], 43)
             self.assertEqual(observed, baseline)
 
     def test_zip_mode_rejects_missing_original(self) -> None:
@@ -111,6 +125,10 @@ class OriginalSourceMembership(unittest.TestCase):
                 for original in sorted(root.rglob("*")):
                     if original.is_file() and original.name != "START_HERE.md":
                         archive.write(original, original.relative_to(root).as_posix())
+                archive.writestr(
+                    "AGENT_PROMPT.txt",
+                    "Synthetic membership fixture; not original evidence.\n",
+                )
             outcome = subprocess.run(
                 [sys.executable, str(RESULTS / "check_h17_explicit_gap_markers.py"),
                  str(bundle)],
@@ -118,6 +136,23 @@ class OriginalSourceMembership(unittest.TestCase):
             )
             self.assertNotEqual(outcome.returncode, 0)
             self.assertIn("START_HERE.md", outcome.stderr)
+
+    def test_zip_mode_rejects_missing_original_instructions(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "case"
+            shutil.copytree(REPO / "resources", root)
+            bundle = Path(temporary) / "only-current-resources.zip"
+            with ZipFile(bundle, "w", compression=ZIP_DEFLATED) as archive:
+                for original in sorted(root.rglob("*")):
+                    if original.is_file():
+                        archive.write(original, original.relative_to(root).as_posix())
+            outcome = subprocess.run(
+                [sys.executable, str(RESULTS / "check_h17_explicit_gap_markers.py"),
+                 str(bundle)],
+                capture_output=True, text=True,
+            )
+            self.assertNotEqual(outcome.returncode, 0)
+            self.assertIn("AGENT_PROMPT.txt", outcome.stderr)
 
 
 if __name__ == "__main__":
