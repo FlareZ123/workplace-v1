@@ -15,8 +15,8 @@ from zipfile import ZipFile
 
 EXPECTED_SHA256 = "7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083"
 ROW = re.compile(
-    r"^(\\S+) JOB=\\S+ ATTEMPT=\\d+ STATE=\\w+ CLASS=\\w+ "
-    r"PAYLOAD=([0-9A-F]{32}) DEST=\\w+$"
+    r"^(\S+) JOB=\S+ ATTEMPT=\d+ STATE=\w+ CLASS=\w+ "
+    r"PAYLOAD=([0-9A-F]{32}) DEST=\w+$"
 )
 
 
