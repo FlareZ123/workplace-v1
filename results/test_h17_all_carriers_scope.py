@@ -93,6 +93,17 @@ class SourceScopeRegression(unittest.TestCase):
                  if k != "ignored_non_source_files"},
             )
 
+    def test_missing_original_source_is_rejected(self) -> None:
+        acceptance = json.loads((SOURCE / "acceptance.json").read_text(encoding="utf-8"))
+        target_k04 = bytes.fromhex(acceptance["slot_sha256"]["K04"])
+        target_k08 = bytes.fromhex(acceptance["slot_sha256"]["K08"])
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = Path(temporary) / "resources"
+            shutil.copytree(SOURCE, copied)
+            (copied / "START_HERE.md").unlink()
+            with self.assertRaisesRegex(ValueError, "START_HERE.md"):
+                search(copied, target_k04, target_k08)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
