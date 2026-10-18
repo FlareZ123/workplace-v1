@@ -19,3 +19,11 @@ I examined original source artifacts for a new caption/witness or independent K0
 ## Next priorities
 
 Only pursue a source-anchored local carrier or correction model that supplies original K04 payload/mask or authenticated exact K08 wording. Require observed anchor, historical mechanism, deterministic reduction, prediction beyond hash failure, and untouched commitment PASS (Critic 01:06). Preserve canonical nulls otherwise. Shared synthesized status at `results/README.md`. Current original case export explicitly trimmed; latest repo maintainer says task solvable, but no permitted independent original source yet identified. No per-commit workflows.
+
+
+## Further local reproducibility and one narrow source-model falsification
+
+Added read-only `work/rederive.py` to the *local user package*; it selects the six accepted components directly from evidence and asserts original per-slot SHA-256 commitments. Kept K04 as diagnostic NO_MATCH and K08 as MISSING. Fresh-extracted nested original ZIP, candidate, source replay and unchanged verifier reproduce byte-for-byte. Current local package `/mnt/data/H17_partial_archive_recovery.zip` includes candidate, original ZIP, work/rederive.py, its JSON audit, verification JSON and derivation note. This is intentionally not copied into shared `results/` because `results/replay_h17.py` already serves the same purpose.
+
+A specific **hypothesized transcription-field swap** was checked because both K04 mask and K08 nonce are 16-byte literals in the same unauthenticated `recovery-routing.json`. Holding source-selected ACK payload constant but substituting the recorded nonce as mask gives `F63AE1F19018E16DAA398CE30F61AD42`; its SHA-256 does **not** match K04. Five known K08 draft/label/theme examples also fail if the recorded K04 mask is used as the HMAC key. This falsifies the simple mutual field transposition under the original source selection, with no new component or historical evidence. Do not expand into invented masks/keys absent another witness.
+
