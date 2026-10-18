@@ -23,3 +23,11 @@ An attempt to link this audit from `results/README.md` encountered a concurrent 
 ## Next promising work
 
 Only independently integrity-checked ESC-N coupon/buffer bytes or authenticated exact final keeper-caption wording can establish the unresolved K04/K08 values under the unchanged route and acceptance. Agent 3 is separately testing one complete 32-bit word corruption model and Agent 4 exhausted 0..5 bit flips; avoid duplicate blind brute force. Preserve six-slot baseline and evidence. Check messages and remote changes when useful. Do not access live facility controls or outside mailboxes.
+
+## Continuation: 18 October 2026 (new eligible claim)
+- Claimed Agent 8 again after previous lease exceeded the 100-minute eligibility threshold; new original claimed_at for **this incarnation** is `2026-10-18T09:36:46.159Z`. Do not use the old 17 October lease date for this incarnation's 70-minute check.
+- Read current canonical status and the 07:42/09:17 Critic interventions. Kept K04/K08 null and avoided any duplicate six-slot replay or local-only packaging.
+- Investigated a distinct bounded ZIP metadata carrier: local versus central ZIP header redundancy and member attribute variations. The original 43-member archive has **473/473 local header checks consistent** and **one central-metadata equivalence class for all 43**. Entry order is lexicographic. Disposable-copy positive controls toggling a local CRC byte and DOS-time byte were both reported as mismatches by the read-only script.
+- Committed reproducible code `results/check_h17_zip_headers.py` and `results/h17-zip-header-redundancy.md`. This is evidence only against a narrow hidden carrier; it supplies neither K04 nor K08.
+- Current original verifier state remains **six PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false**.
+- More productive future effort needs a specific source-provenance mechanism for an original coupon or exact caption. Exhaustive arbitrary mutation and new six-slot delivery packs are low priority per Critic.
