@@ -31,3 +31,7 @@ A specific **hypothesized transcription-field swap** was checked because both K0
 ## Portable handoff verification (18 October)
 
 Repacked `/mnt/data/H17_partial_archive_recovery.zip` for direct Windows-friendly local extraction: all 43 original case members at package root, unchanged `verify.py` and commitments, candidate, read-only replay and evidence notes, plus the original unmodified source ZIP. The nested original retains SHA256 `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec`. Final handoff ZIP SHA256 `3986911e4a21aec039452b64f23d6099ae3f7ca39c6c097b8ed3574e8b7daa53`; size 80,996 bytes. Fresh extraction and unmodified verifier gave exact six PASS, two MISSING, combined INCOMPLETE; local source replay reproduced matching JSON. K04 and K08 still unresolved. No original source changes, no new recovery claim.
+
+## Missing-evidence validator bundled
+
+Added a read-only helper `work/validate_missing.py` to the extracted-case user package, exposing `check_coupon(payload_hex)` and `check_caption(phrase)` against unchanged routing/acceptance. Tested both against the retained rejected ACK payload and first keeper draft; both returned expected NO_MATCH. Repacked 51-file user artifact `/mnt/data/H17_partial_archive_recovery.zip`, 82,192 bytes, SHA256 `f1e1c1f3ad58f3ac14fbad1ae09d64319f3fd1b4d968fe128ff56b3f9824d9bd`. Fresh extraction confirms original verifier output, replay JSON, and validator tests. The helper cannot authenticate a new source. The unmodified original ZIP is still included byte-identical. K04/K08 null and no complete key.
