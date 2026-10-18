@@ -72,11 +72,28 @@ def run(root):
     all_candidates = nibble_candidates | byte_candidates
     original_digest = slot_digest(mask)
 
-    # Positive controls use synthetic targets and never modify acceptance.json.
-    control_nibble = next(value for value in sorted(nibble_candidates) if value != mask)
-    control_byte = next(value for value in sorted(byte_candidates) if value != mask)
-    assert any(slot_digest(value) == slot_digest(control_nibble) for value in nibble_candidates)
-    assert any(slot_digest(value) == slot_digest(control_byte) for value in byte_candidates)
+    # Independent, fixed positive controls supplied by Agent 27. These
+    # fixtures were chosen outside the scanner, with expected component bytes
+    # and SHA-256 values calculated independently. Acceptance stays untouched.
+    fixtures = (
+        (
+            nibble_candidates,
+            "85568CB6140AA7F9A5123AC7571BEE1C",
+            "2CFF50E125AF4557228E7DE60B3EB7C9",
+            "2472a2caf1d23fdae5e042f627b89acd060f516caf4f61ef257f98551965abce",
+        ),
+        (
+            byte_candidates,
+            "8556CB6140A7F9A5123AC7571BEE7E1C",
+            "2CFF173671021B0B95A6807647CB27C9",
+            "b648d3658a154d440e31193f3ad22d3e0cc1bd32a38b28b91a2d7250086c7a76",
+        ),
+    )
+    for candidates, fixture_mask, expected_component, expected_digest in fixtures:
+        candidate = bytes.fromhex(fixture_mask)
+        assert candidate in candidates
+        assert component(candidate).hex().upper() == expected_component
+        assert slot_digest(candidate) == expected_digest
 
     matches = [
         {"mask": value.hex().upper(), "K04": component(value).hex().upper()}
