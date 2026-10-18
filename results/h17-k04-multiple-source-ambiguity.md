@@ -73,7 +73,7 @@ Consequently, assuming the original 16-byte XOR reduction and the observed `P0/M
 
 - At least **seven bit changes total across both sources** are necessary. Two possible source errors of at most three bit changes each cannot suffice.
 - At least **five changed nibble occurrences total** and **four changed byte occurrences total** across both sources are necessary. These are counts of changed positions *per source layer*; positions changed in both may cancel in the output.
-- The **union** of byte indices changed in one or both sources must span at least **five consecutive positions**. Any corrections to both sources restricted to the same contiguous four-byte region are excluded.
+- The **minimum enclosing byte-index interval** of positions changed in one or both sources must be at least **five positions wide**, even if some intervening bytes are unchanged. Any corrections to both sources restricted to the same contiguous four-byte region are excluded.
 
 These conditions follow from the component footprint bounds and containment properties of XOR, without new hashing work. They leave open large, dispersed, source-supported corrections and changes to the selected job/attempt. The true source differences, if any, have not been established.
 
