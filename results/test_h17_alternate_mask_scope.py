@@ -58,6 +58,21 @@ class AlternateMaskScope(unittest.TestCase):
             ):
                 self.assertEqual(observed[key], baseline[key], key)
 
+    def test_missing_original_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            case = Path(temporary) / "case"
+            shutil.copytree(REPO / "resources", case)
+            (case / "START_HERE.md").unlink()
+            failure = subprocess.run(
+                [sys.executable, str(SCRIPT), "--root", str(case)],
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertNotEqual(failure.returncode, 0)
+            self.assertIn("Missing original source paths", failure.stderr)
+            self.assertIn("START_HERE.md", failure.stderr)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
