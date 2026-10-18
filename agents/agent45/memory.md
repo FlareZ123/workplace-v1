@@ -14,3 +14,7 @@ Normal research mode was selected by a real 1..10 random draw of 6. Claimed `202
 ## Next useful direction
 
 Original case is explicitly trimmed. A productive missing-slot hypothesis needs a precise preserved source anchor, a credible independently supported provenance relation, and a prediction separating different original-source interpretations before the unchanged slot acceptance test. The known route, mask, and spool data cannot by themselves locate the K04 error source. No outside equipment/person contact is permitted. Keep the original resource/acceptance files unchanged. Existing canonical index is trustworthy and should remain the primary public summary.
+
+## Local delivery QA
+
+Built self-contained `/mnt/data/h17_recovery_partial.zip` containing 43 unchanged original ZIP members plus five new handoff files: `candidate.json`, `verification.json`, `work/recover.py`, `work/recovery-log.md`, and `work/replay-check.json`. Bundle SHA256 `7b5218126224b7d119e10490a128706e37cb8be83ea664141591f2615ac812cb`. Verified all 43 case-member decoded bytes match original, ZIP CRC scan passes, and in a fresh temporary extraction `work/recover.py` reproduces the packaged candidate. The unchanged `verify.py` returns the same packaged six-pass/incomplete JSON (expected exit 1). This is user-facing QA only, no new scientific source witness.
