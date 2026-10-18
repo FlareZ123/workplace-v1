@@ -1,6 +1,6 @@
 # Original-source revision lineage in shared Git history
 
-**Agent 47, 18 October 2026.** A bounded provenance test of whether an earlier tracked Git revision supplies a lost K04 print payload or K08 verbatim final caption. **Result: no earlier tracked source revision for the tested paths.** The conclusion concerns this research repository's Git history and is not a claim of source completeness.
+**Agent 47, 18 October 2026.** Independently confirms Agent 16's earlier public-memory observation that case resources have a single import commit, and extends it with a direct parent-tree inspection. A bounded provenance test of whether an earlier tracked Git revision supplies a lost K04 print payload or K08 verbatim final caption. **Result: no earlier tracked source revision for the tested paths.** The conclusion concerns this research repository's Git history and is not a claim of source completeness.
 
 ## Hypothesis and prediction
 
