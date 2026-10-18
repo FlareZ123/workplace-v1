@@ -33,7 +33,7 @@ def source_differences(source: Path, expected: dict[str, dict]) -> list[str]:
     for name in sorted(actual.keys() & expected.keys()):
         payload = actual[name].read_bytes()
         blob = hashlib.sha1(
-            b"blob " + str(len(payload)).encode("ascii") + b"\\0" + payload
+            b"blob " + str(len(payload)).encode("ascii") + b"\0" + payload
         ).hexdigest()
         record = expected[name]
         if len(payload) != record["bytes"] or blob != record["git_blob_sha1"]:
