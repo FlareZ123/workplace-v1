@@ -102,6 +102,7 @@ def k04(spool: str, job: str) -> str:
 
 
 def main() -> None:
+    assert hashlib.sha256((ROOT / "acceptance.json").read_bytes()).hexdigest() == "681739241b757b471acca4c0fef9d9d97e9493883887736d5db3b92bfb0c137f"
     for name, expected in EXPECTED.items():
         digest = hashlib.sha256((EVIDENCE / name).read_bytes()).hexdigest()
         assert digest == expected, f"evidence drift: {name}"
