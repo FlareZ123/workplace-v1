@@ -24,7 +24,7 @@ An [explicit export-omission marker census](h17-explicit-gap-marker-census.md) f
 
 The [verifier-path test-only positive controls](h17-verifier-positive-controls.md) demonstrate that the unchanged checker accepts a deliberately artificial complete, internally consistent eight-slot inventory and rejects forged entries against the original commitments. They do not recover K04 or K08.
 
-Source coverage has been checked independently: the [43-member ZIP equivalence audit](h17-export-equivalence.md) finds that the supplied ZIP's extracted bytes match all corresponding repository resources by Git blob ID. The [preservation manifest](h17-source-blob-manifest.json) and [read-only checker](check_h17_source_manifest.py) establish a reproducible drift check. They do not certify whether the original export included all material.
+Source coverage has been checked independently: the [original 43-member ZIP equivalence audit](h17-export-equivalence.md) established exact Git blob parity as of the initial source import. On 18 October 2026, the maintainer deliberately removed only the repository copy of `resources/AGENT_PROMPT.txt`; the other **42/42 current resource blobs still match** the original 43-file [preservation manifest](h17-source-blob-manifest.json). The [read-only checker](check_h17_source_manifest.py) consequently flags that intentional one-file repository drift; preserve the historical manifest and consult the [dated equivalence addendum](h17-export-equivalence.md#18-october-2026-maintainer-directed-repository-deletion-versus-original-zip) before interpreting the report. The ZIP's original 43 files remain unchanged. These checks do not certify whether the trimmed original export included all historical material.
 
 ## Bounded negative experiments
 
