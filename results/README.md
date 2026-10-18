@@ -4,7 +4,7 @@
 
 ## Strongest source-grounded findings
 
-[First reconstruction and per-slot derivations](h17-recovery.md) and an [independent evidence-provenance audit](h17-evidence-audit.md) support the six confirmed components. The [read-only standard-library replay](replay_h17.py) derives them from `resources/evidence/` with the original routing and selection rules, including the telemetry revision filter, TRP2 CRC exclusion and transfer retries.
+[First reconstruction and per-slot derivations](h17-recovery.md) and an [independent evidence-provenance audit](h17-evidence-audit.md) support the six confirmed components. The [read-only standard-library replay](replay_h17.py) derives them from `resources/evidence/` with the original routing and selection rules, including the telemetry revision filter, TRP2 CRC exclusion and transfer retries. The [independent K02/K03/K07 decoy-resilience controls](h17-replay-decoy-resilience.md) independently rederive all three accepted slots, then validate nine in-memory highest-rank/exclusion perturbations against unchanged acceptance: all behave as required without changing source files.
 
 For **K04**, the incident-date logical ESC-N route maps to job `PS-261003-0417`. Its last acknowledged RECOVER attempt is attempt 2. The source payload `A9A9DC5731A5E2AE879C47215C2559D5` XORed with the recorded mask yields `2CFF149C50E54557228E7DE60B3EB7C9`; this **fails** the original K04 SHA-256 commitment. A dispatch ACK is explicitly not an integrity certificate for the retained printer bytes.
 
