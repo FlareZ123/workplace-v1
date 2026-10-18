@@ -1,0 +1,174 @@
+{
+  "case": "IR-261003-H17",
+  "slot": "K04",
+  "baseline_component": "2CFF149C50E54557228E7DE60B3EB7C9",
+  "acceptance_sha256": "930a52a1bab97ca2966332137c99e99298ea6182fb32ab63a3421dfb4fd8c9e0",
+  "test": "Exactly four distinct hexadecimal nibble positions changed by nonzero XOR deltas 1..15",
+  "expected_assignments": 1820475000,
+  "actual_assignments": 1820475000,
+  "matched": 0,
+  "shards": [
+    {
+      "second_nibble": 1,
+      "attempts": 22021875,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 2,
+      "attempts": 41107500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 3,
+      "attempts": 57408750,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 4,
+      "attempts": 71077500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 5,
+      "attempts": 82265625,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 6,
+      "attempts": 91125000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 7,
+      "attempts": 97807500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 8,
+      "attempts": 102465000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 9,
+      "attempts": 105249375,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 10,
+      "attempts": 106312500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 11,
+      "attempts": 105806250,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 12,
+      "attempts": 103882500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 13,
+      "attempts": 100693125,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 14,
+      "attempts": 96390000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 15,
+      "attempts": 91125000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 16,
+      "attempts": 85050000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 17,
+      "attempts": 78316875,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 18,
+      "attempts": 71077500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 19,
+      "attempts": 63483750,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 20,
+      "attempts": 55687500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 21,
+      "attempts": 47840625,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 22,
+      "attempts": 40095000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 23,
+      "attempts": 32602500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 24,
+      "attempts": 25515000,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 25,
+      "attempts": 18984375,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 26,
+      "attempts": 13162500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 27,
+      "attempts": 8201250,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 28,
+      "attempts": 4252500,
+      "status": "NO_MATCH"
+    },
+    {
+      "second_nibble": 29,
+      "attempts": 1468125,
+      "status": "NO_MATCH"
+    }
+  ],
+  "control": {
+    "synthetic_component": "3ECB149C50E54557228E7DE60B3EB7C9",
+    "synthetic_changed_nibbles": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "synthetic_xor_deltas": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "outcome": "MATCH with a=0,c=1,d=2,e=3 and original-search logic after replacing only the test target digest"
+  },
+  "scope": "Exploratory bound: no original evidence stipulates nibble corruption; confirms no match inside this finite change family; not historical coupon recovery."
+}
