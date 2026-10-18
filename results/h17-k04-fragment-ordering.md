@@ -26,7 +26,7 @@ Counts refer to assignments; multiple permutations and cuts can yield identical 
 
 Read-only standard-library [`check_h17_fragment_permutations.py`](check_h17_fragment_permutations.py) uses source selection from [`check_h17_bit_slips.py`](check_h17_bit_slips.py). From repository root, run `python results/check_h17_fragment_permutations.py resources 2 4` and separately `python results/check_h17_fragment_permutations.py resources 5 5` for bounded execution. Positive control constructs a known three-part reordered and reversed candidate using cuts after bytes 5 and 11, independently hashes its masked output, and confirms the enumeration finds a match to that synthetic digest. Counts are asserted analytically for each fragment size.
 
-Local tested source SHA-256: `1a70a62c5a05ac3095bcc0e6eac99b065cb8adfb1d7d56290887fe04d634368e`. This report treats the untouched original `acceptance.json` as authoritative for the actual result.
+Original retained printer log SHA-256 (independently checked against the 43-member uploaded export on 18 October): `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`. The earlier report labelled `1a70a62c5a05ac3095bcc0e6eac99b065cb8adfb1d7d56290887fe04d634368e` only as “local tested source”; its precise local file was not recorded and that value **must not** be interpreted as the original printer log fingerprint. The repository copy of the checker is `results/check_h17_fragment_permutations.py` (Git blob `943916831d1ddb2a6ba20181918dd801848eba7d` at this clarification). This report treats the untouched original `acceptance.json` as authoritative for the actual result.
 
 ## Interpretation
 
