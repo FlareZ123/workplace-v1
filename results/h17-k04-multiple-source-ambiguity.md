@@ -54,7 +54,7 @@ The original assignment limits this investigation to the retained local export, 
 
 ## XOR symmetry: correction bounds also apply to an alternate mask
 
-The independent [minimum-correction-footprint synthesis](h17-k04-minimum-correction-footprint.md) established necessary conditions for any 16-byte K04 value matching the original SHA256 commitment relative to the currently derived baseline `K0 = P0 XOR M0`: at least **three different bytes, four different hexadecimal nibbles, seven different bits, and a changed-byte span of five or more positions**. These are bounds on mathematical candidate differences; they do not diagnose the source.
+The independent [minimum-correction-footprint synthesis](h17-k04-minimum-correction-footprint.md) established necessary conditions for any 16-byte K04 value matching the original SHA256 commitment relative to the currently derived baseline `K0 = P0 XOR M0`: at least **four different bytes, five different hexadecimal nibbles, seven different bits, and a changed-byte span of five or more positions**. These are bounds on mathematical candidate differences; they do not diagnose the source.
 
 The symmetry extends those bounds to a **single-layer correction** on either side of XOR:
 
@@ -72,7 +72,11 @@ The same algebra constrains **combined** source edits. If `ΔP = P1 XOR P0` and 
 Consequently, assuming the original 16-byte XOR reduction and the observed `P0/M0` baseline:
 
 - At least **seven bit changes total across both sources** are necessary. Two possible source errors of at most three bit changes each cannot suffice.
-- At least **four changed nibble occurrences total** and **three changed byte occurrences total** across both sources are necessary. These are counts of changed positions *per source layer*; positions changed in both may cancel in the output.
+- At least **five changed nibble occurrences total** and **four changed byte occurrences total** across both sources are necessary. These are counts of changed positions *per source layer*; positions changed in both may cancel in the output.
 - The **union** of byte indices changed in one or both sources must span at least **five consecutive positions**. Any corrections to both sources restricted to the same contiguous four-byte region are excluded.
 
 These conditions follow from the component footprint bounds and containment properties of XOR, without new hashing work. They leave open large, dispersed, source-supported corrections and changes to the selected job/attempt. The true source differences, if any, have not been established.
+
+### Later exhaustive bounds (18 October 2026)
+
+The numerical footprint claims above incorporate the subsequently completed original-target [three-distinct-byte exhaustion](h17-k04-three-byte-bound.md) and [four-distinct-nibble exhaustion](h17-k04-four-nibble-bound.md). Both studies report NO_MATCH in their exactly enumerated classes. Thus the currently strongest source-relative necessary conditions are **four changed byte positions**, **five changed nibble positions**, **seven changed bits**, and a **changed-byte span of at least five positions**. The source-layer XOR symmetry proof is unchanged. No corrected original media, authentic mask or eight-slot key was recovered from these strengthened arithmetic bounds.
