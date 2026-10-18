@@ -1,0 +1,17 @@
+# Agent 32 continuity: H-17 archive verification and evidence gaps
+
+Mode draw was **1** from an actual Python cryptographic RNG, selecting normal research. Increased `COUNTER` 59 to 60 on 18 October 2026. Successfully claimed previously unleased `agents/agent32/.lease.json` with run ID `869ee199-5a2c-484f-9942-d5852098fd68`, original `claimed_at=2026-10-18T06:57:01Z`. Verified the GitHub push and read back the lease. Never refresh its timestamp. Check actual UTC clock after every checkpoint and release only at >=70 minutes.
+
+## Baseline independently reverified
+
+- The original user ZIP has SHA-256 `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec` and 43 members. The ZIP was extracted locally without modifying it.
+- Ran the **unchanged original `verify.py`** against six source-backed canonical 32-hex components. K01 `049AAB2E1CDE7A82CD7C60234303C91A`; K02 `0D7E3AB56FB75DA3EB0E2E06786D239E`; K03 `1384AF96E25D6ADA666209CB55E062FA`; K05 `FF8B78200A56E8586DCDA00EF01E4572`; K06 `5DBF40EE52FAAED9A536D3326CF0D95A`; K07 `93495F5E425AB8E592123DABAEB68545`. All six PASS; K04 and K08 intentionally null; combined INCOMPLETE, accepted false. The checker returned exit 1 as expected for incomplete envelope.
+- Source-selected K04 route from incident-date `archive-labels.ini`: ESC-N -> `PS-261003-0417`; last ACK RECOVER attempt 2. Retained payload `A9A9DC5731A5E2AE879C47215C2559D5` XOR transcription mask `8556C8CB6140A7F9A5123AC7571BEE1C` = `2CFF149C50E54557228E7DE60B3EB7C9`; its SHA256 `11a7f6064781a6ac7678dc6dd24759af95981c8a927f8da4436515354d34549b` fails original commitment. Cannot promote K04. Both mask and route were transcribed; independent integrity not established for ACK bytes.
+- The final K08 caption is absent as an authenticated exact quotation in `mail/11`, `mail/20` and crew N01..N24; drafts and explicitly different envelope labels survive. The HMAC reduction authenticates proposed exact words, not unquoted wording.
+- Produced a verified local user handoff `/mnt/data/h17-partial-recovery.zip` containing candidate.json, verifier result, and explanatory notes. The archive CRC was checked. This path is ephemeral to the invocation, so future agents should rely on canonical `results/h17-candidate.json`, `results/h17-verify.json`, `results/h17-recovery.md`, and `results/replay_h17.py`.
+
+## Source investigation, prioritized next actions
+
+Read the Critic evidence-priority gate (broadcast 2026-10-18T0106Z) and existing source-sufficiency, history, corpus, K04/K08 negative-control reports. Existing work has already eliminated many unsourced large candidate classes. Confirmed original ZIP, repo source and `private/` inventory do not offer a newly visible original coupon or exact final margin. One narrow **exploratory** trial compared the first spool payload with Python `random.Random(seed).randbytes(16)` for numeric seeds 0..999999, and with obvious semantic seed strings, without a match. No source evidence establishes a Python PRNG mechanism, so this should not be elevated to a result or used as a basis for broader speculative work.
+
+Seek a *locally preserved, independently authenticated* printer coupon or historical reconstruction mechanism, or a verbatim final caption witness within permitted sources. State provenance and a falsifiable prediction before any expensive candidate enumeration. Do not contact external mailboxes or facility equipment; the original 43-member case limits permitted sources. Full REC8 acceptance remains unverified.
