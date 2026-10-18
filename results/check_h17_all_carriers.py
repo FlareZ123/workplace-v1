@@ -1,5 +1,9 @@
 """Read-only exhaustive search of verbatim K04 and K08 carriers including direct component bytes in the local export.
 
+Only paths from the original 43-member preservation manifest are scanned;
+generated candidate, work, and other files in a case working directory are ignored.
+This limits file membership, not source authenticity; verify source integrity separately.
+
 This scanner tests finite extraction hypotheses. A miss does not establish that
 the original printer coupon or final desk caption was never created.
 """
@@ -30,8 +34,13 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
     routing = json.loads((root / "evidence/recovery-routing.json").read_text(encoding="utf-8"))
     mask = bytes.fromhex(routing["K04"]["masked_component"])
     nonce = bytes.fromhex(routing["K08"]["desk_nonce"])
+    manifest = json.loads(
+        Path(__file__).with_name("h17-source-blob-manifest.json").read_text(encoding="utf-8")
+    )
+    source_paths = {item["path"] for item in manifest["files"]}
     counts = {
         "files": 0,
+        "ignored_non_source_files": 0,
         "k04_raw_windows": 0,
         "k04_hex_windows": 0,
         "k08_word_spans": 0,
@@ -40,9 +49,12 @@ def search(root: Path, target_k04: bytes, target_k08: bytes, *, max_words: int =
     }
     hits: list[dict] = []
     for path in sorted(root.rglob("*")):
-        if not path.is_file() or path.relative_to(root).parts[0] == "results":
+        if not path.is_file():
             continue
         relative = path.relative_to(root).as_posix()
+        if relative not in source_paths:
+            counts["ignored_non_source_files"] += 1
+            continue
         payload = path.read_bytes()
         counts["files"] += 1
 
