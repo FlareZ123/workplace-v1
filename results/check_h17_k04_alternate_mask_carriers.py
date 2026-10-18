@@ -7,15 +7,19 @@ The test cannot authenticate an undocumented mask source by itself.
 """
 from __future__ import annotations
 
+import argparse
 import configparser
 from hashlib import sha256
 import json
 from pathlib import Path
 import re
 
-BASE = Path(__file__).resolve().parents[1] / "resources"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--root", type=Path,
+                    default=Path(__file__).resolve().parents[1] / "resources",
+                    help="Extracted original ZIP root, or current repository resources")
+BASE = parser.parse_args().root
 files = sorted(p for p in BASE.rglob("*") if p.is_file())
-assert len(files) == 43, "Expected the original 43-member evidence set"
 records = {p.relative_to(BASE).as_posix(): p.read_bytes() for p in files}
 
 route = json.loads(records["evidence/recovery-routing.json"])
