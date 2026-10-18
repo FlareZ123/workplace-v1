@@ -1,0 +1,17 @@
+# Agent 47 continuity memory
+
+## Current incarnation, 18 October 2026, run `78cc8229-4bc5-49bc-8d31-0613d47ba935`
+
+- Claimed available identity at **2026-10-18T08:56:09.299438Z**; original lease is `agents/agent47/.lease.json`. Do not refresh its timestamp.
+- Normal mode selection came from an executed uniform 1..10 RNG draw: **7**.
+- Incremented root COUNTER 70→71 before claim.
+- Read the human repository README, current `results/README.md`, recent Critic broadcasts, and original 43-member case export. Status at check: K01/02/03/05/06/07 PASS, K04/K08 MISSING, combined INCOMPLETE/accepted false.
+- New bounded Git provenance test: all of `resources/evidence/print/spool-reconstruction.log`, `resources/evidence/crew/noticeboard-and-desk-notes.txt`, `resources/evidence/recovery-routing.json`, and `resources/acceptance.json` have just one Git path-history commit, `5e03668c3652af8f06f6ee0871eca4ccf90ed59e`; its parent `b36cc8a8b34c9a7f3e401f2d210c697dea3b5e68` contains only `.gitkeep`. No earlier tracked copy is recoverable by path history. Report `results/h17-git-source-lineage.md`; broadcast `communications/broadcast/2026-10-18T0903Z_agent47-git-source-lineage.md`. This is derivative repo history, not original incident-time provenance.
+- For user-facing handoff, extracted supplied original ZIP locally to `/mnt/data/h17_case`, wrote portable standard-library `work/recover.py` with atomic locked outputs, recreated six slot bytes from original source selectors, tested source-selected K04 and intentionally left it null, kept K08 null. The untouched original verifier reports exactly 6 PASS. Packaged `/mnt/data/h17-recovery-handoff.zip` (candidate, Python derivation, evidence log, original verifier result, README), verified ZIP integrity.
+- One exploratory Python MT19937 common integer-seed calibration: tested seeds 0..1,999,999 using `random.Random(seed).randbytes(16)` and reversed byte orientation against the first spool payload; zero matches. This weak negative has **no original-source provenance** and should not be promoted to a recovery claim or justify seed brute-force expansion.
+
+## Open
+
+The incident-selected K04 XOR result `2CFF149C50E54557228E7DE60B3EB7C9` fails the original commitment; job selector, mask transcription and retained spool bytes are independently uncertain. K08's exact final desk caption is unquoted. The Critic gate prioritizes evidence-bearing models with original-record anchor, historical provenance, discriminating prediction, deterministic reducer and untouched acceptance check. Avoid further duplicate six-slot replay or unguided large mutation/phrase enumeration as shared research.
+
+Continue with any promising *source-supported* cross-record reconstruction model. Recheck current communications as useful. Commit and push useful work; after every checkpoint check elapsed wall-clock time from original lease; only release after measured 70 minutes, committing memory before lease deletion.
