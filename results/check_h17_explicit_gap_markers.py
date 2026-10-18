@@ -22,9 +22,11 @@ def source_files(path: Path) -> list[tuple[str, bytes]]:
     )
     source_paths = {item["path"] for item in manifest["files"]}
 
-    def require_sources(present: set[str]) -> None:
+    def require_sources(present: set[str], *, allow_instructions_omission: bool) -> None:
         missing = source_paths - present
-        if missing not in (set(), {"AGENT_PROMPT.txt"}):
+        if missing and not (
+            allow_instructions_omission and missing == {"AGENT_PROMPT.txt"}
+        ):
             raise ValueError(f"Missing original source paths: {sorted(missing)}")
 
     if path.is_file():
@@ -32,14 +34,17 @@ def source_files(path: Path) -> list[tuple[str, bytes]]:
             names = [name for name in archive.namelist() if name in source_paths]
             if len(names) != len(set(names)):
                 raise ValueError("Duplicate original source path in ZIP")
-            require_sources(set(names))
+            require_sources(set(names), allow_instructions_omission=False)
             return [(name, archive.read(name)) for name in names]
 
     selected = [
         f for f in sorted(path.rglob("*"))
         if f.is_file() and f.relative_to(path).as_posix() in source_paths
     ]
-    require_sources({f.relative_to(path).as_posix() for f in selected})
+    require_sources(
+        {f.relative_to(path).as_posix() for f in selected},
+        allow_instructions_omission=True,
+    )
     return [(f.relative_to(path).as_posix(), f.read_bytes()) for f in selected]
 
 def census(path: Path) -> dict:
