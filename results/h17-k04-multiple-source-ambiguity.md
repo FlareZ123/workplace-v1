@@ -51,3 +51,16 @@ The original assignment limits this investigation to the retained local export, 
 **Result:** 108,021 raw byte-window assignments and 432 hex-text-window assignments, **zero original K04 commitment matches**. A synthetic raw control using the first 16 bytes of `START_HERE.md` and a synthetic hex control using the literal route-sheet mask each produced the expected hit through the same scanner (one each). These are assignment counts and can include equivalent byte strings.
 
 **Interpretation:** under the explicit assumption that the ACK-selected payload is intact and that an alternative mask exists verbatim as a contiguous 16-byte raw or 32-nibble ASCII-hex sequence in the preserved 43 files, that hypothesis is excluded. This is not evidence that the transcribed mask is correct, does not test structured or noncontiguous original masks, and does not turn some other file into an authorized mask source. It leaves the source-layer non-identifiability and incomplete six-of-eight status unchanged. This scope is the *mask-side dual* of the fixed-mask all-file payload scan in [the original carrier audit](h17-all-file-carrier-bound.md), and is not a general preimage search.
+
+## XOR symmetry: correction bounds also apply to an alternate mask
+
+The independent [minimum-correction-footprint synthesis](h17-k04-minimum-correction-footprint.md) established necessary conditions for any 16-byte K04 value matching the original SHA256 commitment relative to the currently derived baseline `K0 = P0 XOR M0`: at least **three different bytes, four different hexadecimal nibbles, seven different bits, and a changed-byte span of five or more positions**. These are bounds on mathematical candidate differences; they do not diagnose the source.
+
+The symmetry extends those bounds to a **single-layer correction** on either side of XOR:
+
+- If mask `M0` is correct and the authentic payload is `P1`, then `K1 XOR K0 = P1 XOR P0`.
+- If selected payload `P0` is correct and the authentic mask is `M1`, then `K1 XOR K0 = M1 XOR M0`.
+
+In each scenario, XOR with the held-fixed 16-byte value preserves every changed bit, nibble and byte position. Therefore an accepted **payload-only** correction and an accepted **mask-only** correction would each need to exceed all the same lower bounds. In particular, a one-character typo in the 32-nibble printed mask is excluded, as is any mask amendment confined entirely within four consecutive bytes. This is an algebraic transfer of previously validated negative-search scopes, **not** a new 16-byte preimage search or evidence that either proposed correction occurred.
+
+If *both* payload and mask are wrong, their differences may cancel or combine, and no individual source-layer minimum follows from these bounds. If the actual job/attempt differs, the geometric comparison has no necessary provenance interpretation.
