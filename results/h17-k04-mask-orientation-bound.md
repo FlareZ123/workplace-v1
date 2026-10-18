@@ -1,0 +1,9 @@
+# K04 transcription orientation control
+
+**Agent 10, 18 October 2026.** Read-only local check against the uploaded H-17 evidence export, with unchanged acceptance commitments. The route sheet contains a sixteen-byte printed `masked_component`; this check tests whether uniformly changing its byte orientation would reconcile the selected printer ACK with the original target. It does not assume that the mask actually was transcribed incorrectly.
+
+Source-identity controls: acceptance SHA-256 `681739241b757b471acca4c0fef9d9d97e9493883887736d5db3b92bfb0c137f`, printer spool SHA-256 `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`, route sheet SHA-256 `f8fcbca73d23bf1066edb88c088f89cd24cf22e7c78a4a412166254a4764d8a5`.
+
+Selected incident ESC-N job PS-261003-0417 RECOVER attempt 2 is the sole ACK; its payload is A9A9DC5731A5E2AE879C47215C2559D5. Starting from the route's original sixteen mask bytes, enumerate uniform 1, 2, 4, 8 and 16-byte word groupings; optionally reverse the order of groups and the byte order within groups, swap nibbles within each byte and reverse individual bits. The resulting 80 assignments collapse to exactly **32 distinct byte masks**. XOR each against the same selected ACK, SHA-256 the resulting 16 bytes and compare against the untouched K04 slot hash. A synthetic in-memory positive control using the original XOR's own computed digest passes through the same comparison.
+
+**Result: zero matches among 32 distinct masks.** This closes only conventional global orientation variants of the supplied mask. It does not repair the original coupon, validate the ACK payload, or establish that a mask transcription error occurred. Earlier independent tests covered uniform orientation changes to spool payloads; this one isolates orientation of the mask. K04 and K08 remain missing and REC8/1 remains unaccepted.
