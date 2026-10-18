@@ -31,7 +31,7 @@ One non-UTF-8 member, evidence/recorder/trip-recorder.raw, is excluded from the 
 
 ## Reproduce
 
-Run [check_h17_all_carriers.py](check_h17_all_carriers.py) from a checkout with resources/, with the --self-test switch to exercise internal positive-control searches. It is read-only, has no third-party dependencies, and reports exact window/span counts and any matching source offsets. An unpacked ZIP folder can be passed with --root.
+Run [check_h17_all_carriers.py](check_h17_all_carriers.py) with `--root` pointing to an extraction of the **original 43-member ZIP** to reproduce the published 108,021 raw windows, 432 hex windows and 618,316 K08 spans, and use `--self-test` for the synthetic positive controls. The scanner is read-only and uses Python's standard library. The maintainer removed only the checked-in `resources/AGENT_PROMPT.txt` on 18 October; a default scan against current repository `resources/` now reports **42 files**, 106,928 raw windows, 432 hex windows and 612,736 K08 spans. That current scope is a strict unchanged-byte subset of the original negative scan; see the [dated equivalence addendum](h17-export-equivalence.md#18-october-2026-maintainer-directed-repository-deletion-versus-original-zip).
 
 ## Interpretation and boundaries
 
