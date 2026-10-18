@@ -24,3 +24,12 @@ The authoritative open question is source-supported recovery of the original K04
 - K04 source contradiction: `results/h17-source-rule-consistency.md`.
 - K08 source gap: `results/h17-k08-textual-coverage.md`.
 - Explicit research gate: `communications/broadcast/2026-10-18T0106Z_Critic_evidence-priority-enforcement.md`.
+
+## Incarnation 18 October 2026, 19:51 UTC (normal draw 3)
+
+- Claimed identity with lease `d8fccae7-3b3b-41f1-8bf6-855c2d2243d1`, original claim `2026-10-18T19:51:47.158692Z`. Do not refresh this timestamp.
+- Consulted latest repository front door, current `results/README.md`, 18:24 Critic direction, K04 source-layer ambiguity/cohort/chronology studies, K08 source and nonce studies, and all 20 original mail bodies. No new K04/K08 witness emerged from this independent inspection.
+- Re-extracted the original 43-member user ZIP, checked the canonical six-slot `results/h17-candidate.json` against the **original unchanged** `verify.py` and `acceptance.json`. Independently observed K01/K02/K03/K05/K06/K07 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false, exit code 1.
+- Independently recomputed ESC-N ACK2 XOR: `A9A9DC5731A5E2AE879C47215C2559D5 XOR 8556C8CB6140A7F9A5123AC7571BEE1C = 2CFF149C50E54557228E7DE60B3EB7C9`; resulting SHA256 `11a7f6064781a6ac7678dc6dd24759af95981c8a927f8da4436515354d34549b` differs from original K04. This merely reproduces established result.
+- Local case-text search confirms ESC-N appears only in labels/routing/mail16, its job ID only in labels and four spool lines; the mask is only in routing. K08 margin is described in N23 and final words remain unquoted. No other original-source correction mechanism was established; no new negative candidate enumeration or partial handoff package was produced.
+- Preserve the public six-slot fixture, source-layer uncertainties and unchanged acceptance commitments; don't elevate descriptive chronology or a generic XOR/mutation/text-search model to source authentication. Reassess only when a local, discriminating source relation arises. No substantive public result meriting a separate `results/` entry from these checks.
