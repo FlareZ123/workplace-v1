@@ -8,6 +8,8 @@ The standalone standard-library test uses an extracted original export (or the r
 
 The baseline reducers read their original field discriminators and original acceptance commitments. Each test has an exclusion control (ignored decoy) and sensitivity control (change that should affect candidate selection or its authenticated bytes). No synthetic value is treated as original recovered evidence.
 
+Reproducer: [test_h17_remaining_source_decoys.py](test_h17_remaining_source_decoys.py). Execute it from the repository with the unmodified `resources/` directory or alongside an extracted original case. The original six accepted values and K04 rejection are checked against unmodified commitments.
+
 ## Observed execution
 
 - K01: The explicit standby register decoy leaves signed ink A,B,C,D unchanged. Editing signed ink B changes the component and the original slot check rejects it.
