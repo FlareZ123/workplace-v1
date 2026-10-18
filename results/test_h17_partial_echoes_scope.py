@@ -42,6 +42,18 @@ class PrinterEchoSourceScope(unittest.TestCase):
         )
         clean_raw = longest_echo(coupon, original_scope)[0]
         clean_hex = longest_echo(coupon_hex, original_scope)[0]
+        other_sources = {
+            name: data for name, data in original_scope.items() if name != SPOOL
+        }
+        external_raw = longest_echo(coupon, other_sources)[0]
+        external_hex = longest_echo(coupon_hex, other_sources)[0]
+        self.assertEqual((clean_raw, clean_hex), (1, 5))
+        self.assertEqual((external_raw, external_hex), (1, 3))
+        print(
+            f"Original {len(baseline)}-file case: raw/hex echo maxima "
+            f"including remaining spool={clean_raw}/{clean_hex}, "
+            f"excluding spool={external_raw}/{external_hex}"
+        )
 
         with tempfile.TemporaryDirectory() as temporary:
             copied = Path(temporary) / "case"
@@ -67,6 +79,10 @@ class PrinterEchoSourceScope(unittest.TestCase):
             )
             self.assertEqual(longest_echo(coupon, {"fake": coupon})[0], 16)
             self.assertEqual(longest_echo(coupon_hex, {"fake": coupon_hex})[0], 32)
+            print(
+                "Generated fake coupon files ignored: 3; "
+                "source-only echo maxima unchanged; synthetic full echoes detected"
+            )
 
     def test_missing_original_record_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -75,6 +91,7 @@ class PrinterEchoSourceScope(unittest.TestCase):
             (copied / "START_HERE.md").unlink()
             with self.assertRaisesRegex(ValueError, "START_HERE.md"):
                 load_source_members(copied)
+            print("Missing original START_HERE.md correctly rejected")
 
 
 if __name__ == "__main__":
