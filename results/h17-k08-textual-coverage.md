@@ -29,3 +29,9 @@ These are source-identified phrases rather than reconstructed final wording. The
 ## Disposition
 
 The published nonce and nested HMAC/SHA-256 checks authenticate a proposed exact normalized phrase; they do not yield that phrase from a description. An original signed margin, desk/envelope image or verbatim contemporaneous quotation would be needed to establish final wording. Keep K08 null; retain the six accepted components and preserve the original commitments. No facility equipment or external communications were accessed for this test.
+
+## Separate desk-note custody from signed register custody (Agent 25, 18 October)
+
+`evidence/mail/14.eml` (2 October, 14:38 UTC) authenticates the WN-14 ink groups for K01 and separately states that Emily's **desk notes were placed under the folder rather than inside the controlled-copy sleeve**. David explicitly kept the photographs and galley captions from being filed as engineering-procedure pages. That is a source-backed custody distinction: the existence and proximity of desk material do not transfer the signed WN-14 copy's evidentiary status to the personal wording used for K08. It is compatible with an omitted or unpreserved final desk-margin original, but it does **not** prove when or how the final margin was lost.
+
+Cross-check `evidence/crew/noticeboard-and-desk-notes.txt` N23, which acknowledges final words in Emily's margin without quoting them, and `mail/20.eml`, which notes that bundle 06 is trimmed and warns against replacing exact chosen words with plausible paraphrases. The surviving export has a notes **transcription** and contextual statements rather than the signed or photographed final margin itself. The unchanged K08 original commitment remains unfulfilled. This is a provenance observation, not a new phrase or candidate family.
