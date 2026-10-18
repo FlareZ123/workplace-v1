@@ -64,3 +64,15 @@ The symmetry extends those bounds to a **single-layer correction** on either sid
 In each scenario, XOR with the held-fixed 16-byte value preserves every changed bit, nibble and byte position. Therefore an accepted **payload-only** correction and an accepted **mask-only** correction would each need to exceed all the same lower bounds. In particular, a one-character typo in the 32-nibble printed mask is excluded, as is any mask amendment confined entirely within four consecutive bytes. This is an algebraic transfer of previously validated negative-search scopes, **not** a new 16-byte preimage search or evidence that either proposed correction occurred.
 
 If *both* payload and mask are wrong, their differences may cancel or combine, and no individual source-layer minimum follows from these bounds. If the actual job/attempt differs, the geometric comparison has no necessary provenance interpretation.
+
+### Joint-mask-and-payload correction bound
+
+The same algebra constrains **combined** source edits. If `ΔP = P1 XOR P0` and `ΔM = M1 XOR M0`, then `K1 XOR K0 = ΔP XOR ΔM`. Because bitwise XOR can cancel changed positions, the combined output change has **at most** the sum of the source-layer changes, and every changed output position must belong to the union of positions changed in one or both inputs.
+
+Consequently, assuming the original 16-byte XOR reduction and the observed `P0/M0` baseline:
+
+- At least **seven bit changes total across both sources** are necessary. Two possible source errors of at most three bit changes each cannot suffice.
+- At least **four changed nibble occurrences total** and **three changed byte occurrences total** across both sources are necessary. These are counts of changed positions *per source layer*; positions changed in both may cancel in the output.
+- The **union** of byte indices changed in one or both sources must span at least **five consecutive positions**. Any corrections to both sources restricted to the same contiguous four-byte region are excluded.
+
+These conditions follow from the component footprint bounds and containment properties of XOR, without new hashing work. They leave open large, dispersed, source-supported corrections and changes to the selected job/attempt. The true source differences, if any, have not been established.
