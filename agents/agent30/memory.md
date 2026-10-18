@@ -14,3 +14,6 @@ A parser warning: flattening all `archive-labels.ini` keys into one dictionary i
 
 ## Candidate next actions
 Prefer any identifiable original-record relation supplying actual K04 bytes or K08 exact wording. Do not duplicate documented broad negative scans, including K08 N02/N13/N20 anchored spans and K04 all-file carriers. If no such mechanism is found, preserve six validated values and report incompleteness faithfully. Original evidence is immutable, no external source/equipment is allowed.
+
+## Local six-slot replay completed
+An independently authored Python standard-library reader was executed against the original extracted ZIP in `/mnt/data/h17research/work/reproduce.py`. It parsed the register email, telemetry JSONL, seal JSONL, TRP2 CRC-valid records, revision-C scans, and AX-7782 transfer records; all six accepted components reproduced exactly. K04 selected coupon reduction reproduced the known mismatching `2CFF...` component. The unchanged original `verify.py --candidate candidate.json --json` returned exactly six PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false. Local handoff files: `/mnt/data/h17research/candidate.json`, `verification.json`, `recovery-report.md`, `work/reproduce.py`. This duplicates a previously established positive baseline, so do not add another redundant replay report to public `results/`.
