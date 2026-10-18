@@ -12,6 +12,9 @@ data = (root / "evidence/recorder/trip-recorder.raw").read_bytes()
 assert hashlib.sha256(data).hexdigest() == "5ebc6204ed773102237dd287772de96d19740e163b49b4075537d937888657ba"
 assert struct.unpack_from("<8sHHI", data) == (b"TRP2DUMP", 2, 24, 88)
 
+route = json.loads((root / "evidence/recovery-routing.json").read_text())["K05"]
+start = int(datetime.fromisoformat(route["start_utc"]).timestamp())
+end = int(datetime.fromisoformat(route["end_utc_exclusive"]).timestamp())
 valid, bad, good_selections, all_selections = 0, [], {}, {}
 for index in range(88):
     frame = data[16 + index * 24:16 + (index + 1) * 24]
@@ -21,7 +24,7 @@ for index in range(88):
     valid += is_valid
     if not is_valid:
         bad.append((index, stamp, latch, sequence, f"{computed ^ recorded:08X}"))
-    if node == 49 and event == 82 and 1791062040 <= stamp < 1791062048:
+    if node == route["node"] and event == route["event"] and start <= stamp < end:
         row = (sequence, frame[12:16].hex().upper())
         if is_valid and (latch not in good_selections or row > good_selections[latch]):
             good_selections[latch] = row
