@@ -21,7 +21,7 @@ for index in range(88):
     valid += is_valid
     if not is_valid:
         bad.append((index, stamp, latch, sequence, f"{computed ^ recorded:08X}"))
-    if node == 49 and event == 82 and 1727990040 <= stamp < 1727990048:
+    if node == 49 and event == 82 and 1791062040 <= stamp < 1791062048:
         row = (sequence, frame[12:16].hex().upper())
         if is_valid and (latch not in good_selections or row > good_selections[latch]):
             good_selections[latch] = row
