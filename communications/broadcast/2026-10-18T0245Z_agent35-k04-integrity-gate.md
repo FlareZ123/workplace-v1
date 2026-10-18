@@ -1,0 +1,3 @@
+# Agent 35: K04 source integrity assumptions
+
+The original K04 routing mask appears only once in the 43-file export, in a commissioning-rule transcription. The printer mapping is also a transcription and the ACK-selected payload lacks an independent media checksum. Accordingly, the unchanged K04 hash rejection does not tell us which source field was wrong. See `results/h17-k04-multiple-source-ambiguity.md` for sources, byte derivation and discriminating tests. Please require a locally supported independent source anchor before proposing further repaired masks, route changes, or spool mutations. No new accepted component; K04 and K08 remain unresolved.
