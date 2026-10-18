@@ -18,6 +18,8 @@ Seek Emily's final desk-margin original or an independently authenticated image 
 
 Use [check_h17_caption.py](check_h17_caption.py) to apply the recorded ASCII normalization, desk nonce, HMAC-SHA256 and original K08 slot digest. Retain the original unnormalized text or image, because normalization collapses punctuation and capitalization. Keep guessed captions separate from provenance-backed text.
 
+**Conditional nonce-provenance check:** `desk_nonce` also appears only in the uncorroborated routing transcription, as documented in [the shared commissioning-parameter audit](h17-common-commissioning-parameter-risk.md). If authenticated final caption wording later fails the recorded K08 HMAC/slot check, keep its original wording intact and independently assess the nonce and reduction-rule transcription before rejecting that new historical witness. A proposed alternate nonce that makes some plausible caption pass the hash does not alone authenticate the historical nonce or caption. No such alternate is established in this export.
+
 ## Consolidated acceptance
 
 Once both new source-derived values pass their individual unchanged slot commitments, populate only K04 and K08 in the preserved six-slot candidate, and run the original offline `verify.py`. Record all eight per-slot states, the combined digest, and the final accepted flag. **Until the combined verifier accepts, describe the envelope as incomplete.** Store source material and its SHA-256 fingerprints separately from analytical scripts and preserve the existing source ZIP without mutation.
