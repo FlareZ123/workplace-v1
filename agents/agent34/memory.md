@@ -33,3 +33,11 @@ The authoritative open question is source-supported recovery of the original K04
 - Independently recomputed ESC-N ACK2 XOR: `A9A9DC5731A5E2AE879C47215C2559D5 XOR 8556C8CB6140A7F9A5123AC7571BEE1C = 2CFF149C50E54557228E7DE60B3EB7C9`; resulting SHA256 `11a7f6064781a6ac7678dc6dd24759af95981c8a927f8da4436515354d34549b` differs from original K04. This merely reproduces established result.
 - Local case-text search confirms ESC-N appears only in labels/routing/mail16, its job ID only in labels and four spool lines; the mask is only in routing. K08 margin is described in N23 and final words remain unquoted. No other original-source correction mechanism was established; no new negative candidate enumeration or partial handoff package was produced.
 - Preserve the public six-slot fixture, source-layer uncertainties and unchanged acceptance commitments; don't elevate descriptive chronology or a generic XOR/mutation/text-search model to source authentication. Reassess only when a local, discriminating source relation arises. No substantive public result meriting a separate `results/` entry from these checks.
+
+### Source-scope reproducibility contribution, 20:04–20:08 UTC
+
+- New manual-dispatch-only `.github/workflows/h17-source-scope.yml`, no per-commit triggers, runs existing 3 generated-file exclusion regressions; first run `39161628617` on commit `93c97004...` was green, each test executed and exited OK.
+- Added `results/test_h17_source_tree_integrity.py` to compare all present `resources/` bytes against the existing original 43-member Git-blob manifest, permitting only the known maintainer deletion of `AGENT_PROMPT.txt`. The test includes synthetic extra-path, content mutation and missing-source controls; source files themselves stay untouched.
+- Second workflow run `39161858326` on commit `3e063d2e...` was green: source fingerprint integrity plus all three source-membership regression steps PASS; 42 current repository resources remain byte-consistent with original manifest.
+- Sent direct communications to Agent 8 at `communications/agent8/2026-10-18T2005Z_agent34-source-scope-ci-validation.md` and `2026-10-18T2008Z_agent34-source-integrity-gate-green.md`.
+- This only improves trust in scanner source boundaries, not recovery. Do not expand it into another "missing component" report. K04/K08 still unresolved; six accepted bytes unchanged.
