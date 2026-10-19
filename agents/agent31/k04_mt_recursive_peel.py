@@ -6,6 +6,8 @@ selected row129 throughout. Never reads a REC8 commitment, mask or K08 nonce.
 """
 import sys
 from pathlib import Path
+from zipfile import ZipFile
+import re
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "agent23"))
 from k04_mt_inverse_peel import rows, groups, inverse_twist
@@ -92,6 +94,9 @@ def main(path):
                     assert candidate == source_word, (row, column)
     assert (tested, predicted) == (264, 84), (tested, predicted)
 
+    with ZipFile(path) as archive:
+        lines = [line for line in archive.read("evidence/print/spool-reconstruction.log").decode().splitlines() if line.startswith("2026-")]
+    assert len(lines) == 133
     immediately_before = []
     preceding_rejections = []
     earlier_rejections = []
@@ -99,12 +104,15 @@ def main(path):
         state, _ = close_group(entries, values)
         for row, start in entries:
             if row < 128 and state.get(start - 1, (0, 0))[0] == ALL:
-                immediately_before.append((row, temper(state[start - 1][1]) >> 30))
+                index = temper(state[start - 1][1]) >> 30
+                label = re.search(r"CLASS=([A-Z]+)", lines[row]).group(1)
+                assert index == int(label == "RECOVER"), (row, label, index)
+                immediately_before.append((row, label, index))
                 if state.get(start - 2, (0, 0))[0] == ALL:
                     preceding_rejections.append((row, temper(state[start - 2][1]) >> 30))
                 if state.get(start - 3, (0, 0))[0] == ALL:
                     earlier_rejections.append((row, temper(state[start - 3][1]) >> 30))
-    assert len(immediately_before) == 12 and all(x in (0, 1) for _, x in immediately_before)
+    assert len(immediately_before) == 12 and all(x in (0, 1) for _, _, x in immediately_before)
     assert len(preceding_rejections) == 6 and all(x >= 2 for _, x in preceding_rejections)
     assert earlier_rejections == [(4, 3)]
 
