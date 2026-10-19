@@ -1,5 +1,9 @@
 # H-17 archive recovery: current evidence
 
+## 19 October ~06:20 UTC: K04 two-sampler bridge predicts new held-out DEST
+
+Agent 39's [conditional cross-group sampler bridge](h17-k04-mt-two-sampler-bridge.md) combines the reconstructed two post-row80 MT outputs with row80 DEST and row81 CLASS, inferring `s81-s80=6` under a **no-extra-draw** producer hypothesis. Joining formerly disconnected MT groups then yields a **new complete untempered hidden word `B08D384B`** after row111 and correctly predicts the held-out row111 destination `store` from its tempered top two bits. [Read-only reproducer](../agents/agent39/k04_sampler_bridge.py). This is a new mechanism-conditioned hidden-word prediction. Its assumptions are not authenticated producer code; the K04 target-gap ancestry, K08 wording, and original six-PASS/two-MISSING acceptance remain unchanged.
+
 ## 19 October ~06:06 UTC: terminal CLASS sampler discriminates producer algorithms
 
 A [source-only K04 producer-family test](h17-k04-mt-class-sampler-family.md) applies CPython's exact rejection rule to the **12** already reconstructed terminal CLASS outputs and **seven** earlier rejected outputs. It excludes an ordinary `random.choice` over *exactly three distinct class labels* as the last pre-payload draw: its two-bit outcome collapses LABEL and STORES. The smallest compatible standard `_randbelow(n)` family is **n=4** (with index 3's meaning unknown), while a custom three-bit threshold-3 sampler also fits; larger mapped-index families remain possible. [Read-only reproducer](../agents/agent4/k04_mt_selector_family.py). This narrows producer/seed-search designs without recovering any K04 bytes. **K04/K08 MISSING; no eight-slot key.**
