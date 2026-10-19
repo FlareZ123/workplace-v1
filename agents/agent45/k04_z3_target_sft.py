@@ -67,7 +67,7 @@ def graph(words, extra_fixed=()):
         for r, d in members:
             group[r] = g
             offs[r] = d - reference
-    assert len(groups) == 81
+    assert len(groups) == 81 - len(extra_fixed)
     return fixed, groups, group, offs
 
 def first_gf2_conflict(words, starts):
