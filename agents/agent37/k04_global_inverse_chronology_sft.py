@@ -56,7 +56,7 @@ def source(path):
  assert (len(within),len(boundary))==(25,17)
  return words,within,boundary
 
-def setup(within,boundary):
+def setup(within,boundary,target):
  eq=[];fixed=[]
  for r in range(132):eq.append(({r+1:1,r:-1,133+r:-1},4))
  for (a,i),(b,j),(c,k) in within:
@@ -69,7 +69,7 @@ def setup(within,boundary):
  for a,b,d in fixed:
   dist[a][b]=min(dist[a][b],d);dist[b][a]=min(dist[b][a],-d)
  for r in range(132):dist[r+1][r]=min(dist[r+1][r],-(6 if r<127 else 4))
- dist[0][129]=945;dist[129][0]=-945
+ dist[0][129]=target;dist[129][0]=-target
  for k in range(133):
   for i in range(133):
    if dist[i][k]==float('inf'):continue
@@ -78,7 +78,7 @@ def setup(within,boundary):
     if z<dist[i][j]:dist[i][j]=z
  assert min(dist[i][i] for i in range(133))==0
  assert max(dist[0])==967
- assert max(dist[i][i+1]-4 for i in range(132))==28
+ assert max(dist[i][i+1]-4 for i in range(132))==973-target
  return eq
 
 def conflicts(rows,starts):
@@ -92,10 +92,10 @@ def conflicts(rows,starts):
    if (x^inverse(y^z))&mask:bad.add((a,i,br,j,cr,k,step,step+227))
  return bad
 
-def model(eq,cuts):
- n=265+4*len(cuts);lb=[0]*n;ub=[1500]*n
- lb[0]=ub[0]=0;lb[129]=ub[129]=945
- for r in range(127):lb[133+r]=2;ub[133+r]=64
+def model(eq,cuts,target):
+ n=265+4*len(cuts);lb=[0]*n;ub=[967]*n
+ lb[0]=ub[0]=0;lb[129]=ub[129]=target
+ for r in range(127):lb[133+r]=2;ub[133+r]=973-target
  lb[263]=ub[263]=0
  for j in range(265,n):ub[j]=1
  rows=[];cols=[];vals=[];lower=[];upper=[]
@@ -104,7 +104,7 @@ def model(eq,cuts):
   for j,v in co.items():rows.append(i);cols.append(j);vals.append(v)
  for co,z in eq:add(co,z,z)
  for ix,(a,i,b,j,c,k,d1,d2) in enumerate(sorted(cuts)):
-  q=265+4*ix;f=d1+i-j;g=d2+i-k;M=3000
+  q=265+4*ix;f=d1+i-j;g=d2+i-k;M=2000
   add({b:1,a:-1,q:M},-math.inf,M+f-1)
   add({b:-1,a:1,q+1:M},-math.inf,M-f-1)
   add({c:1,a:-1,q+2:M},-math.inf,M+g-1)
@@ -113,19 +113,19 @@ def model(eq,cuts):
  mat=coo_matrix((vals,(rows,cols)),shape=(len(lower),n)).tocsc()
  return milp(c=[0]*n,integrality=[1]*n,bounds=Bounds(lb,ub),constraints=LinearConstraint(mat,lower,upper),options={'time_limit':15})
 
-def main(path):
+def main(path,target=945):
  rng=random.Random(13579);synthetic=[ut(rng.getrandbits(32)) for _ in range(2000)]
  for t in range(1,1350):
   for step,mask in ((396,LO),(397,HI)):
    assert not (synthetic[t]^inverse(synthetic[t+step]^synthetic[t+step+227]))&mask
- words,within,boundary=source(path);eq=setup(within,boundary);cuts=set()
+ words,within,boundary=source(path);eq=setup(within,boundary,target);cuts=set()
  print('Original spool SHA256',SHA,'original witness counts',len(within),len(boundary),'synthetic controls',2698)
- print('Test s129-s0=945 with each regular gap>=2; exact graph caps all gaps at 28')
+ print('Test s129-s0=',target,'with each regular gap>=2; exact graph caps all gaps at',973-target)
  for iteration in range(40):
-  r=model(eq,cuts)
+  r=model(eq,cuts,target)
   if r.x is None:
    assert r.status==2,r.message
-   print('EXCLUDED K04 index 945; infeasible after',len(cuts),'source low31/MSB cuts in',iteration,'rounds')
+   print('EXCLUDED K04 index',target,'; infeasible after',len(cuts),'source low31/MSB cuts in',iteration,'rounds')
    return
   starts=[round(v) for v in r.x[:133]]
   new=conflicts(words,starts)-cuts
@@ -133,4 +133,4 @@ def main(path):
   cuts.update(new)
  raise RuntimeError('Search did not complete')
 
-if __name__=='__main__':main(sys.argv[1])
+if __name__=='__main__':main(sys.argv[1],int(sys.argv[2]) if len(sys.argv)>2 else 945)
