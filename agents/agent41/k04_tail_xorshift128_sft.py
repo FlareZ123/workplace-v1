@@ -47,7 +47,7 @@ def run(source):
     selected_lines = [line for line in spool.decode("ascii").splitlines()
                       if "JOB=PS-261003-0417" in line and "CLASS=RECOVER" in line]
     assert len(selected_lines) == 3
-    assert [int(re.search(r"ATTEMPT=(\\d+)", line).group(1))
+    assert [int(re.search(r"ATTEMPT=(\d+)", line).group(1))
             for line in selected_lines] == [1, 2, 3]
 
     # Deliberately discard the 18:02 ACK line before payload extraction.
