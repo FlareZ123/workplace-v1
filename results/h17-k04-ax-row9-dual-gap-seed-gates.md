@@ -64,3 +64,25 @@ The source-pinned standalone Python SFT checks the unchanged original spool SHA2
 The branches conditionally exclude eight **distinct** seed-array lengths across their respective models: the g6 family `29,58,87,173,174` and the g5 family `43,86,172,173`; **they must not be pooled as one unconditional eight-length rejection**. Neither branch recovers K04 target bits. The important new reusable attack surface is the **row9-to-AX original-source seed window** at `p-174..p-172`, which creates modular period lengths 172–174 beyond previous 167/168 offsets. A producer-order witness confirming `s10-s9` or an independently placed full-word gap donor could make this window more decisive. Avoid generic target hashing or six-slot replay.
 
 **Acceptance status unchanged:** K01/K02/K03/K05/K06/K07 PASS, K04 and K08 MISSING, combined INCOMPLETE and `accepted: false`.
+
+## Additional constructive K04 phase discriminator: two AX checkpoint high16s predict metadata (14:44 UTC)
+
+The six-output row9→10 branch places two unobserved generator outputs at `X[p-172]` and `X[p-171]`, after row9's four-word payload and before row10. Under the hypothesized ordinary producer's **post-payload DEST** then **terminal pre-payload CLASS** order, exactly two metadata outputs means both sampled without rejection. The original row9 `DEST=store` corresponds to 2-bit return **0**; row10 `CLASS=STORES` corresponds to 3-bit return **1**.
+
+For any CPython key-array length dividing **172**, the two known late key-array terms at residues `p,p+1` determine the two consecutive early state updates `S[p-171],S[p-170]` from this report's gap6 `S[p-173],S[p-172]` (two MSB completions). The original, *previously unspent* AX checkpoint positions **8 and 9** record `7CA7` and `A234` as little-endian 16-bit words, i.e. high16 tempered `A77C` and `34A2` for `X[p-399]` and `X[p-398]`. Because tempering is GF(2)-linear, the two predicted sampler high16s are:
+
+`temper(X[p-172]).high16 = A77C XOR temper(twist(S[p-172],S[p-171])).high16`
+
+`temper(X[p-171]).high16 = 34A2 XOR temper(twist(S[p-171],S[p-170])).high16`.
+
+Testing both native upper-bit completions over every first-cycle phase `p=402..621` gives the **same conditional shortlist for n=43,86,172**, because each length divides 172:
+
+| Source-only terminal requirement | Surviving `(p,bit)` assignments / 440 |
+|---|---:|
+| row9 DEST=store (top2=0) | 105 |
+| row10 CLASS=STORES (top3=1) | 50 |
+| **both simultaneously** | **10** |
+
+Surviving absolute phases: **460,470,472,485,497,536,567,568,571,592**, each with one recovered `S[p-172]` MSB. Under the *additional* disputed recorder-prefix chronological bound `p>=535`, only **536,567,568,571,592** survive. The stronger prefix premise is kept separate from the first-cycle inference. **12/12 independent CPython seeded positive controls** reproduce full predicted high16s from actual `random.Random(seed).getstate()` and generated 32-bit outputs. Standalone read-only companion [`agents/agent28/k04_gap6_ax89_metadata.py`](../agents/agent28/k04_gap6_ax89_metadata.py) imports the first reproducer and reads no selected K04 payload or REC8 acceptance.
+
+This is a first constructive combination of this source-derived row9 initialized-state window, *both additional AX checkpoint* high16 values and **two original recorded metadata labels**. It reduces a conditional seeded phase space; it does not determine selected row129 bits or prove the physical historical producer used the two selector calls. In particular it assumes AX checkpoint position8/9 contiguity, the common MT stream, standard CPython initialization, and exactly two consumed sampler outputs between row9 and row10. **No K04/K08 acceptance has changed.**
