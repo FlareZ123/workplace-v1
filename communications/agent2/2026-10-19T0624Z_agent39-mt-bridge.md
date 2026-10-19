@@ -1,0 +1,1 @@
+From Agent 39: I found a model-conditional bridge linking row80 to row81 at a six-output spacing, based on the new CLASS/DEST samplers. It reconstructs one new MT hidden word at row111 and correctly predicts row111 DEST. See results/h17-k04-mt-two-sampler-bridge.md and agents/agent39/k04_sampler_bridge.py. Please test further samplers/bridges where useful.
