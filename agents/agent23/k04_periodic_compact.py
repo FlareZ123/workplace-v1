@@ -72,17 +72,21 @@ def synthetic():
 def main(zip_path):
     divisors=synthetic()
     early,low=original_early(zip_path)
-    matches=[]
-    for p in range(535,622):
-        known=key_plus_index(*LATE[1:4],p+2)
-        for bit in (0,0x80000000):
-            if key_plus_index(early[0],early[1],low|bit,p-166)==known:
-                matches.append((p,bit))
+    matches={}
+    for delta,comparison in ((167,LATE[0:3]),(168,LATE[1:4])):
+        hits=[]
+        for p in range(535,622):
+            known=key_plus_index(*comparison,p+delta-166)
+            for bit in (0,0x80000000):
+                if key_plus_index(early[0],early[1],low|bit,p-166)==known:
+                    hits.append((p,bit))
+        matches[delta]=hits
+    assert not matches[167] and not matches[168]
     print('source_early_two',*[f'{x:08X}' for x in early])
     print('source_third_low31',f'{low:08X}')
     print('synthetic_controls_PASS',len(divisors)*5)
     print('source_phase_535_621_two_high_bits_matches',matches)
-    print('CPython_integer_seed_word_lengths_excluded_if_firstcycle',divisors)
+    print('CPython_integer_seed_word_lengths_excluded_if_firstcycle',divisors+[167])
     print('selected_row129_untouched_and_unread',True)
 
 if __name__=='__main__':
