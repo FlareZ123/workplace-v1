@@ -38,6 +38,26 @@ The last step follows by applying the recurrence at `t=104` (creating `X[728]`) 
 
 The code performs all 128 forward-recurrence perturbations for two independently generated unrestricted starting states, checks the **entire source-index horizon 0..970** after each perturbation, asserts no original intact word changes, confirms **rank128**, and explicitly shows the excluded `X[335]` high-bit perturbation would change the known row130 word at959. Both synthetic states passed. The earlier Agent11 fixture supplies an original-data-consistent base state existentially; linearity transports this perturbation certificate to that base without needing to know its seed.
 
+## Stronger source-only theorem: the same 128-direction cut holds over the entire bounded target window
+
+The p=955 construction is a special case of a **uniform source-geometry argument**. For *any* chronology obeying the original two tail MT groups, the source-derived minimum spacing, and the published bounded index window, write `p=s129`, `d=s44-s43`, and `delta=p-s43`. The published source-based conditional ranges are `945 <= p <= 955`, `11 <= d <= 65`, and `627 <= delta <= d+616`. The original observed MT group offsets give `s12=s43-229`, `s13=s44-227`, `s96=s43+393`, `s97=s44+394`, and `s132=s45+621`.
+
+The original tail equalities imply `g44=g97` for `g_r=s[r+1]-s[r]-4`, and `g131=g97-3>=0`. The original 97..131 interval has a total skip budget 94, hence `3 <= g97 <=94`. Therefore all retained later printer output indices satisfy
+
+`s132+3-p <= d+g97+1 <=160 <227`.
+
+The same first-cycle **three hidden ancestor windows** exist for every placement in these ranges:
+
+- `u=p-851` lies strictly between intact rows12 and13.
+- `q..q+3=(p-623)..(p-620)` lies strictly between intact rows43 and44.
+- `m..m+3=(p-227)..(p-224)` lies strictly between intact rows96 and97.
+
+Additionally `u<=104<397` and `q+3<=335<397`, so no other previous positive-index MT middle operand can carry these directions into intact observations. The same 124 lowbit + 3 highbit + 1 two-hop highbit perturbation basis changes exactly the selected four words and hidden gaps. It leaves **all other intact printer payload words unchanged** for **any complete chronology satisfying these bounds**, as their last observed index is less than `p+227`.
+
+The updated SFT performs an exhaustive arithmetic placement check on all **16,940** triples `(p,d,delta)` in these bounded ranges and checks the two extremal possible `g97` values. The full 128-bit perturbation/rank test is separately performed on the published original-source-consistent index955 fixture with two synthetic starting states. The universal conclusion follows from the displayed index inequalities and the MT recurrence, rather than claiming to have constructed and checked full 133-row original-data fixtures for each of 16,940 options.
+
+**Result:** for the stated conditional common-MT, unrestricted-state and p/d bounded chronology model, **no placement of intact printer payloads alone can decrease K04's 128-dimensional quotient**. This is a new structural strengthening of the earlier result, which explicitly left open whether a different feasible chronology might fix a bit. The theorem does **not** exclude independent new donor records, additional metadata sampler constraints, a restrictive generator seed law, a chronology outside the published bounds, or a non-MT historical producer.
+
 ## Research interpretation, limits and cracking gate
 
 **No genuine coupon bits have been recovered.** This provides an exact, source-geometry-specific mathematical certificate that intact full-word printer payloads alone cannot distinguish the 128 selected-bit directions, adding a causal interpretation to Agent33's existing rank128 output. It does **not** establish that index955 is the true producer chronology, that the selected ACK was actually produced from this MT state, or that all 128 directions remain free after imposing extra *conditional* CLASS/DEST rejection-sampler metadata or a restrictive nonlinear seed-initialization law. It does not claim universal full-source nonidentifiability for every chronology.
