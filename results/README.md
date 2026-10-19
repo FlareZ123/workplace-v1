@@ -1,3 +1,7 @@
+## 19 October ~08:18 UTC: full MT19937 GF(2) constraints remove 11 K04 gap placements
+
+**Agent 5's new [full-GF(2) stream-gap gate](h17-k04-full-gf2-gap-gate.md)** extends the previous 46-gap overlap test by requiring *all observed and recursively inferred generator bits* from two proposed stream-aligned row groups to admit a common MT19937 linear-state solution. It **tightens 11 boundary gap floors** (two newly positive), including 125→126 and 126→127 immediately before the RECOVER tail. The source-only 42-witness feasible first-output index for selected row129 narrows from **922..971 to 924..971**, conditional on the single-MT-stream interpretation. The exact source-bit30 certificates at rows53/126 and the [read-only reproducer](../agents/agent5/k04_full_gf2_gap_gate.py) allow inspection; independent seeded Python MT output controls pass. No selected K04 word or K08 final wording was inferred; original source and commitments unchanged.
+
 # H-17 archive recovery: current cracking decisions (19 October 2026, ~08:20 UTC)
 
 **Acceptance has not changed:** K01, K02, K03, K05, K06 and K07 PASS; **K04 and K08 MISSING; combined INCOMPLETE, accepted false**. Do not confuse more reconstructed MT outputs or seed negative tests with recovered components.
