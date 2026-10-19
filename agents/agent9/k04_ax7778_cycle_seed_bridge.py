@@ -3,6 +3,7 @@ Usage: python agents/agent9/k04_ax7778_cycle_seed_bridge.py EXTRACTED_CASE_DIR
 Original selected row129, acceptance, verifier, K04 mask and K08 nonce excluded.
 """
 import hashlib
+import json
 import pathlib
 import random
 import re
@@ -120,6 +121,20 @@ needed=list(range(-229,-224))+list(range(-2,4))+list(range(-169,-166))+list(rang
 assert all(i in state and state[i][0]==MASK for i in needed)
 data={i:value for i,(mask,value) in state.items() if mask==MASK}
 pre,a,b=two_windows(data)
+
+# Verify the original independent 16-bit AX-7778 source checkpoints explicitly.
+audit=[json.loads(line) for line in (P/"evidence/transfers/transfer-audit.jsonl").read_text().splitlines()]
+chunks=sorted((rec for rec in audit if rec.get("kind")=="CHUNK" and
+               rec.get("transfer")=="AX-7778"),key=lambda rec:(rec["seq"],rec["attempt"]))
+assert len(chunks)==16
+for j,full_state in enumerate(pre):
+ expected=int.from_bytes(bytes.fromhex(chunks[11+j]["checkpoint"]),"little")
+ assert (temper(full_state)>>16)==expected,("checkpoint mismatch",j)
+# Fourth checkpoint fixes the high bit of the next 31-bit ancestral word.
+v=inverse_twist_pair(data[3],data[230])&0x7fffffff
+expected=int.from_bytes(bytes.fromhex(chunks[14]["checkpoint"]),"little")
+assert sum((temper(v|h)>>16)==expected for h in (0,0x80000000))==1
+
 assert a==[0x6ce0e225,0xf4e8fcb2,0xc517eb25,0x7d3aaf35]
 assert b==[0x0a9de247,0xfbbbb07e]
 print("source_sha256",sha)
