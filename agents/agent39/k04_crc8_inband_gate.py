@@ -49,6 +49,8 @@ def main(source: Path) -> None:
     # fixed xorout offset for a fixed 15-byte CRC8 input length. Learn that
     # offset on row 1 and require exact pre-hash predictions on rows 2..35.
     fits = []
+    tail_fits = []
+    ack_withheld_fits = []
     for position in range(16):
         for reverse_bytes in (False, True):
             for reflected in (False, True):
@@ -61,6 +63,11 @@ def main(source: Path) -> None:
                             content = content[::-1]
                         return payload[position] ^ crc8(content, used_poly, reflected)
 
+                    tail_residuals = [residual(row) for row in tail]
+                    if len(set(tail_residuals)) == 1:
+                        tail_fits.append((position, reverse_bytes, reflected, polynomial, tail_residuals[0]))
+                    if len({tail_residuals[i] for i in (0, 2, 3, 4)}) == 1:
+                        ack_withheld_fits.append((position, reverse_bytes, reflected, polynomial))
                     expected = residual(regular[0])
                     if all(residual(row) == expected for row in regular[1:]):
                         fits.append((position, reverse_bytes, reflected, polynomial, expected,
@@ -74,8 +81,10 @@ def main(source: Path) -> None:
     print("regular_RECover", len(regular), "tail_RECOVER", len(tail))
     print("hypotheses", 16 * 2 * 2 * 255)
     print("regular_training_fits", fits)
+    print("tail_all_fits", tail_fits)
+    print("tail_ack_withheld_fits", ack_withheld_fits)
     print("synthetic_crc8_control", "PASS")
-    assert not fits
+    assert not fits and not tail_fits and not ack_withheld_fits
 
 
 if __name__ == "__main__":
