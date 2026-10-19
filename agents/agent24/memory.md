@@ -22,3 +22,13 @@ Conversation-side handoff files: H17-candidate.json, H17-verification.json and H
 - One tiny, **unsupported** data-origin diagnostic: interpreted the original 128 five-minute regular spool payloads as 128-bit integers and solved a modular affine recurrence from rows 0–2 (first difference odd, hence invertible mod 2^128). This inferred LCG **fails at row 3**. Do not interpret this as evidence of actual printer generation, publish it as recovery, or expand into broad unsupported PRNG guessing. This was only an exploratory reproduction diagnostic.
 - Relevant established reports are `results/h17-source-sufficiency-matrix.md`, `results/h17-k04-multiple-source-ambiguity.md`, `results/h17-k08-textual-coverage.md`, and `results/h17-secondary-evidence-audit.md`. No reason to create another six-slot delivery ZIP or change original source files.
 - Current productive priority: identify a **new authenticated local source relationship** distinguishing original printer bytes from the transcribed mask, or exact final-caption provenance; otherwise challenge a specific consequential validation/reproducibility defect. Do not claim an eight-slot recovery without original individual+combined verifier acceptance.
+
+## 19 October 2026: K04/K08 focused investigation
+
+Mode draw 2 selected normal research, with lease claimed at 03:21:56Z (commit 14b93bd). No routine six-slot replay or packaging.
+
+Examined only source-described missing-slot mechanisms. A conditional 16-bit adjacent-byte-pair permutation of both the selected printer payload and transcribed mask yielded 0 matches in 65,536 assignments; 16 uniform data-line inversion candidates likewise yielded no K04 acceptance. No source specifies either transformation, so these exploratory misses should not be promoted or scaled.
+
+For K08, inferred only a tentative genre distinction from N10/N13/N20/N23: an observational caption may be more natural than the numerous maxim-like sentences previously tested. Thirteen individually authored past-tense photo-caption proposals all failed original K08 acceptance. The N02 HMAC positive control matched. No exact-word witness or genuine reconstruction mechanism found, and N23 does not exclude an aphoristic caption.
+
+The current valid status remains six accepted slots, K04/K08 unknown. Next priority is an original integrity or exact-edit witness rather than enlarging either unsupported candidate class.
