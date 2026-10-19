@@ -28,3 +28,21 @@ A fixed affine parity check shared by all 133 observed 16-byte printer outputs w
 This tests a genuinely different mechanism from word flips, byte mosaics, metadata-generator fits and arbitrary hash-conditioned output guesses. It does **not** exclude a bit-level CRC exclusive to RECOVER records, nonlinear authentication codes, different coding families for the tail, a code dependent on unavailable job-specific keys, or damaged regular training records. It does not establish which source layer is wrong, and the source gives no positive statement that any such code was used. A future proposed integrity method should supply an original printer-format witness and produce a consistent checksum on regular RECOVER records before trying to correct the selected attempt-2 ACK.
 
 **Acceptance status:** K04 remains unknown; K08 is unaffected. The original acceptance files, source records and checker were not altered. This result explains why a broad family of appealing self-repair approaches has no support, without claiming the correct physical coupon cannot be recovered by another mechanism.
+
+
+## Unknown-polynomial cyclic CRC reconstruction, tolerant of damaged training rows (Agent 36)
+
+An independent reconstruction hypothesis is that the sixteen bytes are complete codewords of one printer CRC family, with a fixed but **unknown** generator polynomial and common residue. All complete valid codewords would have the same remainder modulo that polynomial. Therefore their pairwise XOR differences must be divisible by the unknown generator, regardless of fixed CRC initial register, final-XOR convention, or constant affine residue (provided the complete payload is the codeword in the tested bit orientation).
+
+Unlike testing only known CRC32/Adler32 implementations, the [generator-agnostic polynomial GCD SFT](../agents/agent36/k04_cyclic_crc_gate.py) computes the GF(2)-polynomial GCD of differences among every four of the **35 original regular RECOVER rows**, then tests whether a fifth original row shares a factor of degree at least eight. This checks **52,360 distinct four-row subsets per orientation**. The code pins the original spool source SHA-256, reads no original acceptance or target hash, and includes a positive example in which five true 16-bit-CRC codewords amid 30 deliberately unrelated values are detected.
+
+| Complete-codeword bit interpretation | Four-row subsets admitting a common degree-8+ polynomial | Five-row subsets admitting a common degree-8+ polynomial |
+| --- | ---: | ---: |
+| Raw byte order, most-significant-bit polynomial coefficients | 2 | **0** |
+| Reversed byte order | 0 | **0** |
+| Reverse all 128 bits | 2 | **0** |
+| Reverse the eight bits within every byte | 2 | **0** |
+
+The maximum four-row GCD degrees were respectively 8, 7, 9 and 8. The few chance-compatible four-row groups fail on a fifth row. If **any five** of the 35 retained regular RECOVER payloads were intact codewords using one fixed unknown cyclic CRC with at least eight parity bits and a common residue under one of these complete-word interpretations, their differences would have yielded a five-row common factor of degree 8 or greater. None does. This conditional negative remains valid even under a strong outlier allowance of **30 out of 35 damaged or unrelated records**. It does not rely on the source-selected K04 commitment.
+
+**Scope:** CRC redundancy might exist in another field, in a subset of bits with intervening protocol framing, or under different metadata-specific generators, and a nonlinear error-correcting scheme remains possible. The source provides no affirmative printer-format CRC specification, so this result excludes only the exact full-word cyclic-code mechanism. In particular the isolated four-row GCD factors do **not** authenticate K04 bytes or justify extrapolating a CRC from them. K04 and K08 remain unresolved, with original acceptance unchanged.
