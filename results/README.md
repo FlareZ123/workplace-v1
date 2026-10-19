@@ -1,4 +1,18 @@
-## 19 October ~09:55 UTC: recorder seq66..71 predicts two hidden pre-row38 MT words; strict two-sampler producer contradicted
+# K04/K08 recovery decision map (19 October 2026)
+
+**Current original acceptance:** K01/K02/K03/K05/K06/K07 PASS; **K04 and K08 MISSING**, combined INCOMPLETE and `accepted: false`.
+
+## 10:05 UTC Critic cross-report correction: do not propagate the node50 seq66..71 sampler claim
+
+The immediately following Agent29 report uses **consecutive node50 recorder controls** to infer row38 predecessors `7BEE882D` and `F1522284`. However [Agent38's independent intact-printer reconstruction](h17-k04-node50-sequence-falsification.md), already acknowledged in [Agent11's 09:46 correction](../communications/broadcast/2026-10-19T0946Z_agent11-node50-contiguous-falsified.md), fixes those two states to `E18DCD4D` and `820D840E` (13 and 18 bit disagreements). The contiguous-recorder hypothesis was therefore already falsified when the later inference was indexed. **Treat the Agent29 extrapolated states and strict-sampler contradiction as counterfactual, not evidence for a real extra RNG consumer.** The isolated recorder seq70 low31 anchor is unaffected. [Critic correction and cracking allocation](../communications/broadcast/2026-10-19T1005Z_Critic_discard-node50-contiguous-derivatives_pivot-to-target-constraints.md).
+
+**Separate newer lead:** [Agent47's message to Agent36](../communications/agent36/2026-10-19T0952Z_agent47-AX7778-K04-target-rank.md) reports that the seven-word AX-7778 checkpoint bridge and all remaining halfword checkpoints add 146 source-equation ranks to a conditional three-group MT system but still leave **128/128 K04 target bits free** in 3,036 tested placements. This is a valuable *negative target projection* for that model, not a K04 component. Seek a new source-grounded seed/producer constraint or a witness entering the missing target ancestors, rather than repeatedly refining phases with the same unconstrained state.
+
+K08 still lacks the original final caption words; source-backed edit/order/transcription evidence is a precondition for another useful directed phrase test. No additional broad paraphrase or six-slot replay work is warranted.
+
+---
+
+## Historical 09:55 UTC claim (superseded by the full-word incompatibility above): consecutive node50 would imply a two-sampler contradiction
 
 **New original-source conditional producer-model falsifier (Agent 29):** extending [Agent 11's CRC-valid recorder node50 sequential-control bridge](h17-k04-node50-sequence-bridge.md) three positions backwards predicts two previously unknown complete MT19937 words immediately before intact printer row38: **`3586854C` at −3** and **`7BEE882D` at −2** (untempered). The source-heldout row38 first payload word matches the same forward recurrence; a seeded Python synthetic test also passes. Under the explicit assumption that node50 seq66..71 are consecutive common-generator outputs, the **−2** word cannot be either a rejected pre-row38 CLASS draw (its accepted CLASS index is 1) or the accepted row37 DEST draw (its DEST index is 0/store, while original row37 DEST is desk). Thus the strict **DEST→CLASS two-sampler-only, no-extra-call model fails at row37→38**, independently of the unknown total gap length. A distinct extra selector/generator call, different call order or nonconsecutive recorder controls could explain the discrepancy; historical producer code remains unverified. [Detailed report](h17-k04-node50-pre38-sampler-discriminator.md), [standalone source-only SFT](../agents/agent29/k04_node50_pre38.py), [coordination broadcast](../communications/broadcast/2026-10-19T1000Z_agent29-node50-pre38-sampler-falsifier.md). **This is not K04 bytes or K08 wording; six original slots still PASS, K04/K08 MISSING.**
 
