@@ -1,10 +1,10 @@
 # K04 new original administrative and telemetry donor classes: no target bridge
 
-**Agent 8, 19 October 2026 ~18:42 UTC.** This is a *new source-family cracking test*, restricted to prospective original-source donors for the two hidden K04 MT ancestor intervals. It recovers **zero selected K04 bits** and does not propose a K08 phrase. The existing target-indexed donor cut and original verification state remain unchanged.
+**Agent 8, 19 October 2026 ~18:42 UTC, amended after Agent 3 overlap discovered.** This is a *new K02 telemetry source-family cracking test*, restricted to prospective original-source donors for the two hidden K04 MT ancestor intervals. It recovers **zero selected K04 bits** and does not propose a K08 phrase. The existing target-indexed donor cut and original verification state remain unchanged.
 
 ## Prior gap and new original inputs
 
-Earlier cross-source K04 inversion searched four-byte TRP2 **control** words, RC-17 footer strips and AX-7778 **two-byte transfer** checkpoints. This experiment adds three independently identified source classes not covered by those prior *inverse-MT donor* searches:
+Earlier cross-source K04 inversion searched four-byte TRP2 **control** words, RC-17 footer strips and AX-7778 **two-byte transfer** checkpoints. **Important priority correction:** Agent 3 had already tested the WN-14 signed groups and 44 seal serials with the same inverse-MT bridge method at ~16:48 UTC (see [Agent 3 SFT](../agents/agent3/k04_wn14_seal_source_donor_sft.py) and [message to Agent 8](../communications/agent8/2026-10-19T1648Z_agent3-signed-ink-seal-bridge-null.md)). Those two repeated checks below are replication controls only. The distinct previously untested source hypothesis in this result concerns **LT-204 diagnostic-word ordered three-/four-run precursors**.
 
 1. Four signed WN-14 **ink** control groups, verbatim in original `evidence/mail/03.eml` and `06.eml`: `049AAB2E`, `1CDE7A82`, `CD7C6023`, `4303C91A`. These jointly supply accepted K01 but are tested here only as possible shared-generator MT carriers.
 2. Forty-four original `SG-XXXXXXXX` serial fields in `evidence/maintenance/seal-receipts.jsonl`. These include unrelated permits, revisions and unsigned records deliberately kept as *auxiliary observations*, without changing the signed K03 selection.
@@ -34,6 +34,6 @@ Locally executed read-only original-ZIP reproducer `agents/agent8/k04_new_donor_
 
 ## Cracking implication
 
-This rules out **directly serialized 31-bit original WN-14/serial precursors** in the tested printer inverse pairs and **three-/four-word sequential LT-204 diagnostic upper16 precursors** in the tested source orders. It does **not** rule out transformed sources, isolated two-halfword matches, other producer epochs, shared MT states without a tested recurrence fingerprint, or newly acquired source records. Crucially, no new independent donor reaches the row43→44 and row96→97 hidden windows. Don't expand these exact negative searches absent a new source/producer mechanism.
+Agent 3 already excluded **directly serialized WN-14/serial low31 precursors** in the tested printer inverse pairs. This run independently replicates that bound and newly excludes **three-/four-word sequential LT-204 diagnostic upper16 precursors** in the tested source orders. It does **not** rule out transformed sources, isolated two-halfword matches, other producer epochs, shared MT states without a tested recurrence fingerprint, or newly acquired source records. Crucially, no new independent donor reaches the row43→44 and row96→97 hidden windows. Don't expand these exact negative searches absent a new source/producer mechanism.
 
 Keep the target-facing work concentrated on an independently indexed full-/low31-word donor *inside both* ancestral windows or on independently recovered original ESC-N coupon/mask evidence. The original final K08 caption still has no exact-text witness; this experiment deliberately performs no new free-form caption guessing. **K04 0/128 newly recovered bits; K08 zero new final words.** Six other components remain accepted in the canonical shared state; combined REC8 is still incomplete.
