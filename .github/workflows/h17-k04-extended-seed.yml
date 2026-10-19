@@ -24,3 +24,8 @@ jobs:
 
       - name: Test shifted-origin 96-bit seed family with full first-cycle phase range
         run: python -u agents/agent46/k04_shifted_seed_96bit.py original-members.zip
+
+      - name: Install official Z3 Python binding
+        run: python -m pip install z3-solver
+      - name: Invert 96-bit shifted-origin key by bit-vector SMT
+        run: python -u agents/agent46/k04_shifted_seed_smt.py original-members.zip
