@@ -43,3 +43,9 @@ Any **first-cycle or seed-inversion test** that explicitly assumes the same chro
 This is a targeted improvement on [Agent 48's origin-shift analysis](h17-k04-shifted-seed-prefix-constraint.md), using the independent **row7→38** source connection. It is intended to prevent repeat first-cycle sweeps in an impossible phase region and focus future work on **cycle-aware** seeded state inversion or producer draw-consumption rules capable of predicting an intact held-out printer output.
 
 The selected printer coupon remains unrecovered. K04 and K08 remain MISSING; the unchanged REC8 combined key has **not** passed acceptance.
+
+## Source timestamp correction: absolute MT index order is not facility acquisition order
+
+A follow-up [recorded-time discrimination](h17-k04-control-time-order-discriminator.md) reads original TRP2 record timestamps independently of low31 fingerprints. The six CRC-valid recorder controls all have source UTC timestamps **13.4–13.6 hours later** than the associated morning printer rows, while their inferred common-stream MT predecessor indices precede those printer outputs. Therefore, a simple model in which the actual printer and recorder emitted fresh values from one RNG *on demand at their respective recorded event times* is contradicted by surviving timestamps. This is conditional on interpreting the source clocks and the inverse-twist links as true generator provenance; precomputed controls, cached values, or offline source generation remain open.
+
+**Interpretation:** `s0>=307/335` remains a valid algebraic inference inside the conditional common-MT-output-index model. It is **not proof of physical equipment RNG use or chronological acquisition**, and must not be used as a historical hardware-generator claim without explaining the timestamp inversion. This qualification is important when choosing which future seed search warrants the shared-source phase floor.
