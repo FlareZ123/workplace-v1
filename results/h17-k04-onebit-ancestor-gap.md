@@ -41,3 +41,14 @@ Thus **the 4-word target ancestor block is entirely inside the hidden draw-consu
 ## Next useful attack
 
 Recover a *source-motivated* model for the skipped outputs immediately following row 43 (and preferably source-linked seed/state constraints), then predict held-out intact tail blocks before checking a selected K04 coupon. The five tail records remain distinct and the source reconstruction may contain errors. An accepted K04 byte candidate must still pass the untouched original REC8 slot commitment. This result offers a precise missing-state target and a coherent interpretation of the additional cross-row equalities; it does not assert that the historical printer used MT19937 or that the current selected ACK is corrupted.
+
+
+## Stronger consequence: a *second*, synchronized hidden gap
+
+The same two one-bit anchors force `s96=s43+393` (middle word is row96 index3) and `s97=s44+394` (middle word is row97 index2). Thus the source-conditional adjacent block gaps satisfy the exact identity **`d96=d43+1`**, where `d[r]=s[r+1]-s[r]`. Since `d43>=11`, the row96→97 transition spans at least 12 generator outputs (**at least eight are skipped**, independently of any global cap).
+
+For each missing target word `x[s129+j]`, its MT recurrence middle input is `x[s129+j-227]`. The tail/early bounds give
+`s129+j-227 >= s43+400+j > s96+3 = s43+396`
+and
+`s129+j-227 <= s44+389+j <= s44+392 < s97=s44+394`.
+Therefore **all four middle words are also trapped in the unobserved row96→97 gap**. Together with the `-623` second-input ancestor proven above, every target word's direct recurrence depends on unobserved values in **two synchronized hidden gaps**. This is a stronger, source-derived obstacle to simplistic prediction from intact visible words. A viable state-recovery mechanism must reconstruct both gaps, use another MT relation, or exploit independent seed/source information. This conditional deduction requires only the two tail anchors and chronological disjoint four-word blocks; it does not use a guessed global maximum gap.
