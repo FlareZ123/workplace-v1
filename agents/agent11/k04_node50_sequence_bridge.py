@@ -1,4 +1,4 @@
-"""Read-only source-conditioned MT bridge from TRP2 node50 sequence order.
+"""Read-only falsification of TRP2 node50 contiguous-sequence MT hypothesis.
 
 Run: python agents/agent11/k04_node50_sequence_bridge.py case-export.zip
 Uses original spool and recorder only; never reads selected row129 or REC8
@@ -51,6 +51,11 @@ def twist(left, right):
     return (y >> 1) ^ (TWIST if y & 1 else 0)
 
 
+def inverse_twist(value):
+    odd = value >> 31
+    return (((value ^ (TWIST if odd else 0)) << 1) | odd) & MASK
+
+
 def printer_record(line):
     payload = bytes.fromhex(re.search(r"PAYLOAD=([0-9A-F]{32})", line).group(1))
     return [untemper(value) for value in struct.unpack("<4I", payload)]
@@ -68,6 +73,8 @@ def main(path):
     # Original, intact rows 7 and 38 are the only printer payload inputs.
     row7 = printer_record(lines[7])
     row38 = printer_record(lines[38])
+    row91 = printer_record(lines[91])
+    row121 = printer_record(lines[121])
     assert "CLASS=RECOVER" in lines[38]
     assert "DEST=bench" in lines[7]
 
@@ -104,8 +111,25 @@ def main(path):
     print("ROW38_CLASS_TOP3", temper(pre38) >> 29, "RECOVER")
     print("PREDICTED_ROW7_POST_DEST_MT", f"{post7:08X}")
     print("ROW7_DEST_TOP2", temper(post7) >> 30, "bench")
+    # Independent MT pair witnesses give s91-s38=394, s121-s38=621.
+    # Inverting two adjacent twist equations fixes complete source words
+    # X[s38-2] and X[s38-1] WITHOUT any recorder sequence-order premise.
+    at_minus2 = ((inverse_twist(row91[1] ^ row121[1]) & 0x80000000)
+                 | (inverse_twist(row91[0] ^ row121[0]) & 0x7fffffff))
+    at_minus1 = ((inverse_twist(row91[2] ^ row121[2]) & 0x80000000)
+                 | (inverse_twist(row91[1] ^ row121[1]) & 0x7fffffff))
+    proposed_minus2 = row7[1] ^ twist(control[67], control[68])
+    assert (at_minus2, at_minus1) == (0xE18DCD4D, 0x820D840E)
+    assert proposed_minus2 == 0x7BEE882D
+    assert at_minus2 != proposed_minus2
+    assert at_minus1 != pre38
+    print("INDEPENDENT_ROW38_MINUS_2", f"{at_minus2:08X}")
+    print("CONTIGUOUS_SEQ67_68_PREDICTION", f"{proposed_minus2:08X}")
+    print("INDEPENDENT_ROW38_MINUS_1", f"{at_minus1:08X}")
+    print("CONTIGUOUS_SEQ68_69_PREDICTION", f"{pre38:08X}")
+    print("ALL_72_CONTIGUOUS_HYPOTHESIS", "FALSIFIED")
     print("NODE50_SEQUENCES", len(control), "ALL_CRC_VALID")
-    print("SOURCE_ONLY_NEW_WORDS", True)
+    print("SOURCE_ONLY_NEW_WORDS", "LOCAL CONDITIONAL OUTPUTS ONLY; GLOBAL SEQUENCE REJECTED")
     print("K04_K08_STATUS", "UNRESOLVED")
 
 
