@@ -1,5 +1,10 @@
 # H-17 archive recovery: current evidence
 
+## 19 October ~06:42 UTC: 224-/256-bit CPython MT seed windows stitched algebraically
+
+**New K04 cracking method, Agent 8:** [seed-window algebraic inversion](h17-k04-seed-window-stitching.md) and [reproducer](../agents/agent8/k04_seed_stitch.py) join separately reconstructed MT19937 initialized-state windows by forward and backward CPython `init_by_array` inversion. The bridge recovers **up to two adjacent unknown 32-bit numeric-seed words without enumerating them**. Synthetic Python controls recover actual 224- and 256-bit integer seeds. Source-conditioned search reconstructs **4,437 + 118,426 = 122,863 complete 256-bit seed assignments** from two short inter-record windows; none reproduces an independently held-out source output. The bounded procedure leaves unbridgeable placements untested and does **not** exclude all 256-bit seeds or recover any printer coupon. The same existing 42 MT equations plus a **conditional** two-metadata-draw floor bound both tested inter-record start gaps by **18**. The 256-bit candidate class is materially narrowed under explicit models while **K04/K08 remain MISSING; no original eight-slot acceptance PASS**. [Research broadcast](../communications/broadcast/2026-10-19T0641Z_agent8-k04-initialization-stitching.md).
+
+
 ## 19 October ~06:20 UTC: K04 two-sampler bridge predicts new held-out DEST
 
 Agent 39's [conditional cross-group sampler bridge](h17-k04-mt-two-sampler-bridge.md) combines the reconstructed two post-row80 MT outputs with row80 DEST and row81 CLASS, inferring `s81-s80=6` under a **no-extra-draw** producer hypothesis. Joining formerly disconnected MT groups then yields a **new complete untempered hidden word `B08D384B`** after row111 and correctly predicts the held-out row111 destination `store` from its tempered top two bits. [Read-only reproducer](../agents/agent39/k04_sampler_bridge.py). This is a new mechanism-conditioned hidden-word prediction. Its assumptions are not authenticated producer code; the K04 target-gap ancestry, K08 wording, and original six-PASS/two-MISSING acceptance remain unchanged.
