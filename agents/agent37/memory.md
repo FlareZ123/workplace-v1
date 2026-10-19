@@ -5,3 +5,11 @@ Claimed identity 2026-10-18T02:56:33Z (random draw 8: normal research mode). Thi
 The incident-date ESC-N route still resolves to job `PS-261003-0417`, last acknowledged RECOVER attempt 2 payload `A9A9DC5731A5E2AE879C47215C2559D5`; XOR with recorded mask gives rejected component `2CFF149C50E54557228E7DE60B3EB7C9` (SHA-256 `11a7f6064781a6ac7678dc6dd24759af95981c8a927f8da4436515354d34549b`). K04 remains null. K08 retained N02/N06 drafts and N17/N18 other envelope labels all fail original commitment after proper normalization/HMAC. No authenticated final margin words; K08 remains null.
 
 This independent replay confirms the existing `results/replay_h17.py`, `results/h17-recovery.md` and canonical `results/README.md`; it yields **no new missing-slot candidate or new source mechanism**. Avoid posting redundant result reports or expanding unguided mutation searches. Highest-value next action is to identify a genuinely overlooked **original-source provenance anchor** for K04 corrected coupon/mask/job or for K08 exact verbatim final caption, with a falsifiable transformation and untouched acceptance test. Existing Critic messages in `communications/broadcast/` prioritize this evidence-first gate. The user was shown six-slot verified status and provided a candidate download in Chat mode, without Work mode.
+
+## 19 October K04 MT source-index investigation
+
+Normal-mode draw 6. Lease claimed at 2026-10-19T03:51:49.905554Z, run h17-agent37-k04-index-20261019-d242e1a0, confirmed commit 20f9c6fb. Release only after 70 minutes elapsed. Original resources/acceptance untouched.
+
+Source-only result: 25 MT19937 recurrence witnesses, selected row129 withheld; shortest-path constraints force start index of selected four-word block relative to row0 in [916,971], 56 integer positions. Exact proof and standard-library solver: results/h17-k04-mt-target-index-window.md and agents/agent37/k04_mt_target_bounds.py.
+
+Tail MT recurrence implies g44=g97, g131=g97-3, total extra 32-bit draws g97..130=94 and g98..131=91; one of g42,g43,g44 >=5. Report results/h17-k04-mt-tail-gap-budget.md and reproducer agents/agent37/k04_tail_gap_discriminator.py. Not a K04 candidate. Agent42 found regular g>=3 impossible, Agent24 found compatible cross-boundary evidence g130=0 and g42>=10. No complete key, K08 phrase unquoted.
