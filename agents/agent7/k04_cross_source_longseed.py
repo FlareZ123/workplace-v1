@@ -254,9 +254,9 @@ def scan(source):
                         for p11 in range(max(82+shift, phases[10]+6),
                                          min(93+shift, phases[13]-6)):
                             gap10 = p11 - phases[10]
-                            gap13 = phases[13] - 1 - p11
+                            gap13 = phases[13] - p11
                             if not (-shortest(11,10) <= gap10 <= shortest(10,11)
-                                    and -shortest(13,11) <= gap13 <= shortest(11,13)):
+                                    and -shortest(13,11)-1 <= gap13 <= shortest(11,13)-1):
                                 continue
                             stats["bridge_10_11_attempts"] += 1
                             extended = bridge(pieces, phases[10], p11,
@@ -277,7 +277,7 @@ def scan(source):
         total[count] = stats
     assert total[9]["completed_total"] == 2022
     assert total[10]["completed_total"] == 0
-    assert total[11]["completed_total"] == 7112
+    assert total[11]["completed_total"] == 8935
     print("K04_K08_UNRESOLVED", True)
 
 
