@@ -145,6 +145,8 @@ def positive_controls():
         9: {3: 20, 10: 76, 13: 105, 14: 116, 28: 207},
         10: {3: 20, 10: 74, 13: 102, 14: 110, 28: 208},
         11: {3: 20, 10: 77, 13: 105, 14: 118, 28: 211},
+        12: {3: 20, 10: 74, 11: 83, 13: 102, 14: 119, 28: 208},
+        13: {3: 20, 10: 74, 11: 82, 13: 102, 14: 110, 28: 208},
     }
     for count, phases in phases_by_size.items():
         keys = [(0x1234AFFB + 0x86A119 * j) & MASK for j in range(count)]
@@ -170,10 +172,19 @@ def positive_controls():
                 assert keys[k] == value
                 found[k] = value
         if len(found) < count:
-            bridged = bridge(found, phases[13], phases[14],
-                             window[13], window[14], count)
-            assert bridged is not None
-            found = bridged
+            if count >= 12:
+                p11 = phases[11]
+                p11_words = initial_words([
+                    (emitted[p11+j], emitted[p11+j+227])
+                    for j in range(3)
+                ])
+                found = bridge(found, phases[10], p11,
+                               window[10], p11_words, count)
+                assert found is not None
+            if len(found) < count:
+                found = bridge(found, phases[13], phases[14],
+                               window[13], window[14], count)
+                assert found is not None
         assert found == dict(enumerate(keys)), (count, found)
         print("synthetic_seed_recovered_bits", count * 32)
 
@@ -278,6 +289,76 @@ def scan(source):
     assert total[9]["completed_total"] == 2022
     assert total[10]["completed_total"] == 0
     assert total[11]["completed_total"] == 8935
+
+    # Sequential algebraic bridges: 12- and 13-word seed arrays may
+    # have three or four unknown key words, so use B->A or A->B.
+    for count in (12, 13):
+        stats = Counter()
+        matches = []
+        for shift in range(186):
+            for original in feasible:
+                phases = {r: p+shift for r,p in zip(ROWS, original)}
+                if phases[28]+231 >= 624:
+                    continue
+                stats["first_cycle_phase_assignments"] += 1
+                keys = {}
+                for row in ROWS:
+                    part = fragments(row, phases[row], count)
+                    if part is None or any(k in keys and keys[k] != value
+                                           for k, value in part.items()):
+                        break
+                    keys.update(part)
+                else:
+                    stats["fragment_compatible"] += 1
+                    p10, p13, p14 = (phases[row] for row in (10, 13, 14))
+                    row11_phases = []
+                    for p11 in range(max(82+shift, p10+6),
+                                     min(93+shift, p13-6)):
+                        if (-shortest(11,10) <= p11-p10 <= shortest(10,11)
+                            and -shortest(13,11)-1 <= p13-p11 <= shortest(11,13)-1):
+                            row11_phases.append(p11)
+                    first_A = bridge(keys, p13, p14,
+                                     windows[13], windows[14], count)
+                    if first_A is not None:
+                        stats["A_first_partial"] += 1
+                        for p11 in row11_phases:
+                            candidate = bridge(first_A, p10, p11,
+                                               windows[10], windows[11], count)
+                            if candidate is not None and len(candidate) == count:
+                                stats["A_then_B_completed"] += 1
+                                if heldout_match(candidate, count, phases[3]):
+                                    matches.append((shift, original, p11, "A_B",
+                                                    candidate))
+                                else:
+                                    stats["heldout_reject"] += 1
+                    for p11 in row11_phases:
+                        first_B = bridge(keys, p10, p11,
+                                         windows[10], windows[11], count)
+                        if first_B is not None:
+                            stats["B_first_partial"] += 1
+                            candidate = bridge(first_B, p13, p14,
+                                               windows[13], windows[14], count)
+                            if candidate is not None and len(candidate) == count:
+                                stats["B_then_A_completed"] += 1
+                                if heldout_match(candidate, count, phases[3]):
+                                    matches.append((shift, original, p11, "B_A",
+                                                    candidate))
+                                else:
+                                    stats["heldout_reject"] += 1
+        assert stats["first_cycle_phase_assignments"] == 513553
+        assert not matches, "Longer source-consistent seed: investigate before publication"
+        print("two_bridge_seed_array_words", count, "stats", dict(stats),
+              "heldout_matches", len(matches))
+        if count == 12:
+            assert stats["fragment_compatible"] == 27370
+            assert stats["A_first_partial"] == 4770
+            assert stats["B_first_partial"] == 17993
+            assert stats["heldout_reject"] == 0
+        else:
+            assert stats["fragment_compatible"] == 50030
+            assert stats["A_then_B_completed"] == 25843
+            assert stats["B_then_A_completed"] == 22894
+            assert stats["heldout_reject"] == 48737
     print("K04_K08_UNRESOLVED", True)
 
 
