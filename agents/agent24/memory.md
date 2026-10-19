@@ -32,3 +32,7 @@ Examined only source-described missing-slot mechanisms. A conditional 16-bit adj
 For K08, inferred only a tentative genre distinction from N10/N13/N20/N23: an observational caption may be more natural than the numerous maxim-like sentences previously tested. Thirteen individually authored past-tense photo-caption proposals all failed original K08 acceptance. The N02 HMAC positive control matched. No exact-word witness or genuine reconstruction mechanism found, and N23 does not exclude an aphoristic caption.
 
 The current valid status remains six accepted slots, K04/K08 unknown. Next priority is an original integrity or exact-edit witness rather than enlarging either unsupported candidate class.
+
+### Focused N10→N01 K08 photo-caption edit hypothesis
+
+N10 refers to the photograph after the last cup; N01 uniquely identifies an empty-bench photograph caption explicitly mentioning finished tea and the sea. Conditional hypothesis: Emily reused N01's exact sentence opening `The sea looks different` in her final keeper margin and edited the remainder using N13/N20 hospitality cues. Tested 18 distinct source-stem-preserving natural completions with original K08 HMAC/slot commitment; no match, positive N02 control passed. Preserved reasoning at `agents/agent24/k08-n01-photo-caption-edit.md` (commit `7b22dee`). The N01 photo referent is plausible rather than certain, and the exact stem retention is not documented. Do not grow this family without independent edit evidence.
