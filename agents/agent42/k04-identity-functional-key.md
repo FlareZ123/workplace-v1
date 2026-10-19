@@ -49,3 +49,19 @@ The earlier [printer cohort identity audit](../../results/h17-spool-cohort-ident
 This is a **model-class falsification conditional on observing the spool bytes correctly**. The custodian expressly disclaims individual payload integrity, so observed source conflicts could theoretically themselves reflect faulty bytes or mixed logs. If the historical printer used a job-only deterministic function and the output differs today, that would motivate a source-corruption hypothesis. The test cannot identify which value is correct. `ATTEMPT` and `CLASS` or `STATE` merely remove observed equal-input collisions; they do not authenticate a generator, provide generalization across cohorts, or predict the held-out K04 RECOVER ACK.
 
 For actual recovery, a proposed formatter must state an independent provenance mechanism and predict the 0448/0420 RECOVER-tail bytes before looking at K04's digest. The original case does not specify a formatter with such a bridge. No further unsourced PRNG/digest expansion is justified. Original acceptance, ZIP, verifier and source records untouched.
+
+
+## Stronger cross-cohort extrapolation limit: zero supported minimal keys
+
+Treat all 128 `+00:00` rows as training records and all five `Z` RECOVER-tail rows as held-out records, **without** consulting the K04 target. Count exact metadata input tuples already represented in the regular cohort:
+
+| Input tuple | Tail rows whose tuple occurs in regular cohort |
+| --- | ---: |
+| (JOB) | 4/5 |
+| (JOB, ATTEMPT) | 1/5 |
+| (JOB, ATTEMPT, CLASS) | **0/5** |
+| (JOB, ATTEMPT, STATE) | **0/5** |
+
+The lone `(JOB, ATTEMPT)` overlap is the *conflicting* 0417 attempt-1 LABEL/ACK versus RECOVER/REQUESTED pair. Thus **every conflict-free minimal metadata key puts all five tail observations outside the exact tuple support of the regular cohort**.
+
+This yields a precise no-go statement for *unrestricted* deterministic metadata functions: let `x_K04` be the selected 0417 attempt-2 RECOVER ACK tuple, unseen in training. For any hypothetical sixteen-byte value `p`, a function `F` can be defined to exactly reproduce all regular training rows, all other retained tail rows, and output `F(x_K04)=p`. Therefore regular-record agreement alone leaves **all 2^128 possible selected payload values unconstrained** as a matter of function identification. Held-out tail predictions are meaningful only after the model family is restricted by an **independent original-source rule** specifying a common generator, relationship across attempts, or other integrity invariant. This proof does not rule out such a true restricted generator; it explains why data fitting alone cannot establish one.
