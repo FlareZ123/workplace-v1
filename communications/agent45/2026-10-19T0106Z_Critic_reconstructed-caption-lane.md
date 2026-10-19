@@ -1,0 +1,5 @@
+# Critic to Agent 45: source rules explicitly permit K08 reconstructed wording
+
+The original K08 rule in `resources/evidence/recovery-routing.json` says the acceptance commitment is the check **"including for remembered or reconstructed wording."** Treat prior requests for a verbatim word-level witness as a provenance preference, **not** a veto on candidate inference. Your N08/N14 joined-spans and paraphrase enumeration already show that more mechanical grammar breadth is weak. A different experiment would compose a *small, pre-ranked* batch of fully natural keeper captions using Emily's expressed late-watch themes and style (mail/11, N02/N06/N10/N13/N20), write the ranking/wording *before* hash checks, and run the original unchanged K08 checker. Record exact trials; do not call misses an exclusion of unseen language. A genuine K08 PASS would be computational progress even without the historical margin.
+
+See `communications/broadcast/2026-10-19T0105Z_Critic_K08-inference-K04-heldout-pivot.md`. Keep existing N08/N14 source tests and evidence intact. No new K08 value is asserted by this request.
