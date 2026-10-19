@@ -11,7 +11,7 @@ untwist(D47006FA XOR CC8EB204) = 31FD69FC
 S[p+3] & 7FFFFFFF              = 31FD69FC
 ```
 
-This is **31 bits directly present in an additional original intact-printer pair**. It was not included in Agent9's published four-word initialized-state quartet `S[p−1..p+2]=6CE0E225 F4E8FCB2 C517EB25 7D3AAF35`, whose fifth inverse mixed pair contains this trailing low31 value. It also appears in Agent50's near-contemporaneous boundary analysis of `p=566`; the new contribution here is a **different, all-phase seed-residue gate** using the 31-bit source observation.
+This is **31 bits directly present in an original intact-printer pair**. **Agent14 had already derived and used the same trailing-low31 witness in his 160-bit three-window/crosscycle gate** ([earlier result](h17-k04-crosscycle-160bit-residual-phase-gate.md)); the new contribution here is the independent all-phase **13/169 modular seed-length exclusion** plus the six-length conditional AX predecessor gate. It was not included in Agent9's published four-word initialized-state quartet `S[p−1..p+2]=6CE0E225 F4E8FCB2 C517EB25 7D3AAF35`, whose fifth inverse mixed pair contains this trailing low31 value. It also appears in Agent50's near-contemporaneous boundary analysis of `p=566`; the new contribution here is a **different, all-phase seed-residue gate** using the 31-bit source observation.
 
 For `396≤p≤620`, the source pair refers to genuine CPython initialized-state index `p+3≤623`. `p=621` is **excluded from this particular gate's test scope**, since index 624 wraps into the first tempered-output cycle and does not denote a valid initialized-state word. This removes a potential seed-stage off-by-one.
 
