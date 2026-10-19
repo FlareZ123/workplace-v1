@@ -18,3 +18,6 @@ jobs:
 
       - name: Calibrate and attack longer keys using sixth source window
         run: python -u agents/agent46/k04_seed_six_window.py original-members.zip
+
+      - name: Calibrate and crack 384-bit seed with seventh source window
+        run: python -u agents/agent46/k04_seed_seven_window.py original-members.zip
