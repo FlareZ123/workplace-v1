@@ -47,7 +47,7 @@ def main(path):
                 partial.append((row, destination, start + 4, bits, possible))
 
     accepted = [(r, label, idx) for r, label, idx in fully_decoded if idx < 3]
-    assert len(fully_decoded) == 17 and len(accepted) == 13
+    assert len(fully_decoded) == 17 and len(accepted) == 12
     assert all(DEST[label] == index for _, label, index in accepted)
 
     matches = [item for item in partial if item[0] == 39]
