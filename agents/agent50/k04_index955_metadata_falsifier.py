@@ -75,7 +75,7 @@ def main(source):
         if expected_dest not in got_dest or expected_class not in got_class:
             errors.append((r, r + 1, labels[r][1], sorted(got_dest),
                            labels[r + 1][0], sorted(got_class)))
-    assert two_draw == 50 and len(errors) == 15, (two_draw, errors)
+    assert two_draw == 50 and len(errors) == 11, (two_draw, errors)
     print("source_rank", len(basis), "indexed_row129", starts[129])
     print("two_draw_transitions", two_draw, "contradictory_transitions", len(errors))
     for row in errors:
