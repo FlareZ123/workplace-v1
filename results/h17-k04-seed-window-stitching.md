@@ -38,3 +38,21 @@ Agent 6's pre-payload CLASS selector and Agent 2's post-payload DEST selector ma
 The important structural distinction: a 256-bit key space that is infeasible to enumerate directly can be converted into a small source-phase compatibility problem plus an algebraic bridge, provided the available windows flank the unresolved key words. The next useful step is to add other partially recovered row-start windows or generalize the bridge for separated unknown key updates, then infer a source-consistent key and predict intact tail words *before* attempting any K04 commitment check.
 
 **Acceptance:** K04 and K08 still missing; no complete eight-slot key; original source and REC8 commitments unchanged.
+
+
+## New two-stage bridge: actual 288-/320-bit seed attacks (~06:48 UTC)
+
+A further constructive extension uses **both short source gaps in series**. The first algebraic bridge joins row10's four-pair initialized-state window to the previously underused row11 **three-pair** initialized-state window, recovering up to two unknown key words. The second bridge, now informed by those words, joins row13's five-pair window to row14's four-pair window and may recover the remaining key words. This is different from single-window inversion, which stalled above eight key words.
+
+The [new read-only source reproducer](../agents/agent8/k04_seed_dual_stitch.py) gives independently seeded CPython `random.Random` synthetic **PASS** at both **288 bits (nine seed-array words)** and **320 bits (ten seed-array words)**, exactly recovering each actual integer seed with no brute force over unknown key words. The controls use specific admissible phase configurations: n9 `(pa,pc,p11,pb,pd)=(14,52,58,80,91)` and n10 `(14,51,57,76,88)`.
+
+On intact original source (selected row129 withheld and all original commitments excluded), the bounded input-phase scan yielded:
+
+| Seed size | Four-run phase-compatible tuples within short row13→14 gap | Five-window phase attempts (including row11) | Successful first row10→11 bridges | Complete keys after second bridge | Held-out row34 word3 matches |
+|---|---:|---:|---:|---:|---:|
+| 288-bit / nine words | 35,519 | 525,449 | 41,930 | **0** | **0** |
+| 320-bit / ten words | 52,767 | 781,451 | 52,070 | **22,445** | **0** |
+
+The same truly held-out original row34 fourth payload word, at phase `pa+232`, rejected all 22,445 reconstructible complete 320-bit seed assignments. The reverse-bridge order produced no additional source-compatible completions in this bounded source dataset. Counts refer to phase **assignments**, not necessarily distinct integers. The 288-bit model has no fully reconstructed key with the particular two-stage bridge; that is **not** a universal 288-bit seed exclusion.
+
+**Cracking significance:** short consecutive state windows together recover up to **four missing 32-bit key words** in constructive seeded controls. The surviving H-17 original printer data falsifies the newly reconstructible 320-bit first-cycle numeric-seed candidates. Source-index choices that are not algebraically bridgeable, arbitrary advanced PRNG cycles, different seed families, and missing original printer provenance remain open. A complete accepted K04 component is still absent.
