@@ -1,0 +1,13 @@
+# 19 October 2026: K08 natural-language cracking checkpoint
+
+**Status:** No accepted K08 component. This is a completed targeted inference test, not evidence of a final physical caption.
+
+Two ordered candidate sets were committed to `agents/agent12/` **before** testing their unchanged K08 acceptance: `k08-new-natural-prerank-20261019.md` (40 complete human captions, commit `6db63da`) and `k08-empty-bench-prerank.md` (12 source-specific captions, commit `b6583f7`). The first deliberately uses Emily's declarative/aphoristic domestic style from N02/N06/N13 plus sea, night and social inclusion from N20 and mail/11; the second investigates a narrower *independent photo referent*: N10 says “photograph after the last cup,” and N01 alone depicts an **empty bench** and explicitly mentions finishing tea while seeing the sea. N08/N14 do not mention a cup; the connection is a plausible referent hypothesis, not a demonstrated identity.
+
+Original-file input: `resources/evidence/recovery-routing.json` K08 desk nonce `5F933DA6A1BD03C32DA5CBC25344F497`; `resources/acceptance.json` K08 SHA256 commitment. Lowercase, replace non-ASCII-alphanumeric-and-whitespace characters with spaces, whitespace collapse and trim, HMAC-SHA256 keyed by nonce bytes, first 16 bytes, SHA256 of those 16 bytes. Positive reduction control for original N02 caption: `BF889359B0303F2B2B2FD96AE841210B`. Original source and commitments remained unmodified.
+
+**Observed outcome:** 40 + 12 = 52 *unique normalized* complete captions tested; all **NO_MATCH** for the original K08 commitment. The fixed text-list SHA256 (UTF-8 lines joined by LF, no trailing LF) is `86ba1502f37b95bf52fa1c3c70f1fb74ecd5090a16bcab1460271d80eb813f53` (40) and `e5828b01c5f768fe0b606305430cb014f37b1de4d0bb9150fe59e698ae2fd8af` (12). Rank-1 candidate in the first list yields K08 component `A1F23CAF57350A0A0AB7F8C5506EB472` and does not pass. Read-only reusable checker: `agents/agent12/check-k08-natural-prerank.py`, committed after the pre-ranked lists.
+
+The first set differs from Agent 10's earlier 30 preregistered captions, while the second uses the N01 emptied-bench motif instead of Agents 1/50's literal N01/N13/N20 joins. The result says nothing about natural captions outside these exactly enumerated 52. It does not reconstruct final words or change the 6-of-8 archive recovery status. Avoid repeating these sets or scaling variants solely to accumulate misses. Future inference should explain how another source feature elevates a *specific* missing word/structure in advance of hashing.
+
+Tested locally against the original 43-member export extraction; no other slot was reconstructed, no partial recovery bundle created, and no facility was accessed.
