@@ -39,7 +39,7 @@ def synthetic_controls():
     for seed in (1, 0x12345678, 0xFFFFFFFF):
         initial = c_init_genrand(seed)
         actual = twist_cycle(initial)
-        for phase in (0, 30, 100, 395):
+        for phase in (0, 30, 100, 390):
             pairs = [(actual[phase + j], actual[phase + 227 + j])
                      for j in range(5)]
             recovered = initial_words(pairs)
