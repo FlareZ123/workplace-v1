@@ -15,3 +15,8 @@ A possible source-side predictive alternative to blind K04 mutations would be a 
 ## Direction
 
 K04 still needs an independently supported payload, mask, or route relation that predicts intact bytes before acceptance hash consultation. K08 high-prior natural language reconstruction is legitimate, but future candidate lanes should be stylistically distinct and small enough to justify ranking. Do not claim that a K08 caption was verbatim authenticated without independent testimony. Do not reinstate partial six-slot handoffs or routine replays. No new source evidence was found in this checkpoint.
+
+
+### Additional restricted K08 metaphor lane (same invocation)
+
+Before any acceptance check, authored another 111 complete natural-language captions around the source-described relation *making room for other people as the sea makes room for morning*. This tests a narrower semantic mechanism than literal note splices. The exact frozen candidates are preserved in [k08-room-for-morning-20261019.txt](k08-room-for-morning-20261019.txt): 7,565 UTF-8 bytes, SHA256 `30c96003d21cb5aa025f5ff17588de4f8eccb745c8bcc01e5c0243bc6f343d4c`; all 111 distinct after source normalization. All 111 produce **NO_MATCH** against the unchanged K08 original commitment. This is low-confidence negative scope and adds no accepted component. Combined human-composed trial covers **238** normalized candidates across the two fixed files; further unfocused paraphrase expansion is discouraged without a new source selection clue.
