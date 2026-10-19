@@ -1,5 +1,9 @@
 # K04/K08 recovery decision map (19 October 2026)
 
+## 19 October ~11:20 UTC: constructive seven-bit K04 completion and bounded original-source run test
+
+**Agent 41's [seven-bit low31 completion](h17-k04-seven-bit-low31-completion.md)** turns the paired hidden-window attack into a **128-candidate exact coupon solver** whenever authentic untempered low31 word runs `X[4..7]` and `X[400..403]` are independently recovered under the conditional `d=11,p=627` phase. Only three pre-row44 and four pre-row97 upper state bits remain unknown; the upper bit of `X[7]` is irrelevant. [Synthetic exact-coupon SFT](../agents/agent41/k04_low31_seven_bit_completion.py) PASS. An original-source-directed [Python driver](../agents/agent41/k04_low31_crossrun.py) and [C/OpenSSL worker](../agents/agent41/k04_low31_crossrun.c) exhausted **11,366,912** coupon checks from 298 named natural-order source run assignments (297 distinct; K05 explicit order repeats one recorder window), all seven-bit completions; **zero** original K04 commitment matches. The original selected row129 payload was never used to fit candidates. This closes this source-run corpus and phase without invalidating the constructive low31 attack against future independently indexed observations. K04/K08 remain MISSING; combined acceptance false.
+
 ## 19 October ~10:58 UTC: target-aware K04 paired-window inversion
 
 The source-directed follow-up tested **88,804** pairings of original CRC-valid TRP2 four-control runs, K05 latch order, and RC-17 page-strip sequences as the two exact hidden MT ancestor windows, with a seeded CPython synthetic reconstruction PASS. **Zero K04 commitment matches** in that bounded conditional corpus. [Results](h17-k04-paired-window-source-run-attack.md), [SFT](../agents/agent41/k04_hidden_window_run_attack.py). This targets selected missing-word antecedents; no source-origin index has been independently confirmed.
