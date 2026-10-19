@@ -41,7 +41,7 @@ with zipfile.ZipFile(sys.argv[1]) as z:
     )
 
     for name in z.namelist():
-        if name == SPOOL or name.endswith(".raw"):
+        if not name.startswith("evidence/") or name == SPOOL or name.endswith(".raw"):
             continue
         try:
             text = z.read(name).decode("utf-8")
