@@ -62,7 +62,7 @@ def synthetic():
     for n in divisors+[167]:
         seed=int.from_bytes(bytes((17*i+53)%256 for i in range(4*n)),'little')|(1<<(32*n-1))
         s=random.Random(seed).getstate()[1][:624]
-        for p in (535,555,584,605,621):
+        for p in (396,400,535,555,584,605,621):
             known=key_plus_index(*(s[p:p+3] if n!=167 else s[p-1:p+2]),p+(2 if n!=167 else 1))
             choices=[key_plus_index(s[p-168],s[p-167],(s[p-166]&0x7fffffff)|bit,p-166)
                      for bit in (0,0x80000000)]
@@ -75,7 +75,7 @@ def main(zip_path):
     matches={}
     for delta,comparison in ((167,LATE[0:3]),(168,LATE[1:4])):
         hits=[]
-        for p in range(535,622):
+        for p in range(396,622):
             known=key_plus_index(*comparison,p+delta-166)
             for bit in (0,0x80000000):
                 if key_plus_index(early[0],early[1],low|bit,p-166)==known:
@@ -84,8 +84,8 @@ def main(zip_path):
     assert not matches[167] and not matches[168]
     print('source_early_two',*[f'{x:08X}' for x in early])
     print('source_third_low31',f'{low:08X}')
-    print('synthetic_controls_PASS',(len(divisors)+1)*5)
-    print('source_phase_535_621_two_high_bits_matches',matches)
+    print('synthetic_controls_PASS',(len(divisors)+1)*7)
+    print('source_phase_396_621_two_high_bits_matches',matches)
     print('CPython_integer_seed_word_lengths_excluded_if_firstcycle',divisors+[167])
     print('selected_row129_untouched_and_unread',True)
 
