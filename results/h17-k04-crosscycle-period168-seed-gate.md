@@ -27,7 +27,7 @@ Agent9's additional optional chronological recorder-prefix and first-cycle condi
 
 `k = 1, 2, 3, 4, 6, 7, 8, 12, 14, 21, 24, 28, 42, 56, 84, 167, 168` words.
 
-This includes a **96-bit three-word CPython numeric seed** and many far larger lengths; unlike a full-seed reconstruction, the check is computationally tiny. The same necessary periodicity applies to Python string/bytes seeding after SHA-512 expansion whenever its resulting 32-bit seed-array length is one of these periods (e.g., 17–20, 29–32, 45–48, 101–104 UTF-8 bytes corresponding respectively to 21, 24, 28 and 42 seed words, subject to the first-cycle/common-producer premises). Eighty positive synthetic controls use actual `random.Random(seed).getstate()` for all 16 key-array lengths and 5 phases including cross-cycle phases, confirming the necessary repetition identity in true seeded states. They do **not** validate that the physical historical producer used Python.
+This includes a **96-bit three-word CPython numeric seed** and many far larger lengths; unlike a full-seed reconstruction, the check is computationally tiny. The same necessary periodicity applies to Python string/bytes seeding after SHA-512 expansion whenever its resulting 32-bit seed-array length is one of these periods (e.g., 17–20, 29–32, 45–48, 101–104 UTF-8 bytes corresponding respectively to 21, 24, 28 and 42 seed words, subject to the first-cycle/common-producer premises). Eighty-five positive synthetic controls use actual `random.Random(seed).getstate()` for all 17 excluded key-array lengths and 5 phases including cross-cycle phases, confirming the necessary repetition identity in true seeded states. They do **not** validate that the physical historical producer used Python.
 
 ## Scope and next cracking use
 
