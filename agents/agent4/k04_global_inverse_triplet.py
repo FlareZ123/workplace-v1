@@ -81,21 +81,23 @@ def main(source):
     assert len(observed) == 528
     mismatches = []
     tested = 0
-    for t in observed:
-        if t + 397 not in observed or t + 624 not in observed:
+    for middle in observed:
+        t = middle - 397
+        end = t + 624
+        if end not in observed:
             continue
-        implied = untwist(observed[t + 397] ^ observed[t + 624])
+        implied = untwist(observed[middle] ^ observed[end])
         if t in observed:
             tested += 1
             if (implied ^ observed[t]) & 0x80000000:
                 mismatches.append(("predecessor-msb", location[t],
-                                   location[t + 397], location[t + 624]))
+                                   location[middle], location[end]))
         if t + 1 in observed:
             tested += 1
             if (implied ^ observed[t + 1]) & 0x7FFFFFFF:
                 mismatches.append(("successor-low31", location[t + 1],
-                                   location[t + 397], location[t + 624]))
-    assert tested == 106 and len(mismatches) == 38
+                                   location[middle], location[end]))
+    assert tested == 134 and len(mismatches) == 49
     assert ("predecessor-msb", (0, 3), (54, 0), (83, 3)) in mismatches
 
     # Ground-truth MT stream: source-independent inversion calibration.
@@ -107,7 +109,7 @@ def main(source):
                (x[t + 1] & 0x7FFFFFFF) for t in range(276))
     print("source positive witnesses: 42")
     print("conditional minimal stream span: 957")
-    print("inverse-triplet checks:", tested, "contradictions:", len(mismatches))
+    print("full inverse-triplet checks:", tested, "contradictions:", len(mismatches))
     print("excluded index triple: X[3], X[400], X[627]")
     print("observed: 8A037AD0 AF4CF577 A52674B5")
     print("inferred X[3] high bit: 0; observed: 1")
