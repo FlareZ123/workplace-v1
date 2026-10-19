@@ -1,0 +1,131 @@
+{
+  "title": "K08 human caption reconstruction rank fixed before commitment tests",
+  "ranking_criterion": "Ranks 1-10 directly express N13 late-night domestic image and N20 sea/table inclusivity with ordinary syntax; 11-20 explore a softer poetic voice; 21-30 are more figurative or depict a specific watch moment. Source mail/11 rules out a formal technical title and N17/N18 identify unrelated labels. All are hypothetical new sentences.",
+  "source_anchors": [
+    "evidence/mail/11.eml",
+    "evidence/crew/noticeboard-and-desk-notes.txt N02 N06 N10 N13 N20",
+    "evidence/mail/20.eml"
+  ],
+  "phrases": [
+    {
+      "rank": 1,
+      "caption": "There is always room for another cup when the sea turns pale outside the window."
+    },
+    {
+      "rank": 2,
+      "caption": "At the end of the night, the sea was quiet and there was still room at the table."
+    },
+    {
+      "rank": 3,
+      "caption": "The lamp stays on and the sea waits outside until everyone has found a place at the table."
+    },
+    {
+      "rank": 4,
+      "caption": "By the time the sea grows light, there is still room for one more cup."
+    },
+    {
+      "rank": 5,
+      "caption": "The sea outside the window can wait until everyone has had their tea."
+    },
+    {
+      "rank": 6,
+      "caption": "At the end of the watch, we leave a light and a place for whoever comes next."
+    },
+    {
+      "rank": 7,
+      "caption": "The mugs are by the window and the sea is almost morning."
+    },
+    {
+      "rank": 8,
+      "caption": "There is room at the table until the last voice has gone quiet."
+    },
+    {
+      "rank": 9,
+      "caption": "When the sea is dark and the watch runs late, there is always room for another voice."
+    },
+    {
+      "rank": 10,
+      "caption": "The last light of the night belongs to anyone who needs a place to sit."
+    },
+    {
+      "rank": 11,
+      "caption": "Somewhere between the last cup and the first light, we make room for each other."
+    },
+    {
+      "rank": 12,
+      "caption": "When the night is nearly over, the sea can wait while we pour one more cup."
+    },
+    {
+      "rank": 13,
+      "caption": "The sea beyond the window, the lamp on, and one more chair pulled up to the table."
+    },
+    {
+      "rank": 14,
+      "caption": "At the end of a long night there is still a little light and a place at the table."
+    },
+    {
+      "rank": 15,
+      "caption": "The morning comes over the sea and the table still has room for one more."
+    },
+    {
+      "rank": 16,
+      "caption": "We always leave a light on and a cup ready for the next watch."
+    },
+    {
+      "rank": 17,
+      "caption": "The sea looks kinder with a warm cup and someone waiting at the table."
+    },
+    {
+      "rank": 18,
+      "caption": "The night ends with the sea outside and everyone making room at the table."
+    },
+    {
+      "rank": 19,
+      "caption": "Before the first boat comes, there is time for one more cup by the window."
+    },
+    {
+      "rank": 20,
+      "caption": "The last cup is never the last if someone else is still awake."
+    },
+    {
+      "rank": 21,
+      "caption": "The little lamp stays on while the sea turns from night to morning."
+    },
+    {
+      "rank": 22,
+      "caption": "At the window the sea is changing colour, and nobody has to finish their tea alone."
+    },
+    {
+      "rank": 23,
+      "caption": "The room is ready for morning when there is a chair for everyone still awake."
+    },
+    {
+      "rank": 24,
+      "caption": "The sea outside and the quiet voices around the table mean the night is almost over."
+    },
+    {
+      "rank": 25,
+      "caption": "By the window the mugs wait for another voice at the end of the night."
+    },
+    {
+      "rank": 26,
+      "caption": "The last hour of the watch belongs to tea, the sea, and the people who stay."
+    },
+    {
+      "rank": 27,
+      "caption": "When the sea comes back into view, everyone still has a place at the table."
+    },
+    {
+      "rank": 28,
+      "caption": "The night is nearly done, the sea is still outside, and the kettle is on."
+    },
+    {
+      "rank": 29,
+      "caption": "Nobody finishes the last cup alone when the night watch comes in."
+    },
+    {
+      "rank": 30,
+      "caption": "The sea beyond the window is quiet enough to hear everyone at the table."
+    }
+  ]
+}
