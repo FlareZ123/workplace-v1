@@ -15,3 +15,6 @@ jobs:
 
       - name: Enumerate cross-source-inferred extra seed-state windows
         run: python -u agents/agent46/k04_cross_carrier_seed_windows.py original-members.zip
+
+      - name: Calibrate and attack longer keys using sixth source window
+        run: python -u agents/agent46/k04_seed_six_window.py original-members.zip
