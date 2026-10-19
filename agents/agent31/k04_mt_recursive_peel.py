@@ -104,23 +104,23 @@ def main(path):
         state, _ = close_group(entries, values)
         for row, start in entries:
             if row < 128 and state.get(start - 1, (0, 0))[0] == ALL:
-                index = temper(state[start - 1][1]) >> 30
+                index = temper(state[start - 1][1]) >> 29
                 label = re.search(r"CLASS=([A-Z]+)", lines[row]).group(1)
-                assert index == int(label == "RECOVER"), (row, label, index)
+                assert index == {"LABEL": 0, "STORES": 1, "RECOVER": 2}[label], (row, label, index)
                 immediately_before.append((row, label, index))
                 if state.get(start - 2, (0, 0))[0] == ALL:
-                    preceding_rejections.append((row, temper(state[start - 2][1]) >> 30))
+                    preceding_rejections.append((row, temper(state[start - 2][1]) >> 29))
                 if state.get(start - 3, (0, 0))[0] == ALL:
-                    earlier_rejections.append((row, temper(state[start - 3][1]) >> 30))
-    assert len(immediately_before) == 12 and all(x in (0, 1) for _, _, x in immediately_before)
-    assert len(preceding_rejections) == 6 and all(x >= 2 for _, x in preceding_rejections)
-    assert earlier_rejections == [(4, 3)]
+                    earlier_rejections.append((row, temper(state[start - 3][1]) >> 29))
+    assert len(immediately_before) == 12 and all(x in (0, 1, 2) for _, _, x in immediately_before)
+    assert len(preceding_rejections) == 6 and all(x >= 3 for _, x in preceding_rejections)
+    assert earlier_rejections == [(4, 7)]
 
     print("selected_row129_withheld", True)
     print("recursive_new_full_words", recovered, "previous_single_pass", 30)
     print("intact_word_holdouts", tested, "predicted", predicted, "mismatches", 0)
-    print("regular_pre_payload_accepted_2bit", immediately_before)
-    print("earlier_rejection_2bit", preceding_rejections)
+    print("regular_pre_payload_accepted_3bit", immediately_before)
+    print("earlier_rejection_3bit", preceding_rejections)
     print("two_rejections_before_row", earlier_rejections)
     print("K04_K08_UNRESOLVED")
 
