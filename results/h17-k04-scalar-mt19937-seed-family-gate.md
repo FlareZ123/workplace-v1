@@ -42,3 +42,26 @@ None can be the required small index. Every hypothesized phase fails, including 
 - **Information gain about K04 selected bytes: zero**. This is a new, source-anchored producer-model elimination. A constructive next crack needs a source-linked long-key initialization/late-cycle producer or authentically indexed observations in the target's two ancestral gaps; replaying scalar MT seeds cannot succeed under the tested phase model.
 
 **Original acceptance remains:** K01/K02/K03/K05/K06/K07 PASS; K04/K08 MISSING, combined INCOMPLETE, accepted false. No source evidence or original commitment was modified.
+
+
+## 19 October 12:30 UTC extension: independent AX-7778 two-cycle pair excludes more phases
+
+A second, **separate source-derived initialized-state pair** removes the reliance on the earlier row3/34 quartet for a much wider model range. The intact original printer row34/64 words and the independently recorded AX-7778 high16 transfer checkpoints recover first-generation MT outputs at positions \(p-396,p-395,p-394\); original row10 words1..3, conditionally aligned at \(p-169..p-167\), permit one more inverse twist. Agent9's established source construction gives:
+
+\`\`\`text
+S[p−168] = 0A9DE247
+S[p−167] = FBBBB07E
+\`\`\`
+
+For the standard scalar MT seed recurrence, these words would require index
+
+\`\`\`text
+(FBBBB07E − 1812433253 × (0A9DE247 xor (0A9DE247 >> 30)))
+  mod 2^32 = 0x29686B7B = 694,709,115
+\`\`\`
+
+A legitimate internal initialized-state index is in **1..623**, independent of the scalar seed value. This derived source pair is therefore incompatible with a scalar-seeded original register. Crucially, **both source-paired output cycles can be inverted into the original initialized state for \(396\le p\le790\)**, where \(p\) is the absolute first MT output index of printer row34 under the AX/row10 relative placement. This includes later phases \(622..790\) where the row3/34 initialized-state quartet no longer has its original first-twist interpretation. In the overlapping \(396..621\) interval, the two source regions furnish separate recurrence contradictions.
+
+The companion [source-pinned two-cycle SFT](../agents/agent22/k04_ax_scalar_phase_extension.py) asserts the three AX-7778 original high16 checkpoints, original spool and transfer SHA256 hashes, and the unmodified source-word pair. **Thirty-two synthetic controls pass** for eight phases \(p=396,397,535,621,624,700,789,790\): three independently initialized scalar-seeded MT outputs and one CPython \`init_by_array\` output at each phase. Scalar positives recover the true pre-twist words and imply the correct \(p-167\) index, so the original 694-million residue is not a cycle-boundary artifact.
+
+**Combined scoped conclusion:** the row3/34 first-twist gate plus the independent AX/row10 two-cycle gate reject standard scalar-seeded \`init_genrand\` for every source-conditioned absolute row34 phase **\(p=229..790\)**. The union statement assumes the source-deduced row3/34 and AX/row10/64 stream placements, each valid under its own MT common-producer premise. It is not a blanket exclusion of an already advanced stream starting at \(p>790\), independent producer streams, different initialization families, or incorrect alignment premises. No K04 target bit, candidate coupon, K08 wording or original acceptance value was read or recovered.
