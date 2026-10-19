@@ -28,7 +28,7 @@ def rows(source):
     with ZipFile(source) as archive:
         raw = archive.read(SPOOL)
     assert hashlib.sha256(raw).hexdigest() == SHA
-    payloads = [bytes.fromhex(s) for s in re.findall(rb"PAYLOAD=([A-F0-9]{32})", raw)]
+    payloads = [bytes.fromhex(s.decode("ascii")) for s in re.findall(rb"PAYLOAD=([A-F0-9]{32})", raw)]
     assert len(payloads) == 133
     values = [list(map(untemper, struct.unpack("<4I", p))) for p in payloads]
     values[129] = []
