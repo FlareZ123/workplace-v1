@@ -24,26 +24,22 @@ def synthetic():
         words=[untemper(generator.getrandbits(32)) for _ in range(624)]
         pairs=[(words[p+j],words[p+j+227]) for j in range(5)]
         recovered=fragments(pairs,p,n)
-        assert recovered is not None and len(recovered)==n
-        assert sum(recovered[j]<<(32*j) for j in range(n))==seed
+        assert recovered is not None and len(recovered)==2
+        assert all(recovered[j]==((seed>>(32*j))&ALL) for j in recovered)
         assert verify_seed(seed,[(p,pairs)])
-    print("SYNTHETIC_96BIT_FOUR_PHASES_PASS",flush=True)
+    print("SYNTHETIC_96BIT_TWO_WORD_FRAGMENTS_PASS",flush=True)
 
 def main(source):
     original=extract_pairs(source)[0]
-    candidates=[]
-    failures=0
+    two_word_fragments=0
     for phase in range(393):
         keys=fragments(original,phase,3)
-        assert keys is not None and len(keys)==3
-        seed=sum(keys[i]<<(32*i) for i in range(3))
-        if verify_seed(seed,[(phase,original)]):
-            candidates.append((phase,seed))
-        else:failures+=1
+        assert keys is not None and len(keys)==2
+        two_word_fragments+=1
     print("selected_row129_withheld",True)
     print("first_cycle_phase_count",393)
-    print("original_96bit_source_candidates",len(candidates),"failures",failures)
-    print("source_candidates",candidates[:5])
+    print("source_phase_assignments_with_two_of_three_key_words",two_word_fragments)
+    print("96bit_source_seed_status", "UNDERDETERMINED_ONE_UNKNOWN_32BIT_WORD")
     print("K04_K08_UNRESOLVED")
 
 if __name__=="__main__":
