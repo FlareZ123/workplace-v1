@@ -64,3 +64,15 @@ The key next step is to **fit/source-anchor a single draw-consumption rule that 
 [Reproducible source-only SFT](../agents/agent7/k04_dest_sampler_target_constraints.py) uses the established SHA-pinned Agent23/6 source reader, withholds selected row129 payload, asserts 13/13 resolved DEST observations and four unresolved histories, asserts original neighboring class/dest states, then computes both donor signature counts. No acceptance/mask/nonce input is accessed.
 
 **Original acceptance status still:** K01/K02/K03/K05/K06/K07 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted=false. K08 exact keeper caption remains unavailable from surviving plaintext.
+
+## Direct filtering of the previously tried original control corpus
+
+The two explicit donor signature restrictions were also applied without a K04 hash oracle to the **same 298 ordered original 32-bit source-control runs** already used by Agent41: 291 natural TRP2 recorder windows (with original CRC filtering and source-based time/file/sequence orders), one source-defined four-latch K05 run, and six RC-17 page-order runs. This is a new **source-metadata filter on an old candidate set**, not a new search for arbitrary controls:
+
+| Role under conditional d=11,p=627 model | Source-control runs passing the high3 restriction | Previous unfiltered controls |
+|---|---:|---:|
+| Donor A=X[4..7] | **52** | 298 |
+| Donor B=X[400..403] | **67** | 298 |
+| Ordered (A,B) pairs | **3,484** | 88,804 |
+
+A read-only [cross-corpus filter reproducer](../agents/agent7/k04_dest_filter_ordered_donors.py) invokes Agent41's original SHA-pinned recorder/procedure run enumerators and tests only tempered top3 categorical output signatures. It does not read the selected coupon, routing mask, digest or REC8 verifier. The original 88,804 complete pairings, which include these 3,484, were already tested by Agent41 against the original acceptance with **zero matches**. Consequently, **do not rerun those same 3,484 K04 hashes**; this result makes a narrower donor-class explanation of their failure possible, while offering no newly accepted bytes. A fresh source-indexed donor carrier or a producer/order mechanism that reaches a previously untested run remains necessary.
