@@ -3,8 +3,8 @@
 Run from the repository root with an untouched original case ZIP:
     python agents/agent45/k04_z3_target_sft.py c-energy-group-documents2026.zip
 
-Requires scipy and z3-solver (Python bindings). Never reads the selected row129
-payload, K04 route/mask, the acceptance commitments, or any K08 wording.
+Requires scipy and z3-solver (Python bindings). Discards selected row129 before inference; no selected payload values, K04
+route/mask, acceptance commitments, or K08 wording influence the model.
 """
 from __future__ import annotations
 
