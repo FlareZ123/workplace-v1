@@ -63,6 +63,18 @@ def next_state(a, b, key, index, count):
     return (((second & MASK) ^ (((b ^ (b >> 30)) * 1566083941) & MASK)) - index) & MASK
 
 
+def recover_key_low31(phase, earlier, observed_low31, key_count):
+    """Recover 31 bits of K[(phase-167) % key_count] without its seed high bit."""
+    index = phase - 166
+    key_slot = (index - 1) % key_count
+    a, b = earlier
+    first = (b + index - 1) ^ (((a ^ (a >> 30)) * 1566083941) & MASK)
+    base = INITIAL[index] ^ (((first ^ (first >> 30)) * 1664525) & MASK)
+    other = ((b ^ (b >> 30)) * 1566083941) & MASK
+    return ((((observed_low31 + index) & 0x7FFFFFFF) ^ (other & 0x7FFFFFFF))
+            - base - key_slot) & 0x7FFFFFFF
+
+
 def initialized_state(seed):
     words = []
     while seed:
@@ -145,6 +157,18 @@ def synthetic_controls():
             assert gate(phase, early, state[phase-1:phase+3], partial, key_count) == 'match'
             count += 1
     print('SYNTHETIC_PASS', count)
+    additional = 0
+    for phase in (396, 400, 500, 535, 621):
+        for key_count in range(1, 13):
+            words = [(0xA1234567 + j * 0x12BCD3) & MASK for j in range(key_count)]
+            seed = sum(word << (32*j) for j, word in enumerate(words))
+            state = initialized_state(seed)
+            key_slot = (phase - 167) % key_count
+            recovered = recover_key_low31(phase, state[phase-168:phase-166],
+                                          state[phase-166] & 0x7FFFFFFF, key_count)
+            assert recovered == words[key_slot] & 0x7FFFFFFF
+            additional += 1
+    print('SYNTHETIC_PARTIAL_KEY_PASS', additional)
 
 
 def main(zip_path):
@@ -158,6 +182,12 @@ def main(zip_path):
         assert all(outcome in ('mismatch', 'quartet_conflict') for outcome in outcomes)
         print('ORIGINAL_REJECT', n, len(outcomes), 'phases')
     print('SOURCE_MODEL_SEED_CLASSES_REJECTED', len(lengths))
+    for n in (5, 9, 10, 11):
+        phase = 535
+        key_slot = (phase - 167) % n
+        recovered = recover_key_low31(phase, earlier, partial, n)
+        print('UNRESOLVED_CLASS_PARTIAL_KEY', n, 'phase', phase,
+              'index', key_slot, f'{recovered:08X}')
     print('K04_K08_MISSING; no original acceptance tested')
 
 
