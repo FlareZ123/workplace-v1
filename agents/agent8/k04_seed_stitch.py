@@ -139,6 +139,9 @@ def synthetic_controls():
 def scan(source, count):
     a, c, b, d = extract_pairs(source)
     row11 = pair_group(source, 11, 3)
+    # Original row34 word3 at phase pa+232 was not used in seed fragments.
+    # This source-only holdout is separate from all four pair-run inversions.
+    holdout = temper(rows(source)[34][3])
     samples = [(a, range(14, 69)), (c, range(50, 105)),
                (b, range(73, 128)), (d, range(81, 136))]
     lookup = [{p: fragments(pairs, p, count) for p in phases}
@@ -150,9 +153,10 @@ def scan(source, count):
         if len(candidate) != count:
             return False
         seed = sum(candidate[j] << (32*j) for j in range(count))
-        # Exact CPython 32-bit draw held out from the algebraic seed inversion.
-        first_draw = random.Random(seed).getrandbits(32*(first_phase+1)) >> (32*first_phase)
-        if first_draw != temper(a[0][0]):
+        # Predict genuinely held-out intact row34 final payload word.
+        phase = first_phase + 232
+        predicted = random.Random(seed).getrandbits(32*(phase+1)) >> (32*phase)
+        if predicted != holdout:
             return False
         return verify_seed(seed, [(pa, a), (pc, c), (pb, b), (pd, d)])
 
