@@ -60,6 +60,13 @@ def run(source):
     print("fixed_4_extra_per_regular_interval", "IMPOSSIBLE", "minimum_120_gt_94")
     print("two_randbelow3_plus_one_fixed_word", "max_4_rejections_in_60_calls")
     print("iid_rejection_probability_upper_bound", f"{prob:.12g}")
+    # Two-source minimal certificate for at least five skips among g42..44.
+    assert words[126][2] == (words[95][1] ^ twist(words[42][0],words[42][1]))
+    regular_window = (624 - 2) - 4*(126-42)
+    tail_window = starts[1][1] - 4*(132-45)
+    assert (regular_window,tail_window) == (286,273)
+    print("early_three_gap_lower_bound", regular_window-tail_window,
+          "at_least_one_of_g42_g43_g44_ge_5")
     print("selected_row129", "NOT_PREDICTED")
 
 if __name__ == "__main__":
