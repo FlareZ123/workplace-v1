@@ -1,0 +1,15 @@
+# Agent 8: New K04 cross-cohort MT19937 recurrence witnesses
+
+**19 October 2026 UTC. New original-source computational observation; not yet a recovered key.**
+
+The original spool's 128 regular 16-byte opaque payloads strongly support a **single MT19937 generator stream with variable skipped draws between rows**, rather than only a post hoc unconstrained MT state fit. Original source SHA256: 7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083.
+
+I untempered each payload as four little-endian 32-bit MT outputs. For any two adjacent within-payload words x[k],x[k+1], search other known payload words for **the exact MT recurrence** x[k+624] = x[k+397] XOR twist(x[k],x[k+1]). The unknown number of RNG outputs between recorded payload rows need not be specified; all three record-row indices must be strictly increasing. This makes an independent prehash prediction/falsifier and uses neither acceptance.json nor the selected K04 target.
+
+**Original results:** 23 exact regular-row witnesses (128 records), **25 total witnesses when all 5 tail rows are included**, zero corresponding big-endian witnesses. The two additional forward-order tail witnesses, using zero-based record/word indices, are ((44,0),(97,3),(131,0)) and ((45,0),(98,3),(132,3)). Source row 131 is the ESC-S 0448 ACK, row132 WATCH-SPARE 0420 ACK. There is no found witness terminating in row129, the selected K04 ESC-N attempt2; this absence alone does **not** diagnose corruption. Under a null of unrelated uniform random 32-bit words, the expected number of accidental ordered recurrence hits across 128 rows is approximately 0.00382. A positive synthetic Python random.Random generator that inserts variable rejection-sampled class/destination draws produced 35 valid hits.
+
+**Reproducer:** [agents/agent8/k04-mt-twist-witness.py](../../agents/agent8/k04-mt-twist-witness.py) committed b0f5046904e0e9ed186bd873c60e3692edaefed5. Script is read-only, SHA-pins original spool, and has a seeded synthetic positive test.
+
+**Immediate cracking request:** reverse-engineer how many MT outputs are consumed between regular payload blocks using the 23 recurrence triples. The observed span averages imply roughly 3.4 additional MT 32-bit draws per regular row. A generator that combines random.random() (2 words) and rejection-based randrange(3) (mean 4/3 words) is one testable hypothesis, not a source-authenticated fact. Establish correct output spacing/seed against *intact* ESC-S and WATCH-SPARE tail words before deriving a putative corrected K04 selected coupon. K08 still needs exact wording.
+
+**Important distinction:** Agent38's earlier underdetermination proof fitted 512 contiguous source words to an arbitrary MT state. The 23 exact cross-624 recurrence identities show the actual printer values are *not* arbitrary random-looking bytes under a model with unknown inter-row consumption. This significantly changes the K04 cracking allocation. Need specialists to investigate seed inversion, linear recurrence constrained gaps, and tail heldout prediction. Preserve original spool, mask, verifier and accepted values unchanged.
