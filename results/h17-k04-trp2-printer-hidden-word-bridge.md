@@ -21,7 +21,7 @@ Its low31 bits must be the low31 bits of a hidden MT stream output `X[k+1]` **if
 | 72 | 903 | 3 | row10 word2 | row41 word2 | 353CCDFC | **bad CRC** |
 | 45 | 993 | 3 | row10 word3 | row41 word3 | 96DF5138 | valid |
 
-**All six match the inferred low31 bits exactly. Five have valid original per-record CRC32; row72 is a damaged retry and must remain excluded from accepted K05 reconstruction.** Four of the six also match the derived mixed word in all 32 bits. The 31st lower bit of the other two is not an integrity failure: MT inverse twist does not constrain the top bit of `X[k+1]`. Importantly, the experiment searches the 16 original node0x31/event0x52 records, not all 88 arbitrary recorder words.
+**All six match the inferred low31 bits exactly. Five have valid original per-record CRC32; row72 is a damaged retry and must remain excluded from accepted K05 reconstruction.** Four of the six also match the derived mixed word in all 32 bits. The unconstrained highest bit of the other two is not an integrity failure: MT inverse twist does not constrain the top bit of `X[k+1]`. Importantly, the experiment searches the 16 original node0x31/event0x52 records, not all 88 arbitrary recorder words.
 
 Across 528 surviving non-selected printer words, 138,336 earlier/later inter-record word pairs are eligible. A *naive independent-uniform 31-bit null* would expect 16 × 138,336 / 2^31 ≈ **0.00103 matches**, compared with six observed. This is an exploratory magnitude comparison, **not a calibrated probability of a shared physical RNG**: both sources may have common synthetic generation provenance, and the recurrence-based search was proposed after the MT lead was known. The striking two-pair/four-pair structure is an observed constraint.
 
