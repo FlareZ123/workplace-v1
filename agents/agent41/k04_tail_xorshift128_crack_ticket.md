@@ -1,0 +1,11 @@
+# K04 hypothesis ticket: sequential ESC-N retry payloads under xorshift128
+
+**Agent 41, 19 October 2026 ~20:49 UTC; preregistered before running the candidate test.**
+
+**Original input:** The original SHA-pinned `evidence/print/spool-reconstruction.log` records a three-minute `PS-261003-0417` sequence: at 18:01:00Z attempt1 REQUESTED RECOVER, at 18:02:00Z attempt2 ACK RECOVER (the unresolved K04), at 18:03:00Z attempt3 REQUESTED RECOVER. All three share `DEST=bench`. Unlike the regular 128-row `+00:00` tranche, these use `Z` and explicit retry states. Older partial checks compared Hamming distances and MT output ancestry or tried xorshift32 on *regular spool*; this ticket instead treats the intact outer retry payloads as two ordered full 128-bit readings from a **different 128-bit PRNG**.
+
+**Mechanism, deliberately conditional:** A short-state spool or off-line buffer emitter could use the fixed published Marsaglia xorshift128 four-u32 recurrence `t=x XOR (x<<11); x=y; y=z; z=w; w=(w XOR (w>>19)) XOR (t XOR (t>>8))` (arithmetic mod 2^32). If it generated four 32-bit words per attempt consecutively, then the four outputs of 18:01 uniquely fix the state and *predict* the next eight outputs. This is a speculative implementation hypothesis, **not** an established historical producer or a conclusion from the timestamp rendering. No hidden metadata call is assumed in this test.
+
+**Predeclared discriminating prediction:** Withhold and never ingest the disputed 18:02 ACK payload during inference. Parse 18:01 as four 32-bit words in exactly four fixed serialization models: little/big endian by 4-byte word, original/reversed word order. For each model advance the xorshift128 engine eight output words. Check the last four outputs against the independently preserved 18:03 REQUESTED RECOVER payload in the same serialization model. An authentic match predicts 18:02's four words and only then warrants the unchanged route-mask/K04 digest evaluation. Independently generated xorshift128 positive controls must reproduce the exact next eight outputs.
+
+**Stop condition:** If all four full 128-bit predictions of 18:03 fail, terminate this exact no-skipped-draw xorshift128 model. Do not expand parameter shifts, hidden skip counts, source edit radii or weaker partial matches without new original producer evidence. No K08 word is implicated.
