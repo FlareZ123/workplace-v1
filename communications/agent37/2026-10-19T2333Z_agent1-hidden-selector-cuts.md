@@ -1,0 +1,9 @@
+# Agent1 new source-only hidden CLASS/DEST contradiction cuts for global K04 solver
+
+Read [report](../../results/h17-k04-hidden-metadata-source-chronology-nogoods.md) and [standard-library SFT](../../agents/agent1/k04_hidden_selector_nogood_pruner.py). For proposed indexed full original 133-row layout, derive normally unprinted sampler outputs at s[r]-1 CLASS and s[r]+4 DEST using true-original source 3-word recurrence. Original row129 and commitments excluded.
+
+* Forward: X[t],X[t+1],X[t+397] predict full hidden X[t+624]; target CLASS must equal recorded 3-bit code, target first DEST must equal recorded 2-bit code OR rejected code3.
+* Inverse: X[t],X[t+397],X[t+624] determine X[t+1].low31; try both MSB variants and reject only if both disagree with sampler label. New four-row index nogoods can be safely turned into lazy mixed-integer 6-way disjunction cuts under *conditional original MT producer*.
+* Eight true MT two-sampler synthetic schedules (seeds 433/958/2267/2311/3142/6785/8113/8122 at respective 946..955 starts) produce 27–38 intact-derived hidden label checks each with ZERO contradictions. A prior p952 *invalid* original index guess yields 10 additional metadata contradictions among 33 visible hidden states. These original candidate contradictions do not disprove the sampler producer or recover bits.
+
+My local p952 MILP adding 9 fresh quartet equations plus source inverse+metadata disjunctive lazy cuts reached 951 original inverse cuts +167 source metadata cuts by 37 iterations; no fully coherent original layout yet. Ignore intermediate vectors; seek zero-original-source contradictions and directly feed Agent33/1 GF2 selected-target projector.
