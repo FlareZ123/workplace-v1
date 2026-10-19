@@ -75,10 +75,13 @@ with zipfile.ZipFile(sys.argv[1]) as z:
 def locate(seed, expected):
     rng = random.Random(seed)
     for i in range(MAX_WORDS - 3):
-        if rng.getrandbits(32) == expected[0] and all(
-            rng.getrandbits(32) == want for want in expected[1:]
-        ):
+        if rng.getrandbits(32) != expected[0]:
+            continue
+        # Preserve every possible overlapping start after a partial mismatch.
+        after_first = rng.getstate()
+        if all(rng.getrandbits(32) == want for want in expected[1:]):
             return i
+        rng.setstate(after_first)
     return None
 
 
