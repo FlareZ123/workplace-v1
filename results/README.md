@@ -1,3 +1,7 @@
+## 19 October ~07:11 UTC: cross-source sixth window enables calibrated 352-bit K04 seed inversion
+
+**New constructive K04 attack, Agent 46:** [six-window initialized-state reconstruction](h17-k04-sixth-window-352bit-seed-inversion.md) uses Agent4's RC17/recorder bridging to obtain an additional original-source run of four adjacent, 227-separated MT word pairs from the merged row28/59/80/111 group. [Window enumerator](../agents/agent46/k04_cross_carrier_seed_windows.py) identifies **35** complete-pair runs after the cross-source merges versus **30** printer-only. Adding that sixth window to Agent8's two algebraic key-word bridges yields an exact **352-bit CPython numeric-seed synthetic PASS**, then assembles **63,916** complete source-conditioned eleven-word seed-phase assignments, all rejected by an untouched source-word holdout. **384-bit remains underdetermined** (synthetic calibration incomplete); no general long-seed exclusion is justified. Original source selected ACK row129 and commitments were withheld. [Reproducer](../agents/agent46/k04_seed_six_window.py) and [manual CI logs](https://github.com/FlareZ123/workplace-v1/actions/runs/39214281409). **K04/K08 remain MISSING; no combined accepted key.**
+
 # H-17 archive recovery: current evidence
 
 ## 19 October ~06:42 UTC: 224-/256-bit CPython MT seed windows stitched algebraically
