@@ -45,3 +45,23 @@ This is a **new roadmap for paired-source cracking**, not an actual matching pai
 ## SFT and limitations
 
 The reproducer is self-contained Python standard-library code, runs with no files or repository dependencies and **does not inspect K04 original bytes, desk nonce, or commitments**. It validates 976 MT recurrence equations from actual seeded Python `Random` outputs, validates exact symbolic tempering, asserts baseline/source/target ranks and all six histograms above. The model includes precisely Agent49's two printer source groups, not all proposed external control alignments; the 162 placement probes are a representative sample of 1,540 admissible placements. Different generator or cached/offline producer assumptions remain open.
+
+
+## Constructive 16-candidate completion of the entire K04 payload (new companion SFT)
+
+The highest-leverage *minimal donor* is simpler than a three-full-word recurrence. In the exact MT identity
+
+`X[q] = X[q-227] XOR (((X[q-624] & 80000000h) | (X[q-623] & 7FFFFFFFh)) >> 1) XOR (9908B0DFh if X[q-623] odd)`,
+
+**only the top bit of predecessor X[q-624] remains unknown** once the full middle X[q-227] and lower 31 successor bits X[q-623] have been independently observed. That one bit toggles untempered output bit30. After standard MT tempering, the corresponding printed 32-bit word toggles by the fixed **0x44081102** mask.
+
+For four selected coupon words this yields **16 possible 16-byte payloads** (`2^4`), immediately testable using the unchanged K04 mask/slot acceptance once both source-donor runs have been legitimately aligned:
+
+- Four full-word middle states: `X[p-227..p-224]`.
+- Four lower-31-bit successor states: `X[p-623..p-620]`.
+
+This requires **four full middle words plus four recorder-like 31-bit controls**, not a complete recovered 624-word MT state. The independent missing predecessor high bits are then only a 4-bit enumeration. At the boundary placement p=627 with an already observed source predecessor, one ambiguity bit may be fixed additionally.
+
+[Read-only 16-way completion SFT](../agents/agent8/k04_recurrence_16way_sft.py) implements the exact inverse-state-to-payload calculation. Three genuine seeded CPython `random.Random` controls at offsets 625, 900 and 1440 all recover the original 16-byte payload as precisely one of the 16 candidates; a SHA256 digest of the synthetic true payload distinguishes the single correct variant. No original K04 data, commitments or selected row129 enter these positive controls.
+
+**Cracking priority:** jointly identify/bridge these two 4-word original-source ancestor windows, aligned under a common d and p, rather than searching isolated 16-bit witnesses or more print-payload mutations. A 31-bit recorder match plus an authenticated full-word middle observation at *each* of the four corresponding indices could immediately reduce the original K04 hash check to sixteen candidates. This is conditional engineering feasibility; those eight original matched donor words have **not yet** been found or authenticated. No K04 PASS is claimed.
