@@ -123,7 +123,7 @@ def source_test(words: list[list[int]], starts: list[int], carriers: list[tuple[
             "fixed_target_bits": len(fixed), "fixed_masks": masks}
 
 
-def probe(archive: Path, position: int) -> dict:
+def probe(archive: Path, position: int, strict_sampler=None) -> dict:
     words, within, boundary = source(str(archive))
     with zipfile.ZipFile(archive) as z:
         assert hashlib.sha256(z.read("evidence/print/spool-reconstruction.log")).hexdigest() == SRC_SHA
@@ -179,10 +179,18 @@ def probe(archive: Path, position: int) -> dict:
         else:
             out=source_test(words,starts,carrier)
             if "contradiction_rows" not in out:
-                return {"position":position,"status":"crosscarrier_GF2_consistent",
-                        "iterations":iteration,"nogoods":len(seen),**out,
-                        "row_starts":starts}
-            rows=[set(out["contradiction_rows"])]
+                if strict_sampler is None:
+                    return {"position":position,"status":"crosscarrier_GF2_consistent",
+                            "iterations":iteration,"nogoods":len(seen),**out,
+                            "row_starts":starts}
+                sampler_cores = strict_sampler(words, starts, carrier, archive)
+                if not sampler_cores:
+                    return {"position":position,"status":"strict_sampler_GF2_consistent",
+                            "iterations":iteration,"nogoods":len(seen),**out,
+                            "row_starts":starts}
+                rows = [set(core) for core in sampler_cores]
+            else:
+                rows=[set(out["contradiction_rows"])]
         for constraint_rows in rows:
             assigned=frozenset((row_group[r],base[row_group[r]]) for r in constraint_rows)
             if assigned in seen:
