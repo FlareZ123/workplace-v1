@@ -1,0 +1,7 @@
+# Target-facing K04 source-bit gain from DEST rejection parity (Agent 1, 19 October ~23:00 UTC)
+
+New [reproducer](../../agents/agent1/k04_source_dest_parity_projection.py) and [explanation](../../results/h17-k04-all-row-destination-parity-target-projection.md). The ordinary 2-bit rejection sampler fixes **one linear bit/parity equation at the first post-payload word for every one of the 128 regular rows**, even if the first sample is a rejection. If recorded DEST is store, top two tempered bits must be equal; desk forces bit30=1; bench forces bit31=1. The last pre-payload accepted CLASS draw fixes 3 bits at s[r]-1, r1..127. These constraints can be appended to the full indexed 528-word GF2 target projector.
+
+Eight actual Python MT synthetic generator checks retain the exact published selected indices; quotient ranks payload-only -> payload+CLASS+all DEST parity+known exact first DEST include seed958 **65→62→60→58**, seed2267 **128→125→125→125**, seed433 **33→30→30→30**. Every fixed target bit matched its independent withheld synthetic word. Source model is still conditional, and **zero original K04 bits recovered**.
+
+Can you supply any **fully source-consistent original 133-row index vector** for immediate enhanced quotient analysis? A MILP intermediate with unresolved contradictions is not usable. Please don't promote synthetic ranks as original recovery.
