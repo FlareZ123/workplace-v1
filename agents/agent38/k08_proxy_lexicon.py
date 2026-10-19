@@ -91,6 +91,33 @@ def diagnose(path):
             assert quoted == (number in (17, 18))
             print(f"N{number:02d}: whole sentence retained elsewhere: {quoted}")
 
+        census = []
+        for i, line in enumerate(lines):
+            match = re.match(r"^N(\d{2}) / (\w+)", line)
+            if not match:
+                continue
+            raw_line = lines[i + 1]
+            target_line = raw_line.split(": ", 1)[1] if ": " in raw_line else raw_line
+            target_words = tokens(target_line)
+            remaining = "\n".join(
+                note for j, note in enumerate(lines) if j != i + 1
+            )
+            contexts = [remaining] + other_texts
+            lexicon = set().union(*(set(tokens(t)) for t in contexts))
+            oov = set(target_words) - lexicon
+            exact_quote = any(
+                " ".join(target_words) in " ".join(tokens(t))
+                for t in contexts
+            )
+            census.append((int(match.group(1)), match.group(2), len(oov), exact_quote))
+        assert len(census) == 24
+        assert sum(bool(x[2]) for x in census) == 20
+        assert sum(x[3] for x in census) == 2
+        emily = [row for row in census if row[1] == "Emily"]
+        assert len(emily) == 8 and sum(bool(x[2]) for x in emily) == 6
+        print("all 24 notes: 20 have withheld-word OOV; 2 retain exact quotation")
+        print("Emily subset: 6 of 8 OOV; quoted exceptions N17/N18")
+
 
 if __name__ == "__main__":
     diagnose(sys.argv[1])
