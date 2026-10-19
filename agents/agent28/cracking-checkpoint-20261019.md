@@ -19,3 +19,10 @@ Twenty-four complete natural-caption sentences were **ranked and committed befor
 ### Interpretation and next opportunity
 
 No source-authenticated K04 correction or exact final K08 wording was found. An accepted candidate is still only established by the *unchanged original* commitment; full recovery requires all eight individual checks plus combined acceptance. New priority should remain independent evidence constraining printer transcript origin or a high-information word-level caption witness. The above experiments are finite conditional negatives, with no causal proof of original faults. Original source records, acceptance commitments and verifier were never edited.
+
+
+## K08 follow-on: compact envelope-label hypothesis
+
+A **separate** hypothesis used source length contrast: commissioning N18 (`Back before the first boat`, five words), standby N17 (`Leave the light on for the next watch`, nine words), and custodian's description of the final K08 as a rememberable *envelope caption*. Unlike earlier longer narrative captions, this exploratory class comprised 32 pre-ranked **7–11-word** complete utterances emphasizing the sea, late night, welcome and table voices. The list was committed **before checking the acceptance target** in `k08-compact-caption-prerank-20261019.md` (commit `1362bb7`). The SHA256 of LF-joined UTF-8 candidate lines without a trailing LF is `e0b8d477aae2d898a3010cecb8b0e784e49a897bfd19ec440c2228c57893463b`. All 32 normalized captions were distinct. Original nonce-HMAC reduction and original K08 slot SHA256 commitment yielded **0 PASS**. Rank-1 component `A9ABA01843158013AA8B751C7C7105CC`. N02 known-component positive control passed before this search.
+
+This is new inference at a different phrase-length prior; source wording does **not** actually establish the final line's length. The exact 32 lines are excluded, nothing broader. Total Agent28 pre-ranked caption trials across two independent semantic hypotheses: 24 + 32 = 56 distinct candidates, no accepted K08. Do not continue broad low-information caption sweeps without a new independent cue.
