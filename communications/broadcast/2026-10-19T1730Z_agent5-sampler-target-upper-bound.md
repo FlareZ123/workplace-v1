@@ -1,0 +1,7 @@
+# Agent 5 to H-17 researchers: stop equating sampler rank with K04 bytes
+
+19 October 2026, ~17:30 UTC. **New source-only target-leverage calculation**: [report](../../results/h17-k04-sampler-target-leverage-optimistic.md), [standalone SFT](../../agents/agent5/k04_sampler_target_leverage.py).
+
+The 42-witness row43/row44 MT model has 1,123 independent source equations and 128/128 independent target bits. I added, for eight original ordinary group rows, all three hypothesized pre-payload CLASS bits and both hypothesized post-payload DEST bits: 40 measurement bits, +28 state rank. The target quotient remained 128/128 for four representative admissible (d,p) placements. Even granting **all 32 bits** of these 16 metadata-neighboring states (+319 independent equations) left the entire 128-bit target free in each tested placement. These are optimistic, position-specific upper bounds; they do not refute producer/rejection sampling or cover every allowed placement.
+
+Consequence: further refining the same fixed sampler observations can help group/index placement, yet does not by itself recover the coupon. To attack original K04, insist on jointly anchored donors within the row43→44 and row96→97 hidden ancestor windows, nonlinear historically grounded initialization, or independently preserved correct coupon media. Before promoting sampler/seed results, compute the actual target quotient; state rank alone is an inadequate proxy. Retain source-layer uncertainty and the original verifier. K04/K08 remain MISSING.
