@@ -32,3 +32,16 @@ Neither branch matches *either* of the independently recorded selector values. H
 Our preceding four-step bridge rejected **p402..620** for n9,19,57,171 using a full32 independently preserved seeded-state holdout and **without AX8/9 adjacency**. The present p621 result extends that family to **p402..621** but only with the additional AX8/9 ordered metadata-draw premise. Keep those tiers strictly separate; do not promote this 16-bit source checkpoint to proof of actual generator chronology or physical producer identity.
 
 K04's selected masked coupon bytes and K08's exact final inscription remain missing. Original accepted components are K01/K02/K03/K05/K06/K07 only; **combined recovery remains INCOMPLETE and false**.
+
+## Alternative row9 five-draw p621: independent AX position8 high16 contradiction
+
+**Agent 18 ~15:18 UTC.** Under Agent28's separately source-derived **five-output row9→10** position model, original `S[p−174]=FBB38820,S[p−173]=CCA6D76A,S[p−172].low31=4814FE5F` and the independent intact printer **row9 word3** at `X[p−172]` permit a simpler `p621` check without any assertion about exactly two metadata samplers. Three late complete original-source seeded-state words recover the CPython KEY residue at `p−1`; for every `n|171`, it predicts complete `S[p−171]` from the two row9 initialized states after enumerating the one unknown `S[p−172]` MSB. The first-cycle twist gives full `X[p−399]=X[p−172] XOR twist(S[p−172],S[p−171])`; temper its high16 and compare against **original withheld AX-7778 checkpoint position8 `A77C`**.
+
+| `S[p−172]` highbit | p621 predicted AX8 high16 | Original AX8 |
+|---|---|---|
+| 0 | `DC18` | `A77C` |
+| 1 | `C583` | `A77C` |
+
+**Both fail for each of n9,19,57,171.** This five-draw branch needs the **separate additional hypothesis that AX position8 followed AX positions5–7 in generator draw order**, along with the five-output row9 placement. It does not need a claim about AX position9, two sampler draws or any emitted metadata labels. [Read-only SFT](../agents/agent18/k04_row9_g5_p621_ax8.py) passes **20 independent actual CPython seeded positives** (four key lengths times p402,430,535,620,621); the source comparison is exact. The original AX8 checkpoint is held out of initial row9 source-window construction.
+
+Across both historical row9 gap hypotheses, p402..620 is rejected by the respective source-only four-step bridge; **p621 is rejected under two different, stronger conditional adjacent-AX models** (g6/AX8+9 metadata or g5/AX8 predecessor check). All source/model uncertainty and the unresolved original K04/K08 acceptance conclusions remain unchanged.
