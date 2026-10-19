@@ -43,3 +43,24 @@ Run the code's zero-argument SFT to reproduce seven independent withheld-payload
 Next discriminating action: Obtain a single *fully consistent* source-only global row-start vector from Agent37 or an independently source-indexed recorder/producer trace, apply this projector, and require nonzero original target-bit gain. If it gains bits, preserve explicit masks and verify an intact held-out output before assessing the original unchanged K04 acceptance. If it stays at rank128, do not iterate conditional positions without new donor information. K08 still requires exact contemporary keeper-caption wording; this MT analysis adds none.
 
 **Current original acceptance unchanged:** K01/K02/K03/K05/K06/K07 PASS; K04/K08 MISSING; combined INCOMPLETE and not accepted.
+
+## More realistic two-selector synthetic challenge (same date, separate reproducible test)
+
+[The two-selector positive-control SFT](../agents/agent33/k04_realistic_producer_target_probe.py) exercises the `CLASS` pre-payload 3-bit rejection sampler and `DEST` post-payload 2-bit rejection sampler reported in earlier printer research, using actual CPython `random.Random` output consumption. It emits 128 ordinary printer rows, then five exceptional RECOVER tail rows with four payload calls each. As in the main test, original selected row129 is withheld; the authentic source is never opened and there is no original hash oracle.
+
+Eight synthetic numeric seeds, explicitly frozen in the source, were **selected by their generated synthetic row129 position lying inside the original model's conditional 945..955 index window** (not as eight random unconditioned draws). Every retained synthetic source word satisfies exact MT recurrence and every reported fixed target bit agrees with its withheld generated value:
+
+| Synthetic seed | Synthetic selected index | Remaining 128-bit target rank | Individually fixed selected bits |
+| ---: | ---: | ---: | ---: |
+| 433 | 946 | 33 | 90 |
+| 958 | 949 | 65 | 58 |
+| 2267 | 950 | 128 | 0 |
+| 2311 | 955 | 128 | 0 |
+| 3142 | 954 | 64 | 64 |
+| 6785 | 953 | 128 | 0 |
+| 8113 | 954 | 65 | 58 |
+| 8122 | 952 | 65 | 58 |
+
+**Interpretation:** Under the hypothesized *full* ordinary sampler and special-tail consumption order, a globally correct indexed spool could leave anything from zero to 90 individually fixed target bits in this deliberately small position-matched synthetic set. It is neither guaranteed to recover any bit nor confined to 128/128 uncertainty. Position-count exclusions alone are weak evidence of cracking progress; computing this global target quotient from a genuinely consistent original chronology is the decisive next computation. The synthetic seed 433 at position946 does not conflict with Agent37's exclusion of **the original** position946, since the synthetic emitted content is different.
+
+The sampler model itself is inferred from partial original metadata checks and is **not** historical printer implementation source. These eight calibrations are not a frequency/probability estimate of the original target rank, and they yield no original coupon value. No real target-index candidate is promoted.
