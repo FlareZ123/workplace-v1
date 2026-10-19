@@ -23,7 +23,8 @@ static uint32_t read32(FILE*f) {
     return (uint32_t)x[0]|((uint32_t)x[1]<<8)|((uint32_t)x[2]<<16)|((uint32_t)x[3]<<24);
 }
 int main(int argc,char**argv) {
-    if(argc!=2){fputs("usage: scan source.bin\n",stderr);return 2;}
+    if(argc<2||argc>3){fputs("usage: scan source.bin [later-start-mode]\n",stderr);return 2;}
+    int later_start=(argc==3&&strcmp(argv[2],"1")==0);
     FILE*f=fopen(argv[1],"rb");if(!f){perror("input");return 2;}
     uint32_t n=read32(f),novel=read32(f);
     if(n>MAXRUNS||novel>n){fputs("bad run counts\n",stderr);return 2;}
@@ -34,13 +35,14 @@ int main(int argc,char**argv) {
     fclose(f);
     unsigned long long tested=0;unsigned hits=0;
     for(uint32_t ai=0;ai<n;ai++)for(uint32_t bi=0;bi<n;bi++) {
-        if(ai>=novel&&bi>=novel)continue;
-        for(uint32_t bits=0;bits<128;bits++) {
+        if(!later_start&&ai>=novel&&bi>=novel)continue;
+        for(uint32_t bits=0;bits<(later_start?256U:128U);bits++) {
             unsigned char candidate[16];
             for(int j=0;j<4;j++) {
-                uint32_t prev=j==0?x3:(runs[ai][j-1]|(((bits>>(j-1))&1U)<<31));
+                uint32_t prev=j==0?(later_start?((bits&1U)<<31):x3)
+                    :(runs[ai][j-1]|(((bits>>(j-1+later_start))&1U)<<31));
                 uint32_t next=runs[ai][j];
-                uint32_t later=runs[bi][j]|(((bits>>(j+3))&1U)<<31);
+                uint32_t later=runs[bi][j]|(((bits>>(j+3+later_start))&1U)<<31);
                 uint32_t word=temper(later^twist(prev,next));
                 for(int k=0;k<4;k++)
                     candidate[4*j+k]=((word>>(8*k))&255U)^mask[4*j+k];
