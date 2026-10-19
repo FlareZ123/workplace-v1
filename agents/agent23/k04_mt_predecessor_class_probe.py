@@ -30,6 +30,8 @@ def run(source):
     word_rows = rows(source)
     clusters = groups(source, word_rows)
     observations = []
+    two_draw_rejections = []
+    three_draw_rejections = []
     for root, members in clusters.items():
         full, partial, evidence = recover(members, word_rows)
         for row, start in members:
@@ -39,6 +41,14 @@ def run(source):
             label = re.search(r"CLASS=([A-Z]+)", line).group(1)
             previous = temper(full[start-1])
             observations.append((row, label, previous, previous >> 30))
+            if start - 2 in full:
+                penultimate = temper(full[start-2]) >> 30
+                two_draw_rejections.append((row, penultimate, previous >> 30))
+                if start - 3 in full:
+                    antepenultimate = temper(full[start-3]) >> 30
+                    three_draw_rejections.append(
+                        (row, antepenultimate, penultimate, previous >> 30)
+                    )
     observations.sort()
     assert len(observations) == 10
     assert len({r for r, _, _, _ in observations}) == 10
@@ -57,6 +67,14 @@ def run(source):
     print("training_matches",len(train),"of",len(train))
     print("chronological_holdout_matches",len(test),"of",len(test))
     print("upper_two_bit_counts",sorted(Counter(t[3] for t in observations).items()))
+    assert len(two_draw_rejections) == 5
+    assert all(penultimate in (2,3) and terminal in (0,1)
+               for _,penultimate,terminal in two_draw_rejections)
+    assert three_draw_rejections == [(4,3,2,0)]
+    print("reconstructed_last_two_draws_reject_then_accept",
+          sorted(two_draw_rejections))
+    print("reconstructed_last_three_draws_row4_reject_reject_accept",
+          three_draw_rejections)
     print("source_empirical_binary_class_gate",True)
     print("generator_draw_rule", "HYPOTHESIS_UNCONFIRMED")
     print("K04_K08_UNRESOLVED")
