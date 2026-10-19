@@ -11,22 +11,14 @@ jobs:
     timeout-minutes: 90
     strategy:
       fail-fast: false
-      max-parallel: 13
+      max-parallel: 5
       matrix:
         include:
-          - {first: 321, last: 324}
-          - {first: 325, last: 328}
-          - {first: 329, last: 332}
-          - {first: 333, last: 336}
-          - {first: 337, last: 340}
-          - {first: 341, last: 344}
-          - {first: 345, last: 348}
-          - {first: 349, last: 352}
-          - {first: 353, last: 356}
-          - {first: 357, last: 360}
-          - {first: 361, last: 364}
-          - {first: 365, last: 368}
-          - {first: 369, last: 369}
+          - {first: 356, last: 357}
+          - {first: 358, last: 359}
+          - {first: 360, last: 361}
+          - {first: 362, last: 363}
+          - {first: 364, last: 365}
 
     steps:
       - uses: actions/checkout@v4
