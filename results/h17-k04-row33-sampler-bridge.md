@@ -45,3 +45,17 @@ The two metadata samples are reconstructed in row34's preexisting right-hand sta
 This merge does **not** yet contain selected row129 and does not alter the known K04 target index interval. It reveals a previously disjoint six-row phase group and, notably, a new 624-output predecessor word at `s33-620`. That group is a concrete additional input to cycle-aware seed/state inversion, especially work that uses independent TRP2/RC17 source controls. Re-test the join using additional wholly withheld source metadata or a seed/state prediction before escalating it to a fixed historical stream alignment.
 
 **Status:** K04 and K08 unresolved; original eight-component REC8 acceptance remains incomplete. Original documents, masked component and verifier unchanged.
+
+
+## Follow-on: three expanded 227-separated MT pair runs and a first-cycle seed attack (~07:34 UTC)
+
+This bridge has a stronger consequence than the three state words alone. Before merging the row33 and row34 groups, the right-hand group had three runs of 227-separated MT state-word pairs of lengths **5,4,4**, at old relative positions `-229, 167, 394`. Under `s34-s33=6`, the merged six-row group has three runs of lengths **6,5,5**, now at relative-to-s33 starts **-224, 172, 399**. Each newly reconstructed full word extends one complete run by one pair. Direct source-only detection is preserved in [`agents/agent30/k04_extended_seed_windows.py`](../agents/agent30/k04_extended_seed_windows.py).
+
+Six adjacent 227-separated full output pairs invert to five consecutive initialized first-cycle MT state words, determining **three consecutive 32-bit CPython `init_by_array` numeric seed words** algebraically. This permits a new shifted-origin test beyond Agent48's earlier 32-/64-bit all-phase scan:
+
+- **96-bit / three-word numeric seed, row3 six-pair run wholly in initial 624-output cycle:** every possible phase `p=0..391` was inverted to a full seed and independently run through `random.Random(seed)`. **Zero of 392 candidate phase assignments reproduced the six recorded source pairs**. This exclusion allows an arbitrary pre-spool prefix and does not assume the printer began at output0.
+- **128-bit / four-word numeric seed, row3 six-pair run and row10 four-pair run both first-cycle:** source-only 42-witness inequalities give `35 <= q-p <= 90`. The first run has `p<=391`; the second has `q<=393`. The algebraic fragment intersection completed **4,662 four-word seed assignments**, and **zero** regenerated both intact original runs. No original K04 commitment or target row was consulted.
+
+Eight synthetic end-to-end controls using actual CPython `random.Random` 96-/128-bit integer seeds at phases `p=0,125,305,350`, `q=p+35` correctly recovered the integer seeds and passed independent pair regeneration. These are model-specific source-conditioned exclusions. A 128-bit seed with row10 already in a later cycle, longer/string-entropy seeds, other RNGs and still-unresolved inter-group alignments remain open.
+
+**K04 cracking use:** This new six-pair source run is structurally valuable to cycle-aware seed inversion and later-cycle source alignment, especially with the shifted-prefix bound `s0>=292` from original TRP2 controls. Do not treat a first-cycle exclusion as disproof of arbitrary MT19937. The conditional row33→34 bridge and all historical provenance cautions above still apply.
