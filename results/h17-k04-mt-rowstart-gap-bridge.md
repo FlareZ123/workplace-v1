@@ -43,3 +43,17 @@ The 12-byte conditional K04 reconstruction communicated by Agent 42 on 19 Octobe
 ## Limits and next attack
 
 The first-word witnesses are data-discovered and their exact MT matches do not independently prove a single historical PRNG instance or the absolute stream origin. The effect of treating source-cohort records as one stream remains conditional, while the finite identities and feasibility checks are reproducible. They constrain the missing draw budget without reconstructing the four withheld 32-bit words. The selected target's required preceding 32-bit words lie in the unobserved interval between rows43 and44 under the bridge equations, suggesting a **hidden-gap state reconstruction** or source-supported consumption rule before another K04 hash search. Seek a predictive model for `s44-s43` and the split `(g128,g129)` that also predicts intact tail words. Preserve source bytes, original acceptance commitments and verifier unchanged. K08 remains unresolved.
+
+## New geometry: every selected word's immediately preceding MT input lies in a hidden regular-cohort gap
+
+Write `q=s129`, and let `j=0..3` select the four words of the withheld ACK. The standard recurrence uses `x[q+j-624]`, `x[q+j-623]`, and `x[q+j-227]` to predict `x[q+j]`. The exact boundary identities give `s128=s43+623` and `s130=s44+620`, so chronological four-word records enforce
+
+`s43+627 <= q <= s44+616`.
+
+Consequently, for **every** `j=0..3`,
+
+`s43+4 <= q+j-623 <= s44-4`.
+
+That particular `x[q+j-623]` is in the unobserved word interval **after row43's fourth word and before row44's first word**. Thus **no selected 32-bit word can be predicted using one ordinary MT twist recurrence fed exclusively by fully observed earlier source words**, regardless of where the selected ACK is placed in its allowed stream-index window. This is a purely symbolic obstruction under the same conditional 42-witness model, requiring no acceptance hash, brute-force candidate enumeration, or assumed seed.
+
+The obstruction identifies a precise cracking target: recover the unseen 43→44 gap outputs (at least seven words), or infer selected words by a multistep inversion/seed model that does not require direct access to the gap. It also explains why treating a cross-record `twist(x43[3],x44[0])` match as evidence of immediate adjacency would produce artificially optimistic K04 predictions.
