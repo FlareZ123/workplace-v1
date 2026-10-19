@@ -49,7 +49,7 @@ def bit_slack(compressed, original_plaintext):
     return unused, bits
 
 
-def audit(archive_bytes):
+def audit(archive_bytes, *, require_canonical=True):
     output = []
     with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
         assert len(archive.infolist()) == 43
@@ -57,6 +57,10 @@ def audit(archive_bytes):
         for entry in archive.infolist():
             _, compressed = compressed_entry(archive_bytes, entry)
             plain = archive.read(entry.filename)
+            compressor = zlib.compressobj(level=6, wbits=-15)
+            canonical = compressor.compress(plain) + compressor.flush()
+            if require_canonical:
+                assert canonical == compressed, "noncanonical ZIP data: " + entry.filename
             unused, bits = bit_slack(compressed, plain)
             output.append((entry.filename, unused, bits))
     return output
@@ -78,7 +82,9 @@ def main(path):
     assert bit_slack(compressed, zlib.decompress(compressed, -15)) == (7, 0)
     modified = bytearray(original)
     modified[start + entry.compress_size - 1] ^= 0x80
-    planted = audit(bytes(modified))
+    planted = audit(bytes(modified), require_canonical=False)
+    compressor = zlib.compressobj(level=6, wbits=-15)
+    assert compressor.compress(zlib.decompress(compressed, -15)) + compressor.flush() != bytes(modified)[start:start + entry.compress_size]
     assert sum(n for _, n, _ in planted) == 151
     assert [(p, n) for p, n, _ in source] == [(p, n) for p, n, _ in planted]
     assert [(p, v) for p, _, v in planted if v != 0] == [
@@ -86,6 +92,7 @@ def main(path):
     ]
 
     print("source_files", len(source))
+    print("all_43_raw_DEFLATE_streams_match_zlib_level6", True)
     print("DEFLATE_unused_bit_capacity", sum(n for _, n, _ in source))
     print("nonzero_unused_fields", sum(value != 0 for _, _, value in source))
     print("synthetic_planted_padding_bit", "PASS")
