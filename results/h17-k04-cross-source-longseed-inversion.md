@@ -1,4 +1,4 @@
-# K04: cross-source initialized-state windows and 288–352-bit CPython seed inversion
+# K04: cross-source initialized-state windows and 288–416-bit CPython seed inversion
 
 **Agent 7, 19 October 2026 ~07:12 UTC.** This is a new source-conditioned cracking method and bounded negative result, not a recovered K04 printer coupon or an accepted REC8 slot. [Read-only reproducer](../agents/agent7/k04_cross_source_longseed.py), original surviving H-17 ZIP, selected printer row129 completely withheld from MT reconstruction. All source bytes, acceptance commitments, and original verifier remain unmodified.
 
@@ -40,16 +40,20 @@ Every reconstructed complete seed is checked against an original intact spool wo
 | 288-bit, 9 words | 513,553 | **2,022** | **2,022** | **0** |
 | 320-bit, 10 words | 513,553 | **6,986** | **0** with the two tested bridges | **0** |
 | 352-bit, 11 words | 513,553 | **7,110** | **8,935** across the two bridges | **0** |
+| 384-bit, 12 words | 513,553 | **27,370** | **0** across two sequential bridges | **0** |
+| 416-bit, 13 words | 513,553 | **50,030** | **48,737** across two sequential bridges | **0** |
 
 The 352-bit bridge may reconstruct the same assignment more than once from different routes; counts above are **candidate assignments**, not necessarily distinct numeric seeds. The 320-bit row13→14 bridge was attempted 6,986 times and row10→11 18,185 times, without a complete candidate. For 352 bits, 7,110 and 23,884 bridge attempts respectively produced 2,188 and 6,747 complete assignments. All 8,935 complete assignments fail the held-out word.
 
-The reproducer includes actual Python `random.Random(seed)` synthetic positive controls for **288, 320 and 352 bits**, recovering the exact integer keys, including the more difficult n=10/11 bridging cases.
+New two-stage algebraic bridge: for a 384-/416-bit seed, the base five state windows reveal up to nine of twelve/thirteen seed words. A first reversible window bridge over row10→11 can recover up to two more unknown seed words, after which a second bridge over row13→14 can recover two other unknown words. The opposite order is also tested. This recovers genuine manufactured **384-bit and 416-bit Python integer seeds exactly**, in addition to the earlier one-bridge controls. For source evidence, 384-bit inputs produce 4,770 row13→14 partial bridges and 17,993 row10→11 partial bridges but no complete seed in either order. At 416 bits, the row13→14-first branch gives **25,843 complete assignments** and the reverse branch **22,894**, all **48,737** contradicted by intact held-out row34 word3. This is a bounded bridge-family result, not a general rejection of every longer seed.
+
+The reproducer includes actual Python `random.Random(seed)` synthetic positive controls for **288, 320, 352, 384 and 416 bits**, recovering the exact integer keys, including the more difficult n=10/11 bridging cases.
 
 ## What this establishes, and what remains
 
 1. **Constructive:** Independently preserved control fields can extend inferred MT initialization runs. The original *source evidence* yields two additional 32-bit key-array constraints, elevating the direct algebraic reconstruction to nine seed words.
-2. **New bounded exclusion:** Under the explicit first-cycle CPython integer-seed, six-draw-floor and full-control-word hypotheses, the exhaustive 288-bit phase/offset scan yields **no source-consistent seed**. For 320- and 352-bit arrays the specific tested bridge family yields no held-out match; unbridged assignments remain unresolved.
-3. **Unexcluded:** 384+ bit numeric keys, `str`/`bytes`-derived CPython seeds, alternate generator implementations, later output cycles or nonuniform draw histories, missing or incorrect source controls, and any scenario violating the proposed six-draw floor. In particular, recorder/RC-17 control values are not authenticated as printer PRNG state by the historical records.
-4. **Next targeted crack:** Add additional independently labelled cross-source initialized-state words, or generalize the algebraic bridge to **three or more separated unknown key-word updates** for a 384+ bit source seed. Use surviving intact tail outputs for prospective checking before deriving selected K04. K08's exact final keeper caption remains separately missing.
+2. **New bounded exclusion:** Under the explicit first-cycle CPython integer-seed, six-draw-floor and full-control-word hypotheses, the exhaustive 288-bit phase/offset scan yields **no source-consistent seed**. For 320-, 352-, 384- and 416-bit arrays the specific tested bridge family yields no held-out match; unbridged assignments remain unresolved.
+3. **Unexcluded:** 448+ bit numeric keys, `str`/`bytes`-derived CPython seeds, alternate generator implementations, later output cycles or nonuniform draw histories, missing or incorrect source controls, and any scenario violating the proposed six-draw floor. In particular, recorder/RC-17 control values are not authenticated as printer PRNG state by the historical records.
+4. **Next targeted crack:** Add additional independently labelled cross-source initialized-state words, or identify a **third independently testable state-window bridge** for 448+ bit seed arrays, or generalize to more than two adjacent unknown key updates per bridge. Use surviving intact tail outputs for prospective checking before deriving selected K04. K08's exact final keeper caption remains separately missing.
 
 **REC8 acceptance remains unchanged:** K01/K02/K03/K05/K06/K07 PASS; K04 and K08 MISSING; combined INCOMPLETE, accepted false.
