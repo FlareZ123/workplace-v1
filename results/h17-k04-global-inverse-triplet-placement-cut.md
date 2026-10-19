@@ -34,7 +34,7 @@ Under one 42-witness-compatible **minimal-span** placement:
 
 The two later words imply `D=0A6A81C2`, `mixed=14D50384`, with high bit **0**. Original first word at index 3 has high bit **1**. Therefore no common MT19937 stream can satisfy **both** `s54-s0=400` and `s83-s0=624` with these three original words. This is a **joint, disjunctive placement cut**. It does not reject either record, the MT19937 model in general, or all possible global placements.
 
-The reproducer checks all similarly triply anchored inverse conditions in the same complete position vector. **106** high-bit/low31 conditions are evaluable, and **38** are contradicted. The 42 positive discovery witnesses themselves still match exactly. Thus a globally valid source placement needs further ordering constraints beyond the 42 positive triples, even if its numeric total draw count is minimal.
+An initial predecessor-anchored subset yielded **106** high-bit/low31 checks and **38** contradictions. The stronger reproducer also checks cases in which the earlier predecessor is *hidden* but its successor is observed. Across the same original minimum-span placement, **134** conditions are evaluable and **49** are contradicted. The 42 positive discovery witnesses themselves still match exactly. Thus a globally valid source placement needs further ordering constraints beyond the 42 positive triples, even if its numeric total draw count is minimal.
 
 ## Evidence calibration and precise limits
 
@@ -45,8 +45,22 @@ The reproducer checks all similarly triply anchored inverse conditions in the sa
 
 ## Cracking leverage
 
-A global MT placement/search should incorporate the inverse-triplet cuts while jointly deciding the two missing ancestor windows. A positional solver that accepts the positive 42 relations alone may put the missing coupon at a mathematically impossible stream phase. The 38 new contradictions give a checkable family of **no-good constraints on candidate stream alignments** before expensive GF(2) target-state inversion and original K04 acceptance testing.
+A global MT placement/search should incorporate the inverse-triplet cuts while jointly deciding the two missing ancestor windows. A positional solver that accepts the positive 42 relations alone may put the missing coupon at a mathematically impossible stream phase. The 49 observed contradictions give a checkable family of **no-good constraints on candidate stream alignments** before expensive GF(2) target-state inversion and original K04 acceptance testing.
 
 The highest-value continuation would combine these constraints with independently indexed TRP2/RC-17/AX records and require an unseen intact printer prediction. The exact original K04 ancestor donor runs have **not** been found, so this is an improved cracking filter rather than an accepted coupon.
 
 **REC8 remains six individual PASS, K04/K08 MISSING, combined INCOMPLETE, `accepted: false`.** K08's authenticated final desk-caption wording remains unquoted in the surviving export.
+
+## Added hidden-predecessor source witness (16:27 UTC)
+
+Reconsider another minimum-length/near-minimum candidate placement produced by source-only integer constraints and the predecessor-anchored 38-way filter. Its final row starts at index **958**; selected row129 is still withheld. **All 58 predecessor-anchored checks pass**, yet the stronger successor-anchored inversion catches **10 contradictions among 85 tested conditions**. One is a compact three-source witness:
+
+| Source word | Hypothetical global position | Original untempered word |
+| --- | ---: | --- |
+| row1 word0 | 9 | `FA7E55B4` |
+| row54 word3 | 405 | `C977010A` |
+| row84 word1 | 632 | `B0704ECB` |
+
+At `t=8`, the two later records imply `D=79074FC1` and `mixed=F20E9F82`. The low 31 bits of original row1 word0 are `7A7E55B4`, conflicting with the required `720E9F82`. The first original source word in this triple begins at `t+1=9`; the unavailable predecessor `t=8` does not need reconstruction. Even the **two lowest successor bits** suffice for an independent contradiction: expected `2`, observed `0`.
+
+This explicitly excludes the simultaneous offsets `s54−s1=393` and `s84−s1=622` for a common MT trace. It is a **new type of global no-good cut** that the initial predecessor-anchored scan missed. The original historical route/mask and selected spool line remain out of scope, and no K04 target bit has been established. The deployed reproducer now includes both high-bit and low31 successor cases, with **134/49** minimum-placement checks/contradictions, rather than stopping at the narrower **106/38** subset.
