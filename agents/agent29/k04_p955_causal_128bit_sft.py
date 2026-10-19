@@ -34,6 +34,30 @@ def rank(vectors):
     return len(basis)
 
 
+def temper(value):
+    value ^= value >> 11
+    value ^= (value << 7) & 0x9D2C5680
+    value ^= (value << 15) & 0xEFC60000
+    return (value ^ (value >> 18)) & MASK32
+
+
+def high3_oracle_rank(perturbations, horizon, p):
+    """Rank of all nonselected top-three output bits under 128 null directions."""
+    u, q, m = p - 851, p - 623, p - 227
+    view = [u, q, q + 1, q + 2, q + 3, m]
+    rows = [0] * (3 * len(view))
+    for column, (index, bit, _) in enumerate(perturbations):
+        initial = [0] * 624
+        initial[index] = 1 << bit
+        changed = stream(initial, horizon)
+        for i, position in enumerate(view):
+            top3 = temper(changed[position]) >> 29
+            for b in range(3):
+                if top3 & (1 << b):
+                    rows[3 * i + b] |= 1 << column
+    return rank(rows)
+
+
 def universal_source_window():
     """Check every bounded local row-group placement, independent of payloads."""
     total = 0
@@ -114,6 +138,10 @@ def main(archive_path, fixture_path):
         print("independent_synthetic_seed", seed, "PASS")
     assert rank(basis_vectors) == 128
     print("global_placement_cases_tested", universal_source_window())
+    oracle_rank = high3_oracle_rank(perturbations, horizon, p)
+    assert oracle_rank == 13
+    print("all_nonselected_high3_oracle_rank", oracle_rank,
+          "selected_target_nullity_lower_bound", 128 - oracle_rank)
     print("original_source_spool_sha256", SPOOL_SHA)
     print("selected_row_withheld", 129, "MT_index", p)
     print("hidden_first_cycle", early, q, q + 1, q + 2, q + 3)
