@@ -51,8 +51,8 @@ def synthetic_controls():
             samples = [(outputs[t + j], outputs[t + j + 227])
                        for j in range(5)]
             reconstruction = initial_words(samples)
-            assert reconstruction == initialized[t + 1:t + 5]
-            assert implied_seed_indices(reconstruction) == [t + 2, t + 3, t + 4]
+            assert reconstruction == initialized[t + 228:t + 232]
+            assert implied_seed_indices(reconstruction) == [t + 229, t + 230, t + 231]
             count += 1
     print("scalar_seed_synthetic_PASS", count)
 
