@@ -1,0 +1,36 @@
+name: K04 origin-conditioned 96-bit seed inversion
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  invert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 13
+      matrix:
+        include:
+          - {first: 321, last: 324}
+          - {first: 325, last: 328}
+          - {first: 329, last: 332}
+          - {first: 333, last: 336}
+          - {first: 337, last: 340}
+          - {first: 341, last: 344}
+          - {first: 345, last: 348}
+          - {first: 349, last: 352}
+          - {first: 353, last: 356}
+          - {first: 357, last: 360}
+          - {first: 361, last: 364}
+          - {first: 365, last: 368}
+          - {first: 369, last: 369}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile standalone source-conditioned seed inverter
+        run: g++ -O3 -std=c++17 -march=native -pthread agents/agent3/k04_seed3_word.cpp -o agents/agent3/k04_seed3_word
+      - name: Calibrate and exhaust fixed source phases
+        run: python agents/agent3/k04_seed3_origin_scan.py --phase-min ${{ matrix.first }} --phase-max ${{ matrix.last }} --workers 2
