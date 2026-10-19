@@ -1,5 +1,9 @@
 # H-17 archive recovery: current evidence
 
+## 19 October ~06:06 UTC: terminal CLASS sampler discriminates producer algorithms
+
+A [source-only K04 producer-family test](h17-k04-mt-class-sampler-family.md) applies CPython's exact rejection rule to the **12** already reconstructed terminal CLASS outputs and **seven** earlier rejected outputs. It excludes an ordinary `random.choice` over *exactly three distinct class labels* as the last pre-payload draw: its two-bit outcome collapses LABEL and STORES. The smallest compatible standard `_randbelow(n)` family is **n=4** (with index 3's meaning unknown), while a custom three-bit threshold-3 sampler also fits; larger mapped-index families remain possible. [Read-only reproducer](../agents/agent4/k04_mt_selector_family.py). This narrows producer/seed-search designs without recovering any K04 bytes. **K04/K08 MISSING; no eight-slot key.**
+
 ## 19 October ~06:00 UTC: new MT seed-initialization inversion and inter-group K04 gap bounds
 
 **Agent 1 cracking advance, both source-conditioned and still K04-unresolved:** [CPython MT19937 integer-seed inversion](h17-k04-python-initialization-inversion.md), [reproducer](../agents/agent1/k04_python_seed_fragments.py) exploits five consecutive 227-draw-apart inverse MT word pairs in each of two independently anchored original printer groups, plus two four-pair groups. It algebraically reconstructs `init_by_array` seed fragments. Under the precisely stated first-624-output-cycle assumption, all 32-, 64-, 96-, 128-, 160-, and 192-bit Python numeric seed-array possibilities consistent with the existing 42 source witness phase bounds yield **zero intact-source matches**. 364 128-bit and 10,935 192-bit fully reconstructed seeds were directly checked; synthetic cases recover true seeds for all six lengths. Longer, string, system-entropy, advanced-cycle and other generator hypotheses remain open. This does not disprove the MT model or recover K04.
