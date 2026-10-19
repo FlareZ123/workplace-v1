@@ -35,6 +35,15 @@ g128 + g129 = g12 - 9
 g12 >= 9.
 ```
 
+**Second newly derived recurrence coupling.** The same first two witnesses also supply `s66-s12=396` and `s67-s13=395`; their later arms supply `s96-s12=622` and `s97-s13=621`. Thus `s67-s66=(s13-s12)-1` and `s97-s96=(s13-s12)-1`. Combining these with the row43/44 bridge gives a **four-gap coupled burst**:
+
+```text
+(g12, g43, g66, g96) = (h, h-2, h-1, h-1),  h >= 9
+minimum (g12, g43, g66, g96) = (9, 7, 8, 8).
+```
+
+These four separated ordinary-record boundaries are tightly linked by the source's recurrence equations. Under a literal two-sampler-only producer (one postpayload DEST and one prepayload CLASS, each with possible rejections), they would require long rejection runs at **four** intervals, irrespective of the row labels: row12/13 STORES→STORES; row43/44 STORES→STORES; row66/67 STORES→RECOVER; row96/97 RECOVER→LABEL. The actual producer and any hidden extra calls are not documented. This pattern is a sharper **falsifiable producer signature** than a single large skip and provides two additional intact-source intervals for predicting a model of `h`. It is not itself evidence of how the calls were made.
+
 This is an explicit early-to-tail bridge, not merely another local skip lower bound. **At least nine unrecorded 32-bit outputs must occur between consecutive intact ordinary rows12 and13** if all four source matches share the same chronological MT stream. A global linear-programming feasibility test of all 42 established witnesses independently corroborates that **no assignment with every `g[r] <= 8` exists**, even without importing the previously published local lower-bound floors; there is a feasible integral assignment with cap9. A greedy infeasible subset is precisely these four predecessor witnesses. The four-witness algebra above supplies the simpler exact proof without requiring an optimizer.
 
 ## New target-facing prediction
