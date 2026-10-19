@@ -40,4 +40,28 @@ Therefore phase p564, **if ultimately viable**, requires **KEY[2] = `9E2EBD55`**
 
 Other CPython seed-array lengths, differing stream-phase alignments, non-CPython generators and cache/offline stream production remain possible. Even the excluded five-word p567 case does **not** directly determine any K04 target bit. The original six slots continue to pass independently; K04/K08 unknown, combined recovery incomplete.
 
-**Follow-up:** treat remaining conditional n5 first-cycle phases **564,565,566,621** as distinct twist-edge cases; at p564 propagate fixed KEY2 and independently source-derived S622/S623 into a high-confidence new initialized-state/known-key discriminator before attempting coupon bytes. At p565/566 the row10/41 inverse pairs straddle a different number of first-twist outputs. At p621 the former low31 observation after S623 represents first-cycle output X0 rather than a nonexistent initialized S624. Do not repeat p567 or its already established 32 synthetic controls.
+**Follow-up:** see the updated residual-phase disposition below. At p621 the former low31 observation after S623 represents X0 rather than a nonexistent initialized S624. Do not repeat the resolved p565/p567 tests.
+
+## Additional p=565 / p=566 boundary breakthrough (~14:25 UTC)
+
+[Companion source-pinned SFT](../agents/agent50/k04_n5_boundary_565_566.py) adds **32 actual Python-seeded positive controls for each of two more edge phases**, including 1-, 2-, 5-, 10-, 17-, 34-, 85-, and 170-word seeds.
+
+**p565, a seed-length-independent CPython phase exclusion.** Row41 spans X622..625. Its four inverse 227-step pairs with row10 yield a *complete* first-cycle **X0 = `324EF3E1`** from the second/third mixed halves. From the independent early initialized-state window, p565 fixes **S397 = `0A9DE247`**. The initial Python MT twist at output zero obeys:
+
+```
+X0 = S397 XOR twist((S0.high << 31) | S1.low31)
+```
+
+CPython `init_by_array` sets **S0 = 0x80000000**, for every key-array size. Inverting the two original full-word operands produces **`inverse_twist(S397,X0) = 71A6234C`**, whose top bit is **0**, contradicting the required S0.high=1. This rejects **p565 for every CPython `random.Random` initialization seed length**, under the source-conditioned first-output phase, independently of all K04 hashes and even the n5 seed-key family. This explicitly accounts for the MT wrap and passes seeded p565 controls.
+
+**p566, a new initialized-state and source-seed constraint for every n dividing 170.** The corresponding row41 span is X623..626 and the printer pairs give **X0 = `348ADB23`**. The late initialized quartet and independently sourced S569.low31=`31FD69FC` algebraically recover KEY[`568 mod n`].low31. Because **n | (568−398)=170**, that same key residue drives the invertible init_by_array update at i399, permitting the otherwise unknown **S397** to be reconstructed for both possible key high bits. Applying the independent CPython S0.high=1 twist constraint yields exactly one surviving assignment in **all eight divisor lengths n=1,2,5,10,17,34,85,170**:
+
+- **KEY[`568 mod n`].high=0**;
+- **S397 = `F9A69445`** (complete initialized-state word);
+- **`inverse_twist(S397,X0)=A849FF73`**, hence **S1.low31 = `2849FF73`**.
+
+The recovered key word's *low31* depends on the modular key-array index; the upper-bit conclusion and reconstructed S397/S1.low31 are the same across all eight lengths. These are **new conditional source-state constraints**, not values of selected K04 or K08. Phase p566 survives for these models and must not be described as excluded.
+
+**Updated five-word residual-phase set:** earlier [Agent14](h17-k04-crosscycle-160bit-residual-phase-gate.md) left `564,565,566,567,621`. The present two complementary SFTs exclude **565 and 567**, fix a five-word seed-key upper bit at **564**, and fix another at **566**. The remaining not-excluded p values are **564,566,621**. No inference here eliminates p621 or proves p564/p566 compatible with all held-out source values. Source-only phase567 and phase565 computational rejection is conditional on the existing same-generator and first-output phase premises, as in prior reports.
+
+Original acceptance state remains six slots PASS, K04/K08 MISSING, combined INCOMPLETE. No K04 target bits, no K08 exact caption, no acceptance input tested in either SFT.
