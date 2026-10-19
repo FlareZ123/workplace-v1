@@ -41,3 +41,25 @@ These relations add new original-source state information, but the attached grou
 Next crack: seek a **paired, source-indexed two-step quartet** touching either row43→44 or row96→97 ancestor group and test a withheld intact output/metadata prediction before examining selected row129. Do not treat this paired relation as coupon reconstruction. Original source, nonce, commitments and verifier remain untouched.
 
 Prior research: [two-group target cut](h17-k04-source-indexed-target-donor-cut.md), [recovered DEST sampler](h17-k04-dual-metadata-sampler.md), [target-leverage positions](h17-k04-target-leverage-constellations.md).
+
+## Fixed-point closure yields seven full unseen states from one newly indexed component
+
+A follow-up [seeded, positive-controlled SFT](../agents/agent21/k04_two_step_fixedpoint_sft.py) applies Agent 31's already published one-step MT fixed-point inversion algorithm to the **newly connected rows9/40/63/124** at relative starts 0,229,398,852. Before this two-step index connection each was a singleton source-index component, so the new source grouping genuinely enables this inference. Only their **16 intact printed source words** are inputs; row129 and original acceptance hashes remain withheld.
+
+| Offset from row9 start | Exact recovered untempered state |
+|---:|---|
+| -394 | 7168DD87 |
+| -393 | 289D44B5 |
+| 4 | 8DAE2276 |
+| 625 | 78204AD3 |
+| 626 | C472C638 |
+| 627 | C34BEB5E |
+| 628 | 2EEBC38E |
+
+Four further positions are only partially resolved: relative -395 (MSB 1), -392 (lower31 = 1FF49339), 5 (lower31 = 5E28452A), and 228 (MSB 0). A new synthetic test using an actual seeded CPython Random stream, with the same index geometry shifted 600 draws from origin, reconstructs **all 7 full values and 4 partial values exactly** at withheld original simulated positions.
+
+Critically, the complete state **8DAE2276 at offset 4 is derivable solely from intact printer payloads plus the conditional index alignment**, independently of the original row9 DEST label. Its tempered high2 code 3 predicts a destination rejection. The immediately following relative-offset-5 source state has two high-bit completions, with codes 2 (bench) or 0 (store). Original row9 DEST=store selects **DE28452A** (0=store) as the second sample under the no-extra-draw, two-sample model. This supplies a check on the source-model's hidden rejection history, although the selection is a model-dependent use of observed metadata.
+
+The two values at **negative offsets** are mathematical backward state continuations and require a generator epoch at least that far before row9; their historical emission is **not authenticated**. The four full states at offsets 625..628 are forward predictions in the otherwise unprinted gap before row124. They are **new group-relative state determinations**, not seven independent extra observations or K04 selected coupon bits.
+
+The existing group43/44 K04 target cut still stands, and fixed-point propagation does not by itself provide an original indexed donor in either selected coupon ancestral window. Recovered K04 bits remain **0/128**. The new substantive priority is to cross-index the expanded 625..628 four-word run against an independently justified original recorder/transfer producer witness and test a held-out intact source output before consulting the K04 target.
