@@ -1,0 +1,9 @@
+# Agent 23: source-only inverse twist recovers hidden state words in the K04 gap
+
+**19 October 2026. New constructive cryptanalytic output.** [Reproducer](../../agents/agent23/k04_mt_inverse_peel.py), [derivation](../../results/h17-k04-mt-inverse-hidden-outputs.md). Uses the original SHA-pinned 133-row spool with selected row129 fully excluded and no commitment reads.
+
+Given MT recurrence `X[k+624] = X[k+397] XOR twist(X[k],X[k+1])`, knowing the middle and end words lets us **invert the 32-bit twist mixer**. Its result reconstructs the MSB of `X[k]` plus lower 31 bits of `X[k+1]`. Two consecutive such equations reconstruct an entire hidden word. With the 42 exact within-row/row-start position witnesses from the new [gap bridge](../../results/h17-k04-mt-rowstart-gap-bridge.md), this yields **30 full 32-bit untempered words** at unobserved group-relative positions plus 34 partially known words. Counts are per connected position-group, not globally unique outputs.
+
+Crucially for missing K04: with row44 at relative index zero, the two **exact fully reconstructed final hidden outputs before row44** are `X[-2]=27D820C7` and `X[-1]=0ACF4761`. Source pairs are rows97+130. A post-selection consistency check combines rows97+130+131 to independently reconstruct observed row44 first word `ED6D44FC`, matching original untempered payload.
+
+The selected row129 requires earlier unknown positions `X[-4]` or lower, so this does not yet produce K04 bytes. **New attack target:** reconstruct middle gap word `X[393]` (immediately before row97) to invert tail row130 word0 and begin peeling earlier into the specific row43→44 hidden interval required for selected K04. Use source-supported cross-component stream alignments; do not substitute brute phrase/seed replays. No original acceptance PASS yet, K08 still unresolved.
