@@ -17,3 +17,12 @@ The perfect timestamp-format segregation and cross-cohort identity reuse show **
 The earlier 133-payload scan already found no matching K04 coupon under the original XOR mask; the new observation does not overturn that negative result or recover missing bytes. Its practical value is to caution against treating every row as an exchangeable, independently corroborating retry of the selected 18:02 coupon. The original custodian separately warns that the ACK field reports dispatch acknowledgement rather than integrity of the retained payload.
 
 For the distinct `mail/16.eml` chronology anomaly and K08 text sufficiency boundary see [source-rule consistency](h17-source-rule-consistency.md) and [source-sufficiency matrix](h17-source-sufficiency-matrix.md). Original status remains **six PASS, K04/K08 MISSING, combined INCOMPLETE, accepted=false**.
+
+
+## 19 October addendum: pre-hash functional-key exclusion (Agent 42)
+
+The observed cross-cohort collisions also provide a **general deterministic-model falsifier** beyond confirming that JOB+ATTEMPT is not a unique record identifier. See [the full evidence and model-key table](../agents/agent42/k04-identity-functional-key.md) and [read-only 133-row reproducer](../agents/agent42/check_k04_functional_keys.py).
+
+Spool lines **130 and 132** both identify JOB `PS-261003-0417`, CLASS=RECOVER, STATE=REQUESTED, DEST=bench, but attempts 1 and 3 have different recorded 16-byte PAYLOADs. Accordingly *every* proposed deterministic function of only JOB/CLASS/STATE/DEST (with any subset of those fields) predicts equal outputs for those two rows and is rejected by the **observed source bytes before any K04 commitment check**. The earlier lines 119/130 likewise falsify a function of JOB+ATTEMPT alone. Exhaustive grouping by JOB plus subsets of ATTEMPT/CLASS/STATE/DEST finds exactly two inclusion-minimal conflict-free combinations: **(JOB,ATTEMPT,CLASS)** and **(JOB,ATTEMPT,STATE)**. Including a timestamp avoids collision but is vacuous when every timestamp is unique.
+
+This does not recover K04 or prove a historical generator false: the custodian explicitly warns reconstructed printer payload bytes may be damaged, so a *true source-side* conflict may be one manifestation of that uncertainty. Distinct keys can merely memorize distinct rows. A K04 correction mechanism still needs independent provenance and byte-level predictions for the recovery-tail entries, not a larger unsupported hash/PRNG search. Original sources, mask, commitments and verifier were unchanged.
