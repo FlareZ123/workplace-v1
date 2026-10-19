@@ -21,7 +21,7 @@ from agents.agent37.k04_global_inverse_chronology_sft import source, conflicts
 from agents.agent21.k04_double_twist_sft import sig
 from agents.agent33.k04_global_target_projection import solve_target, state_expressions, test_synthetic
 
-def graph(words):
+def graph(words, extra_fixed=()):
     ws, within, boundary = words
     assert len(within) == 25 and len(boundary) == 17
     fixed = []
@@ -33,6 +33,7 @@ def graph(words):
     for k in (0, 1):
         assert sig(ws[9][k + 2], ws[40][k]) == ((ws[63][k] ^ ws[124][k]) & 0xBFFFFFFF)
     fixed += [(9, 40, 229), (9, 63, 398), (9, 124, 852)]
+    fixed += list(extra_fixed)
     parent = list(range(133))
     offset = [0] * 133
     def find(x):
