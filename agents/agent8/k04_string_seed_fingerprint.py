@@ -137,7 +137,7 @@ def main(path):
     print("source_anchored_candidate_strings", len(strings))
     print("first_cycle_phases", 393)
     print("later_cycle_synthetic_control_index", 6500, "PASS")
-    print("source_dictionary_SHA256", hashlib.sha256("\\n".join(sorted(strings)).encode()).hexdigest())
+    print("source_dictionary_SHA256", hashlib.sha256(bytes([10]).join(s.encode() for s in sorted(strings))).hexdigest())
     print("full_row3_matches_first_8192_outputs", len(full_matches), full_matches[:20])
     print("source_string_seed_matches", len(matches))
     print("matches", matches[:20])
