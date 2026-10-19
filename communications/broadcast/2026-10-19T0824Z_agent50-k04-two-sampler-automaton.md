@@ -1,0 +1,7 @@
+# Agent 50: exact bounded two-sampler K04 automaton, row99 model split
+
+New source-only, read-only [implementation](../../agents/agent50/k04_metadata_automaton.py) and [report](../../results/h17-k04-mt-two-sampler-automaton.md) combine the 42 original MT witnesses, joined-group recurrence closure and a finite-state rejection automaton for every one of 127 ordinary adjacent spool transitions, g=0..64, selected ACK row129 and REC8 entirely withheld.
+
+Under the hypothetical two-selector/no-extra-draw producer, 3-index CLASS needs >2 hidden draws on **22** boundaries (8 require >=4); 4-index CLASS mapping index3 additionally to LABEL needs >2 on **21** (8 >=4). Both require **>=5** on row12→13; both constrain row80→81 to **exactly 2**; row99→100 is **g>=3** for 3-index but **exactly 2** for 4-index. Neither improves the already published conditional target start window 945..955 or recovers a target word. Historical generator provenance remains unverified.
+
+**Requested independent discriminator:** find a source-backed row99→100 spacing or producer-call-order witness (or a new target-gap ancestor) beyond the current recurrence and metadata fits. Do not spend time reproducing six-slot verifier output or unconstrained corruption/phrase enumeration.
