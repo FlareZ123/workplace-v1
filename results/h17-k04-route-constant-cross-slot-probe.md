@@ -1,0 +1,21 @@
+# K04 cross-slot commissioning constants as possible MT19937 seed/donor controls
+
+**Agent 25, 19 October 2026.** This is a narrowly bounded, target-directed candidate-generation investigation. **K04 remains unresolved; recovered target bits = 0.** No new historical common-RNG producer has been authenticated.
+
+## Pre-specified source input and hypothesis
+
+Original `evidence/recovery-routing.json` contains two complete, distinct 16-byte constants: `K04.masked_component` (85 56 C8 CB 61 40 A7 F9 A5 12 3A C7 57 1B EE 1C) and `K08.desk_nonce` (5F 93 3D A6 A1 BD 03 C3 2D A5 CB C2 53 44 F4 97). Both appear in the commissioning route transcription; the printed spool is dated 3 October. Investigate the **unproven** possibility that a common offline commissioning generator generated either constant and later printer words. This is stronger as a *testable model* than a randomly assembled donor pool, but the current sources do **not** document a common producer, generator seeding recipe, cache, or chronological reuse. The K04 mask may itself be an XOR product, making it particularly doubtful as a raw MT donor. Do not promote the premise as historical fact.
+
+The [source-only reproducible SFT](../agents/agent25/k04_route_constants_sft.py) uses the original 43-member ZIP, holds selected spool row129 out of all discovery, asserts the original spool hash, and passes two synthetic positive MT controls.
+
+## Three distinct discriminators and observations
+
+1. **Seed/producer prediction, intact row3:** Seed CPython `Random` with each source constant interpreted as binary bytes, uppercase/lowercase ASCII hex, big/little unsigned integer, and ASCII hex bytes (12 recipes). Search 65,536 32-bit stream words per seed for the complete intact row3 four-word printed payload `24FF4383374867B2F2FABB2B30F72AAF`. **Zero exact 16-byte four-word matches.** No selected K04 word or commitment is used.
+2. **Early four-word recurrence donors, intact spool prediction:** Interpret each commissioning constant as four 32-bit tempered MT outputs in little and big endian (four runs, 12 adjacent predecessor pairs). For every intact ordered printer pair `middle`, `end` with increasing source row, test the exact MT recurrence `X[end] XOR X[middle] == twist(X[donor_i],X[donor_(i+1)])`. **Zero exact source triple witnesses** across 528 intact printer words. This rules out this direct recurrence donor geometry, not arbitrary unknown stream placements or non-MT producers. Synthetic CPython predecessor/middle/end observations produce a positive match.
+3. **Target-directed conditional d=11,p=627:** Agent8's paired-window construction says the original selected payload would be generated from `X[3]` (intact row43 word3), an unknown run `X[4..7]`, and unknown `X[400..403]` at this *hypothetical* earliest placement. Assign the two route constants to the two missing runs in both orders and both 32-bit endian conventions, giving **8 exact 128-bit predicted printer payloads**. XOR the unchanged recorded K04 mask and compare the eight resulting coupons against the unchanged original K04 SHA256. **Zero accepted values.** This is a finite new source-defined class but the donor assignment lacks a historical index witness.
+
+All three failures are **conditional class exclusions**. The intact row3 prediction and MT recurrence are independent of the K04 commitment; the target hash is consulted only for the final eight explicitly constructed coupons. None of this searches an arbitrary string mutation space, revisits six-slot verification, changes the source records or alters verifier commitments. It also does not recover or test K08's final unquoted language.
+
+## Research decision and exit
+
+The exact shared-commissioning-generator branches above have no affirmative original witness, and the target placement produces no acceptance match. **Stop this branch** unless a genuinely new original producer/seed/stream-index record is found. Earlier target observability work remains decisive about source-only independence: [K04 128-bit quotient](h17-k04-gf2-target-independence.md) and [donor cut](h17-k04-source-indexed-target-donor-cut.md). The unmodified original verifier would still require individual K04/K08 PASS, combined PASS and accepted true; those conditions have not been obtained.
