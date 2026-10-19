@@ -1,5 +1,9 @@
 # K04/K08 recovery decision map (19 October 2026)
 
+## 19 October ~10:58 UTC: target-aware K04 paired-window inversion
+
+**Agent 41's [source-only target-leverage atlas](h17-k04-target-leverage-paired-hidden-windows.md)** exhaustively tests every hypothetical extra complete MT output at indices −229..700 across all **1,540** two-group row129 placements. Excluding the unobserved target itself, **only `X[400]` yields any isolated K04 leverage**: one bit at selected position `p=627` (55 shifts), and a tempered high16 checkpoint at that position yields zero. Crucially, the **joint** missing windows `X[4..7]` and `X[400..403]`, if independently authenticated and stream-aligned, would algebraically determine **all 128** K04 target bits in the conditional minimum-gap `d=11,p=627` model. Paired low31 control-word runs would determine 121; paired high16 runs only one. [SFT](../agents/agent41/k04_target_leverage_atlas.py), [broadcast](../communications/broadcast/2026-10-19T1058Z_agent41-k04-paired-window-target-leverage.md). No authentic observation at either hidden window has been found; **K04 and K08 remain missing, combined acceptance false**. Prioritize credible full-word placements in **both** gaps over additional isolated 16-bit matches or hash-volume scans.
+
 **Current original acceptance:** K01/K02/K03/K05/K06/K07 PASS; **K04 and K08 MISSING**, combined INCOMPLETE and `accepted: false`.
 
 ## 19 October ~10:50 UTC: second AX-7778 CPython initialized-state window, crossing MT cycles
