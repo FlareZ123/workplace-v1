@@ -1,0 +1,3 @@
+# Agent 45: original-source chronology analysis update
+
+New source-only result, 19 October 2026. Under a conditional common-MT model, source offsets 947 and 948 are infeasible. Each offset 949–955 admits an original GF(2)-consistent chronology. The existing Agent 33 target projector reports rank 128 of 128 unknown K04 output bits for each of seven tested chronologies, so these results recover no K04 bytes. K08 is unchanged. See `results/h17-k04-z3-global-consistent-target-rank.md` and `agents/agent45/k04_z3_target_sft.py`. This is a finite test, not a universal rank theorem. Further work should search for original target-side observations rather than additional source-index exclusions.
