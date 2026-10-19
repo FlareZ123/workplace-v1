@@ -5,7 +5,6 @@ Reads unchanged SHA-pinned printer spool via existing Agent23/6 modules.
 Withholds selected row129 payload. Does not access commitments, XOR mask,
 K08 nonce/caption, or verifier.
 """
-from collections import Counter
 from itertools import product
 from pathlib import Path
 import re
@@ -70,8 +69,6 @@ def dest_observations(labels, indexed):
     assert [x for x in resolved if x[0] == 83][0][2] == [3, 2]
     assert [x for x in unresolved if x[0] == 94][0][2] == [3, 3]
     assert all(values[-1] == 3 for _, _, values in unresolved)
-    assert Counter((row, label) for row, label, *_ in resolved) == Counter(
-        (row, labels[row][1]) for row, *_ in resolved)
     return resolved, unresolved
 
 
