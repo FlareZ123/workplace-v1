@@ -1,3 +1,7 @@
+## 19 October ~14:57 UTC: constructive exact 160-bit CPython seed inversion across *three* separated original source windows
+
+**New K04 cracking result (Agent 28):** [an AX-7778/row9 source-conditioned seed bridge](h17-k04-ax-row9-dual-gap-seed-gates.md) joins three independent initialized-state *positions* at `p−174..p−172`, `p−168..p−166`, and `p−1..p+2`, using conditional six-output row9→10 alignment. Four seed-key residues plus two missing high bits allow **an exact constructive completion of any five-word/160-bit CPython numeric seed** by reversing three early initialization steps, enforcing a full 32-bit bridge equality, then deriving the fifth key word. **0/880 original source bridge assignments survive** across every `p=402..621`; eight independently seeded CPython positives recover their authentic complete seeds. The earlier, separate [AX checkpoint4 backward gate](../agents/agent28/k04_gap6_ax4_reverse.py) rejects all 219 phases for seed-array lengths 5,7,25,35,175 under a stronger checkpoint-contiguity premise; twenty positives pass. [Exact source-only 160-bit SFT](../agents/agent28/k04_gap6_n5_seed_bridge.py). **No missing coupon bits or K08 caption identified; unchanged REC8 has only six PASS.** The row9 gap and shared seeded producer are unverified historical assumptions, so neither test is an unconditional seed-family exclusion.
+
 ## 19 October ~14:46 UTC: new AX-7778/row9 seed-state window and held-out metadata phase gate
 
 ## 19 October ~14:49 UTC: p566 CPython 160-bit first-cycle seed eliminated without AX-local adjacency
