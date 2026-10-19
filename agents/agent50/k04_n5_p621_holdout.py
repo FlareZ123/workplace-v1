@@ -91,8 +91,9 @@ def positives():
 def original(zip_path):
     rows = source_rows(zip_path)
     early, partial_early = source_window(zip_path)
-    # Independent source-pin: row3->34 fifth inverse pair supplies
-    # initialized S455.low31 (p=621), never used in branch/key derivation.
+    # Separate source-pin: row3->34 fifth inverse pair supplies
+    # X0.low31 at this cycle edge (not nonexistent S624.low31).
+    # It is not used to derive the p621 branch or held-out prediction.
     later_partial = inverse_twist(rows[3][3], rows[34][2]) & 0x7FFFFFFF
     assert later_partial == 0x31FD69FC
     candidates = derived(621, rows[10], rows[41], early, partial_early, LATE)
