@@ -1,0 +1,54 @@
+{
+  "title": "K08 style-conditioned editing-trajectory hypotheses, frozen before acceptance tests",
+  "ranking_criterion": "N02 uses an indefinite good-watch maxim and next pair of hands; N06 uses lamp stays on and corridor quiet. N13 supplies mugs and lamp, N20 sea/end-of-night/voices/table. Rank by plausibility of an understated single-sentence edit of first and second Emily drafts, with those late motifs; final entries become more proverbial and therefore weaker. Sentence punctuation is irrelevant under normalization.",
+  "phrases": [
+    {
+      "rank": 1,
+      "caption": "The little lamp stays on, and there is always room for one more cup before the sea turns light."
+    },
+    {
+      "rank": 2,
+      "caption": "The sea keeps the last hour of the night, and we keep a place at the table."
+    },
+    {
+      "rank": 3,
+      "caption": "A good watch leaves a light on and a place at the table for whoever comes next."
+    },
+    {
+      "rank": 4,
+      "caption": "By the time the sea is light, there is still one more mug at the table."
+    },
+    {
+      "rank": 5,
+      "caption": "The sea is outside, the night is almost finished, and the little lamp is still on."
+    },
+    {
+      "rank": 6,
+      "caption": "There is always room at the table for one more voice before the sea wakes up."
+    },
+    {
+      "rank": 7,
+      "caption": "The end of a good watch is a light left on for the next pair of hands."
+    },
+    {
+      "rank": 8,
+      "caption": "The mugs stay by the window until the last voice at the table has gone quiet."
+    },
+    {
+      "rank": 9,
+      "caption": "After a long watch, the sea is outside and there is still room for another chair."
+    },
+    {
+      "rank": 10,
+      "caption": "At the end of the night, the table has room for the ones who came in last."
+    },
+    {
+      "rank": 11,
+      "caption": "The little lamp stays on while the sea and the night give way to another morning."
+    },
+    {
+      "rank": 12,
+      "caption": "A place at the table is worth more than knowing when the night watch ends."
+    }
+  ]
+}
