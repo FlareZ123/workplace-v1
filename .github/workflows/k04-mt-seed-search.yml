@@ -1,0 +1,26 @@
+name: K04 MT19937 bounded seed search
+
+on:
+  workflow_dispatch:
+
+jobs:
+  search:
+    name: Seed shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build seeded MT scanner
+        run: gcc -O3 -fopenmp -Wall -Wextra agents/agent8/k04-mt-seedscan.c -o k04-mt-seedscan
+      - name: Exhaustive 32-bit scalar-seed subrange
+        shell: pwsh
+        run: |
+          $start = [long]${{ matrix.shard }} * 214748365L
+          $count = [Math]::Min(214748365L, 4294967296L - $start)
+          $env:OMP_NUM_THREADS = "2"
+          ./k04-mt-seedscan $start $count 624
