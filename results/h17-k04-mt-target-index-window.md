@@ -1,0 +1,19 @@
+# K04 selected printer block: source-only MT19937 stream-index window (19 October 2026)
+
+**Agent 37. New positive cracking constraint, not a K04 candidate.** Using 25 cross-cohort recurrence witnesses identified by Agent 8, I withheld the selected K04 ACK row 129 entirely and solved the relative positions of its four-word output block from the surviving *other* 132 rows. The first output of selected row 129 must lie at a relative MT stream index **916 through 971 inclusive** (56 possible start indices), counting the first 32-bit word of row 0 as relative index zero. The bound assumes the 25 witnessed MT relations represent one stream, each record consumes four consecutive 32-bit outputs, and chronological row-start indices increase by at least four. It makes no assumption about seed, first stream index, or upper bound on skipped draws.
+
+Reproduce from the unchanged original ZIP with [the read-only standard-library solver](../agents/agent37/k04_mt_target_bounds.py) and the original spool SHA256 `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`. It extracts the original source bytes, substitutes an empty row for target 129, finds all **25** exact forward MT recurrence witnesses among the others, builds a difference-constraints graph, and computes tight extremal relative indices via shortest paths. It does **not** load `acceptance.json`, search a target hash, or even inspect row 129's payload bytes during witness detection.
+
+## Independent human-checkable inequalities
+
+Write `s[r]` for start of row `r`. Witness `((0,0),(53,3),(83,0))` gives `s53=s0+394` and `s83=s0+624`. Witness `((45,0),(98,3),(132,3))` gives `s132=s45+621`. By monotonicity, `s45<=s53-8*4` and `s129<=s132-3*4`. Thus **`s129-s0<=394-32+621-12=971`**.
+
+For the lower bound, witnesses `((31,0),(83,3),(114,1))`, `((32,0),(84,2),(115,0))`, and `((38,0),(91,3),(121,3))` yield respectively `s83-s31=394`, `s84-s32=395`, `s91-s38=394` and `s121-s38=621`. Monotonic gaps force `s32>=s31+4`, `s91>=s84+7*4`, `s129>=s121+8*4`. Combining these with `s83=s0+624` proves **`s129-s0>=624-394+4+395+28-394+621+32=916`**.
+
+The shortest-path solver uses **all 25** recurrence witnesses and finds the same lower/upper values, so no other interval constraint in this witness set and monotonicity alone narrows the window. A separate integer mixed-linear optimization confirmed feasible placements achieving each endpoint; their gaps can be implausibly large, so the result is tight as a mathematical constraint, **not** a claim that a physical generator would use those placements. Under an additional *hypothetical* global bound of at most five skipped 32-bit draws per pair of rows, integer optimization narrows row129 to **931 through 956** (26 positions); the original evidence does not establish that upper-bound assumption.
+
+## Cracking use and limitations
+
+This reduces target stream-position ambiguity, conditional on the MT generator model, to **56 adjacent relative possibilities** before candidate evaluation. It is suitable as a cheap filter for a proposed seeded PRNG or a new source-grounded output-consumption rule. It does not recover an absolute seed, the missing 128-bit payload, the printed original coupon, or the original K04 slot. If selected row129 is not a genuine four-word block of the same stream, the positional inference does not apply. Do not interpret the reported bounds as evidence of an accepted K04 candidate; six original slots remain PASS and K04/K08 remain unresolved.
+
+See also [Agent 37's exact late-window draw budget](h17-k04-mt-tail-gap-budget.md): the two tail recurrences force `g131=g97-3`, `sum g97..130=94`, and a distinct overlapping pair forces one of `g42,g43,g44>=5`. Together these constraints can falsify seeded generator hypotheses before touching the K04 hash.
