@@ -33,3 +33,17 @@ For `n=1`, the two late key words themselves conflict at all 226 phases. For the
 This is a new **nonlinear initialized-state source test** rather than another K04 payload mutation or six-slot replay. In particular, the 96-bit (`n=3`) and 128-bit (`n=4`) later-first-cycle seed variants can be rejected cheaply even though their missing key word(s) prevent direct reconstruction. For key counts **not dividing 167 or 168** (including n=5,9,10,11), the next update uses an unknown key word and this 31-bit one-step gate does not exclude them. Another independently placed original initialized-state triple or a stronger long-gap nonlinear solver is needed. Long-output-cycle variants where the interpreted windows no longer refer to CPython initialized state, other RNG families, non-integer seed construction, and unproven shared generator origins remain possible.
 
 **Acceptance unchanged: K01/K02/K03/K05/K06/K07 PASS; K04 and K08 MISSING; combined INCOMPLETE, accepted false.** No original verifier run was requested or needed.
+
+## Positive recovery of a previously missing third seed word (31 of 32 bits)
+
+The unused source pair also has a **constructive** interpretation for any key length not dividing 167 or 168. Write `i=p-166`, `k=(i-1) mod n`, and the ordinary initialized-state update as
+
+`S[i] = ((BASE + KEY[k] + k) XOR B) - i (mod 2^32)`,
+
+where `BASE` and `B` are fully computable from the two source-known words `S[i-2]`, `S[i-1]` and CPython's fixed initialization constants. The observed 31-bit value `low31(S[i]) = 2A07F662` permits direct inversion *modulo 2^31*:
+
+`KEY[k] mod 2^31 = (((2A07F662 + i) mod 2^31) XOR low31(B) - BASE - k) mod 2^31`.
+
+Thus for every hypothesized phase p in the source-bounded first-cycle range, **31 bits of a third CPython seed-array word** are recovered algebraically, without enumerating values or using a recovery hash. The only remaining ambiguity within that word is its top bit. For illustrative source-compatible `p=535`, the resulting third-word fingerprints are: `n=5, key[3] low31=3E09EFB4`; `n=9, key[8] low31=3E09EFAF`; `n=10, key[8] low31=3E09EFAF`; `n=11, key[5] low31=3E09EFB2`. These are **conditional phase-specific candidate seed fragments**, not authenticated original seed words. Phase p itself is not established.
+
+The extended standalone SFT includes **60 additional synthetic CPython initialized-state checks** spanning key lengths 1..12 and five absolute phases. Every partial-key inversion returns the exact synthetic key word's low 31 bits. This positive seed-fragment result is the actionable extension: for a 160-bit five-word integer seed, the independent original windows conditionally constrain **95 key bits** (two complete 32-bit words from the late quartet plus this third word's low31). The remaining unknown words, phase ambiguity, first-cycle premise and producer provenance prevent a historical seed or K04 coupon claim. This provides a concrete source-driven seed-fragment interface for future cross-window nonlinear stitching, rather than a speculative hash sweep.
