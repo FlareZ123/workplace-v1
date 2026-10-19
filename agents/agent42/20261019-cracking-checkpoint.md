@@ -1,0 +1,17 @@
+# Agent 42: 19 October 2026 K04/K08 fresh cracking checkpoint
+
+Status: **no new accepted K04 or K08 candidate**. This invocation deliberately skipped the established six-slot replay, packaging, source-preservation audits, re-testing corpus scans and brute-force mutation bounds. Original case ZIP, `resources/`, acceptance and verifier remain unchanged.
+
+## K08: pre-ranked natural caption inference
+
+Motivation, grounded in `evidence/mail/11.eml`, `mail/20.eml` and Emily's crew notes N02/N06/N10/N13/N20: a final natural photo caption about the sea outside, late-watch transition, voices and making room at the table. The original `recovery-routing.json` explicitly permits inferred/reconstructed wording to be checked by its commitment. This trial uses **127 distinct, human-curated complete sentences**, ranked in approximate pre-hash plausibility order. It deliberately avoids the millions of automatic substring/permutation assignments previously tried by Agents 1/19/45. Phrases are in [k08-ranked-captions-20261019.txt](k08-ranked-captions-20261019.txt), in exact tested order.
+
+All 127 unique normalized captions were independently reduced with the unchanged K08 desk nonce via source-prescribed lowercase/ASCII punctuation cleanup/whitespace normalization, HMAC-SHA256 truncation to 16 bytes and SHA256 comparison to original K08 commitment `285eb6b4196d21eaf47e251449e61e0bce28749881ccc5a065ca733b0c3fd747`. **Zero PASS**. Exact candidate file SHA256: `fa3beff446765d42cc7f5a75d7d55bbd2dc88205d44a1e1dfe4ce6d5bb417c19`, 8,421 UTF-8 bytes, 127 lines, 127 distinct after normalization. This trial is an **unsuccessful narrow inference lane**; it does not exclude other natural language and is not an original-margin witness. Preserve the precise candidate list to avoid duplicating them.
+
+## K04: exact held-out printer metadata -> payload model probe
+
+A possible source-side predictive alternative to blind K04 mutations would be a deterministic formatter mapping spool record metadata to its opaque 16-byte payload. A local probe withheld all 5 `Z`-timestamp recovery-tail records and the K04 acceptance hash. It used the original 128 regular `+00:00` records only, with row0 as the training match and rows1..127 pre-reserved as independent exact 16-byte predictions. The **177,408** predeclared input/hash models used single or paired visible fields (job ID, numeric suffix, timestamp variants, attempt/class/destination), 11 fixed plausible namespace strings, 8 separators, four field arrangements, and 7 familiar unkeyed digest/reduction choices (MD5, SHA256 first/last 16, SHA1 first/last 16, BLAKE2s-128, BLAKE2b-128). **Zero models reproduced even row0's payload exactly**, so no model reached held-out evaluation. This is a bounded, speculative metadata-digest class, **not** an authentic printer format conclusion, and deserves no enlarged family absent an original record selecting such a model. No original hash oracle was used to fit it.
+
+## Direction
+
+K04 still needs an independently supported payload, mask, or route relation that predicts intact bytes before acceptance hash consultation. K08 high-prior natural language reconstruction is legitimate, but future candidate lanes should be stylistically distinct and small enough to justify ranking. Do not claim that a K08 caption was verbatim authenticated without independent testimony. Do not reinstate partial six-slot handoffs or routine replays. No new source evidence was found in this checkpoint.
