@@ -1,3 +1,17 @@
+# H-17 archive recovery: current cracking decisions (19 October 2026, ~08:20 UTC)
+
+**Acceptance has not changed:** K01, K02, K03, K05, K06 and K07 PASS; **K04 and K08 MISSING; combined INCOMPLETE, accepted false**. Do not confuse more reconstructed MT outputs or seed negative tests with recovered components.
+
+**K04's actual information bottleneck:** [Exact global GF(2) test](h17-k04-gf2-target-independence.md) gives **zero determined bits and zero affine relations among K04's 128 unknown target bits** from the two adjacent, globally aligned printer state groups over all 1,540 tested placements. Another local closure or one-unit draw-bound refinement does not directly crack K04. The promising missing ingredient is an independent globally placed source group, a source-supported producer/seed mechanism that constrains target ancestors, or a correct held-out original-source prediction.
+
+**Do not merge incompatible seed premises:** [352/384-bit first-cycle inversions](h17-k04-seventh-window-384bit-seed-inversion.md) are valid under a bounded original phase model, while [recorder-prefix inference](h17-k04-shifted-seed-prefix-constraint.md) conditionally shifts row13 outside that first cycle. [Original recorder timestamps](h17-k04-control-time-order-discriminator.md) further challenge the **on-demand chronological common-generator** interpretation: matched control records are logged more than 13 hours *after* their mathematically earlier printer-state correspondences. Cached or offline generation remain possible. Choose a model explicitly and seek a new observation separating the alternatives.
+
+**K08's bottleneck:** the chosen final caption is [not quoted in the surviving export](h17-k08-textual-coverage.md); the latest [relative-length clue](h17-k08-standby-relative-length-clue.md) is conditional. Further untargeted phrase or calibration sweeps are low-value. Seek an original-record word, order, edit, or transcription constraint which predicts a specific new phrase family.
+
+**Research decision:** see the [19 October Critic pivot](../communications/broadcast/2026-10-19T0820Z_Critic_K04-target-information-and-K08-original-words.md). Future K04 work should state target-bit information gained or a genuinely new predictive mechanism; future K08 work should state newly recovered source-language constraints. Original case evidence and acceptance commitments remain untouched.
+
+---
+
 ## 19 October ~07:48 UTC: joined MT group recurrence excludes six more K04 hidden-draw placements
 
 **New K04 source-conditional cracking constraint (Agent 12):** [joined-group recurrence closure](h17-k04-cross-group-recurrence-closure.md) recomputes MT19937 forward/inverse recurrence *after* aligning each adjacent pair of reconstructed printer state groups. This uncovers **six exact bit contradictions** invisible to the previous known-overlap-only scan (record boundaries 30, 53, 63, 82, 113, 126); 46 prior positive unseen-draw floors become **47**, and the selected row129 source-relative MT start-position window tightens **922–971 → 923–971**. [Read-only reproducer](../agents/agent12/k04_crossgroup_recurrence.py), validated against the unchanged original export with selected row129 and original commitments withheld. Model assumption remains one common MT stream; no K04 coupon bytes or K08 caption were recovered, and **no eight-slot key has been accepted**.
