@@ -4,7 +4,7 @@
 
 ## New source-equality combination
 
-Write `s[r]` for the first 32-bit output of original spool row `r` in the *hypothetical single consecutive MT19937 stream*, and `g[r]=s[r+1]-s[r]-4>=0` for skipped outputs between four-word printer payloads. The three exact intact original recurrence witnesses, all from the previously published 42:
+Write `s[r]` for the first 32-bit output of original spool row `r` in the *hypothetical single consecutive MT19937 stream*, and `g[r]=s[r+1]-s[r]-4>=0` for skipped outputs between four-word printer payloads. The three intact original recurrence witnesses, all from the previously published 42:
 
 1. `W[44,0]`, `W[97,3]`, `W[131,0]`: ordinary 397/624 recurrence gives **`s97=s44+394`** and **`s131=s44+624`**.
 2. Unknown predecessor bit before `W[44,0]`, middle `W[97,2]`, later `W[130,3]`: the unique precursor MSB is zero, giving **`s130=s44+620`** (and independently `s97=s44+394`).
@@ -22,7 +22,7 @@ This identity is **exact in the conditional single-stream model**; it requires n
 
 As a **new falsifiable hypothesis**, suppose the two tail ACK records 131→132 consume four contiguous 32-bit outputs and no additional draws (`g131=0`), just as source recurrence already forces `g130=0` despite a 21-minute wall-clock separation. Then both ordinary transitions 44→45 and 97→98 consume **exactly three hidden outputs**. To inspect the target-adjacent groups too, temporarily make the *stronger and separately unverified* assumption `g128=g129=0`, giving `s44-s43=11` and selected row129 start `s129-s43=627`.
 
-Under this joint hypothesis, align the three intact relative printer groups (group43 starts `12:-229,43:0,66:167,96:393,128:623`; group44 `13:-216,44:11,67:179,97:405,130:631,131:635`; group45 `45:18,98:412,132:639`). Exact inverse/forward MT closure over **60 intact 32-bit printer outputs** infers the following additional *source-only* metadata-adjacent states, expressed as tempered accepted-code prefixes:
+Under this joint hypothesis, align the three intact relative printer groups (group43 starts `12:-229,43:0,66:167,96:393,128:623`; group44 `13:-216,44:11,67:179,97:405,130:631,131:635`; group45 `45:18,98:412,132:639`). Exact inverse/forward MT closure over **56 intact 32-bit printer outputs** infers the following additional *source-only* metadata-adjacent states, expressed as tempered accepted-code prefixes:
 
 | Relative hidden state | Recoverable code | Proposed producer position |
 |---|---|---|
