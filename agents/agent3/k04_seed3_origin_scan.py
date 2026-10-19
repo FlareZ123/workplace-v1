@@ -27,6 +27,7 @@ sys.path[:0] = [str(AGENTS / name) for name in
                 ("agent46", "agent1", "agent8", "agent31", "agent23")]
 from k04_python_seed_fragments import extract_pairs, fragments, initial_words
 from k04_seed_seven_window import extra_pairs
+from k04_cross_carrier_seed_windows import indexed_groups
 from k04_mt_rowstart import untemper
 from k04_mt_recursive_peel import temper
 
@@ -112,6 +113,49 @@ def source_data(source):
     return row3, row7, terminal
 
 
+def phase_bounds(source):
+    # Common-stream conditional row equalities: 42 original MT witnesses
+    # plus 3 schema-defined recorder/RC-17 bridges. Under the CLASS and
+    # DEST producer hypothesis each regular row transition consumes
+    # at least 6 MT output words: 4 payload + 2 metadata draws.
+    values, groups = indexed_groups(source, True)
+    assert len(values) == 133 and not values[129]
+    edges = []
+    for group in groups.values():
+        root, origin = group[0]
+        for row, offset in group[1:]:
+            shift = offset - origin
+            edges.extend(((root, row, shift), (row, root, -shift)))
+    edges.extend((row + 1, row, -6 if row < 128 else -4)
+                 for row in range(132))
+
+    def shortest(start, target):
+        d = [10**8] * 133
+        d[start] = 0
+        for iteration in range(133):
+            changed = False
+            for a, b, distance in edges:
+                if d[a] + distance < d[b]:
+                    d[b] = d[a] + distance
+                    changed = True
+            if not changed:
+                break
+        assert not changed, "contradictory producer-phase hypothesis"
+        return d[target]
+
+    minimum_gap = -shortest(7, 3)
+    maximum_gap = shortest(3, 7)
+    assert (minimum_gap, maximum_gap) == (28, 37)
+    # Row3 five-pair window starts one draw before row3 payload.
+    # Given the explicitly hypothesized absolute s7=394:
+    # p3 = s3-1 = 393-(s7-s3).
+    result = 393 - maximum_gap, 393 - minimum_gap
+    assert result == (356, 365)
+    print("SOURCE_CONDITIONAL_PHASE_BOUNDS", result,
+          "row3_to_7_gap", (minimum_gap, maximum_gap), flush=True)
+    return result
+
+
 def heldout(seed, phase, row3, row7, terminal):
     rng = random.Random(seed)
     real_terminal = rng.getstate()[1][623]
@@ -123,7 +167,7 @@ def heldout(seed, phase, row3, row7, terminal):
 
 
 def main(args):
-    assert 321 <= args.phase_min <= args.phase_max <= 369
+    assert 356 <= args.phase_min <= args.phase_max <= 365
     synthetic(args.engine, args.workers)
     with tempfile.TemporaryDirectory(prefix="h17-seed3-") as d:
         source = Path(d) / "source.zip"
@@ -131,6 +175,7 @@ def main(args):
             for relative in (SPOOL, TRP):
                 z.write(args.resources / relative, relative)
         row3, row7, terminal = source_data(source)
+        assert phase_bounds(source) == (356, 365)
         checked = 0
         accepted = 0
         for p in range(args.phase_min, args.phase_max + 1):
