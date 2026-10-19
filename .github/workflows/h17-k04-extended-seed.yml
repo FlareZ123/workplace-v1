@@ -1,0 +1,14 @@
+name: H17 K04 source-anchored extended seed inversion
+on:
+  workflow_dispatch:
+jobs:
+  invert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstitute source members into local test fixture
+        run: |
+          python -c "from pathlib import Path; import zipfile; files=sorted(x for x in Path('resources').rglob('*') if x.is_file()); z=zipfile.ZipFile('original-members.zip','w'); [z.write(p,p.relative_to('resources')) for p in files]; z.close(); print('fixture members',len(files))"
+      - name: Invert longer CPython numeric seed families
+        run: python -u agents/agent46/k04_seed_352_384.py original-members.zip
