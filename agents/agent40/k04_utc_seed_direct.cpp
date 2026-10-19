@@ -72,6 +72,23 @@ int main(int argc,char**argv){
       }
     }
     std::puts("CPython MT integer seed controls PASS: 3 seeds x 4 words");
+    // Nonzero-offset synthetic 128-bit source block must be found exactly.
+    PythonMT fixture;fixture.seed(1791000000u);
+    for(int i=0;i<1473;i++)fixture.next();
+    uint32_t truth[4]={fixture.next(),fixture.next(),fixture.next(),fixture.next()};
+    PythonMT replay;replay.seed(1791000000u);
+    uint32_t a=0,b=0,c=0,d=0;
+    int synthetic_hits=0;
+    for(int pos=0;pos<4099;pos++){
+      a=b;b=c;c=d;d=replay.next();
+      if(pos>=3 && a==truth[0] && b==truth[1] &&
+         c==truth[2] && d==truth[3]){
+        if(pos-3!=1473)return 1;
+        synthetic_hits++;
+      }
+    }
+    if(synthetic_hits!=1)return 1;
+    std::puts("Synthetic full 128-bit offset=1473 recovery: PASS");
     return 0;
   }
   if(argc!=4){
