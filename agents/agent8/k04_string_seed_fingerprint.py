@@ -109,8 +109,20 @@ def main(path):
     assert pairs[0] == (0x482F6361, 0xA757A2AC)
     index = phase_index(pairs)
     strings, nwords, nlines = source_candidates(path)
+    with ZipFile(path) as archive:
+        spool = [line for line in archive.read("evidence/print/spool-reconstruction.log").decode().splitlines() if line.startswith("2026-")]
+    source_row3 = bytes.fromhex(re.search(r"PAYLOAD=([0-9A-F]{32})", spool[3]).group(1))
+    assert source_row3.hex().upper() == "24FF4383374867B2F2FABB2B30F72AAF"
+    # Search later MT output cycles too, independently of the first-cycle index.
+    control_stream = random.Random("H17-SYNTHETIC-SEED-PROBE").randbytes(8192 * 4)
+    assert control_stream.find(control_stream[6500 * 4:6500 * 4 + 16]) == 6500 * 4
+    full_matches = []
     matches = []
     for candidate in sorted(strings):
+        output_stream = random.Random(candidate).randbytes(8192 * 4)
+        at = output_stream.find(source_row3)
+        if at >= 0:
+            full_matches.append((candidate, at // 4, at % 4))
         key = string_key_words(candidate)
         n = len(key)
         if n not in index:
@@ -124,6 +136,9 @@ def main(path):
     print("source_words", nwords, "source_lines", nlines)
     print("source_anchored_candidate_strings", len(strings))
     print("first_cycle_phases", 393)
+    print("later_cycle_synthetic_control_index", 6500, "PASS")
+    print("source_dictionary_SHA256", hashlib.sha256("\\n".join(sorted(strings)).encode()).hexdigest())
+    print("full_row3_matches_first_8192_outputs", len(full_matches), full_matches[:20])
     print("source_string_seed_matches", len(matches))
     print("matches", matches[:20])
     print("K04_K08_UNRESOLVED")
