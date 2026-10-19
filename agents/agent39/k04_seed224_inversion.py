@@ -152,8 +152,8 @@ def main(path):
             return
         row, options = choices[i]
         for phase, fragment in options:
-            if any(not (-distances[other][row] <= phase - other_phase
-                        <= distances[row][other])
+            if any(not (-distances[row][other] <= phase - other_phase
+                        <= distances[other][row])
                    for other, other_phase in phases.items()):
                 continue
             merged = compatible(fragments_so_far, fragment)
