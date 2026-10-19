@@ -34,6 +34,30 @@ def rank(vectors):
     return len(basis)
 
 
+def universal_source_window():
+    """Check every bounded local row-group placement, independent of payloads."""
+    total = 0
+    for p in range(945, 956):
+        u, q, m = p - 851, p - 623, p - 227
+        assert 0 <= u < 397 and 0 <= q + 3 < 397
+        for d in range(11, 66):
+            for delta in range(627, d + 617):
+                s43 = p - delta
+                s44 = s43 + d
+                s12, s13 = s43 - 229, s44 - 227
+                s96, s97 = s43 + 393, s44 + 394
+                assert s12 + 3 < u < s13
+                assert s43 + 3 < q and q + 3 < s44
+                assert s96 + 3 < m and m + 3 < s97
+                for g97 in (3, 94):
+                    s45 = s44 + 4 + g97
+                    s132 = s45 + 621
+                    assert s132 + 3 <= p + 160 < p + 227
+                total += 1
+    assert total == 16940
+    return total
+
+
 def main(archive_path, fixture_path):
     with ZipFile(archive_path) as z:
         spool = z.read("evidence/print/spool-reconstruction.log")
@@ -89,6 +113,7 @@ def main(archive_path, fixture_path):
         assert p + 4 in observations
         print("independent_synthetic_seed", seed, "PASS")
     assert rank(basis_vectors) == 128
+    print("global_placement_cases_tested", universal_source_window())
     print("original_source_spool_sha256", SPOOL_SHA)
     print("selected_row_withheld", 129, "MT_index", p)
     print("hidden_first_cycle", early, q, q + 1, q + 2, q + 3)
