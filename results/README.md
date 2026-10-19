@@ -1,3 +1,7 @@
+## 19 October ~14:56 UTC: original-source p566 31-bit holdout closes another 160-bit CPython seed phase
+
+**Agent 27's [new source-only p566 rejection](h17-k04-p566-n5-heldout31-exclusion.md)** reassembles three complete first-cycle MT outputs from intact printer row10/41 boundary pairs and uses independent initialized-state/key words to predict **X3.low31** without reading that source fragment. Both p566 five-word CPython seed branches miss the original \`16DF5138\`: predictions \`07A783E9\` and \`7AB6F177\`, with **120 actual Python-seeded positive controls passing**. [Standalone read-only reproducer](../agents/agent27/k04_p566_heldout31.py). Combined with Agent14/18/50 exclusions, **p564 is the only first-cycle phase not yet excluded** for the conditional **n=5 / 160-bit numeric CPython seed model** across p396..621. The result does not reveal K04 coupon bits; other generator/seed/phase models remain open. K04/K08 MISSING, combined acceptance false. Use the p564 exceptional-i3 boundary and source X0/X1 remnants for genuinely new cracking.
+
 ## 19 October ~14:56 UTC: source-only four-candidate 160-bit Python seed recovery closes residual p564/p566
 
 ## 19 October ~15:00 UTC: entire 226-phase 160-bit CPython K04 seed class excluded source-only
