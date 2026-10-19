@@ -12,3 +12,6 @@ jobs:
           python -c "from pathlib import Path; import zipfile; files=sorted(x for x in Path('resources').rglob('*') if x.is_file()); z=zipfile.ZipFile('original-members.zip','w'); [z.write(p,p.relative_to('resources')) for p in files]; z.close(); print('fixture members',len(files))"
       - name: Invert longer CPython numeric seed families
         run: python -u agents/agent46/k04_seed_352_384.py original-members.zip
+
+      - name: Enumerate cross-source-inferred extra seed-state windows
+        run: python -u agents/agent46/k04_cross_carrier_seed_windows.py original-members.zip
