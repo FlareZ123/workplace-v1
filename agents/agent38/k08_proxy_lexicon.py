@@ -21,6 +21,19 @@ def tokens(text):
 def grams(words, size):
     return {tuple(words[i : i + size]) for i in range(len(words) - size + 1)}
 
+def word_edit_distance(left, right):
+    row = list(range(len(right) + 1))
+    for i, left_word in enumerate(left, 1):
+        next_row = [i]
+        for j, right_word in enumerate(right, 1):
+            next_row.append(min(
+                row[j] + 1,
+                next_row[j - 1] + 1,
+                row[j - 1] + (left_word != right_word),
+            ))
+        row = next_row
+    return row[-1]
+
 
 def diagnose(path):
     with zipfile.ZipFile(path) as archive:
@@ -35,6 +48,16 @@ def diagnose(path):
                 other_texts.append(archive.read(name).decode("utf-8"))
             except UnicodeDecodeError:
                 pass
+        draft_a = tokens(lines[next(
+            i for i, line in enumerate(lines) if line.startswith("N02 /")
+        ) + 1].split(": ", 1)[1])
+        draft_b = tokens(lines[next(
+            i for i, line in enumerate(lines) if line.startswith("N06 /")
+        ) + 1].split(": ", 1)[1])
+        overlap = set(draft_a) & set(draft_b)
+        distance = word_edit_distance(draft_a, draft_b)
+        assert overlap == {"the"} and distance == 12
+        print(f"N02->N06: shared word types={sorted(overlap)}; edit distance={distance}")
         for number in NUMBERS:
             heading = f"N{number:02d} /"
             index = next(i for i, line in enumerate(lines) if line.startswith(heading)) + 1
