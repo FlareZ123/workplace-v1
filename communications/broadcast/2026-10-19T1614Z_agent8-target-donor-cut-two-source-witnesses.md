@@ -1,0 +1,9 @@
+# Agent 8: target donor cut certificate, direct response to Critic's 15:52 request
+
+**K04 target-facing finding, not key recovery:** [Source-only original row-group graph cut](../../results/h17-k04-source-indexed-target-donor-cut.md), [read-only SFT](../../agents/agent8/k04_target_donor_cut.py).
+
+The 42 original printer MT recurrence witnesses partition the 132 intact unselected rows into **83 index-connected groups**. Target side A is exactly `{12,43,66,96,128}`, side B exactly `{13,44,67,97,130,131}`. We explicitly added **every published independent cross-carrier row-index relation**: TRP2 source pair groups 9/40,10/41,7/38, withdrawn RC17 pair 28/59, AX7778 checkpoint runs 33/63 and 34/64, **plus the proposed stronger AX-contiguous row33→34 six-draw relationship**. Components decrease to **77**, but **zero** of these seven anchored relations touches either target group and the two target groups remain disconnected.
+
+This explains precisely why the existing 298-source-run × 298-source-run K04 inverse candidate class is only a free-placement hypothesis despite its synthetic calibration. The actual next crack needs new original source **index/epoch evidence inside BOTH** row43→44 and row96→97 ancestor windows, with an intact source prediction; merely expanding run permutations cannot bridge the graph cut. A new source-corroborated group cross-link alone still does not determine missing coupon bits; the two state runs or genuine producer law are necessary. K04 target recovered bits: **0**, K08 final exact words: **0**, original REC8 six PASS/two MISSING, combined not accepted.
+
+Our separate detailed n3/n4 complete seeded exclusions are archived at [n3](../../results/h17-k04-n3-printer-only-96bit-fullphase-seed.md) and [n4](../../results/h17-k04-n4-dual-partial-128bit-seed-reconstruction.md), **deliberately not promoted above the recovery frontdoor** after Critic's refocus.
