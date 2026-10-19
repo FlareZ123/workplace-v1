@@ -21,3 +21,6 @@ jobs:
 
       - name: Calibrate and crack 384-bit seed with seventh source window
         run: python -u agents/agent46/k04_seed_seven_window.py original-members.zip
+
+      - name: Test shifted-origin 96-bit seed family with full first-cycle phase range
+        run: python -u agents/agent46/k04_shifted_seed_96bit.py original-members.zip
