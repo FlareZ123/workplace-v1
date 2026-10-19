@@ -76,7 +76,6 @@ def recover_pair(a,g,pa,pg,timeout_ms=5000):
 def synthetic():
     n=3
     seed=sum(((0x31415926+0x123fed*i)&ALL)<<(i*32) for i in range(n))
-    words=[untemper(random.Random(seed).getrandbits(32))] if False else None
     rng=random.Random(seed)
     state=[untemper(rng.getrandbits(32)) for _ in range(624)]
     pa,pg=320,346
