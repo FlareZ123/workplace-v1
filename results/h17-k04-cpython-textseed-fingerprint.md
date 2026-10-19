@@ -1,0 +1,34 @@
+# K04: CPython text-seed SHA-512 fingerprint inversion (source-anchored dictionary)
+
+**Agent 8, 19 October 2026 ~08:22 UTC.** New bounded K04 cracking experiment. **No original K04/K08 slot PASS is claimed.** The selected escrow ACK spool row129, masked component and acceptance commitments were withheld from seed-fingerprint inference.
+
+## New seed family and fast discriminating test
+
+Earlier seeded MT19937 studies reconstructed numeric integer seed arrays, mostly under first-cycle assumptions, and tested short scalar/numeric seed classes. CPython 3 `random.Random(text)` (version 2) instead UTF-8 encodes a string `s`, takes `int.from_bytes(s + SHA512(s), "big")`, and seeds MT19937 from that integer. This creates a distinctive, long but **deterministic** 32-bit seed-array fingerprint for each nominated source text.
+
+The existing source-only row3/34 five-pair MT window supplies five consecutive reconstructed untempered state pairs separated by 227 output positions. The first pair is exactly `(482F6361, A757A2AC)`. When the window lies in the generator's **first 624-output cycle**, two adjacent initialized-state seed-array words can be algebraically recovered at any candidate absolute phase `p=0..392`. For a particular text seed, the two words are compared by direct lookup against its SHA-512-derived key array. This is a 64-bit seed-input discriminator that needs **no enumeration of the generator's subsequent outputs**, and does not use an acceptance hash or an observed K04 target byte.
+
+The new [single-file driver](../agents/agent8/k04_string_seed_fingerprint.py) reuses Agent1's original initialized-state inversion, Agent23's exact untemper and Agent31's selected-row-withheld recurrence reconstruction. It indexes all 393 valid phases for CPython seed-array sizes 17..69 words. The candidate dictionary deterministically includes evidence-derived printable token strings, eligible intact source lines, source identifiers, and a bounded set of labelled H-17/date/route compositions. It excludes the entire printer spool from dictionary construction and omits acceptance inventory and verifier source. This is a **historical-token seed hypothesis**, not evidence that those were actually used as seeds.
+
+## Observed experiment
+
+The original supplied 43-member export and read-only Python code gave:
+
+| Item | Result |
+| --- | ---: |
+| Synthetic CPython `Random(str)` calibrated phases | **5/5 PASS** (`p=0,15,195,300,392`) |
+| Source-derived distinct lexical tokens | 2,068 |
+| Eligible nonspool source lines | 483 |
+| Unique, deterministic tested candidate strings | **18,212** |
+| Absolute first-cycle phases per candidate | **393** |
+| Original-source candidate matches at two adjacent seed words | **0** |
+
+The five synthetic cases use the **real CPython string seed expansion and generator**, and return the original text-seed phase through the same two-word lookup. The original run produced zero matches. In the local reproduction, existing Agent1/23 extraction and seed-fragment functions were represented by method-equivalent local shims; the exact committed driver imports the repository's original functions and its dependency-path integration should be checked on checkout. Neither the accepted six components nor the unchanged verifier was used as an oracle.
+
+## What the exclusion means
+
+A tested string in this explicit 18,212-candidate dictionary is incompatible with these row3 five-pair observations **if** row3's pair window belongs to the first output cycle of the same CPython 3 `Random(str)` stream and the previously inferred MT chronology applies. It also covers identical UTF-8 bytes used with CPython `Random(bytes)` for these ASCII candidates.
+
+This does **not** exclude arbitrary text seeds, numeric seeds, raw-byte seeds, longer/more unusual seed recipes, a generator initialized and advanced before the row3 window, multiple source PRNGs, or alternative sample ordering. The independent cross-source recorder/RC-17 hypothesis places printer row0 at least 307 outputs after generator initialization, leaving only part of the searched phase window feasible if all those model premises hold. This observation strengthens the case for a **cycle-aware** initialized-state inversion rather than yet more dictionary volume.
+
+**Consequence for cracking:** if an independently identified producer seed string appears in new source evidence, this fingerprint index can test it cheaply. The more important unresolved task is inferring initialized seed words when the observed MT windows span later 624-output cycles. K04's four selected payload words remain unpredicted; K08's exact final caption remains missing. The original key status remains six PASS, two MISSING, combined INCOMPLETE.
