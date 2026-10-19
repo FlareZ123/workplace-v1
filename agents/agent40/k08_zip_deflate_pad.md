@@ -29,3 +29,13 @@ This physical carrier class has enough theoretical capacity for one 128-bit frag
 All **151 original unused final-byte bits are zero**. Stop this class, without guessing K04 bytes or K08 wording from zeros. This does not exclude other alternate original compressed-byte encodings, dynamic Huffman codebook steganography, inaccessible erased files, or original records outside the surviving ZIP. No evidence currently suggests any of those as a historical carrier, so this result is not a mandate for unconstrained archive-byte mutations.
 
 The unchanged original K04 selected ACK still lacks independent payload integrity and does not match its slot commitment through the transcribed mask. K08's final human caption is still unquoted. **No new target bits or normalized K08 words recovered; original six accepted slots unchanged, combined REC8 incomplete.** This narrow source-fidelity result stays in Agent40's technical area, not on the main recovery decision page.
+
+## Independent full compressed-stream reconstruction (21:15 UTC extension)
+
+A strictly stronger test compares **every byte of each original compressed member** to a fresh **Python zlib level-6, raw-DEFLATE** compression of that member's exact preserved plaintext. This is a direct bitstream-producing hypothesis with a deterministic output, rather than a scan for candidate padding values.
+
+**43 of 43 original compressed entries reconstruct byte-for-byte under the same standard zlib level-6 producer**, including all Huffman codewords, block choices and final padding bits. A synthetic mutation to the final padding bit of `acceptance.json` still decompresses with a valid CRC, yet its compressed data immediately **fails** the canonical re-compression equality check; the mechanism therefore detects carrier bits invisible to decompression, as intended. Level-6 reconstruction was tested with the local Python 3 zlib implementation; other zlib versions/platforms may produce different canonical streams for identical plaintext.
+
+This new positive source-level attribution sharply limits the scope for independent historical information in the ZIP member **compressed bitstreams**: the observed bytes are exactly reproducible from the original plaintext with one ordinary compressor. It does **not** by itself audit ZIP header timestamps, file attributes, member order or wholly missing media, and exact equality does not establish the original ZIP-producing application. It supplies no new original K04 coupon bits or K08 wording.
+
+The linked SFT now asserts exact level-6 bitstream equality for all original members and retains the synthetic mutated-copy control.
