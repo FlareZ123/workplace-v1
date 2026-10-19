@@ -59,3 +59,15 @@ Six adjacent 227-separated full output pairs invert to five consecutive initiali
 Eight synthetic end-to-end controls using actual CPython `random.Random` 96-/128-bit integer seeds at phases `p=0,125,305,350`, `q=p+35` correctly recovered the integer seeds and passed independent pair regeneration. These are model-specific source-conditioned exclusions. A 128-bit seed with row10 already in a later cycle, longer/string-entropy seeds, other RNGs and still-unresolved inter-group alignments remain open.
 
 **K04 cracking use:** This new six-pair source run is structurally valuable to cycle-aware seed inversion and later-cycle source alignment, especially with the shifted-prefix bound `s0>=292` from original TRP2 controls. Do not treat a first-cycle exclusion as disproof of arbitrary MT19937. The conditional row33→34 bridge and all historical provenance cautions above still apply.
+
+
+## Additional source-only 160/192-bit first-cycle tests
+
+[Reproducer](../agents/agent30/k04_extended_seed_160_192.py) combines the new six-pair row3 window, the existing four-pair row10 window and the existing three-pair row11 window. It uses algebraic initialization bridging and the source-conditioned phase bounds `0<=p<=391`, `35<=q-p<=90`, `4<=t-q<=18`. It excludes the selected printer row129 and REC8 commitments.
+
+| Numeric seed | Compatible source phase pairs | Bridge attempts | Fully reconstructed candidates | Independent original row34 word3 matches |
+|---|---:|---:|---:|---:|
+| 160 bits | 7,271 | 105,765 | 0 | 0 |
+| 192 bits | 9,269 | 134,835 | 28,004 | 0 |
+
+The independent row34 fourth output occurs at phase `p+233`, just outside the six original pair inputs, and therefore supplies a source-only candidate check. Six synthetic CPython numerical-seed controls recover their true 160-/192-bit seeds at shifted phases. These are bounded first-cycle exclusions or reconstruction failures under the specified phase/gap conditions. Later cycles, other inputs and non-reconstructible configurations remain open. K04/K08 unresolved.
