@@ -1,4 +1,4 @@
-"""Recover two conditional hidden MT19937 output words before printer row38.
+"""Demonstrate the FALSIFIED contiguous node50 sequence hypothesis at row38.
 
 Read-only SFT: python agents/agent29/k04_node50_pre38.py case-export.zip
 Selected row129, route/mask, K08 and acceptance commitments are not read.
@@ -64,6 +64,8 @@ def main(path):
 
     row7 = state_row(7)
     row38 = state_row(38)
+    row91 = state_row(91)
+    row121 = state_row(121)
     controls = {}
     for i in range(88):
         raw = recorder[16 + 24*i:16 + 24*(i + 1)]
@@ -94,9 +96,22 @@ def main(path):
               "DEST2", coded >> 30)
     assert prediction[-3] == 0x3586854C
     assert prediction[-2] == 0x7BEE882D
+    def inverse_twist(value):
+        odd = value >> 31
+        return (((value ^ (0x9908B0DF if odd else 0)) << 1) | odd) & 0xFFFFFFFF
+
+    hidden_minus2 = ((inverse_twist(row91[1] ^ row121[1]) & 0x80000000)
+                     | (inverse_twist(row91[0] ^ row121[0]) & 0x7FFFFFFF))
+    hidden_minus1 = ((inverse_twist(row91[2] ^ row121[2]) & 0x80000000)
+                     | (inverse_twist(row91[1] ^ row121[1]) & 0x7FFFFFFF))
+    assert (hidden_minus2, hidden_minus1) == (0xE18DCD4D, 0x820D840E)
+    assert hidden_minus2 != prediction[-2] and hidden_minus1 != prediction[-1]
+    print("independent_row38_minus2", f"{hidden_minus2:08X}")
+    print("independent_row38_minus1", f"{hidden_minus1:08X}")
+    print("contiguous_node50_model", "FALSIFIED; DO NOT USE AS SOURCE-CONSTRAINED SAMPLER INFERENCE")
     assert temper(prediction[-2]) >> 29 == 1
     assert temper(prediction[-2]) >> 30 == 0
-    print("conditional_no_extra_draw_two_sampler", "FALSIFIED_AT_ROW37_TO_38")
+    print("strict_two_sampler_falsifier", "INVALID_COUNTERFACTUAL_ONLY")
     print("selected_row129_and_original_commitments_unread", True)
 
 
