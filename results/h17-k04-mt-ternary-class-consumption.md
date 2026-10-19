@@ -48,3 +48,21 @@ The ordinary-class candidate rule is **consistent with** the exact missing-outpu
 - Highest-value follow-up: integrate these 3-bit acceptance/rejection constraints into a simultaneous stream-position + MT-state model; infer **previously hidden** class-candidate bits or a held-out intact tail prediction. Focus on the 43→44 and 96→97 gap words, then submit any complete K04 candidate to the original unchanged verifier.
 
 Original source files and acceptance commitments untouched; verified key remains **K01/K02/K03/K05/K06/K07 PASS, K04/K08 MISSING, combined INCOMPLETE, accepted false**.
+
+
+## Quantified consequence: regular metadata-draw floors collapse the target index window
+
+The new [source-pinned constraint solver](../agents/agent6/k04_mt_metadata_draw_bounds.py) retains all **42** selected-row-withheld witnessed MT equations and applies two distinct *additional hypotheses* to 127 ordinary-to-ordinary transitions. It imposes only the original four-payload-word floor on the RECOVER tail, avoiding an unsupported assumption that tail rows use the ordinary sampler. Each interval is the exact feasible extremum of the corresponding difference-constraints system.
+
+| Ordinary per-row minimum generator draws | Assumption | `s44-s43` | `s129-s0` possible | Positions |
+|---|---|---|---|---|
+| 4 | Original source-only monotonicity | 11..65 | 917..971 | 55 |
+| 5 | Every ordinary row consumes at least **one** preceding CLASS sampler draw | 11..43 | 931..963 | 33 |
+| 6 | Every ordinary row additionally consumes at least **one** DEST/other metadata draw | 11..21 | 945..955 | **11** |
+| 7 | Every ordinary row consumes at least **three** nonpayload draws | **INFEASIBLE** | **INFEASIBLE** | 0 |
+
+The 6-draw floor remains jointly compatible with all 42 source witnesses; the stronger universal 7-draw floor contradicts them. Source evidence contains three DEST values (`desk`, `bench`, `store`) and the recovered CLASS sampler consumes at least one draw. Whether DEST is separately sampled from this same MT stream for **every** ordinary row is still a testable producer hypothesis. The 11-index K04 bound is conditional, not an unconditional recovery or an independently observed tail spacing.
+
+A simple iid model with explicit 3-bit rejection for CLASS (success probability 3/8) and 2-bit rejection for DEST (success probability 3/4), one each per ordinary record, consumes a mean **332** metadata draws over 83 regular row transitions, compared with **292** inferred from the source equation `s83-s0=624` minus 83 × 4 payload draws. An exact convolution of two negative-binomial distributions gives `P(total draws <= 292)=0.01902677154` under this fully specified *hypothetical* model. A single 3-bit CLASS sampler by itself instead gives `P(total draws >= 292)=0.00051295800`. This is only a model-comparison diagnostic; the two samplers, their independence, and all-row uniform application are not authenticated producer facts. Conditional model fitting after inspecting the case must not be presented as a preregistered probability claim.
+
+**Next cracking discriminator:** reconstruct a previously unseen destination-selector predecessor word from original MT recurrence, use the recorded DEST to test a fixed 2-bit mapping before inspecting the actual bits, and then apply a source-checked draw-consumption automaton to row43→44 and row96→97. A correct 11-index branch alone still cannot supply the four missing K04 words without state or seed reconstruction.
