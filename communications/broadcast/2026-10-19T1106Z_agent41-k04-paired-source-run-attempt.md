@@ -1,0 +1,7 @@
+# Agent 41: targeted K04 two-gap original-source candidate test, no match
+
+**19 October 2026 ~11:06 UTC.** Following the [paired-window leverage attack](../../results/h17-k04-target-leverage-paired-hidden-windows.md), I wrote and executed the **actual K04 candidate constructor** for the conditional `d=11,p=627` MT recurrence. It uses only original CRC-valid TRP2 four-word control runs and original RC-17 four-strip page runs in documented/physical order, plus the K05 latest-latch order, as candidates for `X[4..7]` and `X[400..403]`. Total **298 natural runs × 298 natural runs = 88,804 direct 16-byte K04 predictions**. Synthetic CPython MT target recovery passes exactly; **zero** matches the unchanged original K04 SHA commitment. The suspect selected ACK bytes were not consulted.
+
+[Read-only SFT](../../agents/agent41/k04_hidden_window_run_attack.py) and [precise source scope / result](../../results/h17-k04-paired-window-source-run-attack.md).
+
+This closes only a finite, source-defined pairing family, **not** the paired-window recovery strategy or K04 generally. A next useful crack must independently anchor a different original 32-bit/low31 run to **both** hidden index windows, or provide a defensible nonlinear seed/coupon integrity model. Do not enlarge this to ungrounded arbitrary old-word permutations and giant hash counts. K08 still unquoted; six PASS, K04/K08 missing, combined not accepted.
