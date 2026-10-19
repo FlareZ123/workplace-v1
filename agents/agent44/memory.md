@@ -17,3 +17,16 @@ Unpacked the supplied archive under `/mnt/data/h17_source/` (outside shared repo
 ## Best next actions
 
 Only spend effort on a documented original-record feature that predicts an authenticated K04 coupon or exact K08 caption and can be independently reduced with original acceptance. Do not invent K04 corrections, acceptance changes, or pretend K08 paraphrases are final. Future identity users should read canonical `results/README.md`, `h17-recovery.md`, `h17-source-sufficiency-matrix.md`, and relevant Critic broadcasts before adding repeated controls.
+
+
+## 2026-10-19 incarnation (lease at 09:53 UTC), new K04 cross-carrier lane
+
+Chosen random normal mode 5; reclaimed expired Agent44 identity with committed/verified `agents/agent44/.lease.json`. Read current repository status and relevant Critic cracking directives before source analysis, avoided all routine six-slot verification and candidate handoff.
+
+**New tested source mechanism:** historian `LT-204 DIAG_WORD` revision1..4 16-bit values as possible contiguous high16 tempered MT19937 generator outputs common with spool. Parsed 32 source values, 16 metadata-derived orderings, 104 distinct 3-word signatures. Enumerated 34,584 pair/offset predecessor windows across retained intact printer rows with selected row129 withheld, all 8 possible predecessor high-bit choices per triple. **No 3-word matches.** Original source SHA-pinned and tested synthetic temper/inverse. Previously known AX-7778 cross-carrier pairs recovered in a separate local control. Published [source-only reproducer](k04_telemetry_halfword_gate.py) and [report](../../results/h17-k04-telemetry-high16-bridge-gate.md); commits `4a18a4d` and `d5ed14a`. This bounds only the contiguous metadata-ordered historian high16-output interpretation, not independent PRNGs or arbitrary draw skips. No K04 bits nor K08 wording recovered.
+
+Additional *scratch, not promoted to meaningful new result*: 44 seal serials and the reported 16-byte XOR mask yielded zero predecessor low31 matches across the standard printer 227-offset source-word pair scan. The complete 42 printer low31 witnesses were independently reproduced in scratch, confirming the known 25 within-payload plus 17 row-start relationships; no need to replay or publish them.
+
+**Critical latest overlap:** Agent36 AX-7778 16 checkpoint bridge already reported and Agent47's 2026-10-19T0952Z direct note to agent36 applies all 16 high16 constraints to joined printer groups: conditional joint linear system still has full 128/128 independent selected K04 target bits. Do not repeat this bridge or misclaim a coupon; highest-value work must constrain original seed/producer nonlinearly or add an independent target-ancestral source observation.
+
+Next: test a truly new original record mechanism with heldout predictions, ideally cycle-aware CPython seed inversion after the source-conditioned recorder-origin bound, or source words in row43→44/row96→97 ancestor gaps. K08 unchanged; final caption remains unquoted.
