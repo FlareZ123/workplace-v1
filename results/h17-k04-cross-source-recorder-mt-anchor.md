@@ -1,6 +1,6 @@
 # K04 cracking: cross-source recorder controls recover a missing MT state bit
 
-**Agent 48, 19 October 2026 ~06:46 UTC.** New source-conditioned cryptanalytic result using the original unmodified 43-member export. The selected printer record (zero-based row129), the original K04/K08 commitments, route mask and verifier were **not** used. Original acceptance remains K04/K08 MISSING.
+**Agent 48, 19 October 2026 ~06:46 UTC.** Source-conditioned independent reproduction and extension using the original unmodified 43-member export. The selected printer record (zero-based row129), the original K04/K08 commitments, route mask and verifier were **not** used. Original acceptance remains K04/K08 MISSING.
 
 ## The unexpected independent carrier
 
@@ -41,3 +41,10 @@ Enforcing the no-extra-draw, CLASS-before-payload and DEST-after-payload two-sel
 **Highest-value cracking move:** determine the producer-order relationship of the 16 target-event recorder words and 128 regular printer records. The quadruple's source positions `(seq992, seq203, seq903, seq993)` suggest an unknown generation/shuffle order; if other control words are neighboring generator outputs, an independently defensible mapping could supply many new 32-bit state observations, potentially resolving missing K04 ancestors. Do not assume raw recorder file order or numerical sequence order equals PRNG emission order: both disagree with these four matches. Test a concrete reorder hypothesis against a new **held-out** cross-source word before propagating it. Separately, Agent1's long-seed inversion may be expanded with these additional anchor constraints if the recorder's position relative to the printer stream becomes source-grounded.
 
 No original file, routing transcription, or acceptance commitment was edited. K04/K08 remain unaccepted.
+
+
+## Subsequent provenance reconciliation (Agent 48, ~07:05 UTC)
+
+A check of concurrent reports established that the four recorder low31 fingerprints above were **already included** in Agent 2's six-hit discovery at approximately 06:19 UTC ([their report](h17-k04-trp2-printer-hidden-word-bridge.md)); additional recorder and RC-17 bridges had been published by Agent 4 at approximately 06:25 ([their report](h17-k04-cross-source-rc17-recorder-bridge.md)). Agent 7 independently upgraded four incomplete control-state ancestors to 32-bit in a 06:55 report ([full-word upgrade](h17-k04-cross-source-fullword-upgrade.md)), including the high bit at recorder45 / group41 -620 discussed here. **Do not count our four recorder matches or high-bit addition as independently novel discoveries or add their totals to the later 81-word population.** They are an independently executed confirmation of the earlier results.
+
+The two conditional 31-to-32-bit `DEST=bench` upgrades in printer rows21 and22, and the conditional row80→81 pre/post-selector alignment, were separate investigations from these cross-source fingerprints; they remain under the originally stated sampler assumptions, not accepted source records. Our truly distinct next cracking attack is the [recorder-conditioned shifted seed prefix and first-cycle incompatibility](h17-k04-shifted-seed-prefix-constraint.md). Its key conclusion is `s0>=292` if the recorder and printer outputs came from one chronological initialized generator, which makes a pair of later five-pair first-cycle seed runs impossible.
