@@ -88,9 +88,12 @@ def recorder_runs(data):
                 and start <= x["ts"] < start+8]
     latest = [max((x for x in eligible if x["latch"] == j),key=lambda x:x["seq"])
               for j in range(4)]
-    runs[tuple(x["i"] for x in latest)] = (tuple(x["state"] for x in latest),
-                                          "K05-latch-ordered")
-    return list(runs.values())
+    # K05 latest-per-latch order is already among the natural recorder runs.
+    # Preserve it as a separately labelled, intentionally repeated assignment.
+    result = list(runs.values())
+    assert len(result) == 291
+    result.append((tuple(x["state"] for x in latest), "K05-latch-repeated"))
+    return result
 
 
 def procedure_runs(text):
