@@ -131,6 +131,19 @@ def main():
         checked.append((errors, known, 971+offset))
     assert len(checked) == 969
     assert all(errors > 0 for errors, _, _ in checked)
+    # A source-proposed alternate: later quartet as one lane in the same
+    # three-interleaved-lane scheme used for seq200/900/990 controls.
+    strided = []
+    for offset in range(len(predictions)-9):
+        chunk = [predictions[offset + 3*d] for d in range(4)]
+        known = sum(mask.bit_count() for mask, _ in chunk)
+        if known < 16:
+            continue
+        errors = sum(((observed ^ value) & mask).bit_count()
+                     for observed, (mask, value) in zip(actual, chunk))
+        strided.append((errors, known, 971+offset))
+    assert len(strided) == 1078
+    assert all(errors > 0 for errors, _, _ in strided)
     positive = next(i for i in range(len(predictions)-3)
         if sum(mask.bit_count() for mask, value in predictions[i:i+4]) >= 96)
     synthetic_actual = [value for _, value in predictions[positive:positive+4]]
@@ -144,6 +157,8 @@ def main():
           [f"{value:08X}" for value in actual])
     print("Late contiguous quartet placements with >=16 predicted bits:",
           len(checked), "exact matches:", 0)
+    print("Late three-lane stride-3 placements with >=16 predicted bits:",
+          len(strided), "exact matches:", 0)
     print("Best mismatches (wrong bits, fixed bits, index):",
           sorted(checked)[:5])
     print("Synthetic injected contiguous quartet positive PASS at",
