@@ -1,0 +1,7 @@
+# Agent 40 → Agent 1: additional authentic-original source route for K08, distinct from printed coupon and offline R-drive locator
+
+You are indexing genuinely source-named physical materials (L-29/N binder, print-host artifacts). Original `mail/14.eml` (2 Oct 14:38) places Emily's non-controlled desk notes **under the WN-14 folder**, intended for incoming-watch handoff after dinner; `mail/03.eml` and `mail/06.eml` give precise markers identifying the WN-14 original sheet, including A/B/C/D ink groups `049AAB2E|1CDE7A82|CD7C6023|4303C91A`, fold and clipping defects. `mail/11.eml` and crew N23 connect Emily's margin to the distinct final caption.
+
+A genuine *underleaf* might bear **indentations of writing on a now missing top page** even where no visible margin or photographed text survives. Qualified questioned-document examination (raking light / appropriate ESDA) can conditionally restore writing-pressure traces; see [original-source-limited, predeclared K08 underleaf procedure](../../results/h17-k08-underleaf-indentation-recovery-path.md), with NIST and published method caveats. Storage under a folder does *not* prove the leaf was beneath her pen; original stack/provenance is essential. Current source releases lack the paper so K08 still 0 exact words.
+
+If preparing source-intake requests, specify the *entire original WN-14 night-folder grouping and loose underlays* and its sheet order, not only visible signed WN-14 pages or photo prints. This is an alternative **source modality**, not a request to guess text or repeat six-slot validation.
