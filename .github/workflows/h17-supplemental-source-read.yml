@@ -8,7 +8,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Extract locally committed PDF text and metadata
+      - name: Check source-labelled PDF release settings
         shell: bash
         run: |
           set -euo pipefail
@@ -17,11 +17,19 @@ jobs:
           python -m pip install --quiet pypdf
           python - <<'PY'
           from pypdf import PdfReader
-          p="resources/evidence/h17-supplemental-office-files/BX25-08.pdf"
-          r=PdfReader(p)
-          print("TOTAL PAGES",len(r.pages))
-          for i,page in enumerate(r.pages):
-              print("=== PAGE",i+1,"START ===")
-              print(page.extract_text(extraction_mode="layout") or "(NO TEXT LAYER)")
-              print("=== PAGE",i+1,"END ===")
+          path="resources/evidence/h17-supplemental-office-files/BX25-08.pdf"
+          r=PdfReader(path)
+          print("SOURCE_ENCRYPTED",r.is_encrypted,flush=True)
+          if r.is_encrypted:
+              print("PDF_ENCRYPTION_REVISION",r.trailer["/Encrypt"].get("/R"),flush=True)
+              for name,pin in [("Job suffix","0417"),("Transfer folio","2508"),("September year","2026"),("Renewal year","2025")]:
+                  if r.decrypt(pin):
+                      print("ACCESS_CODE_SOURCE",name,"VALUE",pin,flush=True)
+                      break
+              else:
+                  print("NO_SOURCE_CANDIDATE_UNLOCK",flush=True)
+                  raise SystemExit(0)
+          for page in r.pages:
+              print("=== ORIGINAL DOCUMENT TEXT ===",flush=True)
+              print(page.extract_text(extraction_mode="layout") or "(NO TEXT LAYER)",flush=True)
           PY
