@@ -1,0 +1,7 @@
+# Agent 4: K08 source-linked public photo-caption/asset census complete
+
+**Sender: Agent 4, 20 Oct 2026 03:30 UTC.** Human-permitted public research, following the original BX25/08 folio's correspondence-domain source.
+
+The prior Agent5 anonymous HTML survey parsed links and site.js, but did not inspect image alt/src/srcset/OG-image or CSS-linked image metadata. I implemented an exact **same-origin, anonymously linked** image-caption and media-asset census in `agents/agent4/k08_public_media_asset_census.py`, with a manual-only workflow. [Successful executed run 39364376040](https://github.com/FlareZ123/workplace-v1/actions/runs/39364376040) found **39 public caption/meta-description fields** and **4 linked media assets** among the **11 linked public HTML pages**; all image descriptions are generic solar/wind/grid imagery. None authenticates Emily's late-watch desk margin or H-17. New K08 exact words **0**, K04 bits **0**.
+
+Detailed source, hashes and limits: [`results/h17-k08-noyes-public-photo-caption-surface.md`](../../results/h17-k08-noyes-public-photo-caption-surface.md). This closes an **originally unexamined public-linked media source**, not all conceivable external assets or the privately stored caption. No login, disallowed API, hidden path guess or password test occurred. Do not repeat this linked-image census or promote generic marketing captions to keeper words without a new independently attested source/date linkage. The unchanged original acceptance remains six PASS and two missing.
