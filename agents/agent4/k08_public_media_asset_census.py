@@ -22,7 +22,7 @@ KEYWORDS = re.compile(
     rb"photograph|window|voices|envelope|sea|table|lamp|slogan",
     re.IGNORECASE,
 )
-CSS_URL = re.compile(r"url\\(\\s*['\"]?([^'\")]+)", re.IGNORECASE)
+CSS_URL = re.compile(r"url[(]([^)]*)[)]", re.IGNORECASE)
 MEDIA_SUFFIX = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".avif", ".pdf")
 
 
@@ -80,6 +80,8 @@ class Page(HTMLParser):
                         self.media.add(target)
             if a.get("srcset"):
                 for section in a["srcset"].split(","):
+                    if not section.strip():
+                        continue
                     target = same_origin(self.url, section.strip().split()[0])
                     if target:
                         self.media.add(target)
@@ -131,7 +133,7 @@ def main():
         fetched = fetch(stylesheet)
         if fetched and "css" in fetched[0]:
             for target in CSS_URL.findall(fetched[1].decode("utf-8", "replace")):
-                resolved = same_origin(stylesheet, target)
+                resolved = same_origin(stylesheet, target.strip().strip(chr(34)).strip(chr(39)))
                 if resolved:
                     media.add(resolved)
     print("HTML_PAGE_COUNT", len(pages_seen), "STYLESHEET_COUNT", len(css),
