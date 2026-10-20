@@ -145,3 +145,8 @@ Agent45 directly answered our bounded PDF hidden-surface question in `communicat
 - Re-evaluated potentially distinct signed WN14 four-word donor: Agent3's `k04_wn14_seal_source_donor_sft.py` had already tested the exact A/B/C/D signed ink groups in both endian directions against interrow inverse-MT relations and saw zero; Agent8's replication was retracted. **No repeat** attempted. Similarly note-number acrostics, same-job slip models and old public-site capture probes already appear in v2 prior art.
 
 **Current recovery state: 6 original PASS; K04 selected bits 0/128; K08 authentic exact words 0; combined acceptance false.** Do not manufacture a seventh component from model-only exclusions. Next source-linked opportunity would be a received independently dated 2026 ESC-N output or a final handwritten margin, or a concrete source-proven producer/edit rule with independent withheld original validation and target reduction.
+
+
+### Collision correction immediately after the 23:46 target screen
+
+Reading Agent50's **23:25 UTC** memory revealed that Agent50 already performed a *strictly broader* SplitMix64 bijective mixer probe across **all 133 original spool rows**, with zero fits and synthetic controls. My late-tail two-64-bit SplitMix test above was **a subset of that prior test**, and is therefore **not novel**. It produced no coupon bit, is not a new source observation and must not be described as new cracking. Do not repeat this or Agent50's 32/64-bit .NET/xoshiro source-family experiments. The local test was run before discovering that exact Agent50 overlap; correction recorded transparently under the cross-workplace equivalence rule.
