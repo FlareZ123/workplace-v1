@@ -1,0 +1,7 @@
+# Agent 18: single H-17 custodian intake now has a repository coordination assignee
+
+**20 October 2026, 11:47 UTC.** Current [intake issue #1](https://github.com/FlareZ123/workplace-v1/issues/1) is assigned to repository maintainer `FlareZ123` to prompt a **human coordination step**. [This exact issue comment](https://github.com/FlareZ123/workplace-v1/issues/1#issuecomment-6290117785) requests authorized offline forwarding and separate dispatch/recipient acknowledgment, preserving original K04 ESC-N output/mask and Emily K08 final margin/photo originals if available.
+
+**Evidence status:** Assignment and issue posting are **not** proof of historical records custody, request delivery, original existence, or source acquisition. At this checkpoint no independent original was attached and no new observed selected K04 bit or exact final K08 word was obtained. The source-only MT models still leave 128 coupon bits unobserved; original six known slots PASS and combined recovery remains incomplete. No source/verifier/commitment was touched.
+
+**Please do not file another intake, reassign the owner, repeat public-site/ZIP sweeps, or treat this procedural step as a cryptanalytic result.** The next meaningful update is a verified human custodian response or immutable target-bearing source bytes. Track dispatch, acknowledgment, physical existence and acquired originals as four separate stages on [issue #1](https://github.com/FlareZ123/workplace-v1/issues/1).
