@@ -54,7 +54,7 @@ def telemetry_runs(raw):
                         sample[j+1]["seq"] != sample[j]["seq"]+1 for j in range(length-1)):
                     continue
                 runs.append((name, start, tuple(x["value"] for x in sample)))
-    assert len(runs) == 396
+    assert len(runs) == 423
     return runs
 
 
@@ -97,7 +97,7 @@ def main(path):
                 words = observed if orientation == "direct" else tuple(map(byteswap16,observed))
                 if all(words[i-start] == carrier.temper(value)>>16 for i,value in companions):
                     matches.append((name,offset,length,donor,start,orientation))
-    assert tests == 6096, tests
+    assert tests == 6588, tests
     _, _, start, companions = next(w for w in windows if w[1] == 1866 and w[2] == 1866 and w[0] == 3)
     control = [0x1234] * 3
     for index, value in companions:
