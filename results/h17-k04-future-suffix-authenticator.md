@@ -41,6 +41,31 @@ The [new SFT](../agents/agent29/k04_future_suffix_witness_sft.py) preserves the 
 
 An independently preserved historical carrier that supplies 32-bit words at the specified future positions has **not been found**. Previous original 100-field recorder/procedure and 64-field AX source-carrier sweeps already yielded no authenticated future index1412/1866 donor. The new source-fixed suffix is useful for testing a *future newly received* 4-word or 3-word record; it does **not** justify re-searching the same unindexed original pools or treating a synthetic MT match as an observed external source.
 
+
+## Stronger 160-bit content beacon: original future carrier need not have an independently logged absolute index
+
+The same untouched-original state projector yields **five consecutive completely fixed future words at `X1418..X1422`**, only **six state draws after** target-informative unknown `X1412`. This is a qualitatively different evidence-acquisition capability: a newly received, contiguous *original* generator trace can be recognized by a highly distinctive known-output segment even if its historical sequence counter cannot be directly translated to global `X[1418]`.
+
+| Stream index | Fixed untempered word | Fixed tempered output |
+| --- | --- | --- |
+| 1418 | `85BDFD0D` | `9CC93D80` |
+| 1419 | `036F15CB` | `300760A8` |
+| 1420 | `9955A20E` | `7606C13B` |
+| 1421 | `066B505D` | `D4A5BA9E` |
+| 1422 | `36C8808C` | `3C241095` |
+
+**Predeclared content-match fingerprint**, 160 continuous output bits:
+
+```text
+9CC93D80 300760A8 7606C13B D4A5BA9E 3C241095
+```
+
+Little-endian raw 20-byte stream: `803DC99CA86007303BC106769EBAA5D49510243C`. Its values are derived wholly from original intact printer payloads in the same conditional index955 MT model, independent of the missing coupon, hash, mask, accepted six components or newly supplied external values.
+
+For an independently authenticated future MT generator **contiguous 11-word run `X1412..1422`**, the final five outputs must match the beacon and the run's first word then fixes **32 actual selected-coupon bits** under `X958=X1412 XOR 24D1E0F2`. A contiguous **12-word run `X1411..1422`** also supplies the unknown `X1411` and its 30-bit source-affine `X957` relation, constraining **62** coupon dimensions. The original clock/index need not be numerically present in that *new* artifact if the 160-bit beacon and source provenance establish its relative position in the candidate contiguous generator trace. Without an original production-link witness, an exact numerical match would still not alone prove the generator historically produced the incident coupon.
+
+A bounded byte-level test against every original member of the 43-file ZIP found **zero direct raw little/big endian, contiguous hex or base64 representations** of the 160-bit beacon; this is a new exact-fingerprint check with no loose phrase/word permutations, not a proof that no differently encoded or omitted future carrier exists. The new SFT asserts all five words and their synthetic exact MT future values as well as the earlier 96-bit suffix. This is an *independent-output source recognition opportunity*, with **0 actual new K04 bits** in the currently received evidence.
+
 ## Outcome and decision
 
 **Actual new selected K04 coupon bits: 0/128; exact K08 final-caption words: 0; original REC8 combined status: INCOMPLETE.** This incremental result answers the missing `historically indexed future-state donor` question with a **specific 96-bit prospective independent-output fingerprint** and a precise conditional 32-bit extraction path. The current obstacle remains obtaining a genuinely original independently indexed target-bearing carrier or the original physical RECOVER coupon/keeper margin. Preserve acceptance, all original source bytes, and the distinction between conditional algebra and historical proof.
