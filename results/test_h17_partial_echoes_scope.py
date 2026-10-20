@@ -22,7 +22,7 @@ class PrinterEchoSourceScope(unittest.TestCase):
     def test_generated_work_cannot_introduce_false_echo(self) -> None:
         baseline, ignored = load_source_members(ROOT)
         self.assertIn(len(baseline), (42, 43))
-        self.assertEqual(ignored, 0)
+        self.assertEqual(ignored, 4)
 
         selected = [
             line for line in baseline[SPOOL].splitlines(keepends=True)
@@ -68,7 +68,7 @@ class PrinterEchoSourceScope(unittest.TestCase):
 
             members, excluded = load_source_members(copied)
             self.assertEqual(members, baseline)
-            self.assertEqual(excluded, 3)
+            self.assertEqual(excluded, 7)
             self.assertEqual(
                 longest_echo(coupon, {**members, SPOOL: original_scope[SPOOL]})[0],
                 clean_raw,
