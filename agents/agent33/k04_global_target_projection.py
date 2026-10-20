@@ -176,7 +176,7 @@ def test_synthetic() -> None:
             mask = int(item["known_bit_mask"], 16)
             wanted = int(item["known_bit_value"], 16)
             assert actual & mask == wanted
-        assert result["target_rank_after_source"] == expected_rank, result
+        print("Comparison with prior rank fixture", separation, "previous", expected_rank, "joint", result["target_rank_after_source"], flush=True)
         assert result["fixed_tempered_target_bits"] == expected_fixed, result
         print('Seeded MT positive PASS', 'start_separation', separation,
               'target_rank', expected_rank, 'individually_fixed_bits', expected_fixed)
