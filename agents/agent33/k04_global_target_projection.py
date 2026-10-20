@@ -97,11 +97,12 @@ def solve_target(rows: list[list[int]], starts: list[int]) -> dict:
     terms = state_expressions(max(s + 3 for s in starts))
     basis: dict[int, int] = {}
 
-    def reduce(expr: int, value: int) -> int:
+    def reduce(expr: int, value: int, working_basis: dict[int, int] | None = None) -> int:
+        active_basis = basis if working_basis is None else working_basis
         v = (expr << 1) | (value & 1)
         while v:
             pivot = v.bit_length() - 1
-            existing = basis.get(pivot)
+            existing = active_basis.get(pivot)
             if existing is None:
                 return v
             v ^= existing
@@ -119,7 +120,7 @@ def solve_target(rows: list[list[int]], starts: list[int]) -> dict:
                     basis[row.bit_length() - 1] = row
                 observations += 1
     source_rank = len(basis)
-    target_basis: dict[int, int] = {}
+    target_basis: dict[int, int] = dict(basis)
     fixed_bits: dict[int, int] = {}
     target_words = []
     for j in range(4):
@@ -129,21 +130,34 @@ def solve_target(rows: list[list[int]], starts: list[int]) -> dict:
             target_bit = 32 * j + b
             if residual in (0, 1):
                 fixed_bits[target_bit] = residual
-            else:
-                v = residual >> 1
-                while v:
-                    pivot = v.bit_length() - 1
-                    old = target_basis.get(pivot)
-                    if old is None:
-                        target_basis[pivot] = v
-                        break
-                    v ^= old
+            joint_residual = reduce(expr, 0, target_basis)
+            if joint_residual > 1:
+                target_basis[joint_residual.bit_length() - 1] = joint_residual
         val = sum(fixed_bits.get(32 * j + b, 0) << b for b in range(32))
         known = sum((32 * j + b in fixed_bits) << b for b in range(32))
         target_words.append({"word": j, "known_bit_mask": f"{known:08X}", "known_bit_value": f"{val:08X}"})
     return {"observed_source_bits": observations, "source_rank": source_rank,
-            "target_rank_after_source": len(target_basis), "fixed_tempered_target_bits": len(fixed_bits),
+            "target_rank_after_source": len(target_basis) - source_rank, "fixed_tempered_target_bits": len(fixed_bits),
             "selected_index": starts[129], "selected_words": target_words}
+
+
+def test_quotient_rank_regression() -> None:
+    """Two target expressions can add only one dimension modulo source constraints."""
+    for known_bit in (0, 1):
+        source_basis = {4: 0b10000 | known_bit}  # Original e3 equation, optionally affine.
+        joint_basis = dict(source_basis)
+        for expr in (0b101000, 0b100000):  # Targets e5 XOR e3, e5.
+            row = expr << 1
+            while row:
+                pivot = row.bit_length() - 1
+                existing = joint_basis.get(pivot)
+                if existing is None:
+                    if row > 1:
+                        joint_basis[pivot] = row
+                    break
+                row ^= existing
+        assert len(joint_basis) - len(source_basis) == 1
+    print("Affine quotient regression PASS: correlated targets have rank one")
 
 
 def test_synthetic() -> None:
@@ -169,6 +183,7 @@ def test_synthetic() -> None:
 
 
 def main() -> None:
+    test_quotient_rank_regression()
     test_synthetic()
     if len(sys.argv) == 3:
         original_zip = Path(sys.argv[1])
