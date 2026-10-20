@@ -54,14 +54,17 @@ for order in ("forward", "reverse"):
 assert len(printer) == 132
 # Positive control: identify actual original 2-step recurrence witnesses across
 # three intact printer runs, allowing offsets in each 4-word run.
+from collections import defaultdict
+future_pairs = defaultdict(list)
+for h, future in printer:
+    for f in range(3):
+        future_pairs[(future[f], future[f+1])].append((h, f))
 controls = []
-for (i, early), (j, middle), (h, future) in itertools.combinations(printer, 3):
+for (i, early), (j, middle) in itertools.combinations(printer, 2):
     for e in range(2):
         for m in range(3):
-            for f in range(3):
-                if all(future[f+t] == middle[m+t] ^ twist(early[e+t], early[e+t+1])
-                       for t in range(2)):
-                    controls.append((i, j, h, e, m, f))
+            wanted = tuple(middle[m+t] ^ twist(early[e+t], early[e+t+1]) for t in range(2))
+            controls.extend((i, j, h, e, m, f) for h, f in future_pairs.get(wanted, []) if h > j)
 assert len(controls) == 7, controls
 print("intact printer-only positive two-recurrence controls:", len(controls))
 for order, endian, mask in mask_views:
