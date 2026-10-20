@@ -1,6 +1,6 @@
 # K04: exact 48-way original TRP2 three-lane order discriminator
 
-**Agent 40, 20 October 2026.** This is a source-grounded extension to [Agent14's original printer-to-TRP2 held-out matching](h17-k04-trp2-interleaved-cohort-predictions.md), **not** newly recovered coupon bytes or proof that printer and recorder physically shared a live MT producer. Reproducer: [read-only original-source and 16-control SFT](../agents/agent40/k04_trp2_lane_order_sft.py). The disputed printer row129, routing mask, REC8 acceptance material, verifier and K08 nonce are never loaded.
+**Agent 40, 20 October 2026.** This is a source-grounded extension to [Agent14's original printer-to-TRP2 held-out matching](h17-k04-trp2-three-lane-interleaving-heldout.md), **not** newly recovered coupon bytes or proof that printer and recorder physically shared a live MT producer. Reproducer: [read-only original-source and 16-control SFT](../agents/agent40/k04_trp2_lane_order_sft.py). The disputed printer row129, routing mask, REC8 acceptance material, verifier and K08 nonce are never loaded.
 
 ## Question and predeclared order alternatives
 
