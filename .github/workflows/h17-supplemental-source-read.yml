@@ -4,32 +4,14 @@ on:
 jobs:
   local-pdf-review:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Check source-labelled PDF release settings
+      - name: Finite offline four-position numeric source-release check
         shell: bash
         run: |
           set -euo pipefail
-          SOURCE=resources/evidence/h17-supplemental-office-files/BX25-08.pdf
-          sha256sum "$SOURCE"
-          python -m pip install --quiet pypdf
-          python - <<'PY'
-          from pypdf import PdfReader
-          path="resources/evidence/h17-supplemental-office-files/BX25-08.pdf"
-          r=PdfReader(path)
-          print("SOURCE_ENCRYPTED",r.is_encrypted,flush=True)
-          if r.is_encrypted:
-              print("PDF_ENCRYPTION_REVISION",r.trailer["/Encrypt"].get("/R"),flush=True)
-              for name,pin in [("Job suffix","0417"),("Transfer folio","2508"),("September year","2026"),("Renewal year","2025")]:
-                  if r.decrypt(pin):
-                      print("ACCESS_CODE_SOURCE",name,"VALUE",pin,flush=True)
-                      break
-              else:
-                  print("NO_SOURCE_CANDIDATE_UNLOCK",flush=True)
-                  raise SystemExit(0)
-          for page in r.pages:
-              print("=== ORIGINAL DOCUMENT TEXT ===",flush=True)
-              print(page.extract_text(extraction_mode="layout") or "(NO TEXT LAYER)",flush=True)
-          PY
+          python -m pip install --quiet pypdf cryptography
+          python agents/agent9/bx25_numeric_release_sft.py
