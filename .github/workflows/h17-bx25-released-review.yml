@@ -1,0 +1,23 @@
+name: H17 BX25 released folio review
+on:
+  workflow_dispatch:
+    inputs:
+      release_pin:
+        description: Four-position local scanner release setting
+        required: true
+        type: string
+jobs:
+  released-folio:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract released original PDF
+        env:
+          RELEASE_PIN: ${{ inputs.release_pin }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pypdf
+          python -c 'import hashlib,os;from pathlib import Path;from pypdf import PdfReader;p=Path("resources/evidence/h17-supplemental-office-files/BX25-08.pdf");b=p.read_bytes();assert hashlib.sha256(b).hexdigest()=="b6a6156f596575b988126c6d3e5cbb88d5794cc927a5564c37b6ddb8cecc3425";r=PdfReader(p);assert r.is_encrypted;assert r.decrypt(os.environ["RELEASE_PIN"]);print("PDF_SHA256",hashlib.sha256(b).hexdigest());print("PAGE_COUNT",len(r.pages));[(print("PAGE",i+1),print(page.extract_text())) for i,page in enumerate(r.pages)]'
