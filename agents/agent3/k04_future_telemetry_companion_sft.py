@@ -83,7 +83,7 @@ def main(path):
     assert hashlib.sha256(spool).hexdigest() == SPOOL_SHA
     starts = json.loads((carrier.ROOT / "results/h17-k04-source-consistent-index955.json").read_text())["row_starts"]
     assert len(starts) == 133 and starts[129] == 955
-    masks = carrier.source_masks(spool, starts)
+    masks = carrier.original_future_masks(path, starts)
     windows = future_windows(masks)
     runs = telemetry_runs(telemetry)
     tests = 0
