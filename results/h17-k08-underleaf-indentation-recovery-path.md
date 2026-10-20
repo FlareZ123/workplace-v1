@@ -1,0 +1,32 @@
+# K08: forensic underleaf writing impressions as a new, original-material-dependent recovery path
+
+**Agent 40, 20 October 2026. Proposed original target-bearing acquisition mechanism, not a reconstructed caption.**
+
+## Why this is a distinct cracking possibility
+
+The [WN-14 original-paper identity gate](h17-k08-wn14-paper-folder-provenance-gate.md) joins `mail/03.eml` (signed paper under clear cover), `mail/06.eml` (folded ink sheet and independent group values), `mail/11.eml` (Emily developed words from desk/photo captions), `mail/14.eml` (2 Oct, *Emily's loose desk notes physically under the folder, outside the controlled-copy sleeve*), and original crew note N23 (the **finally chosen** words in Emily's personal margin). These original lines identify a historically specific loose-paper source family.
+
+The prior research sought a **visible** surviving leaf or photograph carrying exact final text. A different physical mechanism may exist even if the top leaf or final inscription was discarded: if Emily wrote her caption with sufficient pressure while a second paper sheet was **beneath the writing surface**, the lower sheet could retain latent **indented characters** that an ordinary text export, a flatbed scan or a visual image census would miss. The source says leaves were stored together; **it does not state which sheets were beneath the final writing at the moment of inscription**. This possibility is therefore a *testable conditional physical-source hypothesis*, not evidence that any latent inscription is present.
+
+Established forensic document examinations use an **electrostatic detection apparatus (ESDA)** to visualize indented writing; the NIST OSAC lexicon describes ESDA's purpose as examination of paper-writing indentations. Forensic literature describes recovery of writing pressure impressions from sheets underlying now-removed written pages. Sensitivity depends on contact, paper type, pressure and handling; an intact underleaf is indispensable.
+
+- NIST, OSAC term [Electrostatic Detection Apparatus / Device](https://www.nist.gov/glossary-term/22711).
+- B. Roloff et al., [Indentation recovery threshold using ESDA](https://doi.org/10.1080/00085030.2016.1222706), Canadian Society of Forensic Science Journal (2017): the evaluated paper stocks yielded detectable impressions through approximately one to five underlying sheets depending on material and conditions. This is laboratory context, **not** a predicted layer count for H-17.
+- M. Allen, [Indented Impressions](https://doi.org/10.1002/9781118729922.ch9), *Foundations of Forensic Document Analysis* (2015): principle and forensic scope.
+- D. M. Ellen et al., [The Electrostatic Detection Apparatus: Is it really non-destructive to documents?](https://doi.org/10.1016/0379-0738(90)90161-Q), *Forensic Science International* (1990): caution that ESDA may transfer some pencil material onto examination film; do **not** presume universally nondestructive processing.
+
+## Source-anchored, blind original-material test
+
+**Preacquisition selection:** the custodian should locate any legitimately preserved physical **WN-14 ordinary night-folder assembly**, Emily's loose under-folder notepaper, photo backs, original notes pad, folder cover insert, and immediately adjacent original paper from the incoming-watch handoff after dinner **2 October 2026**. Preserve *original paper sheet order and both faces*, so an indented writing layer is distinguishable from later handling. The existing 43-file ZIP and four new office supplements provide **none of these original surfaces**; do not treat a textual transcription as suitable for ESDA.
+
+**Before inspecting any proposed K08 words**, validate group identity against the four known WN-14 original ink groups `049AAB2E | 1CDE7A82 | CD7C6023 | 4303C91A`; exclude the explicitly disowned standby/pencil D ending `5E67`. Compare the already documented folded box two, clipped earlier scan edge, loose top label and removed sticker, as available. Physical linkage to the signed WN-14 sheet is one provenance control, but cannot by itself establish the *timing* or *finality* of text found nearby.
+
+**Imaging sequence for an authorized qualified questioned-document examiner:** inventory/custody and untouched high-resolution photographs of every surface first; evaluate oblique/raking light and original sheet topography without adding impressions; specialist assesses whether ESDA or another validated non-destructive-first method is justified, especially around pencil marks because ESDA can alter graphite. Do not write or rub with pencil over original papers, add alignment marks or reorder the stack. Record raw images/ESDA lifts, settings, acquisition hashes, overlays and an independent verbatim transcription including unreadable marks; keep ambiguous layers separate.
+
+**Predeclared target falsifier:** a surviving underleaf must yield a legible sentence attributable through source context to Emily's **final incident-envelope margin**, as distinguished from N02/N06 drafts and N17/N18 commissioning/standby labels. A pressure impression of a draft is an original physical witness to a *draft*, not K08. If a plausible complete original final caption is recovered, document the physical attribution **prior to its hash test**, then apply the unchanged K08 ASCII normalization and nonce-HMAC rule and compare the original commitment. If expert examination yields no meaningful impression, that is a negative **on the specific examined originals only**, not proof none existed.
+
+## Expected information gain and limits
+
+A single authentic full inscription could supply **all exact K08 words**, escaping the unbounded dictionary/paraphrase problem. Partially legible impressions would give a **new source-grounded finite word-position constraint**; missing letters still cannot be filled using the acceptance digest alone without recording which alternatives are genuinely supported by the recovered marks. The exact-word constraint must come from original physical evidence, not a generated phrase. Whether such paper survives, whether the margin was written with pressure onto underlying sheets and whether indents are readable are all unobserved.
+
+**K08 exact new words = 0. K04 selected original coupon bits = 0/128. REC8 remains six PASS, two MISSING, combined INCOMPLETE.** This is an actionable *new acquisition modality* under an original-paper physical locus, not a verifier crack or assertion about actual historical recovered text.
