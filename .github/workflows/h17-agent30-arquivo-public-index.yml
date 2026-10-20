@@ -1,0 +1,13 @@
+name: H17 independent public archive index
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-capture-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query historical public URL index
+        run: python agents/agent30/h17_arquivo_public_index.py
