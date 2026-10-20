@@ -10,6 +10,12 @@
 - `resources/evidence/mail/08.eml`, **30 September**, separately refers to gland-residue/engineering photographs. Do not conflate that engineering-photo class with the personal galley and crew captions simply because both appear in Emily's records.
 - `resources/evidence/mail/20.eml`, **4 October**, states that Emily finally selected exact words among several desk drafts; `N23` says her separate **margin** held those words. The earlier photo captions are antecedent **draft language**, not proof of the final wording.
 
+## Caption authorship: do not search Emily's personal image library alone
+
+The original N-records expressly attribute **N01 (empty-bench photograph)** and **N08 (window/water photograph)** to **Jason**, **N09 (galley-board first-cup caption)** to **Zoey**, and **N14 (sunrise photograph)** to **Gabriel**. Emily's **N10** refers back to "the photograph after the last cup" without identifying its photographer or caption author. Her N13/N20 descriptions overlap galley, window, end-of-night and group-table themes, but **the source never explicitly identifies which earlier photograph she revisited**.
+
+Therefore the physical search should include any authorized **shared noticeboard/galley/crew photograph and caption archive**, with author and edit attribution intact, alongside Emily's WN-14 under-folder material. A query limited to photographs *owned or authored by Emily* could systematically omit caption language recorded in the surviving notes under **other first-name contributors**. Authorship of a surviving note is evidence of that text's attribution, **not independent proof of ownership of a photo file or of Emily using it**. A retained cross-reference to Emily's final margin would be the required discriminating original.
+
 ## New discriminating acquisition rule
 
 When an authorized records custodian locates a preserved WN-14 under-folder set or historical photo library, **include material demonstrably known or captioned by 1 October 2026 at 18:14 UTC**, possibly photographed **before** 1 October. A search limited to 3 October incident photographs would systematically omit the photo-caption antecedents Emily already referenced two days earlier. Keep the original chronological association: EXIF creation dates alone are insufficient to date a later human caption or margin, so preserve application caption records and edit history with album membership.
