@@ -14,7 +14,14 @@ jobs:
           set -euo pipefail
           SOURCE=resources/evidence/h17-supplemental-office-files/BX25-08.pdf
           sha256sum "$SOURCE"
-          pdfinfo "$SOURCE" | head -n 22
-          printf '\n=== PDF ORIGINAL TEXT START ===\n'
-          pdftotext -layout "$SOURCE" - | head -n 240
-          printf '\n=== PDF ORIGINAL TEXT END ===\n'
+          python -m pip install --quiet pypdf
+          python - <<'PY'
+          from pypdf import PdfReader
+          p="resources/evidence/h17-supplemental-office-files/BX25-08.pdf"
+          r=PdfReader(p)
+          print("TOTAL PAGES",len(r.pages))
+          for i,page in enumerate(r.pages):
+              print("=== PAGE",i+1,"START ===")
+              print(page.extract_text(extraction_mode="layout") or "(NO TEXT LAYER)")
+              print("=== PAGE",i+1,"END ===")
+          PY
