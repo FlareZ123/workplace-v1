@@ -161,8 +161,9 @@ def test_quotient_rank_regression() -> None:
 
 
 def test_synthetic() -> None:
-    expected = {4: (128, 0), 5: (65, 58), 6: (32, 96), 7: (96, 32),
-                8: (97, 28), 9: (65, 58), 10: (127, 0)}
+    # Joint source-plus-target ranks: formerly 5 and 10 were overcounted by one.
+    expected = {4: (128, 0), 5: (64, 58), 6: (32, 96), 7: (96, 32),
+                8: (97, 28), 9: (65, 58), 10: (126, 0)}
     for separation, (expected_rank, expected_fixed) in expected.items():
         starts = [separation * i for i in range(133)]
         prng = random.Random(20261019)
@@ -176,7 +177,7 @@ def test_synthetic() -> None:
             mask = int(item["known_bit_mask"], 16)
             wanted = int(item["known_bit_value"], 16)
             assert actual & mask == wanted
-        print("Comparison with prior rank fixture", separation, "previous", expected_rank, "joint", result["target_rank_after_source"], flush=True)
+        assert result["target_rank_after_source"] == expected_rank, result
         assert result["fixed_tempered_target_bits"] == expected_fixed, result
         print('Seeded MT positive PASS', 'start_separation', separation,
               'target_rank', expected_rank, 'individually_fixed_bits', expected_fixed)
