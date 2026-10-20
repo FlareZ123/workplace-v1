@@ -60,7 +60,7 @@ def main() -> None:
     body, headers = response
     text = body.decode("utf-8", errors="replace")
     urls = set()
-    for m in re.finditer(r"(?:[#@]\\s*sourceMappingURL=)([^\\s*]+)", text):
+    for m in re.finditer(r"(?:[#@]\s*sourceMappingURL=)([^\s*]+)", text):
         urls.add(m.group(1).strip())
     for field in ("SourceMap", "X-SourceMap"):
         if headers.get(field):
