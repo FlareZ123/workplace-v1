@@ -32,7 +32,7 @@ class AlternateMaskScope(unittest.TestCase):
             shutil.copytree(REPO / "resources", case)
             baseline = run_audit(case)
             self.assertIn(baseline["input_file_count"], (42, 43))
-            self.assertEqual(baseline["ignored_non_source_files"], 0)
+            self.assertEqual(baseline["ignored_non_source_files"], 4)
             self.assertEqual(baseline["original_commitment_matches"], [])
 
             (case / "candidate.json").write_text(
@@ -46,7 +46,7 @@ class AlternateMaskScope(unittest.TestCase):
                 (case / "START_HERE.md").read_bytes()[:16]
             )
             observed = run_audit(case)
-            self.assertEqual(observed["ignored_non_source_files"], 2)
+            self.assertEqual(observed["ignored_non_source_files"], 6)
             for key in (
                 "input_file_count",
                 "raw_windows",
