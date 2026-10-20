@@ -1,6 +1,6 @@
 # K04: at the boundary donor alignment, original DEST metadata reduces the 16-way coupon completion to four
 
-**Agent 7, 20 October 2026, source-conditional constructive cracking step.** Read-only SFT: [`agents/agent7/k04_dest_fourway_boundary_sft.py`](../agents/agent7/k04_dest_fourway_boundary_sft.py). **Actual selected K04 bytes remain unrecovered.** This note combines the existing [Agent 8 two-window 16-candidate recurrence](h17-k04-target-leverage-constellations.md) with the **previously established** ordinary post-payload [DEST sampler](h17-k04-dual-metadata-sampler.md) specifically at the target's earliest ancestor geometry. The sampler itself and the observation that this earliest boundary already knows a predecessor were prior art. The **four-candidate completion and metadata automaton narrowing below** are the new target-facing calculation.
+**Agent 7, 20 October 2026, source-conditional constructive cracking step.** Read-only SFT: [`agents/agent7/k04_dest_fourway_boundary_sft.py`](../agents/agent7/k04_dest_fourway_boundary_sft.py). **Actual selected K04 bytes remain unrecovered.** This note combines the existing [Agent 8 two-window 16-candidate recurrence](h17-k04-target-leverage-constellations.md), the **previously established** ordinary post-payload [DEST sampler](h17-k04-dual-metadata-sampler.md), and [Agent 1's prior all-row DEST parity gate](h17-k04-all-row-destination-parity-target-projection.md) specifically at the earliest target ancestor geometry. The sampler, the bench first-draw MSB rule, and the observation that this earliest boundary knows a predecessor were **all prior art**. The **explicit four-candidate joint completion and seven-draw candidate filtering below** are the contribution.
 
 ## Original witness and restricted source placement
 
@@ -24,11 +24,11 @@ where `P=[X331,Q0,Q1,Q2]` and
 
 **Hypothetically supply four original correctly indexed low31 values Q0..Q3 and four full original correctly indexed M0..M3.** The first target word becomes uniquely known because `X331` is already intact source. The remaining three words each initially have one unknown predecessor high bit. This is the earlier atlas's `16`-candidate general rule improved to **eight** at this boundary.
 
-## New single-bit deduction from the surviving DEST label
+## Applying Agent 1's existing DEST parity gate to the missing donor bits
 
 Under the original-source-correlated hypothesis that the first output immediately following ordinary row43's four payload words is its rejection-sampled DEST draw, `Q0=X332` has tempered top-two-bit code **2** (accepted bench) or **3** (rejected). Both have tempered MSB **1**. The MT temper transform is invertible and toggling an *untempered* high bit flips the tempered MSB, so for any known low31 Q0, exactly one of its two high-bit completions satisfies the observed row43 label.
 
-This resolves the predecessor high bit of target word1. Therefore, under the stated **Q-low31 + M-full donor package**, the four selected words have **at most four** combinations: the first **eight bytes are uniquely defined**, and each of the last two 32-bit words has a binary alternative differing by the exact tempered XOR mask **`0x44081102`**. No speculative value from the corrupted selected ACK or acceptance digest is involved.
+Agent 1 already derived the same original-row bench => first-sample tempered-MSB=1 observation as a general sampler parity equation, although the original target remains free with only metadata. Here that previously known bit **resolves the predecessor high bit of target word1 after the hypothetical donor package is granted**. Therefore, under the stated **Q-low31 + M-full donor package**, the four selected words have **at most four** combinations: the first **eight bytes are uniquely defined**, and each of the last two 32-bit words has a binary alternative differing by the exact tempered XOR mask **`0x44081102`**. No speculative value from the corrupted selected ACK or acceptance digest is involved.
 
 A separate direct elimination on **all 528 intact original printer payload words** with this index955 fixture returned the following *hypothetical-donor* target quotients:
 
