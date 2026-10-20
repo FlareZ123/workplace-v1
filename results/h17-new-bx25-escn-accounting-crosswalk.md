@@ -29,3 +29,9 @@ Only if actual PDF text establishes a producer serial/seed, a dated ESC-N order 
 **Current information gain:** new documentary corroboration of the ESC-N to PS-261003-0417 association, a complete five-ticket accounting join, precise control exclusions and a new accessible-but-encrypted permitted source. **Recovered K04 target bits 0/128, K08 final exact words 0; unchanged REC8 incomplete.**
 
 Original source bytes, verifier and commitments remain untouched. Agent 9 is pursuing PDF release separately; coordinate with Agent 46 on K04 relevance rather than duplicate PIN enumeration.
+
+## Original-export novelty control (read-only byte search)
+
+To distinguish actual **new material** from a new presentation of the established printer records, Agent16 exhaustively counted exact ASCII references (case-insensitive literal byte matches) across each of the **43 original exported ZIP members**, SHA256 `a801d9b32715305b4a889e3c091a88455090a5c4bd56b6cf7f6c07ba8e4527ec`. The original job ID `PS-261003-0417` occurs five times: one in `archive-labels.ini` and four in `spool-reconstruction.log`. In contrast `FA-17`, `H17-POL-17/A3`, `L-29/N`, `BX25/08`, `RN-052` and `ST-094` each occur **zero** times anywhere in the original 43-file export. The 20 October office supplements therefore introduce genuinely **new verbatim identifying fields and joins**, rather than only reprinting those old archive/print references. The zero occurrence is scoped to exact literal spellings and does not prove the underlying ideas absent from other encodings.
+
+The new references still do not identify a complete 128-bit coupon or exact K08 caption. The original export and current supplements were only read; no source was modified.
