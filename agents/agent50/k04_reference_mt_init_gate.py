@@ -1,7 +1,11 @@
-"""Read-only first-cycle MT19937 init_genrand(uint32) discriminator.
+"""Counterfactual direct-initial-state output recurrence test, not actual std::mt19937.
 
-Tests intact ordinary printer rows only. Never loads the selected coupon,
-route mask, acceptance commitments, or K08 evidence.
+Real MT19937 first-cycle outputs are emitted from a TWISTED state. The 128-row
+negative here tests a narrower imaginary producer emitting the raw initialized
+state directly; its synthetic positive does not validate standard seeded MT.
+See Agent 2 corrected twist-aware original-state test
+agents/agent2/k04_true_posttwist_mt_init_gate.py. Never loads selected coupon,
+route mask, acceptance commitments or K08 evidence.
 """
 import hashlib
 import re
@@ -72,7 +76,8 @@ def run(source):
                 assert implied_indexes(payload, orientation) == (
                     phase + 1, phase + 2, phase + 3)
     print("Synthetic positive controls: 32/32 PASS")
-    print("Conditional direct 32-bit first-cycle initializer exclusion only; selected K04 bits recovered = 0.")
+    print("COUNTERFACTUAL untwisted direct-state output only. Standard C++ MT19937 not excluded by this experiment.")
+    print("See agents/agent2/k04_true_posttwist_mt_init_gate.py for the corrected conditional test. K04 bits gained=0.")
 
 
 if __name__ == "__main__":
