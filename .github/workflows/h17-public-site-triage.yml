@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Survey published Noyes pages with anonymous GET only
-        run: python agents/agent5/k04k08_public_link_crawl.py
+        run: python agents/agent5/h17_historical_site_snapshot_probe.py
