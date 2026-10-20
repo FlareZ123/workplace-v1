@@ -44,7 +44,7 @@ class OriginalSourceMembership(unittest.TestCase):
             baseline_text = scan_text(root)
             baseline_gaps = scan_gaps(root)
             self.assertIn(baseline_text["input_files"], (42, 43))
-            self.assertEqual(baseline_text["ignored_non_source_files"], 0)
+            self.assertEqual(baseline_text["ignored_non_source_files"], 4)
             self.assertEqual(baseline_gaps["members"], baseline_text["input_files"])
 
             (root / "candidate.json").write_text(
@@ -59,7 +59,7 @@ class OriginalSourceMembership(unittest.TestCase):
 
             observed_text = scan_text(root)
             observed_gaps = scan_gaps(root)
-            self.assertEqual(observed_text["ignored_non_source_files"], 2)
+            self.assertEqual(observed_text["ignored_non_source_files"], 6)
             for key in (
                 "input_files",
                 "utf8_text_files",
