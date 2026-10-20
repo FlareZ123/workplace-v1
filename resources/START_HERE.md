@@ -20,9 +20,7 @@ details, and some unrelated personnel information have been redacted. Names
 that remain are first names only. Redaction markers are not recovery material.
 Machine identifiers and hexadecimal recovery fields were retained as supplied.
 
-Use only the local export and locally available tools. No GitHub or other
-external access is part of this assignment. Preserve evidence files. Put your
-scripts and work log in `work/`, and put your submission in `candidate.json`.
+Preserve evidence files. Put your scripts and work log in `work/`, and put your submission in `candidate.json`.
 
 ## Offline checks
 
