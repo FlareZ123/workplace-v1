@@ -101,7 +101,9 @@ def source_test(words: list[list[int]], starts: list[int], carriers: list[tuple[
                 basis[pivot] = v
                 dep[pivot] = depmask
 
-    target_basis = {}
+    # Joint source+target elimination: a target XOR can expose an earlier
+    # source pivot. Reducing only once against source overcounts target rank.
+    target_basis = dict(basis)
     fixed = {}
     for j in range(4):
         for bit, expr in enumerate(tempered_expressions(terms[SHIFT + starts[129] + j])):
@@ -109,18 +111,28 @@ def source_test(words: list[list[int]], starts: list[int], carriers: list[tuple[
             idx = j * 32 + bit
             if residual in (0, 1):
                 fixed[idx] = residual
-            else:
-                v = residual >> 1
-                while v:
-                    pivot = v.bit_length() - 1
-                    old = target_basis.get(pivot)
-                    if old is None:
-                        target_basis[pivot] = v
-                        break
-                    v ^= old
+            joint = expr << 1
+            while joint and (joint.bit_length() - 1) in target_basis:
+                joint ^= target_basis[joint.bit_length() - 1]
+            if joint > 1:
+                target_basis[joint.bit_length() - 1] = joint
     masks = [f"{sum((32*j+b in fixed) << b for b in range(32)):08X}" for j in range(4)]
-    return {"source_rank": len(basis), "target_rank": len(target_basis),
+    return {"source_rank": len(basis), "target_rank": len(target_basis) - len(basis),
             "fixed_target_bits": len(fixed), "fixed_masks": masks}
+
+
+
+def test_joint_target_quotient_regression() -> None:
+    """Guard against admitting an already-known source equation as a new target."""
+    source_basis = {2: 0b0011 << 1}
+    joined = dict(source_basis)
+    for expr in (0b0100, 0b0111):
+        vector = expr << 1
+        while vector and (vector.bit_length() - 1) in joined:
+            vector ^= joined[vector.bit_length() - 1]
+        if vector > 1:
+            joined[vector.bit_length() - 1] = vector
+    assert len(joined) - len(source_basis) == 1
 
 
 def probe(archive: Path, position: int, strict_sampler=None) -> dict:
@@ -201,6 +213,7 @@ def probe(archive: Path, position: int, strict_sampler=None) -> dict:
 
 
 if __name__=="__main__":
+    test_joint_target_quotient_regression()
     if len(sys.argv)!=2:
         raise SystemExit("Usage: python agents/agent45/k04_joint_crosscarrier_sft.py <original-case.zip>")
     for position in range(949,956):
