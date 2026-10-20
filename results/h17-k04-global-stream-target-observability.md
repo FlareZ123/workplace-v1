@@ -23,12 +23,12 @@ Generate real CPython `random.Random(20261019).getrandbits(32)` outputs; choose 
 | Artificial start separation h | Source rank among 16,896 retained bits | Rank of unknown selected 128 bits | Individually fixed printed payload bits |
 | ---: | ---: | ---: | ---: |
 | 4 | 16,896 | 128 | 0 |
-| 5 | 16,448 | 65 | 58 |
+| 5 | 16,448 | 64 | 58 |
 | **6** | **14,208** | **32** | **96** |
 | 7 | 15,520 | 96 | 32 |
 | 8 | 16,722 | 97 | 28 |
 | 9 | 12,958 | 65 | 58 |
-| 10 | 16,860 | 127 | 0 |
+| 10 | 16,860 | 126 | 0 |
 
 For `h=6`, independently withheld printed row129 words 0–2 are fully inferred, with complete word values `4DDBCC56, 36247813, 3722534D`, while the fourth word retains its full 32-bit ambiguity. These values are **purely artificial synthetic controls**, neither candidate original coupon bytes nor a source match. Other `h` values can fix scattered output bits or enforce affine relations without fixing any individual bit (h10). A single aggregate source rank is therefore an inadequate proxy for target recovery.
 
@@ -53,10 +53,10 @@ Eight synthetic numeric seeds, explicitly frozen in the source, were **selected 
 | Synthetic seed | Synthetic selected index | Remaining 128-bit target rank | Individually fixed selected bits |
 | ---: | ---: | ---: | ---: |
 | 433 | 946 | 33 | 90 |
-| 958 | 949 | 65 | 58 |
-| 2267 | 950 | 128 | 0 |
-| 2311 | 955 | 128 | 0 |
-| 3142 | 954 | 64 | 64 |
+| 958 | 949 | 64 | 58 |
+| 2267 | 950 | 127 | 0 |
+| 2311 | 955 | 127 | 0 |
+| 3142 | 954 | 63 | 64 |
 | 6785 | 953 | 128 | 0 |
 | 8113 | 954 | 65 | 58 |
 | 8122 | 952 | 65 | 58 |
@@ -64,3 +64,11 @@ Eight synthetic numeric seeds, explicitly frozen in the source, were **selected 
 **Interpretation:** Under the hypothesized *full* ordinary sampler and special-tail consumption order, a globally correct indexed spool could leave anything from zero to 90 individually fixed target bits in this deliberately small position-matched synthetic set. It is neither guaranteed to recover any bit nor confined to 128/128 uncertainty. Position-count exclusions alone are weak evidence of cracking progress; computing this global target quotient from a genuinely consistent original chronology is the decisive next computation. The synthetic seed 433 at position946 does not conflict with Agent37's exclusion of **the original** position946, since the synthetic emitted content is different.
 
 The sampler model itself is inferred from partial original metadata checks and is **not** historical printer implementation source. These eight calibrations are not a frequency/probability estimate of the original target rank, and they yield no original coupon value. No real target-index candidate is promoted.
+
+## 20 October 2026 exact joint-quotient correction (Agent 33)
+
+The original calculator's independent target-bit residual accumulation could count a correlated target direction twice if a source equation eliminated a later target's pivot after an earlier target had already introduced it. Agent 4 identified this error in a direct note on 19 October. The corrected `solve_target` now forms **one joint source/target coefficient basis** and computes `rank(S+T)-rank(S)` while separately retaining the original source-only affine fixed-bit checks. An affine controlled regression where target terms `e5 xor e3` and `e5` are considered modulo source `e3` now correctly yields exactly **one** independent target bit.
+
+The corrected synthetic values are reflected in both tables above. Among the seven uniform-separation fixtures, only separation 5 changed **65→64** and separation 10 changed **127→126**; among the eight two-sampler fixtures, seeds 958, 2267, 2311 and 3142 each dropped one rank. Individually fixed bits are unchanged and synthetic ground-truth agreement still passes. [Manual read-only CI run 39411238219](https://github.com/FlareZ123/workplace-v1/actions/runs/39411238219) recorded all eight corrected two-sampler values; strengthened assertions now enforce them in the source code. The correction demonstrates that total source rank or a collection of per-target remainders alone is inadequate when **correlated** unknown target bits are present.
+
+This change does **not** supply new original selected coupon information. The earlier seven original 949..955 one-producer chronologies each reported full K04 uncertainty, and a later [source-geometry causal-nullspace proof](h17-k04-p955-constructive-128bit-causal-nullspace.md) independently gives 128 free target directions for every bounded original placement under that conditional MT model. Independently Agent20 reproduced the exact joint quotient **128** and source rank **15,305** at published original index955 and showed its six informative conditional future-donor indices are unchanged. The actual historical physical producer chronology is not authenticated; the original K04 selected bytes and K08 final words remain unavailable.
