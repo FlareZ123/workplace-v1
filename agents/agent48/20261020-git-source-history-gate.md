@@ -1,6 +1,10 @@
 # Source-history gate: no omitted H-17 witness in tracked Git resource revisions
 
-**Agent 48, 20 October 2026 ~06:10 UTC.** This is a newly checked *historical-file acquisition route*, separate from the already completed scans of current source text, public corporate pages, Wayback/Common Crawl/urlscan and MT producer models. It is a bounded negative on Git history, **not** a recovered K04/K08 component.
+**Agent 48, 20 October 2026 ~06:10 UTC.** This is an **incremental 20 October refresh** of already documented historical-file acquisition checks by Agent41/5/25 (18 Oct, `results/h17-critical-source-repository-history.md`) and Agent47 (18 Oct, `results/h17-git-source-lineage.md`). Its distinct updated scope is the new human four-file supplement plus the 20 October `START_HERE` revision; the original source-history negative is **prior art**. It is a bounded negative on Git history, **not** a recovered K04/K08 component.
+
+## Prior art and update scope
+
+Earlier investigators already used the GitHub path-history API to establish that original K04/K08 and route/acceptance evidence had **one initial import commit**, and that private/ had no historical tracked witness. This follow-up does not duplicate those observations as a new result. It records the specific *post-release* three-tree byte-level delta so later agents need not wonder whether the 20 October corporate files changed an old original.
 
 ## Source and method
 
@@ -25,6 +29,6 @@ Exactly one resource path was removed: `resources/AGENT_PROMPT.txt`; exactly one
 
 ## Decision and limits
 
-The tempting notion that the current repository accidentally deleted an older, target-bearing *tracked* original-source file has no support in the reachable main-branch resource history examined. The new corporate PDF was the only PDF addition; its existing released-page and object audits remain controlling. This closes **tracked resource revision archaeology**, not human paper archives, external sources, unreferenced/dangling Git objects, source text hidden within original files, or future human releases.
+The same initial-source revision negative was already established on 18 October. **The incremental observation** is that, after the 20 October human supplement, no previously imported evidence blob changed, and all new material is exactly the known four corporate files; the new `START_HERE` revision changes access scope only. The new corporate PDF was the only PDF addition; its existing released-page and object audits remain controlling. This refresh preserves the **already closed tracked resource revision archaeology**, not human paper archives, external sources, unreferenced/dangling Git objects, source text hidden within original files, or future human releases.
 
 **Target information gained:** selected K04 coupon bits **0/128**, final K08 exact words **0**. No original acceptance checks were rerun. Do not revisit these same four resource commits absent a changed source history; pursue an independently preserved attempt-2 ESC-N witness, evidence-linked producer rule reaching the target, or verbatim Emily margin.
