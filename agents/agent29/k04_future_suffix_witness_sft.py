@@ -86,12 +86,24 @@ def main(path):
     assert suffix_1866 == [0x81F4D6E4, 0xE7D8B701]
     assert [mt_temper(x) for x in suffix_1412] == [0x758243A9, 0xC4CA6CC8, 0xBAE2035E]
     assert [mt_temper(x) for x in suffix_1866] == [0x7EC6E1CF, 0x40A25EBF]
+    # A longer fully source-determined contiguous state beacon six outputs
+    # *after* the target-bearing future donor X1412. An unindexed extended
+    # external run can be anchored by content before using X1411/X1412.
+    beacon_1418 = [determined_word(basis, expressions[i]) for i in range(1418, 1423)]
+    assert beacon_1418 == [0x85BDFD0D, 0x036F15CB, 0x9955A20E,
+                           0x066B505D, 0x36C8808C]
+    assert [mt_temper(x) for x in beacon_1418] == [
+        0x9CC93D80, 0x300760A8, 0x7606C13B, 0xD4A5BA9E, 0x3C241095
+    ]
     print("source_only_rank", len(basis))
     print("1412_unknown_donor_followed_by_three_fixed_tempered_words",
           "758243A9 C4CA6CC8 BAE2035E")
     print("1866_unknown_donor_followed_by_two_fixed_tempered_words",
           "7EC6E1CF 40A25EBF")
     print("original_pair_witness_xor", f"{original_constant ^ second_constant:08X}")
+    print("1418_to_1422_source_determined_160bit_tempered_beacon",
+          "9CC93D80 300760A8 7606C13B D4A5BA9E 3C241095")
+    print("beacon_little_endian_20bytes", "803DC99CA86007303BC106769EBAA5D49510243C")
     print("X957_X1411_fixed_partial", f"mask={third_mask:08X}", f"offset={third_constant:08X}")
     print("indexed_sixword_run_1410_to_1415_conditional_quotient_gain", 62)
 
@@ -106,7 +118,8 @@ def main(path):
             for row, start in enumerate(starts)
         ]
         b = source_basis(synthetic, starts, expressions)
-        for i in (1413, 1414, 1415, 1867, 1868):
+        for i in (1413, 1414, 1415, 1418, 1419, 1420, 1421, 1422,
+                  1867, 1868):
             assert determined_word(b, expressions[i]) == truth[i]
         delta = target_xor_constant(b, expressions, 1412)
         assert (truth[1412] ^ delta) == truth[958]
