@@ -47,3 +47,5 @@ Other independent source-location tests in this invocation: exact global public 
 October 20, 10:55 UTC: Published results/h17-k04-sevenbit-fivebyte-burst-bound.md and agents/agent44/k04_fivebyte_sevenbit_burst_sft.c. Original K04 digest rejected all 147,095,424 exact seven-bit changes spanning five adjacent byte positions. A synthetic control passed. No authentic coupon or K08 words recovered.
 
 Oct 20 11:08 UTC: Tested LT204 16-bit low-halfword donor model, 208 signatures across 34,584 original intact-printer windows, zero matches. New source-pinned SFT agents/agent44/k04_lt204_low16_bridge_sft.py and scope report agents/agent44/k04_lt204_low16_bridge_report.md. K04 and K08 still unknown.
+
+Oct 20 ~11:13 UTC: New AX transfer-checkpoint lower16 branch tested. All four 16-field original transfer cohorts in source `(seq,attempt)` ordering and both byte orientations, 112 distinct oriented triples, 34,584 independent printer-pair windows, zero three-value matches. Published reproducer agents/agent44/k04_ax_low16_bridge_sft.py. Previous high16 AX-7778 positives remain valid; this only excludes a different low16 truncation model. K04/K08 unresolved.
