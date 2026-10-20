@@ -1,0 +1,13 @@
+name: H17 public site triage read only
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  survey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Survey published Noyes pages with anonymous GET only
+        run: python agents/agent5/k04k08_public_site_triage.py
