@@ -1,0 +1,13 @@
+name: H17 public historical index read only
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query four publicly published Common Crawl indexes for original BX25 domain
+        run: python agents/agent34/k08_public_commoncrawl_index_probe.py
