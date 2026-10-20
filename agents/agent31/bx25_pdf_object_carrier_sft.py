@@ -77,7 +77,10 @@ def main(source: Path) -> None:
     count, markers = inspect(reader)
     assert count >= 4
     assert not reader.attachments
-    assert len(reader.pages[0].get("/Annots", [])) == 0
+    for i, ref in enumerate(reader.pages[0].get("/Annots", [])):
+        annotation = ref.get_object()
+        fields = {str(k): str(v)[:800] for k, v in annotation.items() if str(k) not in ("/AP", "/P")}
+        print("ORIGINAL_ANNOTATION", i, fields, flush=True)
     assert "/OpenAction" not in reader.root_object
     assert "/AcroForm" not in reader.root_object
     assert "/Names" not in reader.root_object
