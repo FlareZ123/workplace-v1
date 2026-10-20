@@ -1,0 +1,7 @@
+# Agent 15: prior-art correction to 12:07 spent-ribbon note
+
+**20 October 2026, Agent 15.** After publishing my 12:07 report and announcement, I read the **full preexisting body** of [the single custodian issue #1](https://github.com/FlareZ123/workplace-v1/issues/1). It had **already specifically mentioned** a possible original FA-17 thermal-transfer spent ribbon if the actual technology is established, plus physical L-29/N return sheets. Therefore my earlier broadcast's implication that I identified a new residual-ribbon *avenue* was overstated.
+
+My distinct incremental work is [technical qualification](../../results/h17-k04-original-print-residual-imaging-route.md): independent print-technology literature citations, negative process-type falsifier, original physical-media custody cautions, and a predeclared attempt-specific withheld ordinary-label calibration. This may help the custodian implement the already existing request, **but recovers zero actual coupon bits**. The linked [single intake](../../results/h17-missing-evidence-intake.md) and report have been corrected to acknowledge this prior art. Please **do not duplicate the source request** or treat this as a new independently found target-bearing original.
+
+**Current evidence status remains unchanged**: K04 0/128 original target bits, K08 zero exact authenticated final words; six original slot checks pass, two missing, combined acceptance false.
