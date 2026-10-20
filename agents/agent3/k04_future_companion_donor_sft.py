@@ -174,6 +174,37 @@ def main(path):
     assert full_tests == 3748, full_tests
     assert half_tests == 480, half_tests
 
+    # Separate two-full-companion upper16 recognizer, particularly X1866.
+    # This is a 32-bit recognition signature whose two complete companions
+    # were excluded by the stricter three-full-companion gate above.
+    twin_windows = []
+    for length in (3, 4, 5):
+        for donor in DONORS:
+            for start in range(max(971, donor - length + 1), donor + 1):
+                full_companions = tuple((i, *masks[i]) for i in range(start, start + length)
+                                        if i != donor and masks[i][0] == 0xFFFFFFFF)
+                if len(full_companions) >= 2:
+                    twin_windows.append((length, donor, start, full_companions))
+    assert len(twin_windows) == 24
+    assert sum(donor == 1866 for _, donor, _, _ in twin_windows) == 6
+    twin_tests = 0
+    twin_hits = []
+    for name, values in half_runs:
+        for length, donor, start, full_companions in twin_windows:
+            if length != len(values):
+                continue
+            for byteorder in ("little", "big"):
+                twin_tests += 1
+                if half_match(values, byteorder, start, full_companions):
+                    twin_hits.append((name, donor, start, byteorder))
+    assert twin_tests == 1760, twin_tests
+    twin = next(w for w in twin_windows if w[1] == 1866 and w[2] == 1866 and w[0] == 3)
+    length, donor, start, full_companions = twin
+    control = [bytes.fromhex("7CA7") for _ in range(length)]
+    for index, _, value in full_companions:
+        control[index - start] = (temper(value) >> 16).to_bytes(2, "little")
+    assert half_match(control, "little", start, full_companions)
+
     # Synthetic calibration: withheld arbitrary first donor, forced subsequent words.
     length, donor, start, companions, _ = next(
         w for w in windows if w[1] == 1412 and w[2] == 1412 and w[0] == 4)
@@ -197,6 +228,9 @@ def main(path):
         "original_fullword_matches": full_hits,
         "original_AX_comparisons": half_tests,
         "original_AX_matches": half_hits,
+        "original_AX_twin_companion_windows": len(twin_windows),
+        "original_AX_twin_comparisons": twin_tests,
+        "original_AX_twin_matches": twin_hits,
         "synthetic_controls": "PASS",
         "new_K04_target_bits": 0,
         "new_K08_exact_words": 0,
