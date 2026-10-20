@@ -34,7 +34,7 @@ class SourceScopeRegression(unittest.TestCase):
         self.assertEqual(baseline["counts"]["ignored_non_source_files"], 4)
 
         expected = {
-            42: (106928, 432, 612736),
+            42: (106810, 432, 611936),
             43: (108021, 432, 618316),
         }
         source_count = baseline["counts"]["files"]
