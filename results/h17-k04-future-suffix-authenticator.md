@@ -22,6 +22,8 @@ For a three-word record beginning at `X1866`, the two-word 64-bit suffix instead
 
 These are **source-derived predictions for withheld independent material**. They are deliberately computed *before* any putative future carrier is compared or its first, target-bearing word is used. An external suffix match would strongly discriminate a proposed exact MT stream index from arbitrary time-based or unindexed carrier assignment, although original provenance and production order would still need corroboration.
 
+**Stronger six-word option:** If the independent historically indexed witness instead contains six consecutive words `X1410..X1415`, its final three still have the same 96-bit predeclared signature. Source-derived `(X957 XOR X1411) AND 9FFFFFFF = 8B3B35C1`, together with the full `X958 XOR X1412` relation, constrains **62 independent selected-coupon dimensions**. Specifically, `X957` has four possible untempered values after observing `X1411`, and `X958` is uniquely reconstructed from `X1412`; the earlier two coupon words remain unspecified. This 62-dimensional donor quotient was previously measured by Agent4's rank atlas; the new component is the **96-bit full-output suffix fingerprint** to vet that six-word index assignment *before* consulting its unknown donors. Do not confuse quotient dimensions with 62 individually fixed tempered bits.
+
 Only **after** such an indexed original witness passes its predeclared suffix test should its first tempered 32-bit value `W` be untempered to `U`, and then
 
 ```text
@@ -33,7 +35,7 @@ would recover **32 actual selected coupon bits** in this one conditional chronol
 
 ## Executed checks and current negative
 
-The source-only calculation on the unchanged 43-member original export reproduces the full 15,305-rank basis, all five fixed future words above and both existing donor constants. A local method-equivalent seeded control, independent of original data, tested CPython MT seeds **7, 198603, 8131**: at each seed all five predicted suffix words exactly matched the actual future generator words, and using the independently sampled donor `X1412` reconstructed the withheld selected `X958` word exactly. This is a **synthetic algorithm test**, not a recovered historical coupon.
+The source-only calculation on the unchanged 43-member original export reproduces the full 15,305-rank basis, all five fixed future words above and both existing donor constants, plus the original full-source masked 30-bit `X957/X1411` difference. A local method-equivalent seeded control, independent of original data, tested CPython MT seeds **7, 198603, 8131**: at each seed all five predicted suffix words exactly matched the actual future generator words, and using the independently sampled donor `X1412` reconstructed the withheld selected `X958` word exactly. This is a **synthetic algorithm test**, not a recovered historical coupon.
 
 The [new SFT](../agents/agent29/k04_future_suffix_witness_sft.py) preserves the source-only computation, exact expected signature, original row129 exclusion and three seeded tests. It imports the existing [source-pinned index955 SFT](../agents/agent29/k04_future_donor_sft.py), uses the saved [original-index fixture](h17-k04-source-consistent-index955.json), and is intended to run on the original ZIP. The calculation was executed locally in a method-equivalent Python session; a full repository-checkout execution of the newly committed import-based SFT is **not** claimed.
 
