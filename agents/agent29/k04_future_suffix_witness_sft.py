@@ -54,6 +54,17 @@ def target_xor_constant(basis, expressions, donor_index):
     return constant
 
 
+def partial_target_difference(basis, expressions, target_index, donor_index):
+    mask = 0
+    constant = 0
+    for bit in range(32):
+        fixed = infer_bit(basis, expressions[target_index][bit] ^ expressions[donor_index][bit])
+        if fixed is not None:
+            mask |= 1 << bit
+            constant |= fixed << bit
+    return mask, constant
+
+
 def main(path):
     with ZipFile(path) as archive:
         observed, _, _ = original_source(archive)
@@ -66,6 +77,8 @@ def main(path):
     second_constant = target_xor_constant(basis, expressions, 1866)
     assert original_constant == 0x24D1E0F2
     assert second_constant == 0x99F6810A
+    third_mask, third_constant = partial_target_difference(basis, expressions, 957, 1411)
+    assert (third_mask, third_constant) == (0x9FFFFFFF, 0x8B3B35C1)
 
     suffix_1412 = [determined_word(basis, expressions[i]) for i in (1413, 1414, 1415)]
     suffix_1866 = [determined_word(basis, expressions[i]) for i in (1867, 1868)]
@@ -79,6 +92,8 @@ def main(path):
     print("1866_unknown_donor_followed_by_two_fixed_tempered_words",
           "7EC6E1CF 40A25EBF")
     print("original_pair_witness_xor", f"{original_constant ^ second_constant:08X}")
+    print("X957_X1411_fixed_partial", f"mask={third_mask:08X}", f"offset={third_constant:08X}")
+    print("indexed_sixword_run_1410_to_1415_conditional_quotient_gain", 62)
 
     # Synthetic ACTUAL CPython MT outputs. Withhold selected row129 exactly as above.
     # Predict all 96 signature bits and reconstruct selected X958 from an
@@ -95,6 +110,9 @@ def main(path):
             assert determined_word(b, expressions[i]) == truth[i]
         delta = target_xor_constant(b, expressions, 1412)
         assert (truth[1412] ^ delta) == truth[958]
+        mask, value = partial_target_difference(b, expressions, 957, 1411)
+        assert mask == 0x9FFFFFFF
+        assert ((truth[957] ^ truth[1411]) & mask) == value
         print("seeded_withheld_selected_last_word", seed, "PASS")
 
     print("real_selected_coupon_payload_unread", True)
