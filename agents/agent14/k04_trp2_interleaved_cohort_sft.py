@@ -141,6 +141,11 @@ def run(path):
     new901 = next(f for f in findings if f[0] == 901)
     new991 = next(f for f in findings if f[0] == 991)
     assert new901[4] == 0xffffffff and new901[5] == 0x9FF49339 and not new901[3]
+    # Agent43's conditional CRC-correcting *control-field* alternative fails
+    # the newly predicted original word, independently of the REC8 commitment.
+    repaired901 = untemper(int.from_bytes(bytes.fromhex('8582758F'), 'little'))
+    assert repaired901 == 0xD7EB5833
+    assert repaired901 != new901[5]
     assert new991[4] == 0x4DEE9E40 and new991[3]
     print('PROSPECTIVE_HOLDOUT: seq901 full32, seq991 independently fixed 16bits; both match')
     print('SOURCE_MODEL: four intact printer rows, rank448; two-step source relations only')
