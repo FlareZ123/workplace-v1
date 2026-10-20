@@ -86,6 +86,19 @@ for idx,raw,alt,_,_ in bad:
     print("conditional_control_bridge",idx,"matches",matches)
     assert not matches
 print("source-only inverse-twist fingerprint tests 556512, matches 0")
+# Discriminate CRC-field damage versus control-field damage independently of CRC.
+# Original raw row72's full untempered word has a pre-existing exact printer
+# inverse-twist witness; replacing its control bytes would destroy that match.
+for idx,raw,alt,_,_ in bad:
+    x=untemper(int.from_bytes(raw,"little"))
+    matches=[]
+    for j,(_,_,u) in enumerate(printer):
+        for right in printer[j+1:]:
+            if inverse_twist(u^right[2])==x:
+                matches.append((printer[j][:2],right[:2]))
+    print("raw_bad_crc_control_bridge",idx,"matches",matches)
+    assert matches==([((10,2),(41,2))] if idx==72 else [])
+
 
 selected=[l for l in lines if "JOB=PS-261003-0417 ATTEMPT=2 STATE=ACK CLASS=RECOVER" in l]
 assert len(selected)==1
