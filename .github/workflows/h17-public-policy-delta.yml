@@ -1,0 +1,13 @@
+name: H17 post-policy public-source delta
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-public-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read updated public policy only
+        run: python agents/agent9/k08_postpolicy_public_delta.py
