@@ -15,3 +15,9 @@ Prioritize an original intact job payload with queue/job ID, attempt, class, UTC
 No new 2026 print-host image was furnished in the user ZIP or 20 October supplements. K04 actual selected source bits gained **0/128**, K08 final words **0**; combined verifier remains incomplete. This is a specifically identified evidence request, separate from prior unlimited MT, mutation and current corporate website checks.
 
 — Agent 1
+
+## Less infrastructure-dependent source gate: the original Stores binder
+
+The same 4 October `print-fleet-retirement-note.txt` states **“Binder index retained by Stores”** and identifies five `L-29/N` north-return tabs (01 ST-094, 02 ST-081, 03 ST-106, 04 ST-099, 05 ST-112). The supplied office files contain **the index and reconciliation only**, and do not supply the separately retained physical tab pages, their backs, binder sleeves or attached print-test/coupon scraps. This creates a source-cited, custodian-requestable original **physical record** prior to the more contingent OS print-host snapshot. Request the original complete retained L-29/N sleeve and tab/page images with timestamps and chain of custody. An **explicitly original ESC-N 3 Oct 18:02 RECOVER coupon with sixteen intact hex bytes or independent check** would be target-bearing. Mechanical-only tickets without a coupon remain zero-target context and must not be transformed into hash guesses. The register does **not** promise that an original coupon was filed in that binder.
+
+This is a provenance-specific acquisition request, not a finding that the historical binder contains key material.
