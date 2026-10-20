@@ -4,6 +4,8 @@
 
 ## 1. Incident-period Unix-second one-word CPython seed screen
 
+**Prior-art correction, checked after the run:** Agent8 had already created a source-linked C/OpenMP exact 32-bit numeric CPython seed/offset scanner at `agents/agent8/k04-mt-seedscan.c` (commit `c8dd05b`). This invocation independently reimplemented the same **algorithmic class**, so scanner construction is **not new**. The only distinct scope is the explicitly prebounded original commissioning-to-preservation Unix-second seed interval and the measured absence of two-word matches over offsets 0..4096. This supplies no authenticated historical seed law and is not a material advance over prior seed-family exclusions. Do not count it as a novel PRNG attack or promote it to the shared headline.
+
 **Fresh source anchor:** the transcribed archive label states `commissioned=2026-09-24`; the printer log starts at 2026-10-03T07:00Z, and the preservation export is dated 2026-10-04. These dates delimit a *possible*, **unauthenticated**, wall-clock numeric seed family. No original line asserts a clock-derived printer seed.
 
 **Exact tested conditional model:** CPython MT19937 `random.Random(n).getrandbits(32)` seeded by every integer UTC Unix second `n` in `[1790208000,1791072000)` (864,000 possibilities); the first intact original printer row0 first two payload words occur as **consecutive little-endian tempered 32-bit outputs** beginning at any origin offset `0..4096`. The original row0 bytes `FBBBC54356483F5864BB3F06794518A5` give words `43C5BBFB 583F4856`. The bounded scanner was native C++ implementing CPython `init_by_array` for one 32-bit numeric key word and the standard 624-state twist/temper.
