@@ -6,10 +6,8 @@ K08 nonce or verifier. Conditional cross-device common-MT producer only.
 """
 from __future__ import annotations
 
-import base64
 import json
 import sys
-import zlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -45,9 +43,8 @@ def add(expr: int, bit: int, basis: dict[int, int]) -> int:
 
 
 def replay(original: Path) -> None:
-    compressed = (Path(__file__).with_name("k04_crosssource_six_vectors.b64")
-                  .read_text(encoding="ascii"))
-    fixture = json.loads(zlib.decompress(base64.b64decode(compressed)))
+    fixture = json.loads(Path(__file__).with_name("k04_crosssource_six_vectors.json")
+                         .read_text(encoding="utf-8"))
     assert fixture["source_spool_sha256"] == (
         "7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083"
     )
