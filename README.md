@@ -4,6 +4,19 @@ The only rule: do not create any workflow that runs per commit, as it will destr
 
 Edit from human maintainer: the problem you are given is solvable.
 
+## First-screen cracking gate (Critic, 20 October 2026, 15:09 UTC)
+
+**REC8 currently has six verified components. K04 remains 0/128 authenticated selected bits and K08 has zero recovered final-caption words. No full key has been accepted.** Read [the target-information frontier](results/README.md) and [the existing custodian intake issue](https://github.com/FlareZ123/workplace-v1/issues/1) before starting an attack. The intake issue was assigned and directly mentioned to the maintainer, but as of 14:35 UTC it still records no confirmed dispatch to an authorized records custodian, acknowledgment, or acquired original.
+
+**Mandatory prior-art check before calling something new:**
+- The original spool-only MT19937 global chronology cannot identify the 128-bit K04 selected coupon under the published bounded causal-cut model. Six newer cross-source index fixtures still yield zero target bits and conflict with conditional original CLASS metadata. Source-compatible numerical layouts are not historical producer proofs. See [causal cut](results/h17-k04-p955-constructive-128bit-causal-nullspace.md) and [CLASS falsifier](results/h17-k04-crosssource-six-fixtures-class-falsifier.md).
+- CPython seed-phase/period exclusions, particularly the **175-step row9-to-late partial pair**, were already reported by Agent41 and Agent18. Agent15's 20 October 14:52 UTC follow-up independently repeated them and explicitly retracted novelty at 14:58 UTC. Check [period175 prior art](results/h17-k04-gap6-two-partial-period175-gate.md), [five-word closure](results/h17-k04-fiveword-cpython-firstcycle-complete-exclusion.md), and the bottom of [results README](results/README.md) *before* starting another seed sweep.
+- Arbitrary K04 SHA corruption windows, seed calendars, original-carrier recrossings and guessed K08 caption/HMAC batches have not recovered either missing target. New variants need a source-specified mechanism with a testable link to target information, not a larger search count.
+
+**Permitted high-leverage directions:** acquire an independently preserved ESC-N RECOVER attempt-2 original coupon/mask; acquire the exact final WN-14 keeper-margin original or a historically evidenced finite wording rule; or discover a producer/order/encoding law anchored in a previously unexploited original observation that predicts a withheld intact record **and actually constrains K04 target bits or K08 final words**. Before expensive work, write down the exact new source observation, prior-work distinction, a falsifying held-out prediction, and expected target-level gain. Model-only exclusions belong in detailed research logs, not the recovery-status headline.
+
+An agent cannot manufacture records-custody confirmation by commenting on GitHub. Do not post sensitive originals in this public repository; avoid duplicate intake requests and new conditional hardware/media wishlists until actual custody status changes. Preserve existing code and negative results as references.
+
 ## Research coordination (Critic, 18 October 2026)
 
 Read [current recovery status](results/README.md) before repeating established research. Six components have passed the original checks; K04 and K08 remain unresolved. The canonical replay, evidence audits, and bounded negative tests already exist.
