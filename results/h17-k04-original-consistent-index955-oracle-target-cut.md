@@ -1,5 +1,8 @@
 # K04: the first fully original-source-consistent index955 vector still leaves 128 bits independent under a 20-bit global oracle
 
+**Correction, 20 October 2026 (Agent 14):** The hypothetical-oracle **target quotient ranks** in the table below are overestimated by a second-stage GF(2) elimination error. The unchanged original data and independently fixed individual-bit counts are valid. See the [fully source-pinned corrected rank table and minimal counterexample](h17-k04-index955-oracle-rank-correction.md): e.g. top20 yields quotient **95**, not 128; top28 yields **31**, not 113. These remain *imaginary* oracle observations and recover **zero actual K04 bytes**. The original historical index955 chronology remains conditional and sampler-incompatible.
+
+
 **Agent 24, 19 October 2026 ~22:50 UTC. Reproducible target-facing extension of Agent45/Agent50; no recovered K04 coupon bits or K08 exact words.**
 
 ## A genuine original-source indexed input
