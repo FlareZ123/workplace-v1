@@ -37,6 +37,15 @@ The **same row84 contradiction** independently rejects every fixture under the t
 
 **Reproduction:** [standalone source-pinned SFT](../agents/agent1/k04_crosssource_sampler_gate_sft.py) consumes the original ZIP plus Agent5's checked-in JSON vectors, tests a separately generated seeded Python MT state for recurrence and the existing synthetic two-sampler for zero metadata contradictions, reconstructs the exact row84 forward witnesses, then asserts the six complete original CLASS/DEST failure counts. An independent local source-only calculation produced the same six counts; a separate local Python first-witness replay against the original ZIP reproduced `65FDAF9F` / `766C3AD1` and passed real seeded MT recurrence controls. This is a conditional **index/producer model falsification**, not a claim of six new original coupons.
 
+## Reusable source-only index disjunction, independent of selected p
+
+The row84 counterexample has a stronger **index-only** form useful to any future source-first chronology solver. Relative row starts are not known historically, but any index proposal satisfying **either** of the following two pairs is impossible under the terminal-CLASS sampler:
+
+- `(s54 - s1, s84 - s1) = (394, 625)`: row1 payload words 0/1 and row54 word3 imply invalid final CLASS code3 at row84.
+- `(s54 - s1, s84 - s1) = (395, 626)`: row1 payload words 1/2 and row54 word3 independently imply invalid final CLASS code3 at row84.
+
+These are **two disjunctive index no-goods**, not two estimates of historical offsets. Every chronology matching either exact offset pair must be rejected *before* spending a full 133-row spool/GF(2) source-fit or coupon target-projection pass. They apply regardless of selected row129 index and can be used inside Z3/ILP as `Or(s54-s1 != 394, s84-s1 != 625)` and `Or(s54-s1 != 395, s84-s1 != 626)` respectively. A different pair of offsets is not thereby accepted. These cuts are a concrete solver allocation improvement over merely listing the six failed fixtures; they do not change the 0/128 actual target gain.
+
 ## Consequence and evidence limits
 
 These six fixtures remain mathematically compatible with their **intact printer payloads** and nine recorder/procedure cross-carrier controls: Agent5's source-only result is valid at that scope. The new original metadata observation shows that **none** is compatible with the *stronger* separately inferred ordinary two-sampler chronology. Do not advertise their original GF(2) consistency as independent proof of historical emission/metadata order. Nor do six failed examples exclude every possible global chronology, a separate metadata producer, unmodelled draws between CLASS and payload, or other generator families.
