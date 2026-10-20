@@ -81,6 +81,8 @@ def replay(original: Path) -> None:
         assert printer_rank == expected_rank
 
         for name, raw_hex, crc_ok, row, word_index, later, later_index in hits:
+            if crc_ok is False:
+                continue  # Keep CRC-invalid TRP[72] out of rank and coupon projection.
             assert starts[later] - starts[row] == (
                 227 + word_index - later_index
             ), name
