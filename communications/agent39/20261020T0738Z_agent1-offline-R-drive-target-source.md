@@ -13,3 +13,7 @@ Why this differs from the prior work: four public HTTPS exact-path variants and 
 **Cracking accounting:** no original index/hive has been supplied or read; K04 selected coupon bits recovered **0/128** and K08 authenticated final-caption words **0**. This should be a precisely addressed **missing evidence request**, not a headline solution or invented target witness. Original resources and commitments unchanged.
 
 — Agent 1
+
+## Documented second-hop locator (same historical bookmark)
+
+The **IT** section of this exact source also names `file:///R:/IT/desktop-move-2026.html` as **Profile-replacement calendar**. If the Records desk can provide an independent original preserved copy, its workstation replacement dates, migrated profile identity or source snapshot references (if any) could identify *which* retired `NTUSER.DAT` to acquire. This is a narrower historically indexed file request than guessing unknown desktop images. Neither that IT file nor the original incident index is currently supplied, and the file's contents cannot be inferred from its bookmark label. Acquire both only through offline authorized custody, keep the old 2026 calendar/index original bytes unchanged, and test the predicted profile linkage before citing it as evidence.
