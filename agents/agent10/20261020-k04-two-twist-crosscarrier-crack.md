@@ -14,7 +14,7 @@ The `F` mapping is invertible on 31 source bits. Existing original intact printe
 
 ## Exact source-only experiment
 
-1. Parse source rows and discard row129. Search all 25 exact ordinary one-twist three-source words and join their relative MT positions. Add the three known original two-twist relative equations, preserving all original values. This forms 88 disjoint row-index groups.
+1. Parse source rows and discard row129. Search all 25 exact within-record one-twist triples and all 17 previously published first-word (one hidden high bit) triples to join their stream-index groups, for all 42 original source witnesses. Add the three known original two-twist relative equations. This forms 75 disjoint row-index groups.
 2. For every indexed `+454` observed pair (31-bit two-twist C/D anchor) and independent intact printer B or A donor in another group, derive the missing fourth A/B low31 and compare against all CRC-valid TRP2 controls and original RC-17 four-byte footers in both byte orientations. For each indexed `+227` observed A/B pair and an intact C or D in another group, predict the fourth C/D state bits except bit30, and compare the same separately retained sources; explicitly mark bad-CRC TRP2 controls when included. A source match would indicate an unexplained long-index alignment rather than direct K04 recovery.
 3. For consecutive printer pairs at indexed `+227` or `+454`, pair a second consecutive source run from another index group and derive two consecutive absent-state terms by the same equation. Compare *both* tempered upper 16 bits simultaneously against all consecutive original CHUNK checkpoints, each in three natural orders (file, seq/attempt, attempt/seq) and two 16-bit orientations.
 4. Test against *withheld actual retained printer words*: for each quartet position A/B/C/D separately, infer it from the other three original known words, assert the proper 31-bit/31-bit-with-bit30-missing equality. Four roles PASS. Four separate two-step adjacent control pairs PASS. A real-source positive is a method check, not a blind holdout or new historical donor.
@@ -22,17 +22,17 @@ The `F` mapping is invertible on 31 source bits. Existing original intact printe
 | Original-source measurement | Observed |
 | --- | ---: |
 | Unselected intact printer words | 528 |
-| Exact direct three-word recurrence witnesses | 25 |
-| Row-index groups after three original second-order quartets | 88 |
-| One missing word inferable wholly within groups from three known source words | 25 |
+| Direct within-record plus first-word predecessor witnesses | 25 + 17 |
+| Row-index groups after all 42 first-order witnesses and three second-order quartets | 75 |
+| One missing word inferable wholly within groups from three known source words | 37 |
 | Original CRC-valid TRP2 control records | 84 |
-| Pair-indexed cross-source A / B / C / D assignments | 7,670 / 7,667 / 31,258 / 31,256 |
+| Pair-indexed cross-source A / B / C / D assignments | 12,716 / 12,713 / 43,847 / 43,846 |
 | **New 32-bit external-control matches** | **0** |
 | AX candidate stream views and 16-bit values | 24 / 384 |
-| Two-step A / B / C / D assignment counts | 3,455 / 3,452 / 13,846 / 13,845 |
+| Two-step A / B / C / D assignment counts | 6,117 / 6,114 / 19,925 / 19,925 |
 | **Two-halfword original AX source matches** | **0** |
 | Authentic withheld printer-word controls | **4/4 PASS** |
-| Authentic adjacent two-step controls | **4/4 PASS** |
+| Authentic adjacent two-step controls | **6/6 PASS** |
 
 Counts are candidate assignments, not independent random variables. The one-word output's 31-bit/bit30 omission is handled exactly; both endian options are tested. The transfer test insists on two simultaneous original checkpoint halfwords and no rearrangement of their relative two-step order.
 
