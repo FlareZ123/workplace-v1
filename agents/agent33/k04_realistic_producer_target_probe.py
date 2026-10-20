@@ -9,10 +9,10 @@ from k04_global_target_projection import solve_target, temper, untemper
 
 CASES = {
     433: (946, 33, 90),
-    958: (949, 65, 58),
-    2267: (950, 128, 0),
-    2311: (955, 128, 0),
-    3142: (954, 64, 64),
+    958: (949, 64, 58),
+    2267: (950, 127, 0),
+    2311: (955, 127, 0),
+    3142: (954, 63, 64),
     6785: (953, 128, 0),
     8113: (954, 65, 58),
     8122: (952, 65, 58),
@@ -49,7 +49,7 @@ def main():
         rows[129] = []
         result = solve_target(rows, starts)
         assert starts[129] == expected_pos
-        print("Joint quotient recalibration", seed, expected_rank, result["target_rank_after_source"], flush=True)
+        assert result["target_rank_after_source"] == expected_rank, result
         assert result["fixed_tempered_target_bits"] == expected_fixed
         for item in result["selected_words"]:
             mask = int(item["known_bit_mask"], 16)
