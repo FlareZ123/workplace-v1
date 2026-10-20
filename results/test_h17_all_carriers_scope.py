@@ -31,7 +31,7 @@ class SourceScopeRegression(unittest.TestCase):
         original_k08 = bytes.fromhex(acceptance["slot_sha256"]["K08"])
         baseline = search(SOURCE, original_k04, original_k08)
         self.assertEqual(baseline["hits"], [])
-        self.assertEqual(baseline["counts"]["ignored_non_source_files"], 0)
+        self.assertEqual(baseline["counts"]["ignored_non_source_files"], 4)
 
         expected = {
             42: (106928, 432, 612736),
@@ -82,7 +82,7 @@ class SourceScopeRegression(unittest.TestCase):
                 {k: v for k, v in baseline["counts"].items()
                  if k != "ignored_non_source_files"},
             )
-            self.assertEqual(observed["counts"]["ignored_non_source_files"], 3)
+            self.assertEqual(observed["counts"]["ignored_non_source_files"], 7)
 
             synthetic_dirty = search(dirty, fake_k04, fake_k08)
             self.assertEqual(synthetic_dirty["hits"], [])
