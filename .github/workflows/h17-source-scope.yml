@@ -24,6 +24,8 @@ jobs:
         run: python3 results/test_h17_partial_echoes_scope.py
       - name: Validate GF2 source-to-target quotient and affine correlation control
         run: python3 agents/agent33/k04_global_target_projection.py
+      - name: Validate realistic two-selector GF2 target-rank calibration
+        run: python3 agents/agent33/k04_realistic_producer_target_probe.py
       - name: Validate unchanged REC8 verifier controls
         run: python3 results/test_h17_verifier_controls.py
       - name: Exercise K01/K04/K05/K06 source selectors
