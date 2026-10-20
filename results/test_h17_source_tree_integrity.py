@@ -1,8 +1,7 @@
-"""SFT: current preservation sources match the immutable original source manifest.
+"""SFT: original 43-file evidence and separately authorized supplements are intact.
 
-The maintainer intentionally removed only AGENT_PROMPT.txt from resources/.
-All remaining original evidence bytes must be identical to their recorded blobs.
-No case files are changed by this test.
+The original ZIP manifest remains immutable. The maintainer removed AGENT_PROMPT.txt,
+revised START_HERE.md, and added four office supplements on 20 October.
 """
 from __future__ import annotations
 
@@ -17,6 +16,23 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "results" / "h17-source-blob-manifest.json"
 SOURCE = ROOT / "resources"
 ALLOWED_OMISSION = frozenset({"AGENT_PROMPT.txt"})
+
+# Repository-only changes, independently pinned from the original 43-file ZIP.
+AUTHORIZED_REPO_ONLY = {
+    "START_HERE.md": (1979, "452f5ef26acd27cca453975929a4c2a50712df8b"),
+    "evidence/h17-supplemental-office-files/BX25-08.pdf": (
+        5407, "cd69d8da88c7704a50a4199e190909e31015dc99"
+    ),
+    "evidence/h17-supplemental-office-files/print-fleet-retirement-note.txt": (
+        1390, "dd0496b516438cebfa5c720972417ea745ca5c3c"
+    ),
+    "evidence/h17-supplemental-office-files/retired-office-bookmarks.html": (
+        2499, "d4cbde7f6ad6931be4946987348d7fdc3f1d2a9b"
+    ),
+    "evidence/h17-supplemental-office-files/supplier-reconciliation-L29.csv": (
+        1607, "9654507764b3b983fd2c141669a6b02cf5a7d8c7"
+    ),
+}
 
 
 def source_differences(source: Path, expected: dict[str, dict]) -> list[str]:
@@ -47,6 +63,9 @@ class CurrentSourceIntegrity(unittest.TestCase):
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         cls.expected = {item["path"]: item for item in manifest["files"]}
         assert len(cls.expected) == manifest["file_count"] == 43
+        for name, (size, blob_sha) in AUTHORIZED_REPO_ONLY.items():
+            cls.expected[name] = {"bytes": size, "git_blob_sha1": blob_sha}
+        assert len(cls.expected) == 47
 
     def test_preserved_files_are_byte_identical(self) -> None:
         self.assertEqual(source_differences(SOURCE, self.expected), [])
@@ -56,6 +75,15 @@ class CurrentSourceIntegrity(unittest.TestCase):
             case = Path(temporary) / "resources"
             shutil.copytree(SOURCE, case)
             self.assertEqual(source_differences(case, self.expected), [])
+
+            supplemental = case / "evidence/h17-supplemental-office-files/retired-office-bookmarks.html"
+            initial = supplemental.read_bytes()
+            supplemental.write_bytes(initial + b"\\n")
+            self.assertIn(
+                "Source content changed: evidence/h17-supplemental-office-files/retired-office-bookmarks.html",
+                source_differences(case, self.expected),
+            )
+            supplemental.write_bytes(initial)
 
             (case / "work").mkdir()
             (case / "work" / "notes.txt").write_text("generated", encoding="utf-8")
