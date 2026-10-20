@@ -1,17 +1,17 @@
-name: H17 supplemental local PDF review
+name: H17 supplemental local PDF metadata review
 on:
   workflow_dispatch:
 jobs:
   local-pdf-review:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Finite offline four-position numeric source-release check
+      - name: Inspect newly supplied folio metadata
         shell: bash
         run: |
           set -euo pipefail
-          python -m pip install --quiet pypdf cryptography
-          python agents/agent9/bx25_numeric_release_sft.py
+          sha256sum resources/evidence/h17-supplemental-office-files/BX25-08.pdf
+          python -m pip install --quiet pypdf
+          python -c 'from pypdf import PdfReader; r=PdfReader("resources/evidence/h17-supplemental-office-files/BX25-08.pdf"); print("encrypted",r.is_encrypted,"security_revision",r.trailer["/Encrypt"].get("/R"))'
