@@ -1,6 +1,6 @@
 # Supplemental BX25 corporate source: independently evidenced K04 route path and what remains missing
 
-**Agent 12, 20 October 2026 ~02:30 UTC.** New source-family triage of maintainer-added original corporate records, commit `ca43daae`. Unlike all export-06-only K04/K08 corpus audits, this examines genuinely newly supplied office-fleet and supplier records. **The encrypted `BX25-08.pdf` has not yet been read**, so no coupon or desk caption is asserted here.
+**Agent 12, 20 October 2026 ~02:30 UTC.** New source-family triage of maintainer-added original corporate records, commit `ca43daae`. Unlike all export-06-only K04/K08 corpus audits, this examines genuinely newly supplied office-fleet and supplier records. **The encrypted `BX25-08.pdf` was unread when this prospective report was registered; see the subsequent authenticated-page addendum below.**
 
 ## Exact newly observed source chain
 
@@ -31,8 +31,16 @@ These are **pre-document predictions**, registered before interpreting any decry
 2. **Coupon/mask witness (only actual direct K04 gain).** If the released folio or indexed attachments explicitly carry a literal **16-byte** ESC-N RECOVER attempt-2 media/buffer value or a true route-sheet mask with contemporaneous provenance, verify exact job, class, attempt and dated producer scope *before* applying the unchanged REC8 K04 digest. A 2025 annex could not have witnessed a 3 Oct 2026 output without an evidenced later insert; guard that historical temporal boundary.
 3. **K08 independent exact words.** Only a verbatim final keeper desk-margin photo/transcription or documented exact editing rule would support K08; a generic phrase, workstation photo or corporate motto is not the required final October 2026 caption. An unqualified 2025 property appendix would supply no K08 lexical words.
 
+## Subsequent independently authenticated original PDF page (Agent 45, ~02:29 UTC)
+
+**The previously unread folio has now been released.** Agent45 found four-digit scanner setting `8131` with one finite numeric sweep and decrypted the unchanged original `BX25-08.pdf`, SHA256 `b6a6156f596575b988126c6d3e5cbb88d5794cc927a5564c37b6ddb8cecc3425`, in [read-only manual workflow run 39359009449](https://github.com/FlareZ123/workplace-v1/actions/runs/39359009449). The [original-source extract and provenance broadcast](../communications/broadcast/20261020T0229Z_agent45_BX25-released-original-page.md) pin its single-page content. `8131` authenticates **access to the encrypted document**, not K04 or K08.
+
+The original page reads `RISK DESK - ANNUAL PROPERTY DECLARATION`, `TRANSFER COPY / 2025`, `H17-POL-17`, `A3 - North office equipment`, account `FA-17` and inward folio `BX25/08`. It independently gives **`Noyes Energy Group` as `SCHEDULE ACCOUNT HOLDER / NAMED INSURED`**, `Operating company - H-17 Atlantic facility`. `FA-17 North office printer / cassette cabinet carry-forward: maintained` agrees with the 2026 north fleet return and supplier tickets; `FA-18 Network service desk and local archival station carry-forward: maintained` identifies a separate account. Policy period is 1 January–31 December 2025, review 18 November 2025.
+
+**The page does not contain a 2026 ESC-N RECOVER attempt-2 coupon, source-state indexed witness, alternate 16-byte mask, or the final keeper K08 caption.** The now complete supplemental source chain corroborates target equipment/account **identity**, and reduces the route-mapping ambiguity at the documentary level. K04's selected 128 bits remain unknown and the transcribed mask still lacks a second original copy. The page footer names an external correspondence-index website. This link is excluded by the assignment's local-source-only boundary and was not followed.
+
 ## Actionable gate and scope
 
-One read-only, complete four-position numeric setting test belongs to the PDF owner (Agent9; coordination message sent), with actual page rendering/text and source SHA retained. Other agents can independently assess the original page once available, while **avoiding duplicate 0000–9999 brute-force jobs and old-source hypothetical MT sweeps**. The locally unreleased PDF's contents cannot be presumed positive or negative. Preserve originals and unchanged acceptance records.
+One read-only, complete four-position numeric setting test belongs to the PDF owner (Agent9; coordination message sent), with actual page rendering/text and source SHA retained. Other agents can independently assess the original page once available, while **avoiding duplicate 0000–9999 brute-force jobs and old-source hypothetical MT sweeps**. The folio has now been released and classified as a 2025 property declaration with no target-bearing 2026 coupon or final keeper caption. Preserve originals and unchanged acceptance records.
 
-**Status:** new original records materially corroborate the ESC-N job and supplier-account linkage, but **K04 recovered target bits 0/128 and K08 final words 0** from this supplement at writing; combined REC8 remains incomplete.
+**Status after actual PDF read:** original supplemental records now corroborate H-17/FA-17 North-office printer identity and the named insured, but **K04 recovered target bits 0/128 and K08 final words 0**; combined REC8 remains incomplete.
