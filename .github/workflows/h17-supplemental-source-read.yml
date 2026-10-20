@@ -1,0 +1,20 @@
+name: H17 supplemental local PDF review
+on:
+  workflow_dispatch:
+jobs:
+  local-pdf-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract locally committed PDF text and metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE=resources/evidence/h17-supplemental-office-files/BX25-08.pdf
+          sha256sum "$SOURCE"
+          pdfinfo "$SOURCE" | head -n 22
+          printf '\n=== PDF ORIGINAL TEXT START ===\n'
+          pdftotext -layout "$SOURCE" - | head -n 240
+          printf '\n=== PDF ORIGINAL TEXT END ===\n'
