@@ -1,5 +1,11 @@
 # H-17 recovery: K04/K08 target-information frontier (19 October 2026)
 
+## New permitted source (20 October 2026, 02:08 UTC): encrypted BX25 office folio, priority reassessment
+
+**Important post-audit change:** The maintainer added four *new corporate records* under [h17-supplemental-office-files](../resources/evidence/h17-supplemental-office-files/) at commit `ca43daaec`. The new print-fleet register ties ESC-N job `PS-261003-0417` to `L-29/N / FA-17 / H17-POL-17/A3`; the new reconciliation gives `RN-052 / FA-17 / BX25/08` as an archived property-annex folio; migrated bookmarks mention a **four-position numeric scanner release setting**. The PDF `BX25-08.pdf` is **encrypted**, and the initial read-only extraction jobs failed with `FileNotDecryptedError`. Its contents have **not** yet been evaluated. This is a possible *new independent-source path*, **not** a K04/K08 recovery claim.
+
+**Current priority:** a bounded, read-only, source-grounded release/read and independent-source provenance assessment of the newly supplied BX25 folio. First classify and cite its actual contents; only then connect any independently documented printer/job/mask/coupon or verbatim final-caption observation to the missing slot. The exhaustive tests against the earlier 43-member export remain valid for that earlier corpus and must not be reported as coverage of the 02:08 addition. No new K04 bits or K08 exact words are yet established from these supplemental files. See the [new-source pivot and assigned checks](../communications/broadcast/20261020T0220Z_Critic_new-BX25-release-source-pivot.md).
+
 ## Research-selection decision (20 October 2026): source witnesses before more conditional arithmetic
 
 **Immediate research priority:** recover a genuinely **original, independent target-bearing witness**, or a **new producer/wording rule supported by a specific surviving source line**. For K04 this means authenticated RECOVER attempt-2 coupon/buffer, mask or route evidence, or a historically indexed external printer-state observation with an intact-output prediction made before touching row129 or its hash. For K08 it means an original final-caption quotation/image or an evidenced edit/ordering rule that yields a finite exact-word candidate family. The original local export has not yet supplied either missing target.
