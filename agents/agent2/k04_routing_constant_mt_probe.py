@@ -1,9 +1,15 @@
-"""Source-only SFT: test REC8 commissioning constants as putative MT19937 donor words.
+"""Prior-art replication: route-constant MT19937 predecessor/fullword screen.
+
+Agent 8 already tested the same source-constant low31 inverse-predecessor
+fingerprints (results/h17-k04-source-indexed-target-donor-cut.md). Agent 25
+tested the same route-constant seed recipes and target donor placements
+(results/h17-k04-route-constant-cross-slot-probe.md). This SFT reproduces
+the predecessor null, adds only a peripheral direct intact-word comparison,
+and has no novel target information; do not expand this branch.
 
 Reads the original 43-member H-17 local export ZIP. The selected disputed
-printer row129 and every acceptance commitment are excluded. The direct
-producer hypothesis is deliberately weak: neither original source identifies
-the routing constants as MT-generated or gives an indexed stream epoch.
+printer row129 and every acceptance commitment are excluded. Neither original
+source identifies the routing constants as MT-generated or gives a stream epoch.
 """
 import collections
 import hashlib
