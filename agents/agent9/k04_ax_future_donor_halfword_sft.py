@@ -99,6 +99,64 @@ def main() -> None:
         print(name, "source_high16_XOR_signatures", sorted(f"{v:04X}" for v in allowed), "AX_pair_hits", len(matches))
         assert not matches
     print("FOUR_FUTURE_PAIRS_ZERO_AX_HIGH16_MATCHES; ACTUAL_K04_BITS=0; NO_TARGET_HASH_READ")
+    original_ax_three_word_lane_gate(checkpoints, payloads)
+
+
+
+def original_ax_three_word_lane_gate(checkpoints: list[dict], payloads: list[bytes]) -> None:
+    """Independently challenge lower-halfword AX mode on all intact original triples."""
+    source_rows = [
+        None if index == 129 else tuple(untemper(word) for word in struct.unpack("<4I", bytes.fromhex(value.decode())))
+        for index, value in enumerate(payloads)
+    ]
+    groups = {
+        group: sorted((r for r in checkpoints if r["transfer"] == group),
+                      key=lambda r: (r["seq"], r["attempt"]))
+        for group in ("AX-7778", "AX-7781", "AX-7782", "AX-7783")
+    }
+
+    source_triples = {}
+    for group, records in groups.items():
+        assert len(records) == 16
+        for view in ("native", "swapped"):
+            words = [int(r["checkpoint"], 16) for r in records]
+            if view == "swapped":
+                words = [((v & 255) << 8) | (v >> 8) for v in words]
+            for offset in range(14):
+                source_triples.setdefault(tuple(words[offset:offset+3]), []).append((group, view, offset))
+
+    hits = {"upper": [], "lower": []}
+    for i, first in enumerate(source_rows):
+        if first is None:
+            continue
+        for j in range(i + 1, len(source_rows)):
+            second = source_rows[j]
+            if second is None:
+                continue
+            for a in (0, 1):
+                for b in (0, 1):
+                    predecessors = []
+                    for k in range(3):
+                        difference = first[a+k] ^ second[b+k]
+                        low31 = ((((difference ^ (0x9908B0DF if difference & 0x80000000 else 0)) << 1)
+                                  | (difference >> 31)) & 0x7FFFFFFF)
+                        predecessors.append(low31)
+                    top = [{temper(low) >> 16, temper(low | 0x80000000) >> 16} for low in predecessors]
+                    bottom = [{temper(low) & 0xFFFF, temper(low | 0x80000000) & 0xFFFF} for low in predecessors]
+                    for lane, options in (("upper", top), ("lower", bottom)):
+                        for p in options[0]:
+                            for q in options[1]:
+                                for t in options[2]:
+                                    for matched in source_triples.get((p, q, t), ()):
+                                        hits[lane].append((i, a, j, b, matched))
+    assert set(hits["upper"]) == {
+        (33, 0, 63, 1, ("AX-7778", "swapped", 5)),
+        (34, 0, 64, 0, ("AX-7778", "swapped", 11)),
+        (34, 1, 64, 1, ("AX-7778", "swapped", 12)),
+    }, hits["upper"]
+    assert hits["lower"] == [], hits["lower"]
+    print("AX_THREE_WORD_ORIGINAL_SOURCE_POSITIVE upper=3 lower=0")
+    print("LOWER16_CHANNEL_NO_INTACT_THREE_WORD_WITNESS; NO_K04_TARGET_RECOVERED")
 
 
 if __name__ == "__main__":
