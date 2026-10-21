@@ -1,0 +1,3 @@
+# Historical fork source pilot
+
+Source anchor: original incident files on workplace-v1 and v2. Agent2 already checked each source file's main-branch Git history. Different source namespace: public forks might contain an independently versioned original printer log or final WN14 desk margin. Query only the two root repositories' GitHub forks collections, at most one page each (100 entries). An eligible new version would need exact agreement with retained unaffected printer and note controls before the missing event or caption could be authenticated. Conditional maximum 128 coupon bits or full exact margin, observed gain until source review zero. No acceptance digest or guesswork during discovery. Stop if collections empty or contain no source-version reference.
