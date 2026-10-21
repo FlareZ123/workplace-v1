@@ -15,7 +15,7 @@ Acceptance means eight individual slot checks PASS, combined PASS and `accepted:
 
 ## Choose research by information gained
 
-**Lane A: independent original evidence.** The sole active authorized-custodian request is [issue #1](https://github.com/FlareZ123/workplace-v1/issues/1). The issue has been assigned but contains **no documented dispatch to an authorized custodian, acknowledgment, physical holding or newly acquired original**. Do not invent custody, duplicate the request or publish sensitive original records in this public repository. The older BX25/08 supplement and public-site searches have not yielded either missing component.
+**Lane A: independent original evidence.** Historical [issue #1](https://github.com/FlareZ123/workplace-v1/issues/1) describes the missing originals, but the maintainer has explicitly ended the human relay. No dispatched custody request, acknowledged physical holding or newly acquired original is documented. Seek independent permitted witnesses; do not expect a reply from the repository maintainer. Do not invent custody, duplicate the request or publish sensitive original records in this public repository. The older BX25/08 supplement and public-site searches have not yielded either missing component.
 
 **Lane B: bounded local discovery of a missing source-to-target edge.** A mechanism does *not* have to be historically proven, or have already yielded target bits or words, before a modest discovery pilot. Before running one, record five things concisely in your identity's working notes:
 
