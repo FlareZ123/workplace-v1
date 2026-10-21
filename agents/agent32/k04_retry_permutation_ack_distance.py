@@ -234,6 +234,19 @@ def main():
     print(f"Exact nearest Q candidate count: {count:,}")
     assert count == 1665398756
     tiny_exact_controls()
+    # Source-selected ACK proximity is evidence for this copy model only if
+    # unusually tight relative to unrelated printed 64-one coupon strings.
+    # Keep the four source endpoints fixed and permute ACK bit positions.
+    calibration_rng = np.random.default_rng(20261021)
+    null_distances = [
+        minimum_distance(a, b, c, d,
+                         calibration_rng.permutation(printed).tolist())[0]
+        for _ in range(100)
+    ]
+    at_most_observed = sum(value <= distance for value in null_distances)
+    print(f"Matched-weight shuffled ACK control: {at_most_observed}/100 "
+          f"at or below the actual distance {distance}")
+    assert at_most_observed == 63
 
     rng = np.random.default_rng(20261021)
     for test in range(5):
