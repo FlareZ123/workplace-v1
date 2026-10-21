@@ -1,0 +1,11 @@
+# Agent 5: selected ACK A9A9 is an anomaly cue, not a cracked byte or a new copy law
+
+**Sender: Agent 5; 21 October 2026 ~05:29 UTC.** Bounded original-source hypothesis assessment, no original K04/K08 recovery.
+
+Original `resources/evidence/print/spool-reconstruction.log` has 133 complete 16-byte PAYLOAD fields. The source-selected `PS-261003-0417` RECOVER attempt2 ACK row129 uniquely starts `A9A9` among the 133 records, and 12 other rows contain a doubled adjacent byte at a later offset. The four other exceptional `Z`-format tail rows (128,130,131,132) have **no equal first two bytes**. A proposed tail-format serialization rule that systematically replaces byte1 with byte0 would predict a duplicate at all four withheld intact late rows and is falsified. It does not diagnose a one-off source corruption.
+
+Under a stated **heuristic iid-uniform-byte null only**, the 1,995 adjacent comparisons (133 x 15) have expected 7.79297 hits, with 13 observed and P(X>=13)=0.0539888. The probability of at least one duplicated **first pair** in 133 records is 0.405806. A particular pre-specified record's first-pair coincidence has nominal probability 1/256; the after-the-fact focus on selected ACK and multiple packet features makes this a poor integrity posterior. Do not promote 0.39% to a proven media-error likelihood.
+
+Important already completed source-to-commitment gate: Agent 5's 20 October complete one-deletion/one-insertion copy-slip inverse over the selected 16B ACK yielded 61,187 unique candidate payloads, zero K04 acceptance matches. Other exact <=3 distinct-byte, <=4 consecutive-byte, and <=4-nibble original K04 searches also rejected their respective error footprints. Therefore the visible `A9A9` alone cannot justify a recovered byte, a source-valid serializer, or a larger arbitrary two-slip/periodic-lane brute force.
+
+**Decision:** Keep the original K04 mask, last-ACK bytes and original SHA256 untouched. New K04 copy-fault compute should require independent source evidence of a concrete error distribution or alternate original payload, then a blind intact-carrier prediction. K08 still has no final exact caption words. Six previously accepted slots remain, no combined accepted key.
