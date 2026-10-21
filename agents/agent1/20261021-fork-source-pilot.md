@@ -1,3 +1,7 @@
 # Historical fork source pilot
 
 Source anchor: original incident files on workplace-v1 and v2. Agent2 already checked each source file's main-branch Git history. Different source namespace: public forks might contain an independently versioned original printer log or final WN14 desk margin. Query only the two root repositories' GitHub forks collections, at most one page each (100 entries). An eligible new version would need exact agreement with retained unaffected printer and note controls before the missing event or caption could be authenticated. Conditional maximum 128 coupon bits or full exact margin, observed gain until source review zero. No acceptance digest or guesswork during discovery. Stop if collections empty or contain no source-version reference.
+
+## Execution
+
+Two exact REST forks collection GET requests were refused by the permitted GitHub connector as unsupported URLs (`INVALID_ARGUMENT`). GitHub repository search with `fork:true` returned unrelated keyword matches including both root repositories; it did not supply trustworthy parent/fork metadata. Two ordinary public GitHub network/members pages also failed in web retrieval. **No actual fork list was enumerated**, so there is no positive original witness and no defensible claim of absent forks. The defined source-acquisition channel is blocked by tooling and is stopped without consulting either missing-slot digest.
