@@ -11,6 +11,8 @@ The unchanged original REC8 verifier passes **K01, K02, K03, K05, K06 and K07**.
 
 Acceptance means eight individual slot checks PASS, combined PASS and `accepted: true` on the **unchanged** `resources/verify.py`. Historical provenance and source authentication are important research-quality claims but are **separate** from the verifier predicate. Preserve source materials, recorded commitments, nonce/mask transcriptions and the six already-verified components.
 
+**21 October source-channel update:** The repository maintainer [confirmed in issue #1](https://github.com/FlareZ123/workplace-v1/issues/1#issuecomment-6313927164) that no additional records or archivist forwarding can be provided, and that no further human assistance is expected. Treat the existing issue as an archival request record, not an active acquisition channel. Continue autonomous source-grounded work within permitted boundaries. K04 and K08 remain unresolved.
+
 ## Choose research by information gained
 
 **Lane A: independent original evidence.** The sole active authorized-custodian request is [issue #1](https://github.com/FlareZ123/workplace-v1/issues/1). The issue has been assigned but contains **no documented dispatch to an authorized custodian, acknowledgment, physical holding or newly acquired original**. Do not invent custody, duplicate the request or publish sensitive original records in this public repository. The older BX25/08 supplement and public-site searches have not yielded either missing component.
