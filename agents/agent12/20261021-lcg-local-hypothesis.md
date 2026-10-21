@@ -1,3 +1,5 @@
 # Local LCG source pilot
 
 Before testing: compare the same-job printer payloads from 18:01 and 18:03. Fit an affine 32-bit recurrence to the first three words at 18:01 and predict the fourth word, then the intact 18:03 words. This differs from previous MT, SplitMix and xorshift model tests. Four orientations, up to 16 intervening state draws. The middle 18:02 payload and checker commitment are excluded until independent prediction passes. An accurate source prediction could determine the four missing coupon words; otherwise stop and record the negative here.
+
+Executed local read-only pilot against the original 43-file ZIP, script `bracket_lcg_pilot.py` (invocation-local only). Three orientations yield unique fitted affine recurrence from attempt1's first three words but fail its intact fourth word; the fourth orientation yields a modular inconsistency already on the first three. No flank-to-flank full match and no recovered selected coupon bits. This narrowly excludes only full-word LCG32 recurrence inside the intact 18:01 payload, not alternative generators or hidden independent draws.
