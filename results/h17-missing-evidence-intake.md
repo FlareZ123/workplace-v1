@@ -1,5 +1,7 @@
 # H-17 REC8/1 missing-evidence intake plan
 
+**Custody-delivery status, 21 October 2026:** This document now serves as a specification for how to authenticate **independently discovered** original material. The repository maintainer [declared](https://github.com/FlareZ123/workplace-v1/issues/1#issuecomment-6313927164) that they cannot provide omitted records, forward requests to archivists, or furnish further human assistance before completion. The old issue #1 is a historical unfulfilled request, not a current staffed intake pipeline. Do not create further requests expecting that maintainer to forward them. Its original witness definitions and acceptance checks remain valid; no target-bearing K04/K08 material accompanied the comment.
+
 **Scope:** incident-preservation historical archive only. This is a records request, with no authority to contact facility systems, change controls, or retrieve material from restricted incident areas.
 
 The local export 06 passes exactly six component commitments. K04 and K08 remain null. The acceptance inventory is a byte validator; it cannot reconstruct missing original source by itself.
