@@ -107,10 +107,12 @@ def original_check() -> None:
     assert selected == EXPECTED_INPUT_INDICES, "Exact source-only contradiction certificate changed"
     assert 0 == reduce(int.__xor__, (input_vector(words, t) for t in selected), 0)
     assert delta == reduce(int.__xor__, (words[t + 4] for t in selected), 0)
+    # An affine constant is XORed once per witness window and cancels here.
+    assert len(selected) % 2 == 0, "Affine offset would not cancel"
     print(f"ORIGINAL_CONTRADICTION: t={at}, prior_basis_rank={len(basis)}, "
           f"certificate_windows={len(selected)}, "
           f"predecessor_XOR=0x0, successor_XOR=0x{delta:08X}")
-    print("UNRESTRICTED_HOMOGENEOUS_FOUR_WORD_GF2_TRANSITION: EXCLUDED_FOR_CONTIGUOUS_SOURCE")
+    print("UNRESTRICTED_HOMOGENEOUS_AND_AFFINE_FOUR_WORD_GF2_TRANSITION: EXCLUDED_FOR_CONTIGUOUS_SOURCE")
     print("AUTHENTIC_K04_BITS_RECOVERED: 0/128; AUTHENTIC_K08_WORDS: 0")
 
 
