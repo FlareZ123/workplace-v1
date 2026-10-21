@@ -8,15 +8,11 @@ import urllib.parse
 import urllib.request
 
 HOST = "noyes-energy-group.pages.dev"
-INDICES = [
-    "CC-MAIN-2026-39", "CC-MAIN-2026-34", "CC-MAIN-2026-30",
-    "CC-MAIN-2026-25", "CC-MAIN-2026-21", "CC-MAIN-2026-17",
-    "CC-MAIN-2026-12", "CC-MAIN-2025-51",
-]
+INDICES = ["CC-MAIN-2026-25", "CC-MAIN-2026-21", "CC-MAIN-2026-17", "CC-MAIN-2026-12", "CC-MAIN-2025-51"]
 headers = {"User-Agent": "H17-public-historical-source-probe/1.0"}
 for index in INDICES:
     query = urllib.parse.urlencode({
-        "url": HOST + "/*",
+        "url": "https://" + HOST + "/",
         "output": "json",
         "filter": "status:200",
     })
