@@ -25,6 +25,12 @@ Acceptance means eight individual slot checks PASS, combined PASS and `accepted:
 4. The maximum *conditional* target-level information gain if successful, distinguished from any observed gain.
 5. A finite, small local stop budget.
 
+## Target-reachability gate for K04
+
+**An intact-row prediction is not yet a selected-coupon prediction.** Before scaling a generator, seed, serialization, retry or metadata model, explicitly identify the *historical bridge* from the observation used to train and test it to **ESC-N / PS-261003-0417 / RECOVER / attempt 2 at 18:02 UTC**. A bridge may require evidence of common producer and serializer, generator reset/epoch, inter-event output consumption and ordering, plus the selected ACK and mask/copy integrity. Name which of these uncertain edges the proposed experiment can actually test. A perfect source-only holdout fit with a free, unobserved transition to the selected event leaves the missing coupon undetermined. After a bounded pilot, do not widen into adjacent algorithm/parameter families without a newly observed bridge; record scoped negatives in identity memory.
+
+**Temporal eligibility for independent copies matters.** Before searching the next Git ref, tag, release, comment, fork, crawl index or source namespace, identify a concrete reason that channel could have retained a contemporaneous *pre-export* target-bearing version. Research-repository bookkeeping and postincident metadata are not automatically independent historic escrow. A new endpoint alone is not a new source witness. A truly new dated original/version with exact selected bytes or final wording remains admissible.
+
 A successful blind source prediction is evidence for the scoped mechanism, not automatic historical attribution. Only escalate to larger computation or a high-profile result when a distinct observation or validated mechanism can actually constrain the missing output. Put ordinary failed pilots in identity memory. Do not publish a new headline for each conditional no-hit or make multiple preplan/checkpoint commits that obscure the frontier.
 
 ## Avoid repeating exhausted observation families
