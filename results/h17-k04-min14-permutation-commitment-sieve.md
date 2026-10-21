@@ -39,6 +39,8 @@ SHA256 checks=1665398756 found=0
 
 A separate C++ OpenSSL hash control for the concrete *model-only* nearest witness `Q=B8AB8E1531A5A2AE879ED7A15D2559D5` reproduced Python hashlib's expected `SHA256(Q XOR M)=55fd61aa9d9e93a00162ac2cbf6cf7163093e89e1589aeb5d32940aee05afbef`. Enumeration cardinality independently agrees with Agent 32's dynamic-programming exact count, including Agent 32's five small exhaustive controls. The original source ZIP, acceptance file, routing file, known six-slot candidate and `verify.py` were never modified.
 
+**Information-scale qualification:** 1,665,398,756 strings constitute only approximately `4.89417 × 10^-30` of the unrestricted 128-bit coupon space. This large-looking exhaustive workload has decisive power only *inside* the hypothetical shared-permutation/minimum14 family. Its NO_MATCH cannot be extrapolated to a general unknown original coupon or substitute for source-specific integrity evidence.
+
 ## Interpretation, stop decision
 
 Under **all** of the unverified shared-permutation/ACK-copy/transcribed-mask premises, an accepted true intermediate `Q` cannot be exactly 14 bit flips away from `S`. Given the source-model Hamming-weight constraint (hypothetical `Q` weight 66, transcript `S` weight 64), possible distances are even, so such a candidate would need at least **16** changes. This bound is *conditional* and **does not certify a historical 16-bit printer fault or any original coupon bytes**.
