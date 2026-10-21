@@ -98,6 +98,108 @@ def minimum_distance(a, b, c, d, t):
     return distance, q
 
 
+
+def count_nearest(a, b, c, d, t, distance):
+    """Count distinct feasible intermediate Q strings at one Hamming radius.
+
+    The 16 quadruple groups each contribute integer s_g and an independently
+    countable number of coordinate choices.  Meet-in-the-middle dynamic
+    programming tracks an independent row basis of the exact 8 triple-count
+    equations.  It counts Q strings, not coordinate permutations.
+    """
+    from math import comb
+
+    groups = defaultdict(list)
+    for i in range(len(t)):
+        groups[(a[i], b[i], c[i], d[i])].append(i)
+    labels = sorted(groups)
+    sizes = [len(groups[g]) for g in labels]
+    target_ones = [sum(t[i] for i in groups[g]) for g in labels]
+
+    def contribution(g, bit):
+        aa, bb, cc, dd = g
+        result = np.zeros(8, dtype=int)
+        result[4 * aa + 2 * bit + bb] += 1
+        result[4 * bit + 2 * cc + dd] -= 1
+        return result
+
+    full = np.array(
+        [contribution(g, 1) - contribution(g, 0) for g in labels]
+    ).T
+    rhs = -sum(
+        (len(groups[g]) * contribution(g, 0) for g in labels),
+        np.zeros(8, dtype=int),
+    )
+    baseline = full @ np.array(target_ones, dtype=int)
+    independent = []
+    for j in range(8):
+        if np.linalg.matrix_rank(full[independent + [j], :]) > len(independent):
+            independent.append(j)
+    matrix = full[independent, :]
+    goal = (rhs - baseline)[independent]
+    dimensions = len(independent)
+
+    def half(start, stop):
+        states = {(0, (0,) * dimensions): 1}
+        for j in range(start, stop):
+            updated = defaultdict(int)
+            for (cost, offset), number in states.items():
+                for s in range(sizes[j] + 1):
+                    changed = abs(s - target_ones[j])
+                    new_cost = cost + changed
+                    if new_cost > distance:
+                        continue
+                    if s <= target_ones[j]:
+                        ways = comb(target_ones[j], target_ones[j] - s)
+                    else:
+                        ways = comb(sizes[j] - target_ones[j], s - target_ones[j])
+                    shift = matrix[:, j] * (s - target_ones[j])
+                    new_offset = tuple(
+                        offset[k] + int(shift[k]) for k in range(dimensions)
+                    )
+                    updated[(new_cost, new_offset)] += number * ways
+            states = updated
+        return states
+
+    split = len(labels) // 2
+    left = half(0, split)
+    right = half(split, len(labels))
+    total = 0
+    for (cost, offset), number in left.items():
+        complement = (
+            distance - cost,
+            tuple(int(goal[k]) - offset[k] for k in range(dimensions)),
+        )
+        total += number * right.get(complement, 0)
+    return total
+
+
+def tiny_exact_controls():
+    """Blind 12-bit exhaustive controls of the DP count, fixed RNG seed."""
+    from itertools import product
+    rng = np.random.default_rng(20261021)
+    for case in range(5):
+        a = rng.integers(0, 2, 12).tolist()
+        b = rng.integers(0, 2, 12).tolist()
+        p = rng.permutation(12)
+        q = [a[i] for i in p]
+        c = [q[i] for i in p]
+        d = [b[i] for i in p]
+        t = rng.integers(0, 2, 12).tolist()
+        counts = defaultdict(int)
+        for x in product((0, 1), repeat=12):
+            if sorted((a[i], x[i], b[i]) for i in range(12)) == sorted(
+                (x[i], c[i], d[i]) for i in range(12)
+            ):
+                counts[sum(x[i] != t[i] for i in range(12))] += 1
+        best = min(counts)
+        dp_count = count_nearest(a, b, c, d, t, best)
+        assert dp_count == counts[best]
+        print(f"Tiny control {case+1}: min={best}, "
+              f"exact Q count={dp_count} PASS")
+
+
+
 def main():
     path = (Path(__file__).resolve().parents[2]
             / "resources/evidence/print/spool-reconstruction.log")
@@ -128,6 +230,10 @@ def main():
           + bytes(sum(q[8*i+j] << j for j in range(8))
                   for i in range(16)).hex().upper())
     assert distance == 14
+    count = count_nearest(a, b, c, d, printed, distance)
+    print(f"Exact nearest Q candidate count: {count:,}")
+    assert count == 1665398756
+    tiny_exact_controls()
 
     rng = np.random.default_rng(20261021)
     for test in range(5):
