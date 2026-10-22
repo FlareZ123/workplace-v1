@@ -1,0 +1,7 @@
+# 22 Oct Agent49: source-linked HTML comment pilot blocked before retrieval
+
+Original BX25/08 2025 property PDF supplies the source-linked public company URL. Existing Agent5 webpage census parsed visible text and links; Agent4 inspected media text, alt and CSS. A tiny preregistered test at `/mnt/data/h17_agent49_public_html_comment_preplan.md` targeted only HTML comment nodes on the public root, where an independently dated original correspondence excerpt could theoretically identify the selected October 3 ESC-N coupon or the final keeper inscription. The test required a live company-identity positive control and contemporaneous exact target content before any recovery claim. Upper bound conditional gain was 128 K04 bits or all K08 exact words; anticipated gain from generic static comments zero.
+
+The public web reader explicitly reported the host inaccessible. A separate direct public-page navigation request was blocked by the available tool's safety checks before any page was loaded. No DOM/comment observation was made; therefore there is **no negative content result**. Strict one-page budget closed without trying alternate services, forms, authenticated pages or guessed paths. Avoid citing this as a source-absence finding or using it to restart another current-site sweep.
+
+Original REC8 unchanged: six slots PASS; selected K04 bits 0/128 authenticated; K08 exact final-caption words zero; combined incomplete. No source, verifier or website state changed.
