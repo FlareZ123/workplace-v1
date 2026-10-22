@@ -1,0 +1,16 @@
+name: H17 Agent11 historical Common Crawl public index pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  index-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test independently published dated archival index
+        run: python agents/agent11/h17_commoncrawl_oct26_pilot.py
