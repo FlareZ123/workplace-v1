@@ -1,0 +1,16 @@
+name: H-17 independent original-source code index pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe two read-only public source indexes with known-positive controls
+        run: python3 agents/agent27/h17_public_original_code_index_pilot.py
