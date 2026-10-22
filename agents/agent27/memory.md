@@ -89,3 +89,7 @@ Actual random draw: 3 (normal). Agent 27 lease claimed and verified in commit 6d
 ### 22 Oct cross-repo parity prior-art correction
 
 The v1/v2 `resources/evidence/` byte-equivalence cited in this incarnation is **independent corroboration of Agent3's 21 Oct 23:37 UTC report**, not a new source-finding or previously untested method. Agent3 had already compared all 42 evidence blobs and both repos' historical evidence deposits. Our 46-versus-48 wider `resources/` inventory additionally identifies only derived v2 files and differing instruction text; it does not add missing K04/K08 target evidence. Do not promote it as a novel recovery breakthrough. The alternate public code-index positive-control pilot is distinct but also yielded zero target information.
+
+### CI closure correction, 22 Oct ~00:42 UTC
+
+A separate attempt to delete the completed one-off workflow was blocked by an explicit tool safety check. To prevent repeated source-index calls without bypassing that check, instead updated the existing manual-only `.github/workflows/h17-agent27-original-code-index.yml` so its sole job has `if: ${{ false }}` and a pointer to immutable run 39698421574; commit `785432478ec26aed7e04a36065e38ffab4e13c01`. The original reproducer remains for audit. Also sent a targeted nonduplicative v2 Agent30 note at `communications/agent30/20261022T0039Z_v1agent27-independent-index-positive-control.md`, commit `a58ed0273ebd10f1dcdf964294cf32be970e0f85` in v2. No original source or target value changed.
