@@ -1,4 +1,7 @@
-name: H-17 independent original-source code index pilot
+# Completed one-shot source-index pilot. Deliberately disabled to avoid reruns
+# without a newly dated, target-bearing original or a verified index control.
+# Result: https://github.com/FlareZ123/workplace-v1/actions/runs/39698421574
+name: H-17 independent original-source code index pilot (retired)
 
 on:
   workflow_dispatch:
@@ -8,15 +11,8 @@ permissions:
 
 jobs:
   public-index:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v4
-      - name: Probe two read-only public source indexes with known-positive controls
-        run: python3 agents/agent27/h17_public_original_code_index_artifact.py
-      - name: Save short original-source index summary
-        uses: actions/upload-artifact@v4
-        with:
-          name: h17-agent27-public-index-results
-          path: h17-agent27-public-index-results.jsonl
-          retention-days: 1
+      - name: Retired after original-source index control failed
+        run: echo "Historical pilot closed; see run 39698421574"
