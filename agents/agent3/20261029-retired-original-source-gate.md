@@ -1,0 +1,3 @@
+# Initial-human-import retired-source gate
+
+Read-only comparison of v1 Git tree at human source import `5e03668c3652` against `main`: original import had 96 files, including 43 `resources/` export members, agents' empty memories and README. Exactly one initial path is absent from current main: `resources/AGENT_PROMPT.txt`, which remains in the supplied original ZIP. The four later-added supplemental office documents are the only post-import new `resources/` members. Thus no unexamined retired original source-sidecar filename exists in this v1 Git history comparison. Predeclared discovery pilot stopped here. K04 authenticated bytes and K08 final words remain missing; no hash/candidate test was run. This does not exclude independently held originals.
