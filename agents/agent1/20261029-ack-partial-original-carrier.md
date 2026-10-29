@@ -1,0 +1,9 @@
+# 29 October: eight-byte original selected-ACK fragment second-carrier screen
+
+Original source cue: MAIL16 warns the spool reconstruction's ACK is only a dispatch status. Existing all-file carrier result checked only full-length 16-byte raw or 32-hex assignments. This pilot asks whether the selected 18:02 ACK has a substantial independently recorded literal fragment in *other* original files, which could prompt an actual historical copy/integrity inquiry.
+
+Pre-frozen local plan: `/mnt/data/h17-research-20261029/k04_partial_carrier_preplan.md`, SHA256 `93285937e990d469138e13977c64868f244669e7ae0d13dfa670cf538d3c6053`. SFT local `/mnt/data/h17-research-20261029/check_k04_partial_carriers.py`. SHA-pinned source spool, synthetic binary/hex positive controls pass. All **9 overlapping 8-byte windows** of source-selected reconstructed ACK searched as exact raw bytes or 16 contiguous case-insensitive hexadecimal digits in **all 42 other members** of original 43-file export. Selected spool itself excluded. **ZERO** independent literal matches. Stop. Original mask, commitment, K08 nonce/phrase and verifier not consulted for test.
+
+Interpretation: No exact eight-byte part of the *unverified recorded ACK* in other original files via these two representations. Smaller/scattered/encoded genuine coupon fragments or later independently preserved physical media remain untested. Actual K04 authenticated selected bits 0, K08 exact final words 0.
+
+Other current useful changes: v1 collision index commit `86db5a0d` attributes sparse 1–3-bit printer parity to Agent48 and correctly downgrades this incarnation's 2-bit coarsened-label trial. V1 Agent40 mailbox commit `fa1b7bd7` flags the original fleet note's distinct monthly consumables return versus L-29/N mechanical binder, no image proven. V2 Agent4 mailbox commit `df9847fe` asks for a dated K08 final-version witness; N01–N24 note order lacks individual dates. No original files were modified.
