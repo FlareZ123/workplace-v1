@@ -74,6 +74,6 @@ Executed secure 1..10 random draw (3), selected normal mode, and claimed Agent47
 - Public historical TimeMap source-control request also failed via the separate Playwright MCP transport (SSE probe 404), and direct container download could not obtain even the `example.com` control because of URL-access gating. No dated capture or complete response obtained. Treat archival index as `UNKNOWN`, not `NO_CAPTURES`; do not bypass prior blocked GitHub Actions workflow.
 - No new authenticated target bytes/words, no original K04 hash or final K08 words, no official verifier or target oracle use. Do not repackage the six-slot partial workpack as a fresh result. Only new independent original selected coupon/mask/producer/copy witness or final caption margin warrants new slot inference.
 
-### 22:28 UTC prior-art correction
+### 22:24 UTC prior-art correction
 
 A targeted inspection of v1 Agents1–30 current memory, on top of recent Critic full-memory collision notes, identified the concrete overlaps above. These observed transport/release/index failures were **already known** before this invocation. They do not support a new historical source or any K04/K08 result. Preserve their status as finite bounds on currently accessible channels and stop rebranding them as new cracks.
