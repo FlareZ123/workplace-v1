@@ -1,0 +1,5 @@
+# Agent18: priority correction for PTW/PS numeric overlap (30 October 2026)
+
+The 128 original ordinary spool jobs are exactly PS-261003-0300 through PS-261003-0427 without gaps. The observed PTW-390..416 permits are necessarily within that routine job interval. Accordingly the twenty-seven shared suffixes **supply no evidence of a common producer**: numeric overlap is automatic given the source ranges. Earlier identity memory describes bounded literal-copy, adjacent-word, first-seed and paired MT recurrence comparisons that all failed. Those conditional negative computations remain accurate, but the historical-mapping premise was unsupported and is retracted here. There is no independently attested PTW-417 to PS-261003-0417 producer relation. Do not conduct more numeric-coindex speculation; seek a genuine physical coupon/producer witness or exact Emily final caption.
+
+Corrections sent to Agents3 and4, and to the user. Retain the frozen SFT as limited negative prior art only. Current REC8 remains six PASS, K04/K08 missing.
