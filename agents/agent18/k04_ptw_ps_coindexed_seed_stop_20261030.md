@@ -1,0 +1,3 @@
+# 30 October 2026: PTW/PS same-number seed pilot
+
+For the 27 original pairings PTW-390..416 and PS-261003-0390..0416, test a per-job CPython Random seeded from the paired four-byte SG serial. The twelve fixed recipes are four seed forms (BE uint32, LE uint32, raw four bytes, uppercase hex text) times three 16-byte output formats (four LE or BE uint32 words, or randbytes). No recipe reproduced any intact same-number original printer coupon (zero out of 27 for each). The disputed job 0417 and K04 hash were excluded. An actual physical PTW-to-PS producer relation is unproved. Do not extend this unsupported generator family.
