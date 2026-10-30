@@ -85,6 +85,47 @@ def source_triples(words: dict[int, tuple[int, ...]]) -> list[tuple[int, ...]]:
     return hits
 
 
+
+def boundary_triples(words: dict[int, tuple[int, ...]]) -> list[tuple[int, ...]]:
+    """Source-only 31-bit MT recurrence when hidden X[t] precedes a row.
+
+    X[t+624] XOR X[t+397] and twist(X[t], X[t+1]) share 31
+    observable bits when X[t+1] is the row's first serialized word.
+    The unknown preceding X[t].MSB only controls bit 30.
+    """
+    keep = 0xBFFFFFFF
+    masked_values = defaultdict(list)
+    for row, values in words.items():
+        for word, value in enumerate(values):
+            masked_values[value & keep].append((row, word))
+    hits = []
+    for a in range(128):
+        signature = twist(0, words[a][0]) & keep
+        for b in range(a + 1, 128):
+            for bw, value in enumerate(words[b]):
+                for c, cw in masked_values.get((signature ^ value) & keep, ()):
+                    if c > b:
+                        hits.append((a, b, bw, c, cw))
+    assert hits == [
+        (21, 74, 2, 105, 1),
+        (22, 75, 2, 106, 2),
+        (39, 93, 3, 123, 1),
+    ]
+    return hits
+
+
+def boundary_edges(hits: list[tuple[int, ...]]) -> list[tuple[int, int, int]]:
+    edges = []
+    for a, b, bw, c, cw in hits:
+        for first, last, delta in (
+            (a, b, 396 - bw),
+            (a, c, 623 - cw),
+        ):
+            edges.extend(((first, last, delta),
+                          (last, first, -delta)))
+    return edges
+
+
 def edges_for(hits: list[tuple[int, ...]]) -> list[tuple[int, int, int]]:
     """Each (a,b,d) imposes start[b] >= start[a] + d."""
     edges = []
@@ -152,6 +193,7 @@ def main() -> None:
     words = parse_ack_words()
     hits = source_triples(words)
     identities = edges_for(hits)
+    boundaries = boundary_triples(words)
     ack_nodes = [*range(128), 129, 131, 132]
     all_nodes = list(range(133))
     ack = identities + gap_edges(ack_nodes)
@@ -179,7 +221,37 @@ def main() -> None:
         if selected_index in (lower, upper):
             print("EXTREME", selected_index, {k: witness[k] for k in
                   (0, 44, 52, 53, 83, 97, 127, 129, 131, 132)})
+    augmented = ack + boundary_edges(boundaries)
+    augmented_min = lower_bound_distances(0, ack_nodes, augmented)[132]
+    assert augmented_min == 930
+    augmented_fixed = augmented + [(0, 132, span), (132, 0, -span)]
+    new_lower = lower_bound_distances(0, ack_nodes, augmented_fixed)[129]
+    new_upper = -lower_bound_distances(129, ack_nodes, augmented_fixed)[0]
+    assert (new_lower, new_upper) == (919, 980)
+    generator = Random(7123)
+    stream = [untemper(generator.getrandbits(32)) for _ in range(995)]
+    source_witness = lower_bound_distances(
+        0, ack_nodes, augmented_fixed +
+        [(0, 129, new_lower), (129, 0, -new_lower)]
+    )
+    for a, b, bw, c, cw in boundaries:
+        assert ((stream[source_witness[b] + bw] ^
+                 stream[source_witness[c] + cw]) & 0xBFFFFFFF) == (
+                     twist(0, stream[source_witness[a]]) & 0xBFFFFFFF
+                 )
+    assert_witness(source_witness, ack_nodes, hits)
+    for candidate in range(new_lower, new_upper + 1):
+        equality = [(0, 129, candidate), (129, 0, -candidate)]
+        witness = lower_bound_distances(
+            0, ack_nodes, augmented_fixed + equality
+        )
+        assert witness[129] == candidate
+        assert_witness(witness, ack_nodes, hits)
     print("CONTROL: toy graph/positive-cycle and CPython MT original law PASS")
+    print("BOUNDARY: 3 original source-only 31-bit reverse-word triples")
+    print("AUGMENTED: min ACK span", augmented_min,
+          "and fixed-span selected range", new_lower, "..", new_upper,
+          "(62 feasible placements)")
     print("ORIGINAL: 19 routine + 2 late ACK-only reverse-word identities")
     print("MINIMUM SOURCE-NECESSARY SPAN: ACK-stage", ack_min,
           "vs mistaken REQUESTED-four-word floor", all_min)
