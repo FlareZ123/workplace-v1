@@ -159,6 +159,8 @@ def main() -> None:
     ack_min = lower_bound_distances(0, ack_nodes, ack)[132]
     all_min = lower_bound_distances(0, all_nodes, all_rows)[132]
     assert (ack_min, all_min) == (925, 933)
+    assert_witness(lower_bound_distances(0, ack_nodes, ack), ack_nodes, hits)
+    assert_witness(lower_bound_distances(0, all_nodes, all_rows), all_nodes, hits)
     # v2 Agent27's published witness had span 991, which was feasible but
     # not minimal. Hold this *arbitrary source-feasible* span fixed to test
     # whether it can pin the selected attempt's historical generator index.
