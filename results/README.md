@@ -1,5 +1,17 @@
 # H-17 recovery: K04/K08 target-information frontier (updated 30 October 2026)
 
+## 30 October: late-MT witness correction and exact selected-coupon source gap
+
+**Actual target progress remains unchanged:** six original REC8 slots PASS; K04 has no independently authenticated selected coupon bits (0/128), K08 has no attested exact final-margin words, and the combined archive key is INCOMPLETE. This entry prevents a false late-print inference from becoming a K04 cracking direction.
+
+Agent24's 30 October direct original-spool pilot found two intact late fullword MT19937 recurrence matches: `r44.w0/r44.w1/r97.w3 → r131.w0` and `r45.w0/r45.w1/r98.w3 → r132.w3`. These **are not novel source relations**: both were in Agent37's earlier set of 25 original fullword witnesses. They are also exactly consistent with the existing *conditional* source-compatible p955 index fixture (`s44=339`, `s45=346`, `s97=733`, `s98=740`, `s131=963`, `s132=967`). A reported +19-word mismatch arose from misreading the fixture's row97/98 offsets, was corrected by [Agent8's index witness](../communications/agent23/20261030T0332Z_agent8-p955-row-index-correction.md), and was independently acknowledged/retracted by [Agent23](../communications/agent8/20261030T0344Z_agent23-acknowledge-p955-index-correction.md).
+
+The selected printer coupon's p955 four words `X955..X958` instead require predecessor triples `(X331,X332,X728)`, `(X332,X333,X729)`, `(X333,X334,X730)` and `(X334,X335,X731)`. Only X331 occurs in a surviving ordinary printed row; the needed `X332..335` and `X728..731` lie in **unprinted intervals** between original intact ordinary rows. [Agent8's explicit response to Agent24](../communications/agent24/20261030T032631Z_agent8-selected-antecedent-topology.md) therefore explains why Agent24's broad **97,526 unique three-printed-donor candidate words** have no matches to the copied selected ACK even **if** a hypothetical genuine coupon had followed that p955 generator. The negative is valid for the exact three-*printed*-donor search class and cannot determine source-copy integrity or locate original target words.
+
+**Research decision:** Further late-row MT geometry matches and ordinary-row seed fits cannot recover selected K04 bytes without an independently indexed original precursor observation that actually enters the missing event, or a separately verified original ESC-N coupon/copy-stage rule. The p955 placement is a mathematical source-consistent witness, **not** an authenticated printer chronology; additional strict metadata-sampler constraints may contradict it. K04's route mask also has only its existing transcription, and Emily's exact K08 final margin remains absent. Do not renew ordinary-donor searches or draft-caption HMAC guessing on these old signals; prioritize a newly authenticated original with selected-event or terminal-caption reach.
+
+---
+
 
 ## 29 October cross-workplace decision: identifiable target evidence versus ordinary model fit
 
@@ -113,15 +125,3 @@ The final keeper caption is **described and distinguished from drafts, but not q
 - [Full pre-refocus rolling chronological index](research-chronicle-through-20261019T1547Z.md), preserved for traceability. Individual research files, code, and broadcasts remain available in the repository.
 
 Original source files, commitments and `resources/verify.py` must remain untouched. **Acceptance** is exclusively determined by the unchanged original verifier reporting eight slot checks PASS, combined PASS, and `accepted: true`. Evidentiary provenance must be documented separately; it is a research-quality condition, not an extra verifier predicate. Do not generate six-slot handoff ZIPs or repeat canonical replay as a substitute for new K04/K08 target information.
-## 30 October: late-MT witness correction and exact selected-coupon source gap
-
-**Actual target progress remains unchanged:** six original REC8 slots PASS; K04 has no independently authenticated selected coupon bits (0/128), K08 has no attested exact final-margin words, and the combined archive key is INCOMPLETE. This entry prevents a false late-print inference from becoming a K04 cracking direction.
-
-Agent24's 30 October direct original-spool pilot found two intact late fullword MT19937 recurrence matches: `r44.w0/r44.w1/r97.w3 → r131.w0` and `r45.w0/r45.w1/r98.w3 → r132.w3`. These **are not novel source relations**: both were in Agent37's earlier set of 25 original fullword witnesses. They are also exactly consistent with the existing *conditional* source-compatible p955 index fixture (`s44=339`, `s45=346`, `s97=733`, `s98=740`, `s131=963`, `s132=967`). A reported +19-word mismatch arose from misreading the fixture's row97/98 offsets, was corrected by [Agent8's index witness](../communications/agent23/20261030T0332Z_agent8-p955-row-index-correction.md), and was independently acknowledged/retracted by [Agent23](../communications/agent8/20261030T0344Z_agent23-acknowledge-p955-index-correction.md).
-
-The selected printer coupon's p955 four words `X955..X958` instead require predecessor triples `(X331,X332,X728)`, `(X332,X333,X729)`, `(X333,X334,X730)` and `(X334,X335,X731)`. Only X331 occurs in a surviving ordinary printed row; the needed `X332..335` and `X728..731` lie in **unprinted intervals** between original intact ordinary rows. [Agent8's explicit response to Agent24](../communications/agent24/20261030T032631Z_agent8-selected-antecedent-topology.md) therefore explains why Agent24's broad **97,526 unique three-printed-donor candidate words** have no matches to the copied selected ACK even **if** a hypothetical genuine coupon had followed that p955 generator. The negative is valid for the exact three-*printed*-donor search class and cannot determine source-copy integrity or locate original target words.
-
-**Research decision:** Further late-row MT geometry matches and ordinary-row seed fits cannot recover selected K04 bytes without an independently indexed original precursor observation that actually enters the missing event, or a separately verified original ESC-N coupon/copy-stage rule. The p955 placement is a mathematical source-consistent witness, **not** an authenticated printer chronology; additional strict metadata-sampler constraints may contradict it. K04's route mask also has only its existing transcription, and Emily's exact K08 final margin remains absent. Do not renew ordinary-donor searches or draft-caption HMAC guessing on these old signals; prioritize a newly authenticated original with selected-event or terminal-caption reach.
-
----
-
