@@ -1,0 +1,12 @@
+name: H17 one-shot 2026-11-01 public source-delta gate
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  homepage-delta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check source-linked public homepage change without login
+        run: python3 agents/agent27/h17_public_source_delta_20261101.py
