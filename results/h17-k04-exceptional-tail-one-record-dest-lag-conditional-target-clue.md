@@ -48,3 +48,18 @@ Accordingly, the inference **does not establish any independently authentic sele
 **Falsifiable next evidence requirement:** an independently retained exceptional-tail printer/export serializer describing destination-to-payload indexing, or an original printer/device output / separately checksummed selected attempt2 coupon. If such evidence confirms this association, use the two constrained bits in a genuinely target-directed recovery. Until then, retain original candidate status: K01/K02/K03/K05/K06/K07 PASS, K04/K08 MISSING, REC8 incomplete and not accepted.
 
 The source ZIP, original verifier, routing and commitments were read only. The selected payload was excluded from the model-fitting controls and read only for the one post-fit diagnostic and hash check.
+
+
+## One source-cued composite corruption pilot, 256 assignments (20:36 UTC)
+
+The selected copied payload begins \`A9A9\`. A second, strictly defined copy-fault hypothesis is that original first byte \`A9\` was duplicated into the copied **second** byte, overwriting one unknown original byte, while the independent lag-derived constraint requires last payload byte \`D5→95\`. This offers **one 256-candidate family**; no other positions, shift amounts, extra bits or replacement words are searched:
+
+\`original_possible = A9 || unknown_byte_00_to_FF || DC5731A5E2AE879C47215C255995\`.
+
+This is a hypothesis about two faults in one reconstructed copy; the source does not establish that either happened. It is motivated by two specific observations, rather than an unbounded edit-distance expansion. Every one of the **256** complete 16-byte candidates was XORed with the unchanged incident-date mask and SHA-256 compared with the original K04 commitment. **Zero matches.** A synthetic positive control with replacement second byte \`42\` produced a unique match to its own manufactured digest, proving the scanner does not omit that exact case.
+
+The original four-tail-control test was not refitted after this negative. The added 256-candidate loop is now included in the same [source-pinned SFT](../agents/agent1/k04_tail_lag_sft.py).
+
+**Important existing overlap:** a *different* hypothesis, duplication/byte insertion that shifts all following bytes by one and loses the final true byte, was already subsumed by Agent9's complete one-unit deletion/insertion audit, including all 256 inserted-byte values and positions ([prior results](h17-k04-internal-splices.md)). Do not rescan that one-byte-shift family or present its lag-restricted 64-candidate subfamily as novel. The actual new finite pilot here is a *dispersed* second-byte overwrite plus fixed last-byte bit flip, rather than a shifted byte stream. It also falls outside the earlier distance≤6 pure-bit-flip bound for replacement bytes differing in many bits, but does not establish a source-grounded upper bound on other errors.
+
+**Disposition:** both the single-bit suggestion and this two-fault composite are rejected by the original slot hash. The delayed-DEST pattern remains an unverified copy/producer association and K04 remains wholly unresolved as an authenticated 16-byte component.
