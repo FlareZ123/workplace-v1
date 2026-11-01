@@ -26,6 +26,10 @@ In all six frozen placements the relative job boundaries and five bit positions 
 
 The original copied K04 mask begins `8556C8CB` (little-endian first word `CBC85685`); its bits 23 and30 are both 1. Their XOR is 0, so, *if that mask is historically accurate*, the same parity would hold for the reduced K04 first word. A single parity does not recover either participating bit or the other 126 dimensions.
 
+### Exact selected-copy falsification question
+
+The retained **unverified** 18:02 ACK2 PAYLOAD begins `A9A9DC57`, giving native little-endian first word `57DCA9A9`. Its observed `bit23 XOR bit30 = 0`. If a future independently authenticated, precisely indexed pair of original donor upper-halfwords yields **XOR of the specified five bits = 1**, then the retained selected first-word copy is inconsistent with that authenticated producer/output chronology. Donor XOR **0** only establishes agreement on one parity; it cannot certify the other 127 coupon bits, the printed mask or the complete key. No such donor pair exists in the present export, and this conditional comparison was **not** used as an oracle to select hypothetical donor values.
+
 ## Reproducible target-information test
 
 [Single-file read-only reproducer](../agents/agent21/k04_p955_donor17_sft.py) imports the pre-existing original-source GF(2) projector from `agents/agent33/k04_global_target_projection.py` and the original-source-compatible p955 vector from Agent5. It deletes selected row129 **before** building the basis. The untouched 132 intact payload rows give source rank **15,369** and selected target quotient **128/128**. Augmenting with five **hypothetical** donor bit values obtained from one affine state completion produces quotient **127/128** and fixes exactly `Y[p].bit23 XOR Y[p].bit30`. A hypothetical *single* donor `Y[p-227]` top-16 fragment alone gives no reduction (rank128); its top17 gives rank127 by a different two-bit parity. These are synthetic oracle evaluations, **not original observed donor values**.
