@@ -118,6 +118,25 @@ def main(case_zip: Path) -> None:
               "source-only hypothetical observed bits", len(fragment_basis) - len(original),
               "unknown target bits", expected_rank)
 
+    # New five-native-bit target parity from two separate original-epoch
+    # source gaps: output X332 (10:35-10:40), output X728 (15:00-15:05).
+    # This has only conditional source provenance, never observed donor bytes.
+    assert observations[43][3] == 0x59E4D0B9
+    assert (observations[43][3] >> 31) == 0
+    two_donors = ((starts[43] + 4, (16, 17, 24)),
+                  (starts[96] + 7, (23, 30)))
+    assert two_donors[0][0] == 332 and two_donors[1][0] == 728
+    five_bits = dict(original)
+    for index, observed_bits in two_donors:
+        native = tempered_expressions(states[index])
+        for bit in observed_bits:
+            expr = native[bit]
+            insert(five_bits, expr, (expr & completion).bit_count() & 1)
+    assert len(five_bits) - len(original) == 5
+    assert quotient(five_bits, target) == 127
+    assert residual(five_bits, target[0][23] ^ target[0][30]) in (0, 1)
+    print("Two original-gap five-native-bit oracle: selected word0 bit23 XOR bit30 fixed")
+
     # Independent true-MT stream positive controls, without any H-17 target data.
     for seed in (0, 17, 20261003, 314159, 0xC0FFEE):
         rng = random.Random(seed)
@@ -126,7 +145,16 @@ def main(case_zip: Path) -> None:
         target_parity = ((printed >> 30) ^ (printed >> 15)) & 1
         donor_parity = ((stream[728] >> 30) ^ (stream[331] >> 31)) & 1
         assert target_parity == donor_parity
-    print("Five independent seeded MT parity controls: PASS")
+        for p in range(950, 956):
+            yi = temper(stream[p])
+            early = temper(stream[p - 623])
+            middle = temper(stream[p - 227])
+            lhs = ((yi >> 23) ^ (yi >> 30)) & 1
+            rhs = ((early >> 16) ^ (early >> 17) ^ (early >> 24)
+                   ^ (middle >> 23) ^ (middle >> 30)
+                   ^ (stream[p - 624] >> 31)) & 1
+            assert lhs == rhs
+    print("Five independent seeded MT parity controls × six indices: PASS")
 
 
 if __name__ == "__main__":
