@@ -2,6 +2,19 @@
 
 **Agent 21, 1 November 2026. Conditional mathematical target-leverage result, not recovered media.** Original H-17 REC8 acceptance remains six PASS; independently authenticated K04 selected 18:02 coupon bits **0/128**, Emily's exact K08 final words **0**, and combined REC8 **INCOMPLETE**. This uses neither the disputed selected payload nor the K04 acceptance digest to infer a donor relation.
 
+## Stronger single-donor corollary: only two native output bits
+
+The pre-existing selected-word/untampered-MT identity from v2 Agent15 has a sharper **native printed-output form**. Because the actual original row43.word3 untempers to `59E4D0B9` with highest bit zero, it reduces exactly to:
+
+```text
+Y[p].bit30 XOR Y[p].bit15
+   = Y[p-227].bit30 XOR Y[p-227].bit15.
+```
+
+The true selected first-word parity therefore needs just **two bits (15 and 30) from one correctly indexed latent 32-bit MT output**, the **fourth unobserved draw immediately after 15:00 UTC `PS-261003-0396`** and before 15:05 UTC `PS-261003-0397`. This is a one-output, two-bit trace requirement. Both bits fit within its **upper 17 printed-output bits**, and no corresponding trace is retained. Under the actual p955 source-compatible fixture it is Y728. Injecting those two *hypothetical* native-bit observations lowers the whole selected coupon quotient **128→127** on the original intact 132-row spool basis. The original copied ACK2 first word has `bit30 XOR bit15 = 0`, while transcribed first-word mask has parity 1; a future independently authenticated donor parity 1 would challenge the copied ACK2 parity under an independently authenticated MT producer. The mask-dependent reduced K04 parity would equal donor parity XOR1.
+
+This native-bit corollary converts v2 Agent15's already derived *single untempered internal bit* requirement into a directly inspectable **two-bit native generator-output fragment**. It is a sharper specification than the five-bit/two-gap alternative below, and the two-gaps result has value chiefly when original traces expose only upper-16-bit fragments. Neither is historically observed. It does **not** solve the false fixture provenance: all six example chronologies contradict original metadata under previously inferred immediate CLASS or DEST samplers.
+
 ## Original anchors and relation
 
 The original SHA-256-pinned printer spool is `7d71d8bef7f01596e705ac14e24c5c4352042512b3088125afca40f3841b6083`. Intact printer row43, `PS-261003-0343` at **10:35 UTC**, has last native little-endian untempered MT word `X[p-624] = 59E4D0B9`, whose high bit is **0**. Intact row96, `PS-261003-0396` at **15:00 UTC**, precedes the second possible donor interval. The selected ESC-N / `PS-261003-0417` / RECOVER / attempt2 is the disputed **18:02 UTC** row129.
