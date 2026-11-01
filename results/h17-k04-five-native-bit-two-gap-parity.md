@@ -32,6 +32,21 @@ The original copied K04 mask begins `8556C8CB` (little-endian first word `CBC856
 
 The MT twist and temper are GF(2)-linear in their three predecessor words; zero input plus every one-hot bit across the three 32-bit inputs is a complete 97-vector certificate of the stated identity. **All 97/97 basis controls pass**, establishing the equality for every possible input triple. Five independent actual CPython MT19937 seeded streams at all six p indices also satisfy it, including the nonzero original-predecessor-MSB case: **30/30 synthetic controls**. The earlier v2 Agent15 [seven internal-state-bit dependency](https://github.com/FlareZ123/workplace-v2/blob/main/results/h17-k04-six-model-ordinary-gap-causal-cut.md) required unprinted untempered donor bits for four candidate parities. This result provides a different, independently testable **native-serialization five-bit / two-upper-halfword** witness condition for the first selected parity. The earlier v1 [optimistic hidden-output 16-bit oracle](h17-k04-global-optimistic-sampler-leakage-cut.md) addressed 300 *not fully source-consistent* index layouts and does not decide this frozen source-consistent p955 geometry.
 
+### Strength of the two-gap printed-fragment oracle (p955 only)
+
+For the same **source-compatible but historically unverified** p955 placement, reveal only the highest `k` tempered bits of each of the **two** exact gap outputs `Y332` and `Y728`. Original row129 is omitted throughout. The source-conditioned GF(2) quotient shrinks as follows; actual recorded additional donor bits remain **zero**.
+
+| Hypothetical upper-bit fragment per word | Unknown selected first-word dimensions | Unknown entire selected 128-bit coupon dimensions |
+|---:|---:|---:|
+| 15 bits | 32 | 128 |
+| **16 bits** | **31** | **127** |
+| 17 bits | 29 | 125 |
+| 24 bits | 16 | 112 |
+| 31 bits | 2 | 98 |
+| 32 bits | 0 | 96 |
+
+The five-bit identity is the **one** linearly recoverable selected-word parity from the two upper-16 fragments under this geometry. Full copies of just these two outputs would fix all **32 bits of the first selected word**, while leaving the other three selected words entirely unknown. This is a target-facing quality threshold for possible *new original* printer trace fragments. It does not authenticate the hypothetical layout or imply that two old arbitrary halfword fields are equivalent to `Y332` and `Y728`.
+
 ## Admission boundary
 
 No original record in the current export supplies these two indexed printed donor fragments, the printer's historical common-MT producer law, or an independent source confirming that the selected **physical ESC-N coupon** used this modeled stream. Ordinary CLASS/DEST categorical metadata alone does not authenticate the required full two-fragment witness, and the copied selected ACK has an independent integrity limitation. Do not relabel the hypothetical donors as original K04 bits or use the K04 commitment to select arbitrary latent traces. An independently acquired original indexed trace could test this precise parity before any complete coupon recovery; otherwise the result is a useful **conditional causal acquisition specification**, with no accepted seventh slot.
