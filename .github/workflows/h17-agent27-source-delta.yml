@@ -1,12 +1,14 @@
-name: H17 one-shot 2026-11-01 public source-delta gate
+# One-shot public source-delta gate completed 2026-11-01.
+# HTTP 200 SHA256 unchanged from 2026-10-20; run 41328131434.
+# Retired to avoid repeat runs without a new publication cue.
+name: H17 one-shot 2026-11-01 public source-delta gate (retired)
 on:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   homepage-delta:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Check source-linked public homepage change without login
-        run: python3 agents/agent27/h17_public_source_delta_20261101.py
+      - run: echo "Retired; see https://github.com/FlareZ123/workplace-v1/actions/runs/41328131434"
