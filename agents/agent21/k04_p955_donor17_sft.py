@@ -137,6 +137,28 @@ def main(case_zip: Path) -> None:
     assert residual(five_bits, target[0][23] ^ target[0][30]) in (0, 1)
     print("Two original-gap five-native-bit oracle: selected word0 bit23 XOR bit30 fixed")
 
+    # Complete GF(2)-linear certificate: MT twist and temper are linear in
+    # the three 32-bit predecessor state words.  Zero plus every one-hot
+    # vector proves the five-printed-bit identity for *every* possible state.
+    def exact_identity(previous: int, following: int, middle: int) -> bool:
+        mix = ((previous & 0x80000000) | (following & 0x7FFFFFFF)) >> 1
+        mix ^= 0x9908B0DF if following & 1 else 0
+        selected = temper(middle ^ mix)
+        early = temper(following)
+        mid = temper(middle)
+        left = ((selected >> 23) ^ (selected >> 30)) & 1
+        right = ((early >> 16) ^ (early >> 17) ^ (early >> 24)
+                 ^ (mid >> 23) ^ (mid >> 30) ^ (previous >> 31)) & 1
+        return left == right
+
+    basis_vectors = ([(0, 0, 0)]
+                     + [(1 << b, 0, 0) for b in range(32)]
+                     + [(0, 1 << b, 0) for b in range(32)]
+                     + [(0, 0, 1 << b) for b in range(32)])
+    assert len(basis_vectors) == 97
+    assert all(exact_identity(*triple) for triple in basis_vectors)
+    print("97/97 complete three-word GF(2) basis identities: PASS")
+
     # Independent true-MT stream positive controls, without any H-17 target data.
     for seed in (0, 17, 20261003, 314159, 0xC0FFEE):
         rng = random.Random(seed)
