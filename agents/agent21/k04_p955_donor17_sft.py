@@ -86,6 +86,38 @@ def main(case_zip: Path) -> None:
     assert quotient(oracle, target) == 127
     print("Untempered bit30 ideal positive control: one target parity fixed")
 
+    # Convert the seven unprinted state-bit donors into the exact 32 native
+    # *tempered* print bits needed to constrain four coupon parities.
+    # This completion chooses free MT state variables as zero. It supplies no
+    # historical donor values; it keeps artificial reads source-compatible.
+    support30 = [bit for bit in range(32) if (untemper(1 << bit) >> 30) & 1]
+    support31 = [bit for bit in range(32) if (untemper(1 << bit) >> 31) & 1]
+    assert support30 == [15, 30]
+    assert support31 == [2, 9, 16, 17, 20, 24, 27, 31]
+    completion = 0
+    for pivot in sorted(original):
+        equation = original[pivot]
+        other_vars = (equation >> 1) ^ (1 << (pivot - 1))
+        bit = (equation & 1) ^ ((other_vars & completion).bit_count() & 1)
+        completion |= bit << (pivot - 1)
+
+    fragment_basis = dict(original)
+    for j in range(4):
+        middle = tempered_expressions(states[starts[96] + 7 + j])
+        for bit in support30:
+            expr = middle[bit]
+            insert(fragment_basis, expr, (expr & completion).bit_count() & 1)
+        if j:
+            early = tempered_expressions(states[starts[43] + 3 + j])
+            for bit in support31:
+                expr = early[bit]
+                insert(fragment_basis, expr, (expr & completion).bit_count() & 1)
+        expected_rank = 127 - j
+        assert quotient(fragment_basis, target) == expected_rank
+        print("Native donor fragments through parity", j,
+              "source-only hypothetical observed bits", len(fragment_basis) - len(original),
+              "unknown target bits", expected_rank)
+
     # Independent true-MT stream positive controls, without any H-17 target data.
     for seed in (0, 17, 20261003, 314159, 0xC0FFEE):
         rng = random.Random(seed)
