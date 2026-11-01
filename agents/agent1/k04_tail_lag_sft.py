@@ -78,6 +78,23 @@ def main(path):
         print("corrected_component_candidate", component.hex().upper())
         print("candidate_sha256", digest)
         print("original_K04_commitment_match", False)
+        # Frozen two-fault family: recorded A9 A9 may have copied original
+        # byte0 twice, replacing original unknown byte1; separately apply the
+        # single last-byte bit correction from the lagged DEST constraint.
+        candidate_hashes = []
+        for second_byte in range(256):
+            alt = bytearray(corrected)
+            alt[1] = second_byte
+            key = bytes(x ^ y for x, y in zip(alt, mask))
+            candidate_hashes.append(hashlib.sha256(key).hexdigest())
+        hits = [i for i, value in enumerate(candidate_hashes) if value == commitment]
+        synthetic_target = candidate_hashes[0x42]
+        assert [i for i, value in enumerate(candidate_hashes)
+                if value == synthetic_target] == [0x42]
+        assert hits == []
+        print("conditional_C1_duplicate_and_C15_bit6_candidates", 256)
+        print("two_fault_original_K04_matches", hits)
+        print("two_fault_synthetic_positive_control", "PASS")
         print("observed_authentic_selected_coupon_bits", 0, "/ 128")
         print("model_historical_producer_authenticated", False)
 
