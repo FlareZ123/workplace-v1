@@ -29,6 +29,19 @@ Each selected target bit needs four donor bits individually; bit4 and bit22 toge
 
 A direct exhaustive search over all 32 target printed bit positions, and all `C(32,k)` choices for `k=1,2,3`, minimizes the union of the needed two-donor native-bit supports. The exact minima within this isolated twist map are **4, 6, 9** bits, attained by `{0}`, `{4,22}`, and `{0,4,22}`. Since unknown predecessor high-bit contributions can only add requirements, while the minimizing subsets have zero such contribution, these are also complete isolated-map minima without observing the predecessor word. Other externally authenticated observations could change the minimization, but none is present.
 
+## Frozen selected-copy discriminator for any authentic future donor
+
+The surviving **unverified** copied 18:02 ACK and transcribed K04 mask can be reduced to three-bit comparator signatures, without ever using the original K04 commitment. Each signature below is in **bit0, bit4, bit22 order of a little-endian 32-bit word**, not a hex-digit substring. These signatures are **comparison targets**, not authenticated historical values:
+
+| Selected word j | Copied ACK native word | Copied ACK b0/b4/b22 | Transcribed mask b0/b4/b22 | Copied XOR mask b0/b4/b22 |
+| --- | --- | --- | --- | --- |
+| 0 | `57DCA9A9` | `101` | `101` | `000` |
+| 1 | `AEE2A531` | `111` | `100` | `011` |
+| 2 | `21479C87` | `101` | `100` | `001` |
+| 3 | `D559255C` | `011` | `111` | `100` |
+
+If an independently authenticated MT/native-gap trace supplies the exact E and M donor outputs plus historical index and producer validation, the 12 reconstructed selected physical print bits can be directly compared to copied ACK signature sequence `101|111|101|011`. Any differing bit would falsify that copy under the authenticated source/copy model. Agreement on all twelve bits is **insufficient** to certify the remaining 116 coupon bits or any of the 128 mask bits. The final XOR signature is conditional on a second, independently authenticated commissioning mask. No source-absent donor values are inferred from these expected signatures.
+
 ## Validation and source/copy discrimination
 
 [Standalone original-spool-pinned SFT](../agents/agent49/k04_three_native_target_bits_sft.py) deliberately does **not** read the selected row129 PAYLOAD, route mask, K04 commitment, K08 caption or nonce. It asserts the original spool hash, the four authentic intact gap endpoints and selected job identity. It tests the three equations on **all 97 GF(2) basis inputs** (zero plus one-hot each of the three 32-bit antecedent words), a complete certificate because MT twist/temper are linear over these inputs. It independently checks **120 true MT native-word cases** across five seeded CPython streams, the six selected index placements and all four word offsets, giving **360/360 individual bit equalities**. A second exact matrix-based support enumerator verifies the 4/6/9-bit minima. The locally executed read-only SFT passed all checks on the original 43-member ZIP.
