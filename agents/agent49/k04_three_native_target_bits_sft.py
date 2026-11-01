@@ -108,7 +108,83 @@ def run(zip_path):
                 comparisons += 1
     assert comparisons == 120
     print("120 true-MT word controls x three identities = 360: PASS")
+
+    # Source-conditioned exact quotient under the preexisting p955 geometry.
+    # Use Agent33's published original-source projector, not another copied
+    # source/parser implementation. The selected row129 copy is omitted.
+    import json
+    root = Path(__file__).resolve().parents[2]
+    sys.path.insert(0, str(root / "agents" / "agent33"))
+    from k04_global_target_projection import (
+        source_rows, state_expressions, tempered_expressions,
+    )
+    starts = json.loads(
+        (root / "agents" / "agent5" /
+         "k04_crosssource_six_vectors.json").read_text(encoding="utf8")
+    )["row_starts"]["955"]
+    observed = source_rows(zip_path)
+    terms = state_expressions(max(starts) + 3)
+    known = {}
+
+    def reduce_equation(equations, expr, observed_bit=0, insert=True):
+        v = (expr << 1) | observed_bit
+        while v:
+            pivot = v.bit_length() - 1
+            old = equations.get(pivot)
+            if old is None:
+                if insert and v > 1:
+                    equations[pivot] = v
+                return v
+            v ^= old
+        return 0
+
+    for i, four_words in enumerate(observed):
+        for j, untempered_word in enumerate(four_words):
+            for b, expr in enumerate(terms[starts[i] + j]):
+                remainder = reduce_equation(
+                    known, expr, (untempered_word >> b) & 1
+                )
+                assert remainder != 1, "Original source contradiction"
+    assert len(known) == 15369
+    selected = [
+        tempered_expressions(terms[starts[129] + j])
+        for j in range(4)
+    ]
+    rank_original = dict(known)
+    for word in selected:
+        for expr in word:
+            reduce_equation(rank_original, expr)
+    assert len(rank_original) - len(known) == 128
+
+    # The hypothetical donor values must come from an affine-consistent state.
+    # Rank and whether individual outputs are fixed are value-independent;
+    # stripping equation RHS before oracle additions supplies a homogeneous
+    # but source-compatible completion for this mathematical rank test.
+    augmented = {pivot: equation & ~1 for pivot, equation in known.items()}
+    for offset, bits in ((623, early_bits), (227, middle_bits)):
+        for j in range(4):
+            printed_native = tempered_expressions(
+                terms[starts[129] + j - offset]
+            )
+            for b in bits:
+                assert reduce_equation(augmented, printed_native[b]) > 1
+    assert len(augmented) == len(known) + 36
+    fixed = {
+        (j, b)
+        for j, word in enumerate(selected)
+        for b, expr in enumerate(word)
+        if reduce_equation(augmented, expr, insert=False) == 0
+    }
+    assert fixed == {(j, b) for j in range(4) for b in (0, 4, 22)}
+    after_target = dict(augmented)
+    for word in selected:
+        for expr in word:
+            reduce_equation(after_target, expr)
+    assert len(after_target) - len(augmented) == 116
+    print("Original p955 source rank 15369; 36 donor bits independent;")
+    print("Selected coupon quotient 128 -> 116; exactly 12 individual bits fixed: PASS")
     print("AUTHENTICATED K04 TARGET BITS ACQUIRED: 0/128")
+
 
 if __name__ == "__main__":
     run(Path(sys.argv[1]))
