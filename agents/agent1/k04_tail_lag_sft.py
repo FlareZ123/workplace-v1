@@ -56,10 +56,30 @@ def main(path):
         assert inferred_original_code == 2
         print("conditional_selected_row129_last_word_top2", format(inferred_original_code, "02b"))
 
+        # Counterfactual feature-choice discriminator. A 2-bit destination
+        # association is not identified solely by four matching tail rows:
+        # enumerate each adjacent 2-bit window in each of four prior words,
+        # on exactly the four nonselected preceding payloads.
+        exact_windows = []
+        for word_offset in range(4):
+            for bit_offset in range(31):
+                if all(
+                    ((struct.unpack_from("<I", parse_line(rows[i])[0],
+                                         4 * word_offset)[0] >> bit_offset) & 3)
+                    == parse_line(rows[i + 1])[1]
+                    for i in CONTROL_EDGES
+                ):
+                    exact_windows.append((word_offset, bit_offset))
+        assert exact_windows == [(1, 20), (3, 30)]
+        print("all_adjacent_two_bit_windows_tested", 4 * 31)
+        print("four_of_four_windows", exact_windows)
+
         # Post-fit diagnosis: read the selected copied payload only now.
         copied, _ = parse_line(rows[129])
         copied_code = code_last_word(copied)
         assert copied_code == 3 and copied[-1] == 0xD5
+        assert (struct.unpack_from("<I", copied, 4)[0] >> 20) & 3 == 2
+        print("alternate_window_word1_bit20_selected_copy_matches_next_DEST", True)
         print("copied_selected_row129_last_word_top2", format(copied_code, "02b"))
         print("conditional_discordant_bit", "last payload byte bit6", "D5 -> 95")
 
