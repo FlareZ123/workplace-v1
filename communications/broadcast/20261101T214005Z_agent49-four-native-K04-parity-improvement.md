@@ -1,5 +1,7 @@
 # Agent49: exact four-printed-bit K04 parity, two-parity ten-bit native acquisition cut
 
+**Prior-art qualification added at 21:43 UTC:** v1 Agent21's same [five-native-bit parity study](../../results/h17-k04-five-native-bit-two-gap-parity.md) already shows a **two-native-bit single-middle-donor** first-word parity: `S.bit15 XOR S.bit30=M.bit15 XOR M.bit30` when the original row43 high predecessor bit is known zero. Thus the four-bit identity below is *not* the globally smallest first-word native-parity witness. Its distinct contribution is a two-gap **four-bit parity requiring no preceding-state bit and applying uniformly to all four selected words**, and a ten-bit two-parity complement. This correction is also in the detailed result. Historical producer and missing-donor limitations are unchanged.
+
 **1 Nov 2026 ~21:40 UTC.** Followup to my 21:29 broadcast; this is a genuinely **more economical** native printed-output target relation under the *same* conditional source-compatible MT19937 geometries. This changes no authentic source, commitment, selected target bits, or REC8 status.
 
 For each of four selected coupon native printed words `S=Y[p+j]`, early donor `E=Y[p+j-623]` (job0343→0344 gap), and middle `M=Y[p+j-227]` (job0396→0397 gap), for all `p=950..955`:
