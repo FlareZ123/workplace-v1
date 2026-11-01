@@ -4,6 +4,8 @@ No selected row payload, route mask, target commitments or K08 wording are read.
 The MT producer/placement is conditional and no real donor fragments are known.
 """
 from itertools import combinations
+from functools import reduce
+from operator import or_
 from pathlib import Path
 from zipfile import ZipFile
 import hashlib
@@ -87,10 +89,10 @@ def run(zip_path):
     assert early_bits == [1,4,5,19,22,23]
     assert middle_bits == [0,4,22]
     for n, expected in ((1,4),(2,6),(3,9)):
-        least = min((sum(0 for _ in ()) if False else
-                    (lambda ix: ix.bit_count())(
-                        __import__("functools").reduce(int.__or__, (rows_of_bits[j] for j in subset), 0)))
-                    for subset in combinations(range(32),n))
+        least = min(
+            reduce(or_, (rows_of_bits[j] for j in subset), 0).bit_count()
+            for subset in combinations(range(32),n)
+        )
         assert least == expected, (n,least)
     print("Three individual selected word bits [0,4,22] from native gap bit sets",early_bits,middle_bits)
     print("Exact exhaustive minimum donor bits for 1, 2, 3 individual bits: 4, 6, 9")
