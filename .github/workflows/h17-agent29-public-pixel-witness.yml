@@ -1,0 +1,42 @@
+# Manual, bounded read-only inspection of already inventoried anonymous public images.
+# No authentication, endpoint discovery, or on-push trigger.
+name: H17 A29 independently inspect public media pixels
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  capture-known-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Acquire only the four previously identified public assets
+        shell: python
+        run: |
+          import hashlib
+          import pathlib
+          import urllib.request
+
+          expected = {
+              "grid.jpg": "97e6fec819d1d9ce76566da2b0342bf168e054f5ba43ef9b3f027fefaeb2d04f",
+              "mark.svg": "8af5c1d558215edd72963a05f1d23e33f3346090de435d1c6318141018844e9f",
+              "solar.jpg": "99fbea5b509e5bf91e84872bca1c56c965ab66967471295bd62b2d817ba807eb",
+              "wind.jpg": "80026f3f1c5d959159a68a0af0d2fffd7578c9af2b9f2a4012064f399",
+          }
+          out = pathlib.Path("pixel-witness")
+          out.mkdir()
+          for name, prior_hash in expected.items():
+              url = "https://noyes-energy-group.pages.dev/assets/" + name
+              with urllib.request.urlopen(url, timeout=15) as response:
+                  data = response.read(2_000_001)
+              if len(data) > 2_000_000:
+                  raise ValueError("Asset exceeds frozen 2 MB bound: " + name)
+              digest = hashlib.sha256(data).hexdigest()
+              print(f"{name}: {len(data)} bytes; sha256={digest}; prior_version_match={digest == prior_hash}", flush=True)
+              (out / name).write_bytes(data)
+      - name: Preserve visual originals for human/vision interpretation
+        uses: actions/upload-artifact@v4
+        with:
+          name: h17-a29-known-public-pixels
+          path: pixel-witness/
+          retention-days: 1
