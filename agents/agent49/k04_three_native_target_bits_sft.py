@@ -44,9 +44,21 @@ def predict(e, m):
             bit(e,1) ^ bit(e,5) ^ bit(e,19) ^ bit(m,4),
             bit(e,1) ^ bit(e,19) ^ bit(e,23) ^ bit(m,22))
 
+def parity_pair(printed):
+    return (bit(printed, 17) ^ bit(printed, 21),
+            bit(printed, 17) ^ bit(printed, 20) ^ bit(printed, 24) ^ bit(printed, 28))
+
+
+def gap_pair(early, middle):
+    return (bit(early, 0) ^ bit(early, 15) ^ bit(middle, 17) ^ bit(middle, 21),
+            bit(early, 3) ^ bit(early, 7) ^ bit(early, 11) ^
+            bit(middle, 17) ^ bit(middle, 20) ^ bit(middle, 24) ^ bit(middle, 28))
+
+
 def verify_triple(previous, early, middle):
     actual = twist_print(previous, early, middle)
     assert tuple(bit(actual, i) for i in (0,4,22)) == predict(temper(early), temper(middle))
+    assert parity_pair(actual) == gap_pair(temper(early), temper(middle))
 
 def run(zip_path):
     with ZipFile(zip_path) as z:
@@ -183,6 +195,38 @@ def run(zip_path):
     assert len(after_target) - len(augmented) == 116
     print("Original p955 source rank 15369; 36 donor bits independent;")
     print("Selected coupon quotient 128 -> 116; exactly 12 individual bits fixed: PASS")
+
+    # A different *sparser per-parity* low-early/high-middle native-bit cut
+    # fixes two selected printed parities per word from 10 bits (4 and 7
+    # individually, with one overlap). Still no real donor values.
+    pair_basis = {pivot: equation & ~1 for pivot, equation in known.items()}
+    for offset, bits in ((623, (0, 3, 7, 11, 15)),
+                         (227, (17, 20, 21, 24, 28))):
+        for j in range(4):
+            native = tempered_expressions(terms[starts[129] + j - offset])
+            for b in bits:
+                assert reduce_equation(pair_basis, native[b]) > 1
+    assert len(pair_basis) == len(known) + 40
+    pair_fixed = {
+        (j, b)
+        for j, word in enumerate(selected)
+        for b, expr in enumerate(word)
+        if reduce_equation(pair_basis, expr, insert=False) == 0
+    }
+    assert not pair_fixed  # Parities, not individually reconstructed bits
+    for word in selected:
+        for bits in ((17, 21), (17, 20, 24, 28)):
+            parity_expr = 0
+            for b in bits:
+                parity_expr ^= word[b]
+            assert reduce_equation(pair_basis, parity_expr, insert=False) == 0
+    pair_quotient = dict(pair_basis)
+    for word in selected:
+        for expr in word:
+            reduce_equation(pair_quotient, expr)
+    assert len(pair_quotient) - len(pair_basis) == 120
+    print("Two native printed parities per word: 40 donors independent,")
+    print("Selected quotient 128 -> 120 and no individual bits fixed: PASS")
     print("AUTHENTICATED K04 TARGET BITS ACQUIRED: 0/128")
 
 
