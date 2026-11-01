@@ -36,7 +36,9 @@ def quotient(basis: dict[int, int], expressions: list[list[int]]) -> int:
     union = dict(basis)
     for word in expressions:
         for expr in word:
-            insert(union, expr, 0)
+            v = residual(union, expr, 0)
+            if v > 1:
+                union[v.bit_length() - 1] = v
     return len(union) - len(basis)
 
 
