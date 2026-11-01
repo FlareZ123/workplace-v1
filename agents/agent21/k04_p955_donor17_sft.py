@@ -86,6 +86,24 @@ def main(case_zip: Path) -> None:
     assert quotient(oracle, target) == 127
     print("Untempered bit30 ideal positive control: one target parity fixed")
 
+    # Stronger single-donor corollary: source row43.word3 has MSB=0,
+    # so only TWO printed bits from Y[p-227] are necessary for one
+    # selected coupon parity.  This uses the single middle 15:00 gap;
+    # all observed donor values here are synthetic oracle completions.
+    single = dict(original)
+    for bit in (15, 30):
+        expr = donor[bit]
+        # Consistent affine zero-free-variable completion of original basis.
+        # Value=0 is an illustrative homogeneous variation, not an actual
+        # historical original output.  For coupon-rank computation only
+        # the constraint coefficient matters.
+        v = residual(single, expr, 0)
+        if v > 1:
+            single[v.bit_length() - 1] = v
+    assert quotient(single, target) == 127
+    print("One middle-gap output, printed bits15+30: rank127 / 128")
+    # The copied selected payload is NOT consulted in this projector.
+
     # Convert the seven unprinted state-bit donors into the exact 32 native
     # *tempered* print bits needed to constrain four coupon parities.
     # This completion chooses free MT state variables as zero. It supplies no
